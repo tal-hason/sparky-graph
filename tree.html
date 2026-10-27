@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sparky-Plex Codebase — graphify tree viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      margin: 20px 0 0 24px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #1e3a56;
+    }
+    .controls {
+      margin: 20px 0 15px 24px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 8px 18px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    button:active {
+      background: #004085;
+    }
+    #tree-container {
+      width: calc(100vw - 48px); /* Adjust for body margin/padding */
+      height: 85vh;
+      overflow: auto;
+      border-radius: 8px;
+      background: #fff;
+      margin-left: 24px;
+      margin-right: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #ddd;
+    }
+    svg {
+      background: #fff;
+      border-radius: 8px;
+      display: block; /* Important for D3 */
+    }
+    .node circle {
+      stroke-width: 2.5px;
+    }
+    .node text { /* Base style for the <text> container */
+      font: 13px 'Segoe UI', sans-serif;
+      paint-order: stroke fill; /* Ensures text is readable over lines */
+      stroke: #fff; /* White halo */
+      stroke-width: 3px; /* Halo thickness */
+      stroke-linejoin: round;
+      stroke-opacity: 0.85; /* Halo opacity */
+    }
+    .link {
+      fill: none;
+      stroke-opacity: 0.7;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sparky-Plex Codebase — Knowledge Graph</h1>
+  <div class="controls">
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+    <button onclick="resetView()">Reset View</button>
+  </div>
+  <div id="tree-container">
+    <svg id="tree-svg" width="6000" height="8000"></svg>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const initialJsonData = {"name":"Sparky-Plex Codebase","total_count":748,"children":[{"name":"architecture","total_count":38,"children":[{"name":"OODA_CYNEFIN_FRAMEWORK.md","total_count":9,"children":[{"name":"1. Clear / Simple Domain (Known Knowns)","total_count":1,"children":[]},{"name":"2. Complicated Domain (Known Unknowns)","total_count":1,"children":[]},{"name":"3. Complex Domain (Unknown Unknowns)","total_count":1,"children":[]},{"name":"4. Chaotic Domain (Unknowables / Crises)","total_count":1,"children":[]},{"name":"5. Aporia / Confusion","total_count":1,"children":[]},{"name":"Architectural Overview","total_count":1,"children":[]},{"name":"Cynefin + OODA Loop Cognitive Framework","total_count":1,"children":[]},{"name":"OODA_CYNEFIN_FRAMEWORK.md","total_count":1,"children":[]},{"name":"The Four Cynefin Domains in Sparky","total_count":1,"children":[]}]},{"name":"SEMANTIC_VECTOR_MEMORY.md","total_count":19,"children":[{"name":"1. Architectural Blueprint & Cognitive Model","total_count":1,"children":[]},{"name":"2. Infrastructure & Storage (`pgvector`)","total_count":1,"children":[]},{"name":"3. Multilingual Embedding Pipeline","total_count":1,"children":[]},{"name":"4. Bridge Microservice Endpoints ([`server.js`](file:///root/vertex-search-bridge/server.js))","total_count":1,"children":[]},{"name":"5. Main Agent Integration (`search_memory` FunctionCall)","total_count":1,"children":[]},{"name":"6. Nightly Cortex Sleep Consolidation (`POST /cortex/sleep-cycle`)","total_count":1,"children":[]},{"name":"7. Hybrid Personal & Episodic Knowledge Graph (`kg-store.js` + `/root/sparky-memory-graph/`)","total_count":1,"children":[]},{"name":"7.1 PostgreSQL Relational + Vector Graph Schema","total_count":1,"children":[]},{"name":"7.2 Nightly Single-Pass Extraction & Backfill","total_count":1,"children":[]},{"name":"7.3 Shared Hive-Mind Query Endpoints","total_count":1,"children":[]},{"name":"8. Disaster Recovery & Backups","total_count":1,"children":[]},{"name":"`GET /memories/search`","total_count":1,"children":[]},{"name":"`POST /memories/save` (and `GET /memories/save`)","total_count":1,"children":[]},{"name":"Container Deployment","total_count":1,"children":[]},{"name":"Execution Pipeline:","total_count":1,"children":[]},{"name":"Schema & Indexing","total_count":1,"children":[]},{"name":"Semantic Vector Memory & Cortex Sleep Consolidation Architecture","total_count":1,"children":[]},{"name":"SEMANTIC_VECTOR_MEMORY.md","total_count":1,"children":[]},{"name":"Workflow Node Configuration","total_count":1,"children":[]}]},{"name":"SENTINEL_ACTOR_MODEL.md","total_count":10,"children":[{"name":"1. Executive Summary","total_count":1,"children":[]},{"name":"2. Dual-Channel XML Sensory Pipeline","total_count":1,"children":[]},{"name":"3. Active Conversational Handshake & Latency Masking","total_count":1,"children":[]},{"name":"4. Active Workflow Catalog (11 Total)","total_count":1,"children":[]},{"name":"5. Central Egress Hub (`/whatsapp/dispatch`)","total_count":1,"children":[]},{"name":"Sentinel Actor Model & Conversational Handshake Architecture","total_count":1,"children":[]},{"name":"SENTINEL_ACTOR_MODEL.md","total_count":1,"children":[]},{"name":"The Problem","total_count":1,"children":[]},{"name":"The Solution","total_count":1,"children":[]},{"name":"Why Dual-Channel XML?","total_count":1,"children":[]}]}]},{"name":"containers","total_count":38,"children":[{"name":"n8n-stack","total_count":37,"children":[{"name":"README.md","total_count":5,"children":[{"name":"Architecture","total_count":1,"children":[]},{"name":"n8n Stack Configuration & Deployment","total_count":1,"children":[]},{"name":"n8n-stack/README.md","total_count":1,"children":[]},{"name":"\ud83d\udd12 Crucial Notes on `N8N_ENCRYPTION_KEY`","total_count":1,"children":[]},{"name":"\ud83d\ude80 Deployment Instructions","total_count":1,"children":[]}]},{"name":"scripts","total_count":32,"children":[{"name":"deploy-bridge.sh","total_count":1,"children":[{"name":"deploy-bridge.sh script","total_count":1,"children":[]}]},{"name":"patch-gemini4-langchain.sh","total_count":1,"children":[{"name":"patch-gemini4-langchain.sh script","total_count":1,"children":[]}]},{"name":"patch-n8n-memory-orphans.sh","total_count":1,"children":[{"name":"patch-n8n-memory-orphans.sh script","total_count":1,"children":[]}]},{"name":"postgres-maintenance.sh","total_count":3,"children":[{"name":"postgres-maintenance.sh script","total_count":1,"children":[]},{"name":"run_sql()","total_count":1,"children":[]},{"name":"run_sql_query()","total_count":1,"children":[]}]},{"name":"sparky-watchdog.sh","total_count":7,"children":[{"name":"can_alert()","total_count":1,"children":[]},{"name":"flush_incident_buffer()","total_count":1,"children":[]},{"name":"PATH","total_count":1,"children":[]},{"name":"record_alert()","total_count":1,"children":[]},{"name":"record_watchdog_incident()","total_count":1,"children":[]},{"name":"send_direct_wa_alert()","total_count":1,"children":[]},{"name":"sparky-watchdog.sh script","total_count":1,"children":[]}]},{"name":"test-n8n-patches.js","total_count":15,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"entries","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"geminiCjsPath","total_count":1,"children":[]},{"name":"geminiMessages","total_count":1,"children":[]},{"name":"geminiMessagesPath","total_count":1,"children":[]},{"name":"googleCommonDir","total_count":1,"children":[]},{"name":"langchainNodeDir","total_count":1,"children":[]},{"name":"memMessages","total_count":1,"children":[]},{"name":"memMessagesPath","total_count":1,"children":[]},{"name":"memMgmtPath","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"run()","total_count":1,"children":[]},{"name":"{ cleanupOrphanedMessages }","total_count":1,"children":[]},{"name":"{ getGeminiAPI }","total_count":1,"children":[]}]},{"name":"update-n8n.sh","total_count":4,"children":[{"name":"HOME","total_count":1,"children":[]},{"name":"PATH","total_count":1,"children":[]},{"name":"REGISTRY_AUTH_FILE","total_count":1,"children":[]},{"name":"update-n8n.sh script","total_count":1,"children":[]}]}]}]},{"name":"webtop-manager","total_count":1,"children":[{"name":"custom-init.d","total_count":1,"children":[{"name":"install-apps.sh","total_count":1,"children":[{"name":"install-apps.sh script","total_count":1,"children":[]}]}]}]}]},{"name":"docs","total_count":32,"children":[{"name":"brainstorms","total_count":4,"children":[{"name":"sparky-nightly-knowledge-graph-requirements.md","total_count":4,"children":[{"name":"1. User Intent & Selected Architecture (1 + 3 Hybrid)","total_count":1,"children":[]},{"name":"2. Core Invariants & Boundaries","total_count":1,"children":[]},{"name":"Requirements Anchor: Sparky-AI Nightly Dreaming Knowledge Graph (`sparky-nightly-knowledge-graph`)","total_count":1,"children":[]},{"name":"sparky-nightly-knowledge-graph-requirements.md","total_count":1,"children":[]}]}]},{"name":"DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md","total_count":20,"children":[{"name":"1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)","total_count":1,"children":[]},{"name":"2. Quality Gates, Observability & Disaster Recovery (Epic E3)","total_count":1,"children":[]},{"name":"3. Platform Architecture & Refactoring (Epic E5)","total_count":1,"children":[]},{"name":"DEF-01: Global Attention Budget & Quiet Hours Hold Queue (`23:00\u201307:00`)","total_count":1,"children":[]},{"name":"DEF-02: Nudge-Effectiveness Telemetry & Sentinel Self-Tuning","total_count":1,"children":[]},{"name":"DEF-03: Sunday Weekly Review & Overdue Loop Escalation Ladder","total_count":1,"children":[]},{"name":"DEF-04: Real-Time In-Turn Correction Learning (`\"No, I meant...\"`)","total_count":1,"children":[]},{"name":"DEF-05: Semantic Memory Contradiction Detection & Temporal Decay","total_count":1,"children":[]},{"name":"DEF-06: Auto-Incident Knowledge Base (`knowledge-base.json`) Draft Capture","total_count":1,"children":[]},{"name":"DEF-07: Golden Evaluation Dataset Expansion (`3/45` \u2192 Core Tools) & Change Gate","total_count":1,"children":[]},{"name":"DEF-08: Daily Sentinel Heartbeat SLO Monitor","total_count":1,"children":[]},{"name":"DEF-09: Turnkey Bare-Metal DR Playbook & Encrypted Credential Bootstrap (`restore.sh`)","total_count":1,"children":[]},{"name":"DEF-10: Bridge Monolith Decomposition (`server.js`), Native PG Pool & `BRIDGE_URL` Env","total_count":1,"children":[]},{"name":"DEF-11: Meta WhatsApp Delivery & Read Receipt Tracking","total_count":1,"children":[]},{"name":"DEF-12: `agy-daemon` Failed Mission Re-Surfacing & Retry Digest","total_count":1,"children":[]},{"name":"DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md","total_count":1,"children":[]},{"name":"Detailed Backlog Items","total_count":1,"children":[]},{"name":"Overview","total_count":1,"children":[]},{"name":"Sparky-AI Autonomous Lifecycle \u2014 Deferred & Out-of-Scope Backlog","total_count":1,"children":[]},{"name":"Summary Roadmap Matrix","total_count":1,"children":[]}]},{"name":"eval-history.md","total_count":2,"children":[{"name":"eval-history.md","total_count":1,"children":[]},{"name":"Sparky Agent Evaluation History (`DEF-07`)","total_count":1,"children":[]}]},{"name":"RUNBOOK_BRIDGE_CONTAINER.md","total_count":6,"children":[{"name":"Emergency Sub-Minute Rollback to Host `systemd` (`vertex-search.service`)","total_count":1,"children":[]},{"name":"Overview","total_count":1,"children":[]},{"name":"Returning from Host `systemd` to Container (`vertex-bridge`)","total_count":1,"children":[]},{"name":"Runbook: Containerized Vertex Search Bridge & Sub-Minute Systemd Rollback (`DEF-10`)","total_count":1,"children":[]},{"name":"RUNBOOK_BRIDGE_CONTAINER.md","total_count":1,"children":[]},{"name":"Standard Deployment & Digest Rollback (`deploy-bridge.sh`)","total_count":1,"children":[]}]}]},{"name":"README.md","total_count":9,"children":[{"name":"Automated Backup","total_count":1,"children":[]},{"name":"Full Disaster Recovery","total_count":1,"children":[]},{"name":"README.md","total_count":1,"children":[]},{"name":"Sparky-Plex: Autonomous Executive Assistant & Infrastructure","total_count":1,"children":[]},{"name":"\ud83c\udfdb\ufe0f System Architecture","total_count":1,"children":[]},{"name":"\ud83d\udcc1 Repository Structure","total_count":1,"children":[]},{"name":"\ud83d\udd04 Automated Backup & Disaster Recovery","total_count":1,"children":[]},{"name":"\ud83d\udd12 Security & Privacy Notice","total_count":1,"children":[]},{"name":"\ud83d\udee0\ufe0f Microservice Bridge (Port 5055)","total_count":1,"children":[]}]},{"name":"scripts","total_count":24,"children":[{"name":"backup.sh","total_count":5,"children":[{"name":"backup.sh script","total_count":1,"children":[]},{"name":"encrypt_file()","total_count":1,"children":[]},{"name":"HOME","total_count":1,"children":[]},{"name":"PATH","total_count":1,"children":[]},{"name":"run_encrypted_secrets_stage()","total_count":1,"children":[]}]},{"name":"migrate-workflow-bridge-urls.js","total_count":9,"children":[{"name":"fs","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"migrateJsCode()","total_count":1,"children":[]},{"name":"migrateNodes()","total_count":1,"children":[]},{"name":"migrateUrlParam()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"runPsql()","total_count":1,"children":[]},{"name":"WORKFLOWS_DIR","total_count":1,"children":[]},{"name":"{ execFileSync }","total_count":1,"children":[]}]},{"name":"restore.sh","total_count":5,"children":[{"name":"HOME","total_count":1,"children":[]},{"name":"PATH","total_count":1,"children":[]},{"name":"restore.sh script","total_count":1,"children":[]},{"name":"sync_published_versions_sql()","total_count":1,"children":[]},{"name":"verify_and_extract_secrets()","total_count":1,"children":[]}]},{"name":"run-agent-eval.sh","total_count":3,"children":[{"name":"HOME","total_count":1,"children":[]},{"name":"PATH","total_count":1,"children":[]},{"name":"run-agent-eval.sh script","total_count":1,"children":[]}]},{"name":"sync-services-to-repo.sh","total_count":2,"children":[{"name":"check_forbidden_filename()","total_count":1,"children":[]},{"name":"sync-services-to-repo.sh script","total_count":1,"children":[]}]}]},{"name":"services","total_count":530,"children":[{"name":"agy-daemon","total_count":42,"children":[{"name":"daemon.py","total_count":29,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":"._get_bridge_headers()","total_count":1,"children":[]},{"name":"._handle_exit()","total_count":1,"children":[]},{"name":"._list_folder_files()","total_count":1,"children":[]},{"name":"._terminate_process_group()","total_count":1,"children":[]},{"name":".claim_task()","total_count":1,"children":[]},{"name":".execute_task()","total_count":1,"children":[]},{"name":".finalize_task()","total_count":1,"children":[]},{"name":".get_access_token()","total_count":1,"children":[]},{"name":".list_pending_tasks()","total_count":1,"children":[]},{"name":".list_processing_tasks()","total_count":1,"children":[]},{"name":".lookup_bridge_conversation_id()","total_count":1,"children":[]},{"name":".notify_n8n()","total_count":1,"children":[]},{"name":".post_bridge_event()","total_count":1,"children":[]},{"name":".recover_interrupted_tasks()","total_count":1,"children":[]},{"name":".requeue_task_to_pending()","total_count":1,"children":[]},{"name":".run()","total_count":1,"children":[]},{"name":"@ai-rules 1. Antigravity Headless Automation Daemon (`agy-daemon.service`). 2.\u2026","total_count":1,"children":[]},{"name":"_read_stderr()","total_count":1,"children":[]},{"name":"_read_stdout()","total_count":1,"children":[]},{"name":"extract_stream_json_result()","total_count":1,"children":[]},{"name":"On daemon startup, inspect any tasks left in the `processing` folder. If\u2026","total_count":1,"children":[]},{"name":"Parse NDJSON lines from `agy -p ... --output-format stream-json`. Extracts\u2026","total_count":1,"children":[]},{"name":"read_heartbeat_meta()","total_count":1,"children":[]},{"name":"Resolve idle timeout, hard runtime cap, and progress notification threshold.\u2026","total_count":1,"children":[]},{"name":"resolve_timeouts()","total_count":1,"children":[]},{"name":"sd_notify()","total_count":1,"children":[]},{"name":"Send a systemd notification datagram to NOTIFY_SOCKET (zero external\u2026","total_count":1,"children":[]},{"name":"TaskDaemon","total_count":1,"children":[]}]},{"name":"test_daemon.py","total_count":11,"children":[{"name":"._make_mock_daemon()","total_count":1,"children":[]},{"name":".test_extract_stream_json_result()","total_count":1,"children":[]},{"name":".test_graceful_sigterm_returns_daemon_shutdown_not_failed()","total_count":1,"children":[]},{"name":".test_t40_and_t44_active_mission_completes_with_callback_superset()","total_count":1,"children":[]},{"name":".test_t41_idle_kill_triggers_when_silent_past_idle_timeout()","total_count":1,"children":[]},{"name":".test_t42_hard_cap_kills_active_task_at_max_runtime()","total_count":1,"children":[]},{"name":".test_t43_legacy_timeout_ignored_unless_hard_timeout()","total_count":1,"children":[]},{"name":".test_t45_startup_recovery_requeues_with_attempts_and_resume_conversation_id()","total_count":1,"children":[]},{"name":"TestDaemon","total_count":1,"children":[]},{"name":"trigger_shutdown()","total_count":1,"children":[]},{"name":"Unit & process tests for /root/agy-daemon/daemon.py (T-40..T-45).","total_count":1,"children":[]}]},{"name":"update.sh","total_count":2,"children":[{"name":"PATH","total_count":1,"children":[]},{"name":"update.sh script","total_count":1,"children":[]}]}]},{"name":"n8n-sparky","total_count":17,"children":[{"name":"patch-gemini4-langchain.sh","total_count":1,"children":[{"name":"patch-gemini4-langchain.sh script","total_count":1,"children":[]}]},{"name":"patch-n8n-memory-orphans.sh","total_count":1,"children":[{"name":"patch-n8n-memory-orphans.sh script","total_count":1,"children":[]}]},{"name":"test-n8n-patches.js","total_count":15,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"entries","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"geminiCjsPath","total_count":1,"children":[]},{"name":"geminiMessages","total_count":1,"children":[]},{"name":"geminiMessagesPath","total_count":1,"children":[]},{"name":"googleCommonDir","total_count":1,"children":[]},{"name":"langchainNodeDir","total_count":1,"children":[]},{"name":"memMessages","total_count":1,"children":[]},{"name":"memMessagesPath","total_count":1,"children":[]},{"name":"memMgmtPath","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"run()","total_count":1,"children":[]},{"name":"{ cleanupOrphanedMessages }","total_count":1,"children":[]},{"name":"{ getGeminiAPI }","total_count":1,"children":[]}]}]},{"name":"sparky-mcp","total_count":36,"children":[{"name":"bridge.js","total_count":3,"children":[{"name":"bridgeRequest()","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"getBridgeToken()","total_count":1,"children":[]}]},{"name":"hooks","total_count":10,"children":[{"name":"sparky-hook.js","total_count":10,"children":[{"name":"fs","total_count":1,"children":[]},{"name":"isSafeHeartbeatPath()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"readStdin()","total_count":1,"children":[]},{"name":"runHook()","total_count":1,"children":[]},{"name":"safetyTimer","total_count":1,"children":[]},{"name":"sanitizeLine()","total_count":1,"children":[]},{"name":"shouldInjectContext()","total_count":1,"children":[]},{"name":"touchHeartbeat()","total_count":1,"children":[]},{"name":"{ bridgeRequest }","total_count":1,"children":[]}]}]},{"name":"index.js","total_count":8,"children":[{"name":"fs","total_count":1,"children":[]},{"name":"handleToolCall()","total_count":1,"children":[]},{"name":"readHeartbeatMeta()","total_count":1,"children":[]},{"name":"readline","total_count":1,"children":[]},{"name":"sendJsonRpc()","total_count":1,"children":[]},{"name":"startStdioServer()","total_count":1,"children":[]},{"name":"TOOLS","total_count":1,"children":[]},{"name":"{ bridgeRequest }","total_count":1,"children":[]}]},{"name":"package.json","total_count":7,"children":[{"name":"description","total_count":1,"children":[]},{"name":"main","total_count":1,"children":[]},{"name":"name","total_count":1,"children":[]},{"name":"private","total_count":1,"children":[]},{"name":"scripts","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"version","total_count":1,"children":[]}]},{"name":"test","total_count":8,"children":[{"name":"mcp.test.js","total_count":8,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"os","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"runPsql()","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{ spawn, execFileSync, execFile }","total_count":1,"children":[]},{"name":"{ TOOLS, handleToolCall, TAL_RECIPIENT }","total_count":1,"children":[]}]}]}]},{"name":"vertex-search-bridge","total_count":435,"children":[{"name":"config.js","total_count":12,"children":[{"name":"atomicWriteJson()","total_count":1,"children":[]},{"name":"createMetaTokenReader()","total_count":1,"children":[]},{"name":"createShutdownHandler()","total_count":1,"children":[]},{"name":"crypto","total_count":1,"children":[]},{"name":"defaultConfig","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"getMetaToken()","total_count":1,"children":[]},{"name":"loadOrInitBridgeToken()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"repairChatHistoryToolTurns()","total_count":1,"children":[]},{"name":"resolveConfig()","total_count":1,"children":[]},{"name":"runStartupTasks()","total_count":1,"children":[]}]},{"name":"correction-learner.js","total_count":9,"children":[{"name":"containsSecretOrPassword()","total_count":1,"children":[]},{"name":"createCorrectionLearner()","total_count":1,"children":[]},{"name":"detectCorrectionSignal()","total_count":1,"children":[]},{"name":"extractAndSaveCorrection()","total_count":1,"children":[]},{"name":"findDuplicateFieldNote()","total_count":1,"children":[]},{"name":"redactAllSecrets()","total_count":1,"children":[]},{"name":"SECRET_PATTERNS","total_count":1,"children":[]},{"name":"stripChatWrapper()","total_count":1,"children":[]},{"name":"{ tokenizeForMatch }","total_count":1,"children":[]}]},{"name":"db.js","total_count":11,"children":[{"name":"close()","total_count":1,"children":[]},{"name":"createDb()","total_count":1,"children":[]},{"name":"formatPgCell()","total_count":1,"children":[]},{"name":"formatPgResultAsPsql()","total_count":1,"children":[]},{"name":"getOrInitPgPool()","total_count":1,"children":[]},{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"queryPostgresScript()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"RAW_STRING_OIDS","total_count":1,"children":[]},{"name":"registerRawStringTypeParsers()","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"decision-helpers.js","total_count":8,"children":[{"name":"cleanOptionText()","total_count":1,"children":[]},{"name":"extractInteractiveOptions()","total_count":1,"children":[]},{"name":"getDecisionSourceAliases()","total_count":1,"children":[]},{"name":"INTERACTIVE_SENTINEL_SOURCES","total_count":1,"children":[]},{"name":"isSequentialFromOne()","total_count":1,"children":[]},{"name":"NON_DECISION_SOURCES","total_count":1,"children":[]},{"name":"parseBareChoice()","total_count":1,"children":[]},{"name":"SOURCE_ALIAS_GROUPS","total_count":1,"children":[]}]},{"name":"heartbeat-store.js","total_count":10,"children":[{"name":"createHeartbeatStore()","total_count":1,"children":[]},{"name":"ensureTables()","total_count":1,"children":[]},{"name":"evaluateStaleness()","total_count":1,"children":[]},{"name":"flushSentinel()","total_count":1,"children":[]},{"name":"listHeartbeats()","total_count":1,"children":[]},{"name":"lookupEntry()","total_count":1,"children":[]},{"name":"recordHeartbeat()","total_count":1,"children":[]},{"name":"SENTINEL_REGISTRY","total_count":1,"children":[]},{"name":"sqlStr()","total_count":1,"children":[]},{"name":"toValidDate()","total_count":1,"children":[]}]},{"name":"host-adapters.js","total_count":15,"children":[{"name":"assertSafeBrowserUrl()","total_count":1,"children":[]},{"name":"captureScreenshot()","total_count":1,"children":[]},{"name":"checkNfs()","total_count":1,"children":[]},{"name":"createHostAdapters()","total_count":1,"children":[]},{"name":"extractReadableDom()","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"isPrivateOrLocalIp()","total_count":1,"children":[]},{"name":"listContainers()","total_count":1,"children":[]},{"name":"net","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"PG_MAINTENANCE_STATEMENTS","total_count":1,"children":[]},{"name":"renderPage()","total_count":1,"children":[]},{"name":"runDatabaseMaintenance()","total_count":1,"children":[]},{"name":"validateUrlForBrowser()","total_count":1,"children":[]},{"name":"{ execFile, execSync }","total_count":1,"children":[]}]},{"name":"incident-store.js","total_count":10,"children":[{"name":"computeSignature()","total_count":1,"children":[]},{"name":"createIncidentStore()","total_count":1,"children":[]},{"name":"crypto","total_count":1,"children":[]},{"name":"draftLessonsFromCandidates()","total_count":1,"children":[]},{"name":"ensureTables()","total_count":1,"children":[]},{"name":"normalizeErrorKey()","total_count":1,"children":[]},{"name":"recordCandidate()","total_count":1,"children":[]},{"name":"redactAndNormalizeError()","total_count":1,"children":[]},{"name":"redactSecretsInError()","total_count":1,"children":[]},{"name":"sqlStr()","total_count":1,"children":[]}]},{"name":"kg-store.js","total_count":38,"children":[{"name":"atomicWriteFile()","total_count":1,"children":[]},{"name":"bareTableName()","total_count":1,"children":[]},{"name":"buildAsciiVaultSlug()","total_count":1,"children":[]},{"name":"buildCanonicalEntityId()","total_count":1,"children":[]},{"name":"buildDeterministicEdgeId()","total_count":1,"children":[]},{"name":"canonicalDescriptorToString()","total_count":1,"children":[]},{"name":"createKgStore()","total_count":1,"children":[]},{"name":"crypto","total_count":1,"children":[]},{"name":"ensureKgTables()","total_count":1,"children":[]},{"name":"execFileAsync()","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"IMPORTANT: Use bold labels (**Summary:**, **Relationships:**) and NO # or ##\u2026","total_count":1,"children":[]},{"name":"ingestExtractedKnowledgeGraph()","total_count":1,"children":[]},{"name":"normalizeAliasesList()","total_count":1,"children":[]},{"name":"normalizeEntitySlug()","total_count":1,"children":[]},{"name":"normalizeEntityType()","total_count":1,"children":[]},{"name":"normalizeRelationSlug()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"preAggregateEntities()","total_count":1,"children":[]},{"name":"queryKgSubgraphForVector()","total_count":1,"children":[]},{"name":"queryKnowledgeGraph()","total_count":1,"children":[]},{"name":"redactSecrets()","total_count":1,"children":[]},{"name":"reseedKnowledgeGraph()","total_count":1,"children":[]},{"name":"resolveOrCreateEndpointNode()","total_count":1,"children":[]},{"name":"resolveTables()","total_count":1,"children":[]},{"name":"safeTableIdentifier()","total_count":1,"children":[]},{"name":"SELF_HUB_IDS","total_count":1,"children":[]},{"name":"sqlJsonb()","total_count":1,"children":[]},{"name":"sqlStr()","total_count":1,"children":[]},{"name":"sqlTextArray()","total_count":1,"children":[]},{"name":"sqlVec()","total_count":1,"children":[]},{"name":"stripBidi()","total_count":1,"children":[]},{"name":"syncMemoryGraphVault()","total_count":1,"children":[]},{"name":"upsertKgEdge()","total_count":1,"children":[]},{"name":"upsertKgEntity()","total_count":1,"children":[]},{"name":"VALID_ENTITY_TYPES","total_count":1,"children":[]},{"name":"withVaultLock()","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"loop-keys.js","total_count":13,"children":[{"name":"buildCanonicalLoopKey()","total_count":1,"children":[]},{"name":"classifyLoopsByDue()","total_count":1,"children":[]},{"name":"crypto","total_count":1,"children":[]},{"name":"effectiveDue()","total_count":1,"children":[]},{"name":"encodeCanonicalLoopId()","total_count":1,"children":[]},{"name":"extractLoopEntityKey()","total_count":1,"children":[]},{"name":"formatDueBucket()","total_count":1,"children":[]},{"name":"formatIsraelDate()","total_count":1,"children":[]},{"name":"generateDeterministicLoopId()","total_count":1,"children":[]},{"name":"normalizeLoopTitle()","total_count":1,"children":[]},{"name":"normalizeSubject()","total_count":1,"children":[]},{"name":"senderDomain()","total_count":1,"children":[]},{"name":"stripBidi()","total_count":1,"children":[]}]},{"name":"loop-store.js","total_count":10,"children":[{"name":"completeOpenLoopById()","total_count":1,"children":[]},{"name":"createLoopStore()","total_count":1,"children":[]},{"name":"markLoopNotified()","total_count":1,"children":[]},{"name":"runOpenLoopsGC()","total_count":1,"children":[]},{"name":"safeTable()","total_count":1,"children":[]},{"name":"sqlJsonb()","total_count":1,"children":[]},{"name":"sqlStr()","total_count":1,"children":[]},{"name":"sqlTimestamptz()","total_count":1,"children":[]},{"name":"upsertOpenLoop()","total_count":1,"children":[]},{"name":"{\n  ACTIONABLE_STATUS_RE,\n  generateDeterministicLoopId,\n}","total_count":1,"children":[]}]},{"name":"memory-hygiene.js","total_count":13,"children":[{"name":"computeRecencyBoost()","total_count":1,"children":[]},{"name":"createMemoryHygieneStore()","total_count":1,"children":[]},{"name":"EPISODIC_TYPES","total_count":1,"children":[]},{"name":"findCandidateNeighbors()","total_count":1,"children":[]},{"name":"hasFactMutationTokens()","total_count":1,"children":[]},{"name":"ingestMemoryWithHygiene()","total_count":1,"children":[]},{"name":"mergeContextNotes()","total_count":1,"children":[]},{"name":"normalizeTopic()","total_count":1,"children":[]},{"name":"rankMemoriesWithDecay()","total_count":1,"children":[]},{"name":"reconcileExistingMemories()","total_count":1,"children":[]},{"name":"sqlEscape()","total_count":1,"children":[]},{"name":"sqlLiteral()","total_count":1,"children":[]},{"name":"{ tokenizeForMatch }","total_count":1,"children":[]}]},{"name":"nudge-telemetry.js","total_count":12,"children":[{"name":"classifyDecisionChoice()","total_count":1,"children":[]},{"name":"computeSenderAdjustment()","total_count":1,"children":[]},{"name":"createNudgeTelemetryStore()","total_count":1,"children":[]},{"name":"extractSenderKey()","total_count":1,"children":[]},{"name":"formatTriageFeedbackXml()","total_count":1,"children":[]},{"name":"getEffectivenessReport()","total_count":1,"children":[]},{"name":"getSenderFeedback()","total_count":1,"children":[]},{"name":"inferDecisionSource()","total_count":1,"children":[]},{"name":"invalidateCache()","total_count":1,"children":[]},{"name":"sqlEscape()","total_count":1,"children":[]},{"name":"sqlLiteral()","total_count":1,"children":[]},{"name":"{ sanitizeBodyText, escXml }","total_count":1,"children":[]}]},{"name":"package.json","total_count":14,"children":[{"name":"dependencies","total_count":1,"children":[]},{"name":"description","total_count":1,"children":[]},{"name":"engines","total_count":1,"children":[]},{"name":"main","total_count":1,"children":[]},{"name":"name","total_count":1,"children":[]},{"name":"node","total_count":1,"children":[]},{"name":"pg","total_count":1,"children":[]},{"name":"pg","total_count":1,"children":[]},{"name":"private","total_count":1,"children":[]},{"name":"scripts","total_count":1,"children":[]},{"name":"start","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"test:ci","total_count":1,"children":[]},{"name":"version","total_count":1,"children":[]}]},{"name":"quiet-hours.js","total_count":5,"children":[{"name":"BYPASS_SOURCES","total_count":1,"children":[]},{"name":"computeQuietHoursVerdict()","total_count":1,"children":[]},{"name":"getLocalHour()","total_count":1,"children":[]},{"name":"hourFormatter","total_count":1,"children":[]},{"name":"isQuietWindow()","total_count":1,"children":[]}]},{"name":"scripts","total_count":33,"children":[{"name":"migrate-loop-keys.js","total_count":7,"children":[{"name":"HISTORICAL_CLOSE_IDS","total_count":1,"children":[]},{"name":"loadAllRows()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"runMigration()","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]},{"name":"{ INVOICE_RE, generateDeterministicLoopId }","total_count":1,"children":[]},{"name":"{ sqlStr, sqlJsonb }","total_count":1,"children":[]}]},{"name":"probe-correction-learner.js","total_count":5,"children":[{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"runProbe()","total_count":1,"children":[]},{"name":"{\n  detectCorrectionSignal,\n  containsSecretOrPassword,\n  stripChatWrapper,\n}","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"probe-db-parity.js","total_count":5,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"config","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"QUERIES","total_count":1,"children":[]},{"name":"{ createDb }","total_count":1,"children":[]}]},{"name":"probe-incident-signatures.js","total_count":6,"children":[{"name":"classifyRootCause()","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"parseAlertText()","total_count":1,"children":[]},{"name":"runSqlJson()","total_count":1,"children":[]},{"name":"{\n  redactSecretsInError,\n  normalizeErrorKey,\n  computeSignature,\n}","total_count":1,"children":[]},{"name":"{ execFileSync }","total_count":1,"children":[]}]},{"name":"probe-memory-contradictions.js","total_count":5,"children":[{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"runProbe()","total_count":1,"children":[]},{"name":"{\n  hasFactMutationTokens,\n  mergeContextNotes,\n  createMemoryHygieneStore,\n}","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"probe-nudge-telemetry.js","total_count":5,"children":[{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"runProbe()","total_count":1,"children":[]},{"name":"{\n  createNudgeTelemetryStore,\n  computeSenderAdjustment,\n  formatTriageFeedbackXml,\n}","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]}]},{"name":"server.js","total_count":98,"children":[{"name":"analyzeImageBuffer()","total_count":1,"children":[]},{"name":"atomicWriteJson()","total_count":1,"children":[]},{"name":"BRIDGE_API_TOKEN","total_count":1,"children":[]},{"name":"BRIDGE_STARTED_AT","total_count":1,"children":[]},{"name":"callGeminiJson()","total_count":1,"children":[]},{"name":"callGoogleRoutesApi()","total_count":1,"children":[]},{"name":"callOsrmFallback()","total_count":1,"children":[]},{"name":"callVertexApiWithRetry()","total_count":1,"children":[]},{"name":"checkAndDispatchDueReminders()","total_count":1,"children":[]},{"name":"circuitBreakers","total_count":1,"children":[]},{"name":"computeCommute()","total_count":1,"children":[]},{"name":"config","total_count":1,"children":[]},{"name":"correctionLearner","total_count":1,"children":[]},{"name":"createCircuitBreaker()","total_count":1,"children":[]},{"name":"createDecision()","total_count":1,"children":[]},{"name":"crypto","total_count":1,"children":[]},{"name":"db","total_count":1,"children":[]},{"name":"disambiguatedByMessageId","total_count":1,"children":[]},{"name":"effectiveDue()","total_count":1,"children":[]},{"name":"fetchBufferFromUrl()","total_count":1,"children":[]},{"name":"fetchMetaMedia()","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"generateEmbedding()","total_count":1,"children":[]},{"name":"getAccessToken()","total_count":1,"children":[]},{"name":"getCircuitBreaker()","total_count":1,"children":[]},{"name":"getJerusalemOffsetString()","total_count":1,"children":[]},{"name":"getMetaToken","total_count":1,"children":[]},{"name":"getSentinelEvent()","total_count":1,"children":[]},{"name":"getSystemAudit()","total_count":1,"children":[]},{"name":"heartbeatStore","total_count":1,"children":[]},{"name":"hostAdapters","total_count":1,"children":[]},{"name":"http","total_count":1,"children":[]},{"name":"https","total_count":1,"children":[]},{"name":"incidentStore","total_count":1,"children":[]},{"name":"insertSemanticMemory()","total_count":1,"children":[]},{"name":"isPrivateIp()","total_count":1,"children":[]},{"name":"isTestLoop()","total_count":1,"children":[]},{"name":"isTimeCriticalReminder()","total_count":1,"children":[]},{"name":"kgStore","total_count":1,"children":[]},{"name":"loadActivityStream()","total_count":1,"children":[]},{"name":"loadAgyAttention()","total_count":1,"children":[]},{"name":"loadBriefedMeetings()","total_count":1,"children":[]},{"name":"loadContext()","total_count":1,"children":[]},{"name":"loadDecisions()","total_count":1,"children":[]},{"name":"loadFieldNotes()","total_count":1,"children":[]},{"name":"loadKnowledgeBase()","total_count":1,"children":[]},{"name":"loadLoops()","total_count":1,"children":[]},{"name":"logActivityEvent()","total_count":1,"children":[]},{"name":"loggedInboundMessageIds","total_count":1,"children":[]},{"name":"loopKeys","total_count":1,"children":[]},{"name":"loopStore","total_count":1,"children":[]},{"name":"markBriefedMeeting()","total_count":1,"children":[]},{"name":"memoryHygieneStore","total_count":1,"children":[]},{"name":"nudgeTelemetryStore","total_count":1,"children":[]},{"name":"parseDueTimestamp()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"processedCorrectionInboundIds","total_count":1,"children":[]},{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"queryPostgresScript()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"quietHours","total_count":1,"children":[]},{"name":"reminderClaims","total_count":1,"children":[]},{"name":"repairChatHistoryToolTurns()","total_count":1,"children":[]},{"name":"resolveDecision()","total_count":1,"children":[]},{"name":"sanitizeContent()","total_count":1,"children":[]},{"name":"saveContext()","total_count":1,"children":[]},{"name":"saveDecisions()","total_count":1,"children":[]},{"name":"saveFieldNotes()","total_count":1,"children":[]},{"name":"saveKnowledgeBase()","total_count":1,"children":[]},{"name":"scheduleLoopsMirror()","total_count":1,"children":[]},{"name":"searchSemanticMemories()","total_count":1,"children":[]},{"name":"searchSemanticMemoriesByVector()","total_count":1,"children":[]},{"name":"searchWithVertex()","total_count":1,"children":[]},{"name":"sendWhatsAppDirect()","total_count":1,"children":[]},{"name":"sendWhatsAppMediaDirect()","total_count":1,"children":[]},{"name":"sendWhatsAppReaction()","total_count":1,"children":[]},{"name":"server","total_count":1,"children":[]},{"name":"shutdownHandler","total_count":1,"children":[]},{"name":"sqlJsonb()","total_count":1,"children":[]},{"name":"sqlStr()","total_count":1,"children":[]},{"name":"sweepStalledSentinelEvents()","total_count":1,"children":[]},{"name":"transcribeAudioBuffer()","total_count":1,"children":[]},{"name":"uploadMetaMedia()","total_count":1,"children":[]},{"name":"url","total_count":1,"children":[]},{"name":"whatsappEgress","total_count":1,"children":[]},{"name":"{\n  classifyDecisionChoice,\n  inferDecisionSource,\n  extractSenderKey,\n  computeSenderAdjustment,\n  formatTriageFeedbackXml,\n  createNudgeTelemetryStore,\n}","total_count":1,"children":[]},{"name":"{\n  computeRecencyBoost,\n  rankMemoriesWithDecay,\n  hasFactMutationTokens,\n  mergeContextNotes,\n  createMemoryHygieneStore,\n}","total_count":1,"children":[]},{"name":"{\n  containsSecretOrPassword,\n  redactAllSecrets,\n  stripChatWrapper,\n  detectCorrectionSignal,\n  findDuplicateFieldNote,\n  createCorrectionLearner,\n}","total_count":1,"children":[]},{"name":"{\n  NON_DECISION_SOURCES,\n  INTERACTIVE_SENTINEL_SOURCES,\n  getDecisionSourceAliases,\n  parseBareChoice,\n  extractInteractiveOptions,\n}","total_count":1,"children":[]},{"name":"{\n  redactSecretsInError,\n  normalizeErrorKey,\n  computeSignature,\n  createIncidentStore,\n}","total_count":1,"children":[]},{"name":"{\n  sanitizeBodyText,\n  escXml,\n  tokenizeForMatch,\n  pickTokenMatch,\n}","total_count":1,"children":[]},{"name":"{\n  SENTINEL_REGISTRY,\n  evaluateStaleness,\n  createHeartbeatStore,\n}","total_count":1,"children":[]},{"name":"{ createDb }","total_count":1,"children":[]},{"name":"{ createHostAdapters }","total_count":1,"children":[]},{"name":"{ createKgStore }","total_count":1,"children":[]},{"name":"{ createLoopStore }","total_count":1,"children":[]},{"name":"{ createWhatsAppEgress }","total_count":1,"children":[]},{"name":"{ execSync, execFile }","total_count":1,"children":[]}]},{"name":"test","total_count":113,"children":[{"name":"config.test.js","total_count":7,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"CONFIG_PATH","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"getConfigOrSkip()","total_count":1,"children":[]},{"name":"os","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]}]},{"name":"correction-learner.test.js","total_count":3,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{\n  containsSecretOrPassword,\n  redactAllSecrets,\n  stripChatWrapper,\n  detectCorrectionSignal,\n  findDuplicateFieldNote,\n  createCorrectionLearner,\n}","total_count":1,"children":[]}]},{"name":"db-adapter.test.js","total_count":6,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"DB_PATH","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"getDbOrSkip()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]}]},{"name":"heartbeat-store.test.js","total_count":8,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"extractSentinels()","total_count":1,"children":[]},{"name":"makeDualLookup()","total_count":1,"children":[]},{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{\n  SENTINEL_REGISTRY,\n  evaluateStaleness,\n  createHeartbeatStore,\n}","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"host-adapters.test.js","total_count":9,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"getHostAdaptersOrSkip()","total_count":1,"children":[]},{"name":"HOST_ADAPTERS_PATH","total_count":1,"children":[]},{"name":"http","total_count":1,"children":[]},{"name":"net","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"startTestHttpServer()","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]}]},{"name":"incident-store.test.js","total_count":6,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"runPsql()","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{\n  redactSecretsInError,\n  normalizeErrorKey,\n  computeSignature,\n  createIncidentStore,\n}","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"kg-store.test.js","total_count":13,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"callBridge()","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"kgModule","total_count":1,"children":[]},{"name":"makeSyntheticVector()","total_count":1,"children":[]},{"name":"normalizeIdResult()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"syntheticEmbeddingForText()","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"TOKEN","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"lifecycle.test.js","total_count":10,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"CONFIG_PATH","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"getConfigOrSkip()","total_count":1,"children":[]},{"name":"os","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"SERVER_PATH","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"vm","total_count":1,"children":[]},{"name":"{ execFileSync }","total_count":1,"children":[]}]},{"name":"loop-keys.fixture.test.js","total_count":7,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"FIXTURE_PATH","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"loadSnapshot()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{ generateDeterministicLoopId }","total_count":1,"children":[]}]},{"name":"loop-keys.test.js","total_count":5,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{\n  normalizeLoopTitle,\n  extractLoopEntityKey,\n  buildCanonicalLoopKey,\n  generateDeterministicLoopId,\n  effectiveDue,\n  classifyLoopsByDue,\n}","total_count":1,"children":[]}]},{"name":"loop-store.integration.test.js","total_count":7,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"queryPostgresJson()","total_count":1,"children":[]},{"name":"queryPostgresWithStdin()","total_count":1,"children":[]},{"name":"store","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{ createLoopStore }","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"memory-hygiene.test.js","total_count":3,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{\n  computeRecencyBoost,\n  rankMemoriesWithDecay,\n  hasFactMutationTokens,\n  mergeContextNotes,\n  createMemoryHygieneStore,\n}","total_count":1,"children":[]}]},{"name":"nudge-telemetry.test.js","total_count":3,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{\n  classifyDecisionChoice,\n  inferDecisionSource,\n  extractSenderKey,\n  computeSenderAdjustment,\n  formatTriageFeedbackXml,\n  createNudgeTelemetryStore,\n}","total_count":1,"children":[]}]},{"name":"phase2c-ops.test.js","total_count":7,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"PATHS","total_count":1,"children":[]},{"name":"readOrSkip()","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{ execFileSync }","total_count":1,"children":[]}]},{"name":"quiet-hours.test.js","total_count":3,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{\n  QUIET_START_HOUR,\n  QUIET_END_HOUR,\n  TZ,\n  BYPASS_SOURCES,\n  getLocalHour,\n  isQuietWindow,\n  computeQuietHoursVerdict,\n}","total_count":1,"children":[]}]},{"name":"server-endpoints.test.js","total_count":7,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"callBridge()","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"runPsql()","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"TOKEN","total_count":1,"children":[]},{"name":"{ execFile }","total_count":1,"children":[]}]},{"name":"triage-helpers.test.js","total_count":3,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]},{"name":"{\n  sanitizeBodyText,\n  escXml,\n  tokenizeForMatch,\n  pickTokenMatch,\n}","total_count":1,"children":[]}]},{"name":"whatsapp-egress.test.js","total_count":6,"children":[{"name":"assert","total_count":1,"children":[]},{"name":"EGRESS_PATH","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"getEgressOrSkip()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"test","total_count":1,"children":[]}]}]},{"name":"triage-helpers.js","total_count":6,"children":[{"name":"escXml()","total_count":1,"children":[]},{"name":"pickTokenMatch()","total_count":1,"children":[]},{"name":"sanitizeBodyText()","total_count":1,"children":[]},{"name":"STOPWORDS","total_count":1,"children":[]},{"name":"tokenizeForMatch()","total_count":1,"children":[]},{"name":"{ normalizeLoopTitle }","total_count":1,"children":[]}]},{"name":"whatsapp-egress.js","total_count":5,"children":[{"name":"createWhatsAppEgress()","total_count":1,"children":[]},{"name":"isTestPayload()","total_count":1,"children":[]},{"name":"normalizeDirectArgs()","total_count":1,"children":[]},{"name":"quietHours","total_count":1,"children":[]},{"name":"sendWhatsAppDirect()","total_count":1,"children":[]}]}]}]},{"name":"tests","total_count":77,"children":[{"name":"test_agent_evaluation.py","total_count":30,"children":[{"name":"._get_agent_node()","total_count":1,"children":[]},{"name":"._get_nodes_dict()","total_count":1,"children":[]},{"name":"._get_system_message()","total_count":1,"children":[]},{"name":".setUp()","total_count":1,"children":[]},{"name":".setUp()","total_count":1,"children":[]},{"name":".setUp()","total_count":1,"children":[]},{"name":".test_agent_model_gemini_4_argon()","total_count":1,"children":[]},{"name":".test_agent_node_return_intermediate_steps_enabled()","total_count":1,"children":[]},{"name":".test_agent_node_streaming_disabled()","total_count":1,"children":[]},{"name":".test_conversational_handshake_decoupled_exception_present()","total_count":1,"children":[]},{"name":".test_dual_prompt_dispatch_guardrail_present()","total_count":1,"children":[]},{"name":".test_evaluation_trigger_data_table_binding()","total_count":1,"children":[]},{"name":".test_golden_dataset_fixture_exists()","total_count":1,"children":[]},{"name":".test_golden_dataset_fixture_schema_and_tool_names()","total_count":1,"children":[]},{"name":".test_harness_required_nodes_present()","total_count":1,"children":[]},{"name":".test_input_envelope_expressions()","total_count":1,"children":[]},{"name":".test_llm_judge_parameter_locking()","total_count":1,"children":[]},{"name":".test_metrics_expression_anchoring()","total_count":1,"children":[]},{"name":".test_no_eval_leakage_in_user_session()","total_count":1,"children":[]},{"name":".test_turn1_recall_context_exemption_present()","total_count":1,"children":[]},{"name":"T-1: Intermediate steps emission on mIfufKqHSDvQ3D8f","total_count":1,"children":[]},{"name":"T-2: Evaluation safety guard (zero outbound WhatsApp calls during benchmark\u2026","total_count":1,"children":[]},{"name":"T-3: Data table dataset presence & integrity","total_count":1,"children":[]},{"name":"T-4: Evaluation Harness workflow architecture, bindings, and expressions","total_count":1,"children":[]},{"name":"T-4: Session isolation (zero evaluation leakage into live user session)","total_count":1,"children":[]},{"name":"TestEvaluationHarnessWorkflow","total_count":1,"children":[]},{"name":"TestEvaluationSafetyGuard","total_count":1,"children":[]},{"name":"TestGoldenDatasetPresence","total_count":1,"children":[]},{"name":"TestSessionIsolation","total_count":1,"children":[]},{"name":"TestWorkflowTelemetry","total_count":1,"children":[]}]},{"name":"test_agent_telemetry.sh","total_count":1,"children":[{"name":"test_agent_telemetry.sh script","total_count":1,"children":[]}]},{"name":"test_graphify_integration.py","total_count":28,"children":[{"name":".test_backup_sh_syntax_and_fail_open_graphify_update()","total_count":1,"children":[]},{"name":".test_codebase_graph_includes_kg_store_and_excludes_personal_memory_vault()","total_count":1,"children":[]},{"name":".test_eop_skill_parity_and_graphify_contract()","total_count":1,"children":[]},{"name":".test_graph_json_valid_and_contains_expected_codebase_nodes()","total_count":1,"children":[]},{"name":".test_graphify_binary_version()","total_count":1,"children":[]},{"name":".test_graphify_update_backend_none_without_api_keys()","total_count":1,"children":[]},{"name":".test_graphifyignore_exists_and_fences_excluded_paths()","total_count":1,"children":[]},{"name":".test_query_and_explain_loop_store_from_sparky_backup_and_root()","total_count":1,"children":[]},{"name":".test_root_graphify_out_symlink_and_agents_sync()","total_count":1,"children":[]},{"name":".test_skill_and_rule_files_exist_and_valid()","total_count":1,"children":[]},{"name":"_extract_source_files()","total_count":1,"children":[]},{"name":"Extract all source_file strings from graph.json nodes.","total_count":1,"children":[]},{"name":"T-1: graphify CLI binary installation & PATH availability","total_count":1,"children":[]},{"name":"T-2: Antigravity skill, rule & symlink registration","total_count":1,"children":[]},{"name":"T-3: Codebase inclusion in graph.json","total_count":1,"children":[]},{"name":"T-4: Strict exclusion of Sparky memory/context, workflows, and secrets","total_count":1,"children":[]},{"name":"T-5: Deterministic CLI graph query (explain & query)","total_count":1,"children":[]},{"name":"T-6: Incremental graphify update idempotency (zero LLM calls)","total_count":1,"children":[]},{"name":"T-7: /eop skill & backup.sh contract synchronization","total_count":1,"children":[]},{"name":"T-8: Codebase AST Graph vs Personal Memory Graph strict isolation","total_count":1,"children":[]},{"name":"TestAntigravitySkillAndRulesRegistration","total_count":1,"children":[]},{"name":"TestCodebaseInclusionInGraph","total_count":1,"children":[]},{"name":"TestDeterministicCLIGraphQuery","total_count":1,"children":[]},{"name":"TestEopSkillAndBackupScriptContract","total_count":1,"children":[]},{"name":"TestGraphifyCLIBinary","total_count":1,"children":[]},{"name":"TestIncrementalUpdateIdempotency","total_count":1,"children":[]},{"name":"TestPersonalMemoryGraphIsolation","total_count":1,"children":[]},{"name":"TestStrictExclusionBoundary","total_count":1,"children":[]}]},{"name":"test_workspace_mutations.js","total_count":18,"children":[{"name":"APPEND_WF_PATH","total_count":1,"children":[]},{"name":"cleanupRegistry","total_count":1,"children":[]},{"name":"CREATE_DOC_WF_PATH","total_count":1,"children":[]},{"name":"CREATE_SHEET_WF_PATH","total_count":1,"children":[]},{"name":"CREATE_SLIDES_WF_PATH","total_count":1,"children":[]},{"name":"EXPECTED_HEADERS","total_count":1,"children":[]},{"name":"formatOutput()","total_count":1,"children":[]},{"name":"fs","total_count":1,"children":[]},{"name":"https","total_count":1,"children":[]},{"name":"loadWorkflowById()","total_count":1,"children":[]},{"name":"MAIN_AGENT_WF_PATH","total_count":1,"children":[]},{"name":"normalizeRowPayload()","total_count":1,"children":[]},{"name":"path","total_count":1,"children":[]},{"name":"recordResult()","total_count":1,"children":[]},{"name":"results","total_count":1,"children":[]},{"name":"runTestSuite()","total_count":1,"children":[]},{"name":"vm","total_count":1,"children":[]},{"name":"{ execSync, execFileSync }","total_count":1,"children":[]}]}]}]};
+
+    function transformData(jsonData) {
+        // Helper function to recursively build the children structure
+        function processNode(node, parentL1StageName) {
+            let displayName = node.name;
+            // Append total_count if it exists and is not already in the name
+            if (node.total_count !== undefined) {
+                if (!/\(Total Count: \d+\)$/.test(displayName)) {
+                    displayName += ` (Total Count: ${node.total_count})`;
+                }
+            }
+
+            const newNode = { name: displayName };
+
+            if (parentL1StageName === "Root") {
+                 newNode.originalStageName = node.name;
+            } else {
+                newNode.originalStageName = parentL1StageName;
+            }
+
+            if (node.children && node.children.length > 0) {
+                const stageNameToPass = (parentL1StageName === "Root") ? node.name : parentL1StageName;
+                newNode.children = node.children.map(child => processNode(child, stageNameToPass));
+            }
+
+            return newNode;
+        }
+
+        let rootDisplayName = jsonData.name;
+        if (jsonData.total_count !== undefined && !/\(Total Count: \d+\)$/.test(rootDisplayName)) {
+            rootDisplayName += ` (Total Count: ${jsonData.total_count})`;
+        }
+
+        return {
+            name: rootDisplayName,
+            originalStageName: "Root",
+            children: (jsonData.children || []).map(child => processNode(child, "Root"))
+        };
+    }
+
+    const treeData = transformData(initialJsonData);
+
+    // Auto-populated phaseColors: every depth-1 child of the root gets
+    // a stable colour from a bigger palette so all top-level dirs are
+    // distinguishable.
+    const PALETTE = [
+      ["#3498DB","#2980B9","#AED6F1"], ["#2ECC71","#27AE60","#A9DFBF"],
+      ["#E74C3C","#C0392B","#F5B7B1"], ["#9B59B6","#8E44AD","#D7BDE2"],
+      ["#F39C12","#D68910","#FAD7A0"], ["#1ABC9C","#117864","#A2D9CE"],
+      ["#34495E","#1B2631","#ABB2B9"], ["#E67E22","#BA4A00","#F5CBA7"],
+      ["#16A085","#0E6655","#A2D9CE"], ["#D35400","#A04000","#EDBB99"],
+      ["#7F8C8D","#566573","#D5DBDB"], ["#C0392B","#7B241C","#F5B7B1"],
+      ["#2E86C1","#1B4F72","#A9CCE3"], ["#28B463","#196F3D","#A9DFBF"],
+      ["#AF7AC5","#6C3483","#D2B4DE"],
+    ];
+    const phaseColors = { "Root": { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+                          "Default": { fill: "#BDC3C7", stroke: "#95A5A6", collapsedFill: "#ECF0F1" } };
+    (initialJsonData.children || []).forEach((c, i) => {
+      const pal = PALETTE[i % PALETTE.length];
+      phaseColors[c.name] = { fill: pal[0], stroke: pal[1], collapsedFill: pal[2] };
+    });
+
+    const levelSpecificPalettes = {
+      0: { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+      2: { fill: "#6ab04c", stroke: "#508a38", collapsedFill: "#a3d391" },
+      3: { fill: "#f0932b", stroke: "#d0730f", collapsedFill: "#f6c07e" },
+      4: { fill: "#be2edd", stroke: "#a01cb3", collapsedFill: "#e08bf2" },
+      5: { fill: "#00a8ff", stroke: "#007ac1", collapsedFill: "#74d2ff" },
+      6: { fill: "#e55039", stroke: "#c23620", collapsedFill: "#f09a8d" },
+      default: { fill: "#747d8c", stroke: "#57606f", collapsedFill: "#a4b0be" }
+    };
+
+    const svgElement = d3.select("#tree-svg");
+    const initialSvgWidth = +svgElement.attr("width");
+    const initialSvgHeight = +svgElement.attr("height");
+    const margin = { top: 40, right: 120, bottom: 80, left: 450 };
+    let width = initialSvgWidth - margin.left - margin.right;
+    let height = initialSvgHeight - margin.top - margin.bottom;
+    const duration = 500;
+    let nodeCounter = 0;
+    const g = svgElement.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const treemap = d3.tree().nodeSize([40, 0]);
+    let rootNode = d3.hierarchy(treeData, d => d.children);
+    rootNode.x0 = 0;
+    rootNode.y0 = 0;
+
+    if (rootNode.children) {
+      rootNode.children.forEach(d_child => {
+        if (d_child.children) { collapseBranch(d_child); }
+      });
+    }
+    updateTree(rootNode);
+
+    function collapseBranch(d) { if (d.children) { d._children = d.children; d._children.forEach(collapseBranch); d.children = null; } }
+    function expandBranch(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) { d.children.forEach(expandBranch); } }
+    window.expandAll = () => { expandBranch(rootNode); updateTree(rootNode); };
+    window.collapseAll = () => { if (rootNode.children) { rootNode.children.forEach(collapseBranch); } updateTree(rootNode); };
+    window.resetView = () => { if (rootNode.children) { rootNode.children.forEach(d_child => { if (d_child.children || d_child._children) { collapseBranch(d_child); } }); } if (rootNode._children && !rootNode.children) { rootNode.children = rootNode._children; rootNode._children = null; } updateTree(rootNode); };
+
+    function updateTree(source) {
+      const treeLayoutData = treemap(rootNode);
+      let nodes = treeLayoutData.descendants();
+      let links = treeLayoutData.descendants().slice(1);
+
+      let minX = 0;
+      let maxX = 0;
+      if (nodes.length > 0) {
+        minX = d3.min(nodes, d => d.x);
+        maxX = d3.max(nodes, d => d.x);
+      }
+
+      let neededHeight = Math.max(initialSvgHeight, maxX - minX + margin.top + margin.bottom + 100);
+      svgElement.transition().duration(duration / 2).attr("height", neededHeight);
+      g.transition().duration(duration / 2).attr("transform", `translate(${margin.left},${margin.top - minX + 40})`);
+
+      nodes.forEach(d => { d.y = d.depth * 400; }); // Adjust horizontal separation if needed
+
+      const node = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++nodeCounter));
+      const nodeEnter = node.enter().append('g')
+        .attr('class', d => "node" + (d.children || d._children ? " node--internal" : " node--leaf") + (d._children ? " _children" : ""))
+        .attr('transform', d => `translate(${source.y0},${source.x0})`)
+        .on('click', (event, d) => { if (d.children) { d._children = d.children; d.children = null; } else if (d._children) { d.children = d._children; d._children = null; } updateTree(d); })
+        .style('cursor', d => (d.children || d._children) ? 'pointer' : 'default');
+
+      nodeEnter.append('circle').attr('r', 1e-6);
+
+      nodeEnter.append('text')
+        .attr('dy', '.35em')
+        .attr('x', d => d.children || d._children ? -14 : 14)
+        .attr('text-anchor', d => d.children || d._children ? 'end' : 'start')
+        .style("fill-opacity", 1e-6)
+        .call(wrapText, 380);
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition().duration(duration)
+        .attr('transform', d => `translate(${d.y},${d.x})`)
+        .attr('class', d => "node" + (d.children ? " node--internal" : " node--leaf") + (d._children ? " node--internal _children" : ""));
+
+      nodeUpdate.select('circle').attr('r', 8.5)
+        .style('fill', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            if (d._children) return palette.collapsedFill;
+            if (d.children) return palette.fill;
+            return "#fff";
+        })
+        .style('stroke', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            return palette.stroke;
+        });
+      nodeUpdate.select('text').style("fill-opacity", 1).call(wrapText, 380);
+
+      const nodeExit = node.exit().transition().duration(duration).attr('transform', d => `translate(${source.y},${source.x})`).remove();
+      nodeExit.select('circle').attr('r', 1e-6);
+      nodeExit.select('text').style('fill-opacity', 1e-6);
+
+      const link = g.selectAll('path.link').data(links, d => d.id);
+      const linkEnter = link.enter().insert('path', "g").attr('class', 'link').attr('d', d => { const o = { x: source.x0, y: source.y0 }; return diagonal(o, o); });
+
+      linkEnter.merge(link).transition().duration(duration).attr('d', d => diagonal(d, d.parent))
+        .style('stroke', d => {
+            const sourceNode = d.parent;
+            if (!sourceNode) return phaseColors.Default.stroke;
+            const l1AncestorName = sourceNode.data.originalStageName;
+            const colorPalette = phaseColors[l1AncestorName] || phaseColors.Default;
+            return colorPalette.stroke;
+        });
+      link.exit().transition().duration(duration).attr('d', d => { const o = { x: source.x, y: source.y }; return diagonal(o, o); }).remove();
+      nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+    }
+
+    function diagonal(s, d) { return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`; }
+
+    function wrapText(textElements, maxWidth) {
+        const textPartColors = {
+            name: '#343a40',
+            count: '#0056b3'
+        };
+        const countRegex = /(\s\(Total Count: \d+\))$/;
+
+        textElements.each(function () {
+            const textD3 = d3.select(this);
+            const originalNodeText = textD3.datum().data.name;
+            const x = parseFloat(textD3.attr("x") || 0);
+            const initialDy = textD3.attr("dy");
+            const textAnchor = textD3.attr("text-anchor");
+            const lineHeight = 1.1;
+
+            textD3.text(null);
+
+            let namePart = originalNodeText;
+            let countPartText = "";
+
+            const countMatch = originalNodeText.match(countRegex);
+            if (countMatch && originalNodeText.endsWith(countMatch[0])) {
+                namePart = originalNodeText.substring(0, originalNodeText.length - countMatch[0].length).trim();
+                countPartText = countMatch[0].trim();
+            }
+
+            const tokens = [];
+            namePart.split(/\s+/).filter(Boolean).forEach(word => {
+                tokens.push({ text: word, type: 'name' });
+            });
+            if (countPartText) {
+                tokens.push({ text: countPartText, type: 'count' });
+            }
+
+            if (tokens.length === 0 && originalNodeText) {
+                tokens.push({ text: originalNodeText, type: 'name' });
+            }
+
+            let currentTspan = textD3.append("tspan").attr("x", x).attr("dy", initialDy);
+            if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+
+            let lineTokens = [];
+
+            for (let i = 0; i < tokens.length; i++) {
+                const tokenObj = tokens[i];
+
+                lineTokens.push(tokenObj);
+                currentTspan.text(lineTokens.map(t => t.text).join(" "));
+
+                if (currentTspan.node().getComputedTextLength() > maxWidth && lineTokens.length > 1) {
+                    lineTokens.pop();
+
+                    currentTspan.text(null);
+                    lineTokens.forEach((prevToken, idx) => {
+                        currentTspan.append("tspan")
+                            .text((idx > 0 ? " " : "") + prevToken.text)
+                            .style("fill", textPartColors[prevToken.type] || textPartColors.name)
+                            .style("font-weight", prevToken.type === 'count' ? "bold" : "normal");
+                    });
+
+                    lineTokens = [tokenObj];
+                    currentTspan = textD3.append("tspan").attr("x", x).attr("dy", lineHeight + "em");
+                    if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+                }
+            }
+
+            currentTspan.text(null);
+            lineTokens.forEach((token, idx) => {
+                currentTspan.append("tspan")
+                    .text((idx > 0 ? " " : "") + token.text)
+                    .style("fill", textPartColors[token.type] || textPartColors.name)
+                    .style("font-weight", token.type === 'count' ? "bold" : "normal");
+            });
+
+            if (textD3.selectAll("tspan > tspan").empty() && textD3.select("tspan").text().length === 0 && originalNodeText) {
+                let t = textD3.select("tspan");
+                let displayText = originalNodeText;
+                t.text(displayText).style("fill", textPartColors.name);
+                if (t.node() && t.node().getComputedTextLength() > maxWidth && displayText.length > 20) {
+                    let estimatedChars = Math.floor(maxWidth / (t.node().getComputedTextLength()/displayText.length) );
+                    displayText = displayText.substring(0, Math.max(0, estimatedChars - 3)) + "...";
+                    t.text(displayText);
+                }
+            }
+        });
+    }
+  </script>
+</body>
+</html>

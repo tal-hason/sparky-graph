@@ -44,12 +44,13 @@
     border-color: var(--accent);
   }
   .actions { display: flex; align-items: center; gap: 8px; }
-  .action-link {
+  .action-link, .action-btn {
     color: var(--muted); text-decoration: none; font-size: 12px;
     padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border);
-    background: var(--badge-bg); transition: all 0.15s ease;
+    background: var(--badge-bg); transition: all 0.15s ease; cursor: pointer;
+    font-family: inherit;
   }
-  .action-link:hover { color: #fff; border-color: var(--accent); }
+  .action-link:hover, .action-btn:hover { color: #fff; border-color: var(--accent); }
   main { flex: 1; position: relative; overflow: hidden; }
   iframe {
     width: 100%; height: 100%; border: none; display: none; background: #0f0f1a;
@@ -70,7 +71,7 @@
         <span class="pill"><b>866</b> nodes</span>
         <span class="pill"><b>1486</b> edges</span>
         <span class="pill"><b>65</b> communities</span>
-        <span class="pill" title="Source commit & build timestamp"><code>3acf4a49702410d7ab35fe957c07658f4c43bbfc</code> · 2026-10-27 14:15 UTC</span>
+        <span class="pill" title="Source commit & build timestamp"><code>3acf4a49702410d7ab35fe957c07658f4c43bbfc</code> · 2026-10-27 14:24 UTC</span>
       </div>
     </div>
     <nav role="tablist" aria-label="Graph Visualization Modes">
@@ -88,6 +89,7 @@
       </button>
     </nav>
     <div class="actions">
+      <button class="action-btn" id="toggle-sidebar-header-btn" onclick="toggleGraphSidebarFromHeader()" title="Collapse or expand Force Graph sidebar">Toggle Sidebar</button>
       <a class="action-link" id="open-direct" href="graph.html" target="_blank" rel="noopener">Open Fullscreen ↗</a>
       <a class="action-link" href="graph.json" target="_blank" rel="noopener">graph.json</a>
     </div>
@@ -99,6 +101,12 @@
     <iframe id="frame-report" title="Graph Report Summary"></iframe>
   </main>
   <script>
+    function toggleGraphSidebarFromHeader() {
+      const frame = document.getElementById('frame-graph');
+      if (frame && frame.contentWindow) {
+        frame.contentWindow.postMessage({ type: 'toggle-sidebar' }, '*');
+      }
+    }
     function switchTab(btn) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('iframe').forEach(f => f.classList.remove('active'));
@@ -111,6 +119,10 @@
       }
       frame.classList.add('active');
       document.getElementById('open-direct').setAttribute('href', src);
+      const sbBtn = document.getElementById('toggle-sidebar-header-btn');
+      if (sbBtn) {
+        sbBtn.style.display = targetId === 'frame-graph' ? 'inline-block' : 'none';
+      }
       history.replaceState(null, '', '#' + targetId.replace('frame-', ''));
     }
     window.addEventListener('DOMContentLoaded', () => {

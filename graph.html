@@ -470,5 +470,150 @@ network.on('afterDrawing', function(ctx) {
     });
 });
 </script>
+<!-- sparky-collapsible-sidebar -->
+<style>
+  body { position: relative; }
+  #sidebar {
+    transition: width 0.24s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.24s cubic-bezier(0.4, 0, 0.2, 1), border-left-width 0.24s ease;
+    width: 280px;
+    min-width: 280px;
+    flex-shrink: 0;
+  }
+  body.sidebar-collapsed #sidebar {
+    width: 0 !important;
+    min-width: 0 !important;
+    border-left-width: 0 !important;
+    overflow: hidden !important;
+  }
+  #sidebar-toggle-btn {
+    position: fixed;
+    top: 10px;
+    right: 290px;
+    z-index: 1000;
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: right 0.24s cubic-bezier(0.4, 0, 0.2, 1), background 0.15s ease, border-color 0.15s ease;
+    user-select: none;
+  }
+  #sidebar-toggle-btn:hover {
+    border-color: #6366f1;
+  }
+  body.sidebar-collapsed #sidebar-toggle-btn {
+    right: 12px;
+  }
+  .collapsible-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+  }
+  .collapsible-header::after {
+    content: '▾';
+    font-size: 12px;
+    color: var(--text-2);
+    transition: transform 0.2s ease;
+  }
+  .section-collapsed .collapsible-header::after {
+    transform: rotate(-90deg);
+  }
+  #info-panel.section-collapsed {
+    min-height: 0 !important;
+    padding-bottom: 10px;
+  }
+  #info-panel.section-collapsed #info-content {
+    display: none !important;
+  }
+  #legend-wrap.section-collapsed {
+    flex: 0 0 auto !important;
+    padding-bottom: 10px;
+  }
+  #legend-wrap.section-collapsed #legend-controls,
+  #legend-wrap.section-collapsed #legend {
+    display: none !important;
+  }
+</style>
+<script>
+(function() {
+  const STORAGE_KEY = 'graphify-sidebar-collapsed';
+  const btn = document.createElement('button');
+  btn.id = 'sidebar-toggle-btn';
+  btn.type = 'button';
+  btn.title = 'Toggle Sidebar ([ or b)';
+
+  function updateBtn(collapsed) {
+    btn.setAttribute('aria-expanded', String(!collapsed));
+    btn.innerHTML = collapsed
+      ? '<span>&#9664;</span><span>Sidebar</span>'
+      : '<span>&#9654;</span><span>Hide</span>';
+  }
+
+  function setCollapsed(collapsed, persist) {
+    document.body.classList.toggle('sidebar-collapsed', collapsed);
+    updateBtn(collapsed);
+    if (persist) {
+      try { localStorage.setItem(STORAGE_KEY, collapsed ? '1' : '0'); } catch (e) {}
+    }
+    setTimeout(() => {
+      if (typeof network !== 'undefined' && network && typeof network.redraw === 'function') {
+        network.redraw();
+      }
+      window.dispatchEvent(new Event('resize'));
+    }, 250);
+  }
+
+  document.body.appendChild(btn);
+  let saved = false;
+  try { saved = localStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+  setCollapsed(saved, false);
+
+  btn.addEventListener('click', () => {
+    setCollapsed(!document.body.classList.contains('sidebar-collapsed'), true);
+  });
+
+  window.toggleGraphSidebar = () => {
+    const next = !document.body.classList.contains('sidebar-collapsed');
+    setCollapsed(next, true);
+    return next;
+  };
+
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'toggle-sidebar') {
+      window.toggleGraphSidebar();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
+    if (e.key === '[' || e.key === ']' || e.key === 'b' || e.key === 'B') {
+      setCollapsed(!document.body.classList.contains('sidebar-collapsed'), true);
+    }
+  });
+
+  // Make Node Info and Communities sections collapsible inside the sidebar
+  ['info-panel', 'legend-wrap'].forEach((panelId) => {
+    const panel = document.getElementById(panelId);
+    const h3 = panel ? panel.querySelector('h3') : null;
+    if (panel && h3) {
+      h3.classList.add('collapsible-header');
+      h3.title = 'Click to collapse/expand section';
+      h3.addEventListener('click', () => {
+        panel.classList.toggle('section-collapsed');
+      });
+    }
+  });
+})();
+</script>
+
 </body>
 </html>

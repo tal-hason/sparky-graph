@@ -9,7 +9,7 @@ Live interactive [Graphify](https://github.com/safishamsi/graphify) knowledge gr
 | View | Direct Link | Description |
 | :--- | :--- | :--- |
 | **App Shell (All-in-One)** | [`index.html`](https://tal-hason.github.io/sparky-graph/) | Unified navigation bar across all 4 Graphify views |
-| **Interactive Force Graph** | [`graph.html`](https://tal-hason.github.io/sparky-graph/graph.html) | `vis-network` force-directed graph with community filtering, node search, and neighbor inspector |
+| **Interactive Force Graph** | [`graph.html`](https://tal-hason.github.io/sparky-graph/graph.html) | `vis-network` force-directed graph with collapsible sidebar, community filtering, node search, and neighbor inspector |
 | **Architecture & Call-Flow** | [`callflow.html`](https://tal-hason.github.io/sparky-graph/callflow.html) | Interactive Mermaid call-flow diagrams and community call tables |
 | **Hierarchy Tree** | [`tree.html`](https://tal-hason.github.io/sparky-graph/tree.html) | D3 v7 collapsible file/symbol tree with outbound edge inspector |
 | **Graph Report** | [`report.html`](https://tal-hason.github.io/sparky-graph/report.html) | Rendered `GRAPH_REPORT.md` with God Nodes, Surprising Connections, and Community Cohesion scores |

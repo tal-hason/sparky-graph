@@ -470,43 +470,42 @@ network.on('afterDrawing', function(ctx) {
     });
 });
 </script>
-<!-- sparky-collapsible-sidebar -->
+<!-- sparky-collapsible-sidebar-start -->
 <style>
   body { position: relative; }
   #sidebar {
-    transition: width 0.24s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.24s cubic-bezier(0.4, 0, 0.2, 1), border-left-width 0.24s ease;
     width: 280px;
     min-width: 280px;
     flex-shrink: 0;
   }
   body.sidebar-collapsed #sidebar {
+    display: none !important;
     width: 0 !important;
     min-width: 0 !important;
-    border-left-width: 0 !important;
-    overflow: hidden !important;
+    border-left: none !important;
   }
   #sidebar-toggle-btn {
     position: fixed;
     top: 10px;
     right: 290px;
-    z-index: 1000;
+    z-index: 9999;
     background: var(--panel);
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 6px 10px;
+    padding: 6px 12px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-    display: flex;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: right 0.24s cubic-bezier(0.4, 0, 0.2, 1), background 0.15s ease, border-color 0.15s ease;
     user-select: none;
   }
   #sidebar-toggle-btn:hover {
     border-color: #6366f1;
+    background: #252545;
   }
   body.sidebar-collapsed #sidebar-toggle-btn {
     right: 12px;
@@ -546,6 +545,7 @@ network.on('afterDrawing', function(ctx) {
 <script>
 (function() {
   const STORAGE_KEY = 'graphify-sidebar-collapsed';
+  const sidebarEl = document.getElementById('sidebar');
   const btn = document.createElement('button');
   btn.id = 'sidebar-toggle-btn';
   btn.type = 'button';
@@ -554,22 +554,31 @@ network.on('afterDrawing', function(ctx) {
   function updateBtn(collapsed) {
     btn.setAttribute('aria-expanded', String(!collapsed));
     btn.innerHTML = collapsed
-      ? '<span>&#9664;</span><span>Sidebar</span>'
-      : '<span>&#9654;</span><span>Hide</span>';
+      ? '<span>&#9664;</span><span>Show Sidebar</span>'
+      : '<span>&#9654;</span><span>Hide Sidebar</span>';
   }
 
   function setCollapsed(collapsed, persist) {
-    document.body.classList.toggle('sidebar-collapsed', collapsed);
-    updateBtn(collapsed);
+    document.body.classList.toggle('sidebar-collapsed', Boolean(collapsed));
+    if (sidebarEl) {
+      sidebarEl.style.display = collapsed ? 'none' : 'flex';
+    }
+    updateBtn(Boolean(collapsed));
     if (persist) {
       try { localStorage.setItem(STORAGE_KEY, collapsed ? '1' : '0'); } catch (e) {}
     }
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'sidebar-state', collapsed: Boolean(collapsed) }, '*');
+      }
+    } catch (e) {}
     setTimeout(() => {
-      if (typeof network !== 'undefined' && network && typeof network.redraw === 'function') {
-        network.redraw();
+      if (typeof network !== 'undefined' && network) {
+        if (typeof network.setSize === 'function') network.setSize('100%', '100%');
+        if (typeof network.redraw === 'function') network.redraw();
       }
       window.dispatchEvent(new Event('resize'));
-    }, 250);
+    }, 50);
   }
 
   document.body.appendChild(btn);
@@ -577,12 +586,16 @@ network.on('afterDrawing', function(ctx) {
   try { saved = localStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
   setCollapsed(saved, false);
 
-  btn.addEventListener('click', () => {
-    setCollapsed(!document.body.classList.contains('sidebar-collapsed'), true);
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+    setCollapsed(!isCollapsed, true);
   });
 
-  window.toggleGraphSidebar = () => {
-    const next = !document.body.classList.contains('sidebar-collapsed');
+  window.toggleGraphSidebar = function(forceState) {
+    const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+    const next = typeof forceState === 'boolean' ? forceState : !isCollapsed;
     setCollapsed(next, true);
     return next;
   };
@@ -596,11 +609,10 @@ network.on('afterDrawing', function(ctx) {
   document.addEventListener('keydown', (e) => {
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
     if (e.key === '[' || e.key === ']' || e.key === 'b' || e.key === 'B') {
-      setCollapsed(!document.body.classList.contains('sidebar-collapsed'), true);
+      window.toggleGraphSidebar();
     }
   });
 
-  // Make Node Info and Communities sections collapsible inside the sidebar
   ['info-panel', 'legend-wrap'].forEach((panelId) => {
     const panel = document.getElementById(panelId);
     const h3 = panel ? panel.querySelector('h3') : null;
@@ -614,6 +626,6 @@ network.on('afterDrawing', function(ctx) {
   });
 })();
 </script>
-
+<!-- sparky-collapsible-sidebar-end -->
 </body>
 </html>

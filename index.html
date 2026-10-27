@@ -71,40 +71,76 @@
         <span class="pill"><b>866</b> nodes</span>
         <span class="pill"><b>1486</b> edges</span>
         <span class="pill"><b>65</b> communities</span>
-        <span class="pill" title="Source commit & build timestamp"><code>3acf4a49702410d7ab35fe957c07658f4c43bbfc</code> · 2026-10-27 14:24 UTC</span>
+        <span class="pill" title="Source commit & build timestamp"><code>3acf4a49702410d7ab35fe957c07658f4c43bbfc</code> · 2026-10-27 14:31 UTC</span>
       </div>
     </div>
     <nav role="tablist" aria-label="Graph Visualization Modes">
-      <button class="tab-btn active" data-target="frame-graph" data-src="graph.html" onclick="switchTab(this)">
+      <button class="tab-btn active" data-target="frame-graph" data-src="graph.html?v=a3fe2c55" onclick="switchTab(this)">
         <span>Force Graph</span>
       </button>
-      <button class="tab-btn" data-target="frame-callflow" data-src="callflow.html" onclick="switchTab(this)">
+      <button class="tab-btn" data-target="frame-callflow" data-src="callflow.html?v=a3fe2c55" onclick="switchTab(this)">
         <span>Architecture &amp; Call-Flow</span>
       </button>
-      <button class="tab-btn" data-target="frame-tree" data-src="tree.html" onclick="switchTab(this)">
+      <button class="tab-btn" data-target="frame-tree" data-src="tree.html?v=a3fe2c55" onclick="switchTab(this)">
         <span>Hierarchy Tree</span>
       </button>
-      <button class="tab-btn" data-target="frame-report" data-src="report.html" onclick="switchTab(this)">
+      <button class="tab-btn" data-target="frame-report" data-src="report.html?v=a3fe2c55" onclick="switchTab(this)">
         <span>Graph Report</span>
       </button>
     </nav>
     <div class="actions">
-      <button class="action-btn" id="toggle-sidebar-header-btn" onclick="toggleGraphSidebarFromHeader()" title="Collapse or expand Force Graph sidebar">Toggle Sidebar</button>
-      <a class="action-link" id="open-direct" href="graph.html" target="_blank" rel="noopener">Open Fullscreen ↗</a>
+      <button class="action-btn" id="toggle-sidebar-header-btn" onclick="toggleGraphSidebarFromHeader()" title="Collapse or expand Force Graph sidebar">Hide Sidebar</button>
+      <a class="action-link" id="open-direct" href="graph.html?v=a3fe2c55" target="_blank" rel="noopener">Open Fullscreen ↗</a>
       <a class="action-link" href="graph.json" target="_blank" rel="noopener">graph.json</a>
     </div>
   </header>
   <main>
-    <iframe id="frame-graph" class="active" src="graph.html" title="Interactive Force Graph"></iframe>
+    <iframe id="frame-graph" class="active" src="graph.html?v=a3fe2c55" title="Interactive Force Graph"></iframe>
     <iframe id="frame-callflow" title="Mermaid Call-Flow Diagrams"></iframe>
     <iframe id="frame-tree" title="Collapsible Hierarchy Tree"></iframe>
     <iframe id="frame-report" title="Graph Report Summary"></iframe>
   </main>
   <script>
+    function updateHeaderSidebarBtn(collapsed) {
+      const sbBtn = document.getElementById('toggle-sidebar-header-btn');
+      if (sbBtn) {
+        sbBtn.textContent = collapsed ? 'Show Sidebar' : 'Hide Sidebar';
+      }
+    }
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'sidebar-state') {
+        updateHeaderSidebarBtn(Boolean(e.data.collapsed));
+      }
+    });
     function toggleGraphSidebarFromHeader() {
       const frame = document.getElementById('frame-graph');
-      if (frame && frame.contentWindow) {
-        frame.contentWindow.postMessage({ type: 'toggle-sidebar' }, '*');
+      if (!frame) return;
+      try {
+        const win = frame.contentWindow;
+        const doc = frame.contentDocument || (win && win.document);
+        if (win && typeof win.toggleGraphSidebar === 'function') {
+          const collapsed = win.toggleGraphSidebar();
+          updateHeaderSidebarBtn(collapsed);
+          return;
+        }
+        if (doc && doc.body) {
+          const sb = doc.getElementById('sidebar');
+          const next = !doc.body.classList.contains('sidebar-collapsed') && (!sb || sb.style.display !== 'none');
+          doc.body.classList.toggle('sidebar-collapsed', next);
+          if (sb) sb.style.display = next ? 'none' : 'flex';
+          if (win && win.network && typeof win.network.redraw === 'function') {
+            win.network.redraw();
+          }
+          updateHeaderSidebarBtn(next);
+          return;
+        }
+        if (win) {
+          win.postMessage({ type: 'toggle-sidebar' }, '*');
+        }
+      } catch (err) {
+        if (frame.contentWindow) {
+          frame.contentWindow.postMessage({ type: 'toggle-sidebar' }, '*');
+        }
       }
     }
     function switchTab(btn) {

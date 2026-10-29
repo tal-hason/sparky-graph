@@ -1,12 +1,12 @@
 # Graph Report - sparky-backup  (2026-10-29)
 
 ## Corpus Check
-- 80 files · ~121,623 words
+- 80 files · ~121,643 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 11 file(s) not represented in the graph (top: (none) 5, .service 4, .example 1)
 
 ## Summary
-- 887 nodes · 1554 edges · 70 communities (50 shown, 20 thin omitted)
+- 887 nodes · 1556 edges · 69 communities (51 shown, 18 thin omitted)
 - Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 165 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
@@ -24,7 +24,7 @@
 - nudge-telemetry.js
 - Requirements Anchor: Sparky-AI Nightly Dreaming Knowledge Graph (`sparky-nightly-knowledge-graph`)
 - Semantic Vector Memory & Cortex Sleep Consolidation Architecture
-- TestGoldenDatasetPresence
+- test_agent_evaluation.py
 - test_graphify_integration.py
 - 1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)
 - ref_child_process
@@ -41,7 +41,7 @@
 - update-n8n.sh
 - backup.sh
 - render-local-kg-html.sh
-- daemon.py
+- TaskDaemon
 - test-n8n-patches.js
 - readStreamUtf8
 - update.sh
@@ -60,13 +60,13 @@
 - lifecycle.test.js
 - config.test.js
 - phase2c-ops.test.js
-- .execute_task
+- TestEvaluationSafetyGuard
 - migrate-loop-keys.js
-- TaskDaemon
+- TestDeterministicCLIGraphQuery
 - ref_path
 - server
 - patch-n8n-memory-orphans.sh
-- TestDaemon
+- TestEopSkillAndBackupScriptContract
 - checkAndDispatchWindowKeepalive
 - publish-graph.sh
 - config.js
@@ -76,8 +76,7 @@
 - ref_node_assert
 - server-endpoints.test.js
 - ref_node_test
-- sd_notify
-- TestSessionIsolation
+- TestAntigravitySkillAndRulesRegistration
 - Runbook: Containerized Vertex Search Bridge & Sub-Minute Systemd Rollback (`DEF-10`)
 - queryPostgresWithStdin
 - run-agent-eval.sh
@@ -114,7 +113,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (70 total, 20 thin omitted)
+## Communities (69 total, 18 thin omitted)
 
 ### Community 0 - "server.js"
 Cohesion: 0.05
@@ -165,8 +164,8 @@ Cohesion: 0.11
 Nodes (18): 1. Architectural Blueprint & Cognitive Model, 2. Infrastructure & Storage (`pgvector`), 3. Multilingual Embedding Pipeline, 4. Bridge Microservice Endpoints ([`server.js`](file:///root/vertex-search-bridge/server.js)), 5. Main Agent Integration (`search_memory` FunctionCall), 6. Nightly Cortex Sleep Consolidation (`POST /cortex/sleep-cycle`), 7.1 PostgreSQL Relational + Vector Graph Schema, 7.2 Nightly Single-Pass Extraction & Backfill (+10 more)
 
 ### Community 9 - "test_graphify_integration.py"
-Cohesion: 0.07
-Nodes (9): _extract_source_files(), TestAntigravitySkillAndRulesRegistration, TestCodebaseInclusionInGraph, TestDeterministicCLIGraphQuery, TestEopSkillAndBackupScriptContract, TestGraphifyCLIBinary, TestIncrementalUpdateIdempotency, TestPersonalMemoryGraphIsolation (+1 more)
+Cohesion: 0.16
+Nodes (5): _extract_source_files(), TestCodebaseInclusionInGraph, TestIncrementalUpdateIdempotency, TestPersonalMemoryGraphIsolation, TestStrictExclusionBoundary
 
 ### Community 10 - "1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)"
 Cohesion: 0.07
@@ -220,6 +219,10 @@ Nodes (5): encrypt_file(), HOME, PATH, run_encrypted_secrets_stage(), backup.sh 
 Cohesion: 0.50
 Nodes (3): HOME, PATH, render-local-kg-html.sh script
 
+### Community 25 - "TaskDaemon"
+Cohesion: 0.07
+Nodes (6): extract_stream_json_result(), read_heartbeat_meta(), resolve_timeouts(), sd_notify(), TaskDaemon, TestDaemon
+
 ### Community 26 - "test-n8n-patches.js"
 Cohesion: 0.12
 Nodes (15): assert, { cleanupOrphanedMessages }, entries, fs, geminiCjsPath, geminiMessages, geminiMessagesPath, { getGeminiAPI } (+7 more)
@@ -253,7 +256,7 @@ Cohesion: 0.17
 Nodes (15): createHeartbeatStore(), flushSentinel(), listHeartbeats(), recordHeartbeat(), evaluateStaleness(), lookupEntry(), SENTINEL_REGISTRY, sqlStr() (+7 more)
 
 ### Community 38 - "quiet-hours.test.js"
-Cohesion: 0.15
+Cohesion: 0.16
 Nodes (16): BYPASS_SOURCES, computeQuietHoursVerdict(), getLocalHour(), hourFormatter, isQuietWindow(), assert, {
   QUIET_START_HOUR,
   QUIET_END_HOUR,
@@ -353,7 +356,7 @@ Nodes (3): HOME, PATH, run-agent-eval.sh script
 ## Knowledge Gaps
 - **15 isolated node(s):** `PATH`, `PATH`, `HOME`, `REGISTRY_AUTH_FILE`, `PATH` (+10 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 427 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **20 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **18 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

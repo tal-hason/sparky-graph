@@ -1,12 +1,12 @@
 # Graph Report - sparky-backup  (2026-10-29)
 
 ## Corpus Check
-- 80 files · ~121,643 words
+- 80 files · ~122,988 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 11 file(s) not represented in the graph (top: (none) 5, .service 4, .example 1)
 
 ## Summary
-- 887 nodes · 1556 edges · 69 communities (51 shown, 18 thin omitted)
+- 887 nodes · 1558 edges · 69 communities (51 shown, 18 thin omitted)
 - Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 165 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 

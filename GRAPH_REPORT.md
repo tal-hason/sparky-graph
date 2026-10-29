@@ -1,4 +1,4 @@
-# Graph Report - sparky-backup  (2026-10-28)
+# Graph Report - sparky-backup  (2026-10-29)
 
 ## Corpus Check
 - 80 files · ~119,100 words
@@ -6,12 +6,12 @@
 - Unclassified: 11 file(s) not represented in the graph (top: (none) 5, .service 4, .example 1)
 
 ## Summary
-- 915 nodes · 1521 edges · 70 communities (50 shown, 20 thin omitted)
+- 878 nodes · 1525 edges · 70 communities (49 shown, 21 thin omitted)
 - Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 161 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `587d1fc4`
+- Built from commit: `dd1c3095`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -41,7 +41,7 @@
 - update-n8n.sh
 - backup.sh
 - render-local-kg-html.sh
-- test_graphify_integration.py
+- daemon.py
 - test-n8n-patches.js
 - readStreamUtf8
 - update.sh
@@ -66,7 +66,7 @@
 - ref_path
 - server
 - patch-n8n-memory-orphans.sh
-- TestDeterministicCLIGraphQuery
+- TestDaemon
 - TestEvaluationSafetyGuard
 - publish-graph.sh
 - config.js
@@ -88,36 +88,36 @@
 - n8n-sparky/patch-n8n-memory-orphans.sh
 
 ## God Nodes (most connected - your core abstractions)
-1. `server` - 63 edges
+1. `server` - 65 edges
 2. `TaskDaemon` - 21 edges
 3. `queryPostgresJson()` - 17 edges
-4. `buildSessionPreamble()` - 15 edges
-5. `createKgStore()` - 14 edges
+4. `buildSessionPreamble()` - 16 edges
+5. `createKgStore()` - 15 edges
 6. `upsertKgEntity()` - 13 edges
 7. `stripBidi()` - 12 edges
 8. `callVertexApiWithRetry()` - 11 edges
-9. `queryPostgresWithStdin()` - 10 edges
-10. `TestDaemon` - 10 edges
+9. `TestDaemon` - 10 edges
+10. `resolveTables()` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`)` --references--> `detectCorrectionSignal()`  [INFERRED]
+  docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/correction-learner.js
+- `DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`)` --references--> `extractAndSaveCorrection()`  [INFERRED]
+  docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/correction-learner.js
 - `DEF-10: Bridge Monolith Decomposition (`server.js`), Native PG Pool & `BRIDGE_URL` Env` --references--> `checkNfs()`  [INFERRED]
   docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/host-adapters.js
 - `DEF-10: Bridge Monolith Decomposition (`server.js`), Native PG Pool & `BRIDGE_URL` Env` --references--> `runDatabaseMaintenance()`  [INFERRED]
   docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/host-adapters.js
-- `DEF-05: Semantic Memory Contradiction Detection & Temporal Decay` --references--> `ingestMemoryWithHygiene()`  [INFERRED]
-  docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/memory-hygiene.js
-- `DEF-05: Semantic Memory Contradiction Detection & Temporal Decay` --references--> `hasFactMutationTokens()`  [INFERRED]
-  docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/memory-hygiene.js
-- `DEF-05: Semantic Memory Contradiction Detection & Temporal Decay` --references--> `mergeContextNotes()`  [INFERRED]
+- `DEF-05: Semantic Memory Contradiction Detection & Temporal Decay` --references--> `rankMemoriesWithDecay()`  [INFERRED]
   docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/memory-hygiene.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (70 total, 20 thin omitted)
+## Communities (70 total, 21 thin omitted)
 
 ### Community 0 - "server.js"
-Cohesion: 0.03
+Cohesion: 0.05
 Nodes (37): BRIDGE_API_TOKEN, BRIDGE_STARTED_AT, circuitBreakers, {
   classifyDecisionChoice,
   inferDecisionSource,
@@ -165,16 +165,16 @@ Cohesion: 0.11
 Nodes (18): 1. Architectural Blueprint & Cognitive Model, 2. Infrastructure & Storage (`pgvector`), 3. Multilingual Embedding Pipeline, 4. Bridge Microservice Endpoints ([`server.js`](file:///root/vertex-search-bridge/server.js)), 5. Main Agent Integration (`search_memory` FunctionCall), 6. Nightly Cortex Sleep Consolidation (`POST /cortex/sleep-cycle`), 7.1 PostgreSQL Relational + Vector Graph Schema, 7.2 Nightly Single-Pass Extraction & Backfill (+10 more)
 
 ### Community 9 - "test_graphify_integration.py"
-Cohesion: 0.14
-Nodes (5): _extract_source_files(), TestCodebaseInclusionInGraph, TestIncrementalUpdateIdempotency, TestPersonalMemoryGraphIsolation, TestStrictExclusionBoundary
+Cohesion: 0.13
+Nodes (6): _extract_source_files(), TestCodebaseInclusionInGraph, TestDeterministicCLIGraphQuery, TestIncrementalUpdateIdempotency, TestPersonalMemoryGraphIsolation, TestStrictExclusionBoundary
 
 ### Community 10 - "1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)"
 Cohesion: 0.07
 Nodes (33): 1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4), 2. Quality Gates, Observability & Disaster Recovery (Epic E3), 3. Platform Architecture & Refactoring (Epic E5), DEF-01: Global Attention Budget & Quiet Hours Hold Queue (`23:00–07:00`), DEF-02: Nudge-Effectiveness Telemetry & Sentinel Self-Tuning, DEF-03: Sunday Weekly Review & Overdue Loop Escalation Ladder, DEF-06: Auto-Incident Knowledge Base (`knowledge-base.json`) Draft Capture, DEF-07: Golden Evaluation Dataset Expansion (`3/45` → Core Tools) & Change Gate (+25 more)
 
 ### Community 11 - "ref_child_process"
-Cohesion: 0.08
-Nodes (26): pg, resolveConfig(), createDb(), getOrInitPgPool(), queryPostgresJson(), queryPostgresScript(), queryPostgresWithStdin(), { execFile } (+18 more)
+Cohesion: 0.09
+Nodes (24): pg, createDb(), getOrInitPgPool(), queryPostgresJson(), queryPostgresScript(), queryPostgresWithStdin(), { execFile }, formatPgCell() (+16 more)
 
 ### Community 12 - "Sentinel Actor Model & Conversational Handshake Architecture"
 Cohesion: 0.20
@@ -242,7 +242,7 @@ Nodes (5): HOME, PATH, restore.sh script, sync_published_versions_sql(), verify_
 
 ### Community 35 - "correction-learner.js"
 Cohesion: 0.12
-Nodes (27): DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`), containsSecretOrPassword(), createCorrectionLearner(), extractAndSaveCorrection(), detectCorrectionSignal(), findDuplicateFieldNote(), redactAllSecrets(), SECRET_PATTERNS (+19 more)
+Nodes (26): DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`), containsSecretOrPassword(), createCorrectionLearner(), extractAndSaveCorrection(), detectCorrectionSignal(), findDuplicateFieldNote(), redactAllSecrets(), SECRET_PATTERNS (+18 more)
 
 ### Community 36 - "probe-incident-signatures.js"
 Cohesion: 0.17
@@ -286,19 +286,15 @@ Nodes (7): assert, { execFileSync }, fs, path, PATHS, readOrSkip(), test
 
 ### Community 45 - "migrate-loop-keys.js"
 Cohesion: 0.06
-Nodes (47): buildCanonicalLoopKey(), classifyLoopsByDue(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey(), formatDueBucket(), formatIsraelDate() (+39 more)
-
-### Community 46 - "TaskDaemon"
-Cohesion: 0.07
-Nodes (6): extract_stream_json_result(), read_heartbeat_meta(), resolve_timeouts(), sd_notify(), TaskDaemon, TestDaemon
+Nodes (47): buildCanonicalLoopKey(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey(), formatDueBucket(), formatIsraelDate(), generateDeterministicLoopId() (+39 more)
 
 ### Community 47 - "ref_path"
 Cohesion: 0.25
 Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrateUrlParam(), path, runPsql() (+1 more)
 
 ### Community 48 - "server"
-Cohesion: 0.16
-Nodes (27): buildSessionPreamble(), checkAndDispatchDueReminders(), effectiveDue(), fetchBufferFromUrl(), getJerusalemOffsetString(), getSentinelEvent(), getSystemAudit(), isPrivateIp() (+19 more)
+Cohesion: 0.17
+Nodes (26): classifyLoopsByDue(), buildSessionPreamble(), checkAndDispatchDueReminders(), effectiveDue(), fetchBufferFromUrl(), getJerusalemOffsetString(), getSentinelEvent(), getSystemAudit() (+18 more)
 
 ### Community 52 - "publish-graph.sh"
 Cohesion: 0.50
@@ -313,16 +309,16 @@ Cohesion: 0.18
 Nodes (7): assert, fs, os, path, { spawn, execFileSync, execFile }, test, { TOOLS, handleToolCall, TAL_RECIPIENT }
 
 ### Community 55 - "callVertexApiWithRetry"
-Cohesion: 0.22
-Nodes (11): analyzeImageBuffer(), callGeminiJson(), callVertexApiWithRetry(), generateEmbedding(), getCircuitBreaker(), insertSemanticMemory(), kgStore, memoryHygieneStore (+3 more)
+Cohesion: 0.18
+Nodes (13): analyzeImageBuffer(), callGeminiJson(), callVertexApiWithRetry(), generateEmbedding(), getCircuitBreaker(), insertSemanticMemory(), kgStore, memoryHygieneStore (+5 more)
 
 ### Community 56 - "index.js"
 Cohesion: 0.27
 Nodes (8): { bridgeRequest }, fs, handleToolCall(), readHeartbeatMeta(), readline, sendJsonRpc(), startStdioServer(), TOOLS
 
 ### Community 57 - "ref_node_assert"
-Cohesion: 0.33
-Nodes (4): assert, config, { createDb }, QUERIES
+Cohesion: 0.25
+Nodes (6): resolveConfig(), assert, config, { createDb }, main(), QUERIES
 
 ### Community 58 - "server-endpoints.test.js"
 Cohesion: 0.22
@@ -344,31 +340,31 @@ Nodes (5): Emergency Sub-Minute Rollback to Host `systemd` (`vertex-search.servi
 
 ### Community 63 - "queryPostgresWithStdin"
 Cohesion: 0.20
-Nodes (11): atomicWriteJson(), loadBriefedMeetings(), markBriefedMeeting(), queryPostgresWithStdin(), resolveDecision(), saveContext(), saveDecisions(), saveFieldNotes() (+3 more)
+Nodes (11): atomicWriteJson(), loadBriefedMeetings(), loopStore, markBriefedMeeting(), queryPostgresWithStdin(), resolveDecision(), saveContext(), saveDecisions() (+3 more)
 
 ### Community 65 - "run-agent-eval.sh"
 Cohesion: 0.50
 Nodes (3): HOME, PATH, run-agent-eval.sh script
 
 ## Knowledge Gaps
-- **15 isolated node(s):** `PATH`, `HOME`, `PATH`, `REGISTRY_AUTH_FILE`, `HOME` (+10 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 465 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **20 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **15 isolated node(s):** `PATH`, `PATH`, `HOME`, `REGISTRY_AUTH_FILE`, `PATH` (+10 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 426 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `createDb()` connect `ref_child_process` to `ref_node_assert`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **What connects `PATH`, `HOME`, `PATH` to the rest of the system?**
+- **Why does `createDb()` connect `ref_child_process` to `server.js`, `ref_node_assert`?**
+  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+- **What connects `PATH`, `PATH`, `HOME` to the rest of the system?**
   _15 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `server.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.02564102564102564 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
+- **Why does `1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)` connect `1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)` to `correction-learner.js`, `memory-hygiene.js`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Should `test_workspace_mutations.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11428571428571428 - nodes in this community are weakly interconnected._
 - **Should `Semantic Vector Memory & Cortex Sleep Consolidation Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `test_graphify_integration.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
-- **Should `1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)` be split into smaller, more focused modules?**
-  _Cohesion score 0.06756756756756757 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1286549707602339 - nodes in this community are weakly interconnected._

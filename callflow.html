@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 878 nodes, 1525 edges, 70 communities. Commit: 7703349</p>
+<p class="subtitle">Generated from graphify knowledge graph: 887 nodes, 1554 edges, 70 communities. Commit: 2bf4f4e</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -98,13 +98,13 @@ flowchart LR
     class CLI_SKILLS_9964CBB8 module;
     INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>8 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>381 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>390 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>310 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>315 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
-    DAEMON_SERVICES_AGY_CD07B619("Daemon Services Agy<br/><small>25 nodes</small>")
+    DAEMON_SERVICES_AGY_CD07B619("Daemon Services Agy<br/><small>16 nodes</small>")
     class DAEMON_SERVICES_AGY_CD07B619 module;
     SENTINEL_ACTOR_MODELMD_9221FD2D("Sentinel Actor Modelmd<br/><small>10 nodes</small>")
     class SENTINEL_ACTOR_MODELMD_9221FD2D module;
@@ -116,20 +116,20 @@ flowchart LR
     class READMEMD_AUTOMATED_BACKUP_2CB22FAA module;
     SPARKY_WATCHDOGSH_CONTAINERS_BEFA76BE("Sparky Watchdogsh Containers<br/><small>8 nodes</small>")
     class SPARKY_WATCHDOGSH_CONTAINERS_BEFA76BE module;
-    OTHER_D0941E68("Other<br/><small>33 nodes</small>")
+    OTHER_D0941E68("Other<br/><small>37 nodes</small>")
     class OTHER_D0941E68 module;
-    SERVE_API_35EC8E86 -->|imports x31| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x28| SERVE_API_35EC8E86
+    SERVE_API_35EC8E86 -->|imports x29| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x27| SERVE_API_35EC8E86
     TESTS_FIXTURES_B84B1DCC -->|imports x7| CLI_SKILLS_9964CBB8
-    TESTS_FIXTURES_B84B1DCC -->|imports x6| DAEMON_SERVICES_AGY_CD07B619
     TESTS_FIXTURES_B84B1DCC -->|imports x6| ANALYSIS_CLUSTERING_C79796DA
+    TESTS_FIXTURES_B84B1DCC -->|calls x5| DAEMON_SERVICES_AGY_CD07B619
     SERVE_API_35EC8E86 -->|imports x4| CLI_SKILLS_9964CBB8
     SERVE_API_35EC8E86 -->|imports x4| ANALYSIS_CLUSTERING_C79796DA
-    DAEMON_SERVICES_AGY_CD07B619 -->|calls x3| TESTS_FIXTURES_B84B1DCC
+    DAEMON_SERVICES_AGY_CD07B619 -->|method x3| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|calls x3| OTHER_D0941E68
     TESTS_FIXTURES_B84B1DCC -->|imports x3| INDEXJS_SERVICES_SPARKY_CFB8426F
     INDEXJS_SERVICES_SPARKY_CFB8426F -->|imports x3| CLI_SKILLS_9964CBB8
-    CLI_SKILLS_9964CBB8 -->|imports| ANALYSIS_CLUSTERING_C79796DA
-    ANALYSIS_CLUSTERING_C79796DA -->|imports| CLI_SKILLS_9964CBB8
+    DAEMON_SERVICES_AGY_CD07B619 -->|method x2| OTHER_D0941E68
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -146,7 +146,7 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>35</td><td><code>7, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>47</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>8</td><td><code>22, 28</code></td></tr><tr><td>Serving API</td><td>381</td><td><code>16, 0, 10, 35, 11, 48, 36, 5, 29, 38, 53, 55, 27, 1, 63, 57, 62</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>310</td><td><code>45, 25, 4, 37, 9, 26, 18, 39, 41, 50, 54, 15, 42, 43, 58, 30, 40, 3, 51, 8, 44, 59, 60, 61, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>25</td><td><code>46</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Indexjs Services Sparky</td><td>10</td><td><code>56</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>33</td><td><code>23, 33, 20, 21, 31, 49, 68, 69, 73, 74</code></td></tr>
+      <tr><td>Graph Build</td><td>35</td><td><code>7, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>47</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>8</td><td><code>22, 28</code></td></tr><tr><td>Serving API</td><td>390</td><td><code>16, 0, 10, 5, 11, 36, 48, 38, 29, 35, 53, 55, 27, 1, 63, 57, 51, 62</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>315</td><td><code>45, 9, 25, 4, 37, 26, 15, 18, 39, 41, 54, 42, 43, 44, 58, 30, 40, 50, 3, 59, 8, 61, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>16</td><td><code>46</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Indexjs Services Sparky</td><td>10</td><td><code>56</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>37</td><td><code>23, 33, 20, 21, 60, 31, 49, 68, 69, 73, 74</code></td></tr>
     </table>
   </div>
   <div class="card">
@@ -158,12 +158,12 @@ flowchart LR
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>878 nodes · 1525 edges · 70 communities (49 shown, 21 thin omitted)</li>
-      <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 161 edges (avg confidence: 0.86)</li>
+      <li>887 nodes · 1554 edges · 70 communities (50 shown, 20 thin omitted)</li>
+      <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 165 edges (avg confidence: 0.86)</li>
       <li>Token cost: 0 input · 0 output</li>
-      <li>1. `server` - 65 edges</li>
+      <li>1. `server` - 70 edges</li>
       <li>2. `TaskDaemon` - 21 edges</li>
-      <li>3. `queryPostgresJson()` - 17 edges</li>
+      <li>3. `queryPostgresJson()` - 19 edges</li>
     </ul>
   </div>
 </div>
@@ -1184,12 +1184,12 @@ flowchart LR
 
 <!-- ====== 7. Serving API ====== -->
 <h2 id="serve-api">7. Serving API</h2>
-<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md. This section covers 381 nodes and 795 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md. This section covers 390 nodes and 824 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (381 nodes, 795 edges)
+    %% Section: Serving API (390 nodes, 824 edges)
     subgraph serve_api_services_vertex_search_bridge_server_j_96187428["services/vertex-search-bridge/server.js"]
         services_vertex_search_bridge_server_server_c3284e62("server<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_3ccdc721("server.js")
@@ -1238,7 +1238,7 @@ flowchart LR
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_nudge_telemetry_in_fd39db85
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_decision_helpers_e_2ee5cb6f
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_decision_helpers_g_335605d1
-    %% Omitted for readability: 363 nodes, 0 edges
+    %% Omitted for readability: 372 nodes, 0 edges
     class services_vertex_search_bridge_server_server_c3284e62 function;
     class services_vertex_search_bridge_server_3ccdc721 module;
     class services_vertex_search_bridge_server_buildsessio_a136528f function;
@@ -1525,7 +1525,7 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>101 nodes</td></tr>
+      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>107 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/kg-store.js</code></td><td>38 nodes</td></tr>
 <tr><td><code>docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md</code></td><td>20 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/host-adapters.js</code></td><td>18 nodes</td></tr>
@@ -1537,7 +1537,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x305, contains x237, indirect call x116, imports x79. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x321, contains x243, indirect call x120, imports x79. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1621,12 +1621,12 @@ flowchart LR
 
 <!-- ====== 9. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">9. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, vertex, search, mostly in tests/test_agent_evaluation.py, tests/test_graphify_integration.py, tests/test_workspace_mutations.js. This section covers 310 nodes and 417 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around test, services, vertex, search, mostly in tests/test_agent_evaluation.py, tests/test_graphify_integration.py, tests/test_workspace_mutations.js. This section covers 315 nodes and 427 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (310 nodes, 417 edges)
+    %% Section: Tests &amp; Fixtures (315 nodes, 427 edges)
     subgraph tests_fixtures_tests_test_agent_evaluation_py_f3d133d4["tests/test_agent_evaluation.py"]
         tests_test_agent_evaluation_testevaluationharnes_24b65e64("TestEvaluationHarnessWorkflow<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_3f394a29("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
@@ -1636,11 +1636,11 @@ flowchart LR
         tests_test_agent_evaluation_testevaluationharnes_b4c8783d("test_input_envelope_expressions()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_d5e21f36("test_metrics_expression_anchoring()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_c9f536cd("test_llm_judge_parameter_locking()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded("TestWorkflowTelemetry<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_13c4307e("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_03915a7c("_get_agent_node()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4("test_agent_node_return_intermediate_steps_enabled()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_0a59c487("test_agent_node_streaming_disabled()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_81af6351("TestEvaluationSafetyGuard<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_a0c88f0b("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_6d7dc405("_get_system_message()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_14e1e598("test_dual_prompt_dispatch_guardrail_present()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_01909a47("test_conversational_handshake_decoupled_exception_present()<br/><small>tests/test_agent_evaluation.py</small>")
     end
     subgraph tests_fixtures_services_agy_daemon_test_daemon_p_41de055e["services/agy-daemon/test_daemon.py"]
         services_agy_daemon_test_daemon_be9f2181("test_daemon.py")
@@ -1656,19 +1656,19 @@ flowchart LR
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_b4c8783d
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_d5e21f36
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_c9f536cd
-    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_13c4307e
-    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
-    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4
-    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_0a59c487
+    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_a0c88f0b
+    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_6d7dc405
+    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_14e1e598
+    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_01909a47
     tests_test_agent_evaluation_testevaluationharnes_5e7cc6f0 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_4cdcc21f -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_b4c8783d -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_c9f536cd -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_d5e21f36 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
-    tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4 -->|calls| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
-    tests_test_agent_evaluation_testworkflowtelemetr_0a59c487 -->|calls| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
+    tests_test_agent_evaluation_testevaluationsafety_01909a47 -->|calls| tests_test_agent_evaluation_testevaluationsafety_6d7dc405
+    tests_test_agent_evaluation_testevaluationsafety_14e1e598 -->|calls| tests_test_agent_evaluation_testevaluationsafety_6d7dc405
     services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_1bc119f5
-    %% Omitted for readability: 292 nodes, 0 edges
+    %% Omitted for readability: 297 nodes, 0 edges
     class tests_test_agent_evaluation_testevaluationharnes_24b65e64 test;
     class tests_test_agent_evaluation_testevaluationharnes_3f394a29 test;
     class tests_test_agent_evaluation_testevaluationharnes_9680a51c test;
@@ -1677,11 +1677,11 @@ flowchart LR
     class tests_test_agent_evaluation_testevaluationharnes_b4c8783d test;
     class tests_test_agent_evaluation_testevaluationharnes_d5e21f36 test;
     class tests_test_agent_evaluation_testevaluationharnes_c9f536cd test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_13c4307e test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_03915a7c test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4 test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_0a59c487 test;
+    class tests_test_agent_evaluation_testevaluationsafety_81af6351 test;
+    class tests_test_agent_evaluation_testevaluationsafety_a0c88f0b test;
+    class tests_test_agent_evaluation_testevaluationsafety_6d7dc405 test;
+    class tests_test_agent_evaluation_testevaluationsafety_14e1e598 test;
+    class tests_test_agent_evaluation_testevaluationsafety_01909a47 test;
     class services_agy_daemon_test_daemon_be9f2181 test;
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
     class services_agy_daemon_daemon_1bc119f5 module;
@@ -1718,6 +1718,14 @@ flowchart LR
 </tr>
 <tr>
   <td>2</td>
+  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>buildSessionPreamble()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>getSystemAudit()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+2 more</td>
+  <td><code>effectiveDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>formatIsraelDate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>classifyLoopsByDue() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>3</td>
   <td><code>effectiveDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small></td>
@@ -1725,7 +1733,7 @@ flowchart LR
   <td>effectiveDue() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>4</td>
   <td><code>encodeCanonicalLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
@@ -1733,7 +1741,7 @@ flowchart LR
   <td>encodeCanonicalLoopId() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>5</td>
   <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br>+1 more</td>
@@ -1741,7 +1749,7 @@ flowchart LR
   <td>extractLoopEntityKey() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>6</td>
   <td><code>formatDueBucket()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
@@ -1749,7 +1757,7 @@ flowchart LR
   <td>formatDueBucket() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>7</td>
   <td><code>formatIsraelDate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
@@ -1757,7 +1765,7 @@ flowchart LR
   <td>formatIsraelDate() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>8</td>
   <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>loop-keys.fixture.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.fixture.test.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br>+4 more</td>
@@ -1765,7 +1773,7 @@ flowchart LR
   <td>generateDeterministicLoopId() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>9</td>
   <td><code>normalizeLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br>+2 more</td>
@@ -1773,7 +1781,7 @@ flowchart LR
   <td>normalizeLoopTitle() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>10</td>
   <td><code>normalizeSubject()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
@@ -1781,7 +1789,7 @@ flowchart LR
   <td>normalizeSubject() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>11</td>
   <td><code>senderDomain()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
@@ -1789,7 +1797,7 @@ flowchart LR
   <td>senderDomain() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>12</td>
   <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>normalizeLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>normalizeSubject()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+1 more</td>
@@ -1797,7 +1805,7 @@ flowchart LR
   <td>stripBidi() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>13</td>
   <td><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>loop-store.integration.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-store.integration.test.js</small><br><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
@@ -1805,7 +1813,7 @@ flowchart LR
   <td>createLoopStore() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>14</td>
   <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>resolveDecision()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
@@ -1813,7 +1821,7 @@ flowchart LR
   <td>completeOpenLoopById() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>15</td>
   <td><code>markLoopNotified()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>checkAndDispatchDueReminders()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
@@ -1821,7 +1829,7 @@ flowchart LR
   <td>markLoopNotified() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>16</td>
   <td><code>runOpenLoopsGC()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
@@ -1829,7 +1837,7 @@ flowchart LR
   <td>runOpenLoopsGC() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>17</td>
   <td><code>safeTable()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>markLoopNotified()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>runOpenLoopsGC()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br>+1 more</td>
@@ -1837,7 +1845,7 @@ flowchart LR
   <td>safeTable() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>18</td>
   <td><code>upsertOpenLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
@@ -1845,7 +1853,7 @@ flowchart LR
   <td>upsertOpenLoop() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>19</td>
   <td><code>sqlJsonb()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>migrate-loop-keys.js</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small><br>+2 more</td>
@@ -1853,7 +1861,7 @@ flowchart LR
   <td>sqlJsonb() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>20</td>
   <td><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>markLoopNotified()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br>+4 more</td>
@@ -1861,7 +1869,7 @@ flowchart LR
   <td>sqlStr() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>21</td>
   <td><code>sqlTimestamptz()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>upsertOpenLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
@@ -1869,7 +1877,7 @@ flowchart LR
   <td>sqlTimestamptz() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>22</td>
   <td><code>loadAllRows()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>runMigration()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
@@ -1877,7 +1885,7 @@ flowchart LR
   <td>loadAllRows() node in vertex-search-bridge/scripts/migrate-loop-keys.js.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>23</td>
   <td><code>queryPostgresWithStdin()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>loadAllRows()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small><br><code>runMigration()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
@@ -1885,7 +1893,7 @@ flowchart LR
   <td>queryPostgresWithStdin() node in vertex-search-bridge/scripts/migrate-loop-keys.js.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>24</td>
   <td><code>runMigration()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>migrate-loop-keys.js</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
@@ -1893,7 +1901,7 @@ flowchart LR
   <td>runMigration() node in vertex-search-bridge/scripts/migrate-loop-keys.js.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>25</td>
   <td><code>loadSnapshot()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.fixture.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -1901,7 +1909,7 @@ flowchart LR
   <td>loadSnapshot() node in vertex-search-bridge/test/loop-keys.fixture.test.js.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>26</td>
   <td><code>queryPostgresJson()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-store.integration.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -1909,7 +1917,7 @@ flowchart LR
   <td>queryPostgresJson() node in vertex-search-bridge/test/loop-store.integration.test.js.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>27</td>
   <td><code>queryPostgresWithStdin()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-store.integration.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td><code>queryPostgresJson()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-store.integration.test.js</small></td>
@@ -1917,7 +1925,7 @@ flowchart LR
   <td>queryPostgresWithStdin() node in vertex-search-bridge/test/loop-store.integration.test.js.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>28</td>
   <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td><code>loop-keys.fixture.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.fixture.test.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br>+3 more</td>
@@ -1925,7 +1933,7 @@ flowchart LR
   <td>loop-keys.js node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>29</td>
   <td><code>crypto</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1933,26 +1941,12 @@ flowchart LR
   <td>crypto node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>30</td>
   <td><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>loop-store.integration.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-store.integration.test.js</small><br><code>migrate-loop-keys.js</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small><br><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><code>actionable status re</code><br><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+4 more</td>
   <td>loop-store.js node in services/vertex-search-bridge/loop-store.js.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>{
-  ACTIONABLE_STATUS_RE,
-  generateDeterministicLoopId,
-}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  ACTIONABLE_STATUS_RE,
-  generateDeterministicLoopId,
-} node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 </table>
 
@@ -1966,46 +1960,43 @@ flowchart LR
 <tr><td><code>tests/test_workspace_mutations.js</code></td><td>19 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/test-n8n-patches.js</code></td><td>16 nodes</td></tr>
 <tr><td><code>services/n8n-sparky/test-n8n-patches.js</code></td><td>16 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/loop-keys.js</code></td><td>13 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/loop-keys.js</code></td><td>14 nodes</td></tr>
 <tr><td><code>services/agy-daemon/test_daemon.py</code></td><td>12 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/heartbeat-store.js</code></td><td>11 nodes</td></tr>
+<tr><td><code>services/agy-daemon/daemon.py</code></td><td>11 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x168, calls x69, imports x50, imports x44. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x168, calls x75, imports x49, imports x45. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 10. Daemon Services Agy ====== -->
 <h2 id="daemon-services-agy">10. Daemon Services Agy</h2>
-<p>Daemon Services Agy groups implementation around daemon, services, agy, daemonpy, mostly in services/agy-daemon/daemon.py. This section covers 25 nodes and 51 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Daemon Services Agy groups implementation around daemon, services, agy, daemonpy, mostly in services/agy-daemon/daemon.py. This section covers 16 nodes and 37 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Daemon Services Agy (25 nodes, 51 edges)
+    %% Section: Daemon Services Agy (16 nodes, 37 edges)
     services_agy_daemon_daemon_taskdaemon_ea787a57("TaskDaemon<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_run_2190cef7("run()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f("recover_interrupted_tasks()<br/><small>services/agy-daemon/daemon.py</small>")
-    services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b("execute_task()<br/><small>services/agy-daemon/daemon.py</small>")
-    services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1("_handle_exit()<br/><small>services/agy-daemon/daemon.py</small>")
+    services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6("claim_task()<br/><small>services/agy-daemon/daemon.py</small>")
+    services_agy_daemon_daemon_taskdaemon_list_pendi_51d806f1("list_pending_tasks()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_init_597a2283("__init__()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785("_get_bridge_headers()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4("post_bridge_event()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_lookup_bri_37f34063("lookup_bridge_conversation_id()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d("get_access_token()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_list_folde_852913c6("_list_folder_files()<br/><small>services/agy-daemon/daemon.py</small>")
-    services_agy_daemon_daemon_taskdaemon_list_pendi_51d806f1("list_pending_tasks()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48("list_processing_tasks()<br/><small>services/agy-daemon/daemon.py</small>")
-    services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6("claim_task()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_requeue_ta_00cf5ee7("requeue_task_to_pending()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_finalize_t_23a8974d("finalize_task()<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_notify_n8n_f267d83f("notify_n8n()<br/><small>services/agy-daemon/daemon.py</small>")
-    services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3("_terminate_process_group()<br/><small>services/agy-daemon/daemon.py</small>")
+    services_agy_daemon_daemon_rationale_346_db5c4795("On daemon startup, inspect any tasks le...<br/><small>services/agy-daemon/daemon.py</small>")
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_init_597a2283
-    services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_lookup_bri_37f34063
@@ -2018,35 +2009,34 @@ flowchart LR
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_finalize_t_23a8974d
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_notify_n8n_f267d83f
-    services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3
-    services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_run_2190cef7
     services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6 -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
-    services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b -->|calls| services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4
-    services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b -->|calls| services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3
     services_agy_daemon_daemon_taskdaemon_finalize_t_23a8974d -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
     services_agy_daemon_daemon_taskdaemon_list_folde_852913c6 -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
     services_agy_daemon_daemon_taskdaemon_list_pendi_51d806f1 -->|calls| services_agy_daemon_daemon_taskdaemon_list_folde_852913c6
     services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48 -->|calls| services_agy_daemon_daemon_taskdaemon_list_folde_852913c6
-    %% Omitted for readability: 7 nodes, 18 edges
+    services_agy_daemon_daemon_taskdaemon_lookup_bri_37f34063 -->|calls| services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785
+    services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4 -->|calls| services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785
+    services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f -->|calls| services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48
+    services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
+    services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f -->|calls| services_agy_daemon_daemon_taskdaemon_lookup_bri_37f34063
+    %% Omitted for readability: 0 nodes, 12 edges
     class services_agy_daemon_daemon_taskdaemon_ea787a57 klass;
     class services_agy_daemon_daemon_taskdaemon_run_2190cef7 function;
     class services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f function;
-    class services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b function;
-    class services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1 function;
+    class services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6 function;
+    class services_agy_daemon_daemon_taskdaemon_list_pendi_51d806f1 function;
     class services_agy_daemon_daemon_taskdaemon_init_597a2283 function;
     class services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785 function;
     class services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4 function;
     class services_agy_daemon_daemon_taskdaemon_lookup_bri_37f34063 function;
     class services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d function;
     class services_agy_daemon_daemon_taskdaemon_list_folde_852913c6 function;
-    class services_agy_daemon_daemon_taskdaemon_list_pendi_51d806f1 function;
     class services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48 function;
-    class services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6 function;
     class services_agy_daemon_daemon_taskdaemon_requeue_ta_00cf5ee7 function;
     class services_agy_daemon_daemon_taskdaemon_finalize_t_23a8974d function;
     class services_agy_daemon_daemon_taskdaemon_notify_n8n_f267d83f function;
-    class services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3 function;
+    class services_agy_daemon_daemon_rationale_346_db5c4795 concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -2078,14 +2068,6 @@ flowchart LR
 </tr>
 <tr>
   <td>2</td>
-  <td><code>sd_notify()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>_handle_exit()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><code>socket</code></td>
-  <td>sd_notify() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>3</td>
   <td><code>.claim_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2093,31 +2075,7 @@ flowchart LR
   <td>.claim_task() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>4</td>
-  <td><code>.execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><code>_read_stderr()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>_read_stdout()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>_terminate_process_group()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br>+5 more</td>
-  <td>.execute_task() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>_read_stderr()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>_read_stderr() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>_read_stdout()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>_read_stdout() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>7</td>
+  <td>3</td>
   <td><code>.finalize_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2125,7 +2083,7 @@ flowchart LR
   <td>.finalize_task() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>4</td>
   <td><code>.get_access_token()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_list_folder_files()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>claim_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>finalize_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br>+3 more</td>
@@ -2133,7 +2091,7 @@ flowchart LR
   <td>.get_access_token() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>5</td>
   <td><code>._get_bridge_headers()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>lookup_bridge_conversation_id()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>post_bridge_event()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2141,15 +2099,7 @@ flowchart LR
   <td>._get_bridge_headers() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>10</td>
-  <td><code>._handle_exit()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><code>sd_notify()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>._handle_exit() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>11</td>
+  <td>6</td>
   <td><code>.__init__()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2157,7 +2107,7 @@ flowchart LR
   <td>.__init__() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>7</td>
   <td><code>._list_folder_files()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>list_pending_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>list_processing_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2165,7 +2115,7 @@ flowchart LR
   <td>._list_folder_files() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>8</td>
   <td><code>.list_pending_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2173,7 +2123,7 @@ flowchart LR
   <td>.list_pending_tasks() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>9</td>
   <td><code>.list_processing_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2181,7 +2131,7 @@ flowchart LR
   <td>.list_processing_tasks() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>10</td>
   <td><code>.lookup_bridge_conversation_id()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2189,7 +2139,7 @@ flowchart LR
   <td>.lookup_bridge_conversation_id() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>11</td>
   <td><code>.notify_n8n()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2197,7 +2147,7 @@ flowchart LR
   <td>.notify_n8n() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>12</td>
   <td><code>.post_bridge_event()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br>+1 more</td>
@@ -2205,7 +2155,7 @@ flowchart LR
   <td>.post_bridge_event() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>13</td>
   <td><code>.recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2213,7 +2163,7 @@ flowchart LR
   <td>.recover_interrupted_tasks() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>14</td>
   <td><code>.requeue_task_to_pending()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2221,7 +2171,7 @@ flowchart LR
   <td>.requeue_task_to_pending() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>15</td>
   <td><code>.run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2229,44 +2179,12 @@ flowchart LR
   <td>.run() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>21</td>
-  <td><code>._terminate_process_group()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>._terminate_process_group() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>Popen</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Popen node in project.</td>
-</tr>
-<tr>
-  <td>23</td>
+  <td>16</td>
   <td><code>On daemon startup, inspect any tasks left in the `processing` folder. If…</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>Design note for On daemon startup, inspect any tasks left in the `processing` folder. If….</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>Send a systemd notification datagram to NOTIFY_SOCKET (zero external…</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Send a systemd notification datagram to NOTIFY_SOCKET (zero external….</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>socket</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>sd_notify()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>socket node in project.</td>
 </tr>
 </table>
 
@@ -2275,12 +2193,12 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/agy-daemon/daemon.py</code></td><td>23 nodes</td></tr>
+      <tr><td><code>services/agy-daemon/daemon.py</code></td><td>16 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x29, method x17, indirect call x2, explains x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x22, method x14, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3015,24 +2933,21 @@ flowchart LR
 
 <!-- ====== 16. Other ====== -->
 <h2 id="other">16. Other</h2>
-<p>Other groups implementation around n8n, scripts, stack, patch, mostly in scripts/backup.sh, scripts/restore.sh, containers/n8n-stack/README.md. This section covers 33 nodes and 28 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Other groups implementation around n8n, scripts, stack, patch, mostly in scripts/backup.sh, scripts/restore.sh, containers/n8n-stack/README.md. This section covers 37 nodes and 31 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Other (33 nodes, 28 edges)
-    subgraph other_scripts_backup_sh_bfffff1e["scripts/backup.sh"]
-        scripts_backup_sh_entry_941779f4("backup.sh script<br/><small>scripts/backup.sh</small>")
-        scripts_backup_run_encrypted_secrets_stage_7de502d5("encrypted secrets stage()<br/><small>scripts/backup.sh</small>")
-        scripts_backup_encrypt_file_f7031a5e("encrypt_file()<br/><small>scripts/backup.sh</small>")
-        scripts_backup_home_72d53e5e("HOME<br/><small>scripts/backup.sh</small>")
-        scripts_backup_path_cdd856c6("PATH<br/><small>scripts/backup.sh</small>")
-    end
+    %% Section: Other (37 nodes, 31 edges)
     subgraph other_n8n_stack_scripts_postgres_maintenance_sh_58b1f505["n8n-stack/scripts/postgres-maintenance.sh"]
         containers_n8n_stack_scripts_postgres_maintenanc_ffa26200("postgres-maintenance.sh script<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
         containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26("run_sql()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
         containers_n8n_stack_scripts_postgres_maintenanc_47501f84("postgres-maintenance.sh")
-        containers_n8n_stack_scripts_postgres_maintenanc_49b775ae("run_sql_query()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
+    end
+    subgraph other_scripts_backup_sh_bfffff1e["scripts/backup.sh"]
+        scripts_backup_sh_entry_941779f4("backup.sh script<br/><small>scripts/backup.sh</small>")
+        scripts_backup_run_encrypted_secrets_stage_7de502d5("encrypted secrets stage()<br/><small>scripts/backup.sh</small>")
+        scripts_backup_encrypt_file_f7031a5e("encrypt_file()<br/><small>scripts/backup.sh</small>")
     end
     subgraph other_scripts_restore_sh_082b8c82["scripts/restore.sh"]
         scripts_restore_sh_entry_5705b250("restore.sh script<br/><small>scripts/restore.sh</small>")
@@ -3051,21 +2966,25 @@ flowchart LR
         containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263("patch-n8n-memory-orphans.sh script<br/><small>n8n-stack/scripts/patch-n8n-memory-orphans.sh</small>")
         containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c("scripts/patch-n8n-memory-orphans.sh")
     end
+    subgraph other_services_agy_daemon_daemon_py_5b14403e["services/agy-daemon/daemon.py"]
+        services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1("_handle_exit()<br/><small>services/agy-daemon/daemon.py</small>")
+        services_agy_daemon_daemon_sd_notify_8cb35845("sd_notify()<br/><small>services/agy-daemon/daemon.py</small>")
+    end
+    socket_897d2105("socket")
+    services_agy_daemon_daemon_sd_notify_8cb35845 -->|calls| socket_897d2105
+    services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1 -->|calls| services_agy_daemon_daemon_sd_notify_8cb35845
     containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 -->|calls| containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26
     scripts_backup_run_encrypted_secrets_stage_7de502d5 -->|calls| scripts_backup_encrypt_file_f7031a5e
     scripts_backup_sh_entry_941779f4 -->|calls| scripts_backup_run_encrypted_secrets_stage_7de502d5
     scripts_restore_sh_entry_5705b250 -->|calls| scripts_restore_sync_published_versions_sql_25e55164
     scripts_restore_sh_entry_5705b250 -->|calls| scripts_restore_verify_and_extract_secrets_39ea2100
-    %% Omitted for readability: 15 nodes, 0 edges
-    class scripts_backup_sh_entry_941779f4 function;
-    class scripts_backup_run_encrypted_secrets_stage_7de502d5 function;
-    class scripts_backup_encrypt_file_f7031a5e function;
-    class scripts_backup_home_72d53e5e klass;
-    class scripts_backup_path_cdd856c6 klass;
+    %% Omitted for readability: 19 nodes, 0 edges
     class containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 function;
     class containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26 function;
     class containers_n8n_stack_scripts_postgres_maintenanc_47501f84 function;
-    class containers_n8n_stack_scripts_postgres_maintenanc_49b775ae function;
+    class scripts_backup_sh_entry_941779f4 function;
+    class scripts_backup_run_encrypted_secrets_stage_7de502d5 function;
+    class scripts_backup_encrypt_file_f7031a5e function;
     class scripts_restore_sh_entry_5705b250 ui;
     class scripts_restore_sync_published_versions_sql_25e55164 function;
     class scripts_restore_verify_and_extract_secrets_39ea2100 function;
@@ -3075,6 +2994,9 @@ flowchart LR
     class containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7 function;
     class containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263 function;
     class containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c function;
+    class services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1 function;
+    class services_agy_daemon_daemon_sd_notify_8cb35845 function;
+    class socket_897d2105 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -3266,6 +3188,38 @@ flowchart LR
 </tr>
 <tr>
   <td>22</td>
+  <td><code>sd_notify()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>_handle_exit()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td><code>socket</code></td>
+  <td>sd_notify() node in services/agy-daemon/daemon.py.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>._handle_exit()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td><code>sd_notify()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td>._handle_exit() node in services/agy-daemon/daemon.py.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>Send a systemd notification datagram to NOTIFY_SOCKET (zero external…</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Send a systemd notification datagram to NOTIFY_SOCKET (zero external….</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>socket</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>sd_notify()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>socket node in project.</td>
+</tr>
+<tr>
+  <td>26</td>
   <td><code>scripts/patch-gemini4-langchain.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-gemini4-langchain.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3273,7 +3227,7 @@ flowchart LR
   <td>scripts/patch-gemini4-langchain.sh node in n8n-stack/scripts/patch-gemini4-langchain.sh.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>27</td>
   <td><code>patch-gemini4-langchain.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-gemini4-langchain.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3281,7 +3235,7 @@ flowchart LR
   <td>patch-gemini4-langchain.sh script node in n8n-stack/scripts/patch-gemini4-langchain.sh.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>28</td>
   <td><code>scripts/patch-n8n-memory-orphans.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-n8n-memory-orphans.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3289,7 +3243,7 @@ flowchart LR
   <td>scripts/patch-n8n-memory-orphans.sh node in n8n-stack/scripts/patch-n8n-memory-orphans.sh.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>29</td>
   <td><code>patch-n8n-memory-orphans.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-n8n-memory-orphans.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3297,44 +3251,12 @@ flowchart LR
   <td>patch-n8n-memory-orphans.sh script node in n8n-stack/scripts/patch-n8n-memory-orphans.sh.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>30</td>
   <td><code>deploy-bridge.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/deploy-bridge.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>deploy-bridge.sh node in n8n-stack/scripts/deploy-bridge.sh.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>deploy-bridge.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/deploy-bridge.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>deploy-bridge.sh script node in n8n-stack/scripts/deploy-bridge.sh.</td>
-</tr>
-<tr>
-  <td>28</td>
-  <td><code>eval-history.md</code><br><small style="color:var(--muted)">docs/eval-history.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing eval-history.md.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>Sparky Agent Evaluation History (`DEF-07`)</code><br><small style="color:var(--muted)">docs/eval-history.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Sparky Agent Evaluation History (`DEF-07`).</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>n8n-sparky/patch-gemini4-langchain.sh</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-gemini4-langchain.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>n8n-sparky/patch-gemini4-langchain.sh node in services/n8n-sparky/patch-gemini4-langchain.sh.</td>
 </tr>
 </table>
 
@@ -3347,15 +3269,15 @@ flowchart LR
 <tr><td><code>scripts/restore.sh</code></td><td>6 nodes</td></tr>
 <tr><td><code>containers/n8n-stack/README.md</code></td><td>5 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/postgres-maintenance.sh</code></td><td>4 nodes</td></tr>
+<tr><td><code>services/agy-daemon/daemon.py</code></td><td>3 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/deploy-bridge.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/patch-gemini4-langchain.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/patch-n8n-memory-orphans.sh</code></td><td>2 nodes</td></tr>
-<tr><td><code>docs/eval-history.md</code></td><td>2 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x13, defines x10, calls x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x13, defines x10, calls x7, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3366,8 +3288,8 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>878</td></tr>
-      <tr><td>Edges</td><td>1525</td></tr>
+      <tr><td>Nodes</td><td>887</td></tr>
+      <tr><td>Edges</td><td>1554</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
       <tr><td>Communities</td><td>70</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
@@ -3376,8 +3298,8 @@ flowchart LR
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>1364</td></tr>
-      <tr><td>INFERRED</td><td>161</td></tr>
+      <tr><td>EXTRACTED</td><td>1389</td></tr>
+      <tr><td>INFERRED</td><td>165</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
   </div>
@@ -3385,7 +3307,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-10-29 04:49 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-10-29 18:10 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

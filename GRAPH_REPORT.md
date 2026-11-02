@@ -1,17 +1,17 @@
-# Graph Report - sparky-backup  (2026-10-30)
+# Graph Report - sparky-backup  (2026-11-02)
 
 ## Corpus Check
-- 80 files · ~122,988 words
+- 84 files · ~129,763 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 11 file(s) not represented in the graph (top: (none) 5, .service 4, .example 1)
+- Unclassified: 12 file(s) not represented in the graph (top: (none) 5, .service 5, .example 1)
 
 ## Summary
-- 887 nodes · 1558 edges · 69 communities (51 shown, 18 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 165 edges (avg confidence: 0.86)
+- 948 nodes · 1665 edges · 71 communities (51 shown, 20 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 181 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `895e578a`
+- Built from commit: `a63789dd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -34,7 +34,7 @@
 - TestEvaluationHarnessWorkflow
 - kg-store.js
 - sparky-mcp/package.json
-- n8n-sparky/test-n8n-patches.js
+- http-server.js
 - sparky-watchdog.sh
 - n8n Stack Configuration & Deployment
 - postgres-maintenance.sh
@@ -75,10 +75,12 @@
 - TestEopSkillAndBackupScriptContract
 - ref_node_assert
 - server-endpoints.test.js
-- ref_node_test
+- sparky-mcp/mcp.test.js
 - TestAntigravitySkillAndRulesRegistration
+- TestGoldenDatasetPresence
 - Runbook: Containerized Vertex Search Bridge & Sub-Minute Systemd Rollback (`DEF-10`)
-- queryPostgresWithStdin
+- server
+- TestGraphifyCLIBinary
 - run-agent-eval.sh
 - sync-services-to-repo.sh
 - n8n-stack/scripts/deploy-bridge.sh
@@ -90,7 +92,7 @@
 1. `server` - 70 edges
 2. `TaskDaemon` - 21 edges
 3. `queryPostgresJson()` - 19 edges
-4. `buildSessionPreamble()` - 16 edges
+4. `buildSessionPreamble()` - 17 edges
 5. `createKgStore()` - 15 edges
 6. `upsertKgEntity()` - 13 edges
 7. `stripBidi()` - 12 edges
@@ -113,11 +115,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (69 total, 18 thin omitted)
+## Communities (71 total, 20 thin omitted)
 
 ### Community 0 - "server.js"
 Cohesion: 0.05
-Nodes (38): BRIDGE_API_TOKEN, BRIDGE_STARTED_AT, circuitBreakers, {
+Nodes (40): BRIDGE_API_TOKEN, BRIDGE_STARTED_AT, circuitBreakers, {
   classifyDecisionChoice,
   inferDecisionSource,
   extractSenderKey,
@@ -137,7 +139,7 @@ Nodes (38): BRIDGE_API_TOKEN, BRIDGE_STARTED_AT, circuitBreakers, {
   detectCorrectionSignal,
   findDuplicateFieldNote,
   createCorrectionLearner,
-}, correctionLearner (+30 more)
+}, correctionLearner (+32 more)
 
 ### Community 1 - "decision-helpers.js"
 Cohesion: 0.20
@@ -152,8 +154,8 @@ Cohesion: 0.11
 Nodes (18): APPEND_WF_PATH, cleanupRegistry, CREATE_DOC_WF_PATH, CREATE_SHEET_WF_PATH, CREATE_SLIDES_WF_PATH, { execSync, execFileSync }, EXPECTED_HEADERS, formatOutput() (+10 more)
 
 ### Community 5 - "nudge-telemetry.js"
-Cohesion: 0.11
-Nodes (28): classifyDecisionChoice(), computeSenderAdjustment(), createNudgeTelemetryStore(), getEffectivenessReport(), getSenderFeedback(), extractSenderKey(), formatTriageFeedbackXml(), inferDecisionSource() (+20 more)
+Cohesion: 0.16
+Nodes (20): classifyDecisionChoice(), computeSenderAdjustment(), createNudgeTelemetryStore(), getEffectivenessReport(), getSenderFeedback(), extractSenderKey(), formatTriageFeedbackXml(), inferDecisionSource() (+12 more)
 
 ### Community 6 - "Requirements Anchor: Sparky-AI Nightly Dreaming Knowledge Graph (`sparky-nightly-knowledge-graph`)"
 Cohesion: 0.50
@@ -164,7 +166,7 @@ Cohesion: 0.11
 Nodes (18): 1. Architectural Blueprint & Cognitive Model, 2. Infrastructure & Storage (`pgvector`), 3. Multilingual Embedding Pipeline, 4. Bridge Microservice Endpoints ([`server.js`](file:///root/vertex-search-bridge/server.js)), 5. Main Agent Integration (`search_memory` FunctionCall), 6. Nightly Cortex Sleep Consolidation (`POST /cortex/sleep-cycle`), 7.1 PostgreSQL Relational + Vector Graph Schema, 7.2 Nightly Single-Pass Extraction & Backfill (+10 more)
 
 ### Community 9 - "test_graphify_integration.py"
-Cohesion: 0.16
+Cohesion: 0.14
 Nodes (5): _extract_source_files(), TestCodebaseInclusionInGraph, TestIncrementalUpdateIdempotency, TestPersonalMemoryGraphIsolation, TestStrictExclusionBoundary
 
 ### Community 10 - "1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)"
@@ -172,8 +174,8 @@ Cohesion: 0.07
 Nodes (33): 1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4), 2. Quality Gates, Observability & Disaster Recovery (Epic E3), 3. Platform Architecture & Refactoring (Epic E5), DEF-01: Global Attention Budget & Quiet Hours Hold Queue (`23:00–07:00`), DEF-02: Nudge-Effectiveness Telemetry & Sentinel Self-Tuning, DEF-03: Sunday Weekly Review & Overdue Loop Escalation Ladder, DEF-06: Auto-Incident Knowledge Base (`knowledge-base.json`) Draft Capture, DEF-07: Golden Evaluation Dataset Expansion (`3/45` → Core Tools) & Change Gate (+25 more)
 
 ### Community 11 - "ref_child_process"
-Cohesion: 0.09
-Nodes (24): pg, createDb(), getOrInitPgPool(), queryPostgresJson(), queryPostgresScript(), queryPostgresWithStdin(), { execFile }, formatPgCell() (+16 more)
+Cohesion: 0.08
+Nodes (26): pg, resolveConfig(), createDb(), getOrInitPgPool(), queryPostgresJson(), queryPostgresScript(), queryPostgresWithStdin(), { execFile } (+18 more)
 
 ### Community 12 - "Sentinel Actor Model & Conversational Handshake Architecture"
 Cohesion: 0.20
@@ -195,9 +197,9 @@ Nodes (48): atomicWriteFile(), bareTableName(), buildAsciiVaultSlug(), buildCano
 Cohesion: 0.25
 Nodes (7): description, main, name, private, scripts, test, version
 
-### Community 18 - "n8n-sparky/test-n8n-patches.js"
-Cohesion: 0.13
-Nodes (15): assert, { cleanupOrphanedMessages }, entries, fs, geminiCjsPath, geminiMessages, geminiMessagesPath, { getGeminiAPI } (+7 more)
+### Community 18 - "http-server.js"
+Cohesion: 0.11
+Nodes (21): RFC-8414, RFC-9728, { bridgeRequest }, createMcpHttpServer(), crypto, DEFAULT_PUBLIC_ORIGIN, escHtml(), fs (+13 more)
 
 ### Community 19 - "sparky-watchdog.sh"
 Cohesion: 0.50
@@ -224,16 +226,16 @@ Cohesion: 0.07
 Nodes (6): extract_stream_json_result(), read_heartbeat_meta(), resolve_timeouts(), sd_notify(), TaskDaemon, TestDaemon
 
 ### Community 26 - "test-n8n-patches.js"
-Cohesion: 0.12
-Nodes (15): assert, { cleanupOrphanedMessages }, entries, fs, geminiCjsPath, geminiMessages, geminiMessagesPath, { getGeminiAPI } (+7 more)
+Cohesion: 0.06
+Nodes (30): assert, { cleanupOrphanedMessages }, entries, fs, geminiCjsPath, geminiMessages, geminiMessagesPath, { getGeminiAPI } (+22 more)
 
 ### Community 27 - "readStreamUtf8"
 Cohesion: 0.26
 Nodes (12): readStreamUtf8(), callGoogleRoutesApi(), callOsrmFallback(), computeCommute(), fetchMetaMedia(), getAccessToken(), getMetaToken, logActivityEvent() (+4 more)
 
 ### Community 29 - "memory-hygiene.js"
-Cohesion: 0.18
-Nodes (19): DEF-05: Semantic Memory Contradiction Detection & Temporal Decay, computeRecencyBoost(), createMemoryHygieneStore(), findCandidateNeighbors(), ingestMemoryWithHygiene(), reconcileExistingMemories(), EPISODIC_TYPES, hasFactMutationTokens() (+11 more)
+Cohesion: 0.16
+Nodes (22): DEF-05: Semantic Memory Contradiction Detection & Temporal Decay, computeRecencyBoost(), createMemoryHygieneStore(), findCandidateNeighbors(), ingestMemoryWithHygiene(), reconcileExistingMemories(), EPISODIC_TYPES, hasFactMutationTokens() (+14 more)
 
 ### Community 30 - "db-adapter.test.js"
 Cohesion: 0.25
@@ -244,8 +246,8 @@ Cohesion: 0.47
 Nodes (5): HOME, PATH, restore.sh script, sync_published_versions_sql(), verify_and_extract_secrets()
 
 ### Community 35 - "correction-learner.js"
-Cohesion: 0.20
-Nodes (18): DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`), containsSecretOrPassword(), createCorrectionLearner(), extractAndSaveCorrection(), detectCorrectionSignal(), findDuplicateFieldNote(), redactAllSecrets(), SECRET_PATTERNS (+10 more)
+Cohesion: 0.08
+Nodes (40): DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`), containsSecretOrPassword(), createCorrectionLearner(), extractAndSaveCorrection(), detectCorrectionSignal(), findDuplicateFieldNote(), redactAllSecrets(), SECRET_PATTERNS (+32 more)
 
 ### Community 36 - "probe-incident-signatures.js"
 Cohesion: 0.16
@@ -284,12 +286,12 @@ Cohesion: 0.22
 Nodes (6): assert, CONFIG_PATH, fs, os, path, test
 
 ### Community 43 - "phase2c-ops.test.js"
-Cohesion: 0.25
+Cohesion: 0.22
 Nodes (7): assert, { execFileSync }, fs, path, PATHS, readOrSkip(), test
 
 ### Community 45 - "migrate-loop-keys.js"
 Cohesion: 0.06
-Nodes (48): buildCanonicalLoopKey(), classifyLoopsByDue(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey(), formatDueBucket(), formatIsraelDate() (+40 more)
+Nodes (47): buildCanonicalLoopKey(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey(), formatDueBucket(), formatIsraelDate(), generateDeterministicLoopId() (+39 more)
 
 ### Community 46 - "mcp.test.js"
 Cohesion: 0.18
@@ -300,12 +302,12 @@ Cohesion: 0.25
 Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrateUrlParam(), path, runPsql() (+1 more)
 
 ### Community 48 - "server"
-Cohesion: 0.18
-Nodes (24): buildSessionPreamble(), checkAndDispatchDueReminders(), effectiveDue(), fetchBufferFromUrl(), getJerusalemOffsetString(), getSentinelEvent(), getSystemAudit(), isPrivateIp() (+16 more)
+Cohesion: 0.16
+Nodes (21): classifyLoopsByDue(), buildSessionPreamble(), checkAndDispatchDueReminders(), effectiveDue(), getJerusalemOffsetString(), getSentinelEvent(), getSystemAudit(), isTestLoop() (+13 more)
 
 ### Community 50 - "index.js"
-Cohesion: 0.27
-Nodes (8): { bridgeRequest }, fs, handleToolCall(), readHeartbeatMeta(), readline, sendJsonRpc(), startStdioServer(), TOOLS
+Cohesion: 0.23
+Nodes (10): processJsonRpcMessage(), { bridgeRequest }, dispatchAgyMissionToDrive(), fs, handleToolCall(), readHeartbeatMeta(), readline, sendJsonRpc() (+2 more)
 
 ### Community 51 - "checkAndDispatchWindowKeepalive"
 Cohesion: 0.47
@@ -320,58 +322,52 @@ Cohesion: 0.14
 Nodes (8): compactSessionChatHistory(), compactToolObservationContent(), createMetaTokenReader(), crypto, defaultConfig, fs, normalizeHistoryRow(), path
 
 ### Community 55 - "callVertexApiWithRetry"
-Cohesion: 0.18
-Nodes (13): analyzeImageBuffer(), callGeminiJson(), callVertexApiWithRetry(), generateEmbedding(), getCircuitBreaker(), insertSemanticMemory(), kgStore, memoryHygieneStore (+5 more)
+Cohesion: 0.29
+Nodes (7): analyzeImageBuffer(), callGeminiJson(), callVertexApiWithRetry(), getCircuitBreaker(), kgStore, searchWithVertex(), transcribeAudioBuffer()
 
 ### Community 57 - "ref_node_assert"
-Cohesion: 0.25
-Nodes (6): resolveConfig(), assert, config, { createDb }, main(), QUERIES
+Cohesion: 0.18
+Nodes (7): assert, { createHandoffStore, formatHandoffsXml }, { describe, it }, assert, config, { createDb }, QUERIES
 
 ### Community 58 - "server-endpoints.test.js"
 Cohesion: 0.22
 Nodes (5): assert, { execFile }, fs, test, TOKEN
 
-### Community 59 - "ref_node_test"
-Cohesion: 0.40
-Nodes (3): assert, {
-  computeRecencyBoost,
-  rankMemoriesWithDecay,
-  hasFactMutationTokens,
-  mergeContextNotes,
-  createMemoryHygieneStore,
-}, test
+### Community 59 - "sparky-mcp/mcp.test.js"
+Cohesion: 0.14
+Nodes (10): assert, { createMcpHttpServer }, crypto, fs, RFC-7591, os, path, { spawn, execFileSync, execFile } (+2 more)
 
 ### Community 62 - "Runbook: Containerized Vertex Search Bridge & Sub-Minute Systemd Rollback (`DEF-10`)"
 Cohesion: 0.33
 Nodes (5): Emergency Sub-Minute Rollback to Host `systemd` (`vertex-search.service`), Overview, Returning from Host `systemd` to Container (`vertex-bridge`), Runbook: Containerized Vertex Search Bridge & Sub-Minute Systemd Rollback (`DEF-10`), Standard Deployment & Digest Rollback (`deploy-bridge.sh`)
 
-### Community 63 - "queryPostgresWithStdin"
-Cohesion: 0.20
-Nodes (11): atomicWriteJson(), loadBriefedMeetings(), loopStore, markBriefedMeeting(), queryPostgresWithStdin(), resolveDecision(), saveContext(), saveDecisions() (+3 more)
+### Community 63 - "server"
+Cohesion: 0.16
+Nodes (21): atomicWriteJson(), fetchBufferFromUrl(), generateEmbedding(), insertSemanticMemory(), isPrivateIp(), loadBriefedMeetings(), markBriefedMeeting(), memoryHygieneStore (+13 more)
 
 ### Community 65 - "run-agent-eval.sh"
 Cohesion: 0.50
 Nodes (3): HOME, PATH, run-agent-eval.sh script
 
 ## Knowledge Gaps
-- **15 isolated node(s):** `PATH`, `PATH`, `HOME`, `REGISTRY_AUTH_FILE`, `PATH` (+10 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 427 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **18 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **19 isolated node(s):** `PATH`, `PATH`, `HOME`, `REGISTRY_AUTH_FILE`, `PATH` (+14 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 460 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **20 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `createDb()` connect `ref_child_process` to `server.js`, `ref_node_assert`?**
-  _High betweenness centrality (0.033) - this node is a cross-community bridge._
+  _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **What connects `PATH`, `PATH`, `HOME` to the rest of the system?**
-  _15 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _19 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.047619047619047616 - nodes in this community are weakly interconnected._
 - **Why does `1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)` connect `1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)` to `correction-learner.js`, `memory-hygiene.js`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **Should `test_workspace_mutations.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11428571428571428 - nodes in this community are weakly interconnected._
-- **Should `nudge-telemetry.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.11051693404634581 - nodes in this community are weakly interconnected._
 - **Should `Semantic Vector Memory & Cortex Sleep Consolidation Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+- **Should `test_graphify_integration.py` be split into smaller, more focused modules?**
+  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._

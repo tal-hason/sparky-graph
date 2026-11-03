@@ -60,11 +60,12 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 946 nodes, 1670 edges, 71 communities. Commit: fe8557e</p>
+<p class="subtitle">Generated from graphify knowledge graph: 948 nodes, 1672 edges, 74 communities. Commit: fe8557e</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
     <a href="#build-graph">Graph Build</a>
+    <a href="#analysis-clustering">Analysis &amp; Clustering</a>
     <a href="#outputs-docs">Outputs &amp; Docs</a>
     <a href="#cli-skills">CLI &amp; Skill Installers</a>
     <a href="#ingest-cache-update">Ingestion &amp; Updates</a>
@@ -77,7 +78,6 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#cynefin-ooda-frameworkmd">Cynefin Ooda Frameworkmd</a>
     <a href="#readmemd-automated-backup">Readmemd Automated Backup</a>
     <a href="#sparky-watchdogsh-containers">Sparky Watchdogsh Containers</a>
-    <a href="#backupsh-scripts-encrypt">Backupsh Scripts Encrypt</a>
     <a href="#other">Other</a>
 </div>
 
@@ -90,17 +90,19 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 flowchart LR
     BUILD_GRAPH_321CBB04("Graph Build<br/><small>46 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
+    ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>11 nodes</small>")
+    class ANALYSIS_CLUSTERING_C79796DA module;
     OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>4 nodes</small>")
     class OUTPUTS_DOCS_ED82387C module;
     CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>22 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
     INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>36 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>401 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>403 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>339 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>328 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
     DAEMON_SERVICES_AGY_CD07B619("Daemon Services Agy<br/><small>16 nodes</small>")
     class DAEMON_SERVICES_AGY_CD07B619 module;
@@ -114,22 +116,20 @@ flowchart LR
     class READMEMD_AUTOMATED_BACKUP_2CB22FAA module;
     SPARKY_WATCHDOGSH_CONTAINERS_BEFA76BE("Sparky Watchdogsh Containers<br/><small>8 nodes</small>")
     class SPARKY_WATCHDOGSH_CONTAINERS_BEFA76BE module;
-    BACKUPSH_SCRIPTS_ENCRYPT_C017EB1B("Backupsh Scripts Encrypt<br/><small>6 nodes</small>")
-    class BACKUPSH_SCRIPTS_ENCRYPT_C017EB1B module;
-    OTHER_D0941E68("Other<br/><small>27 nodes</small>")
+    OTHER_D0941E68("Other<br/><small>33 nodes</small>")
     class OTHER_D0941E68 module;
-    SERVE_API_35EC8E86 -->|imports x41| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x15| SERVE_API_35EC8E86
-    TESTS_FIXTURES_B84B1DCC -->|imports x8| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x37| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x14| SERVE_API_35EC8E86
+    TESTS_FIXTURES_B84B1DCC -->|imports x7| CLI_SKILLS_9964CBB8
+    TESTS_FIXTURES_B84B1DCC -->|imports x6| ANALYSIS_CLUSTERING_C79796DA
     TESTS_FIXTURES_B84B1DCC -->|calls x5| DAEMON_SERVICES_AGY_CD07B619
     DAEMON_SERVICES_AGY_CD07B619 -->|method x5| TESTS_FIXTURES_B84B1DCC
     SERVE_API_35EC8E86 -->|imports x4| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x4| ANALYSIS_CLUSTERING_C79796DA
     INGEST_CACHE_UPDATE_FF457338 -->|calls x3| INDEXJS_SERVICES_SPARKY_CFB8426F
     INGEST_CACHE_UPDATE_FF457338 -->|imports x3| CLI_SKILLS_9964CBB8
     INDEXJS_SERVICES_SPARKY_CFB8426F -->|imports x3| CLI_SKILLS_9964CBB8
     SERVE_API_35EC8E86 -->|imports x2| INGEST_CACHE_UPDATE_FF457338
-    INGEST_CACHE_UPDATE_FF457338 -->|imports x2| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x2| INDEXJS_SERVICES_SPARKY_CFB8426F
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -146,19 +146,19 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>46</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>36</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>401</td><td><code>16, 0, 10, 35, 29, 36, 5, 38, 48, 63, 11, 53, 27, 1, 55, 57, 64, 51, 56, 62, 50</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>339</td><td><code>45, 26, 9, 61, 4, 37, 25, 39, 41, 46, 3, 60, 15, 42, 43, 58, 30, 40, 54, 44, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>16</td><td><code>8</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Indexjs Services Sparky</td><td>10</td><td><code>47</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Backupsh Scripts Encrypt</td><td>6</td><td><code>23</code></td></tr><tr><td>Other</td><td>27</td><td><code>33, 20, 21, 31, 49, 68, 69, 73, 74</code></td></tr>
+      <tr><td>Graph Build</td><td>46</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>70</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>36</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>403</td><td><code>16, 0, 10, 35, 29, 36, 5, 38, 48, 63, 11, 53, 27, 1, 55, 57, 64, 51, 56, 62, 50</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>328</td><td><code>45, 9, 61, 4, 37, 26, 66, 25, 39, 41, 46, 60, 15, 42, 43, 58, 30, 40, 54, 3, 44, 71, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>16</td><td><code>8</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Indexjs Services Sparky</td><td>10</td><td><code>47</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>33</td><td><code>23, 33, 20, 21, 31, 49, 68, 69, 73, 74</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">Outputs &amp; Docs -&gt; Graph Build -&gt; Serving API -&gt; Tests &amp; Fixtures -&gt; CLI &amp; Skill Installers -&gt; Ingestion &amp; Updates -&gt; Indexjs Services Sparky</div>
+    <div class="arrow-chain">Outputs &amp; Docs -&gt; Graph Build -&gt; Serving API -&gt; Tests &amp; Fixtures -&gt; CLI &amp; Skill Installers -&gt; Analysis &amp; Clustering -&gt; Ingestion &amp; Updates</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>946 nodes · 1670 edges · 71 communities (54 shown, 17 thin omitted)</li>
+      <li>948 nodes · 1672 edges · 74 communities (56 shown, 18 thin omitted)</li>
       <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 183 edges (avg confidence: 0.85)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `server` - 71 edges</li>
@@ -502,8 +502,171 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 3. Outputs & Docs ====== -->
-<h2 id="outputs-docs">3. Outputs &amp; Docs</h2>
+<!-- ====== 3. Analysis & Clustering ====== -->
+<h2 id="analysis-clustering">3. Analysis &amp; Clustering</h2>
+<p>Analysis &amp; Clustering groups implementation around migrate, workflow, bridge, urlsjs, mostly in scripts/migrate-workflow-bridge-urls.js. This section covers 11 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Analysis &amp; Clustering (11 nodes, 14 edges)
+    subgraph analysis_clustering_scripts_migrate_workflow_bri_34022461["scripts/migrate-workflow-bridge-urls.js"]
+        scripts_migrate_workflow_bridge_urls_main_83f7f511("main()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migratenode_97ae93de("migrateNodes()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_ba8c4b1f("migrate-workflow-bridge-urls.js")
+        scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1("runPsql()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e("migrateJsCode()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23("migrateUrlParam()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_workflows_d_062f0d1f("WORKFLOWS_DIR<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_fs_bd7c08b1("fs<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_path_e9979c73("path<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_execfilesyn_075a20a6("execFileSync<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+    end
+    ref_path_6ea4f7de("ref_path")
+    scripts_migrate_workflow_bridge_urls_main_83f7f511 -->|calls| scripts_migrate_workflow_bridge_urls_migratenode_97ae93de
+    scripts_migrate_workflow_bridge_urls_main_83f7f511 -->|calls| scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1
+    scripts_migrate_workflow_bridge_urls_migratenode_97ae93de -->|calls| scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e
+    scripts_migrate_workflow_bridge_urls_migratenode_97ae93de -->|calls| scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23
+    scripts_migrate_workflow_bridge_urls_ba8c4b1f -->|imports| ref_path_6ea4f7de
+    class scripts_migrate_workflow_bridge_urls_main_83f7f511 function;
+    class scripts_migrate_workflow_bridge_urls_migratenode_97ae93de function;
+    class scripts_migrate_workflow_bridge_urls_ba8c4b1f module;
+    class scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1 function;
+    class scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e function;
+    class scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23 function;
+    class scripts_migrate_workflow_bridge_urls_workflows_d_062f0d1f klass;
+    class scripts_migrate_workflow_bridge_urls_fs_bd7c08b1 function;
+    class scripts_migrate_workflow_bridge_urls_path_e9979c73 function;
+    class scripts_migrate_workflow_bridge_urls_execfilesyn_075a20a6 function;
+    class ref_path_6ea4f7de function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small><br><code>runPsql()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>main() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>migrateJsCode()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>migrateJsCode() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><code>migrateJsCode()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small><br><code>migrateUrlParam()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>migrateNodes() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>migrateUrlParam()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>migrateUrlParam() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>runPsql()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>runPsql() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>migrate-workflow-bridge-urls.js</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>ref_child_process</code><br><code>ref_fs</code><br><code>ref_path</code></td>
+  <td>migrate-workflow-bridge-urls.js node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>{ execFileSync }</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ execFileSync } node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>fs</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>fs node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>path</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>path node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>WORKFLOWS_DIR</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>WORKFLOWS_DIR node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>ref_path</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>kg-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/kg-store.js</small><br>+10 more</td>
+  <td>No direct outbound edge</td>
+  <td>ref_path node in project.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>scripts/migrate-workflow-bridge-urls.js</code></td><td>10 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x9, calls x4, imports x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 4. Outputs & Docs ====== -->
+<h2 id="outputs-docs">4. Outputs &amp; Docs</h2>
 <p>Outputs &amp; Docs groups implementation around render, local, htmlsh, scripts, mostly in scripts/render-local-kg-html.sh. This section covers 4 nodes and 3 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -591,8 +754,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 4. CLI & Skill Installers ====== -->
-<h2 id="cli-skills">4. CLI &amp; Skill Installers</h2>
+<!-- ====== 5. CLI & Skill Installers ====== -->
+<h2 id="cli-skills">5. CLI &amp; Skill Installers</h2>
 <p>CLI &amp; Skill Installers groups implementation around sparky, services, mcp, hookjs, mostly in sparky-mcp/hooks/sparky-hook.js, services/sparky-mcp/bridge.js, scripts/run-agent-eval.sh. This section covers 22 nodes and 28 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -870,8 +1033,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 5. Ingestion & Updates ====== -->
-<h2 id="ingest-cache-update">5. Ingestion &amp; Updates</h2>
+<!-- ====== 6. Ingestion & Updates ====== -->
+<h2 id="ingest-cache-update">6. Ingestion &amp; Updates</h2>
 <p>Ingestion &amp; Updates groups implementation around services, http, serverjs, sparky, mostly in services/sparky-mcp/http-server.js, n8n-stack/scripts/update-n8n.sh, services/agy-daemon/update.sh. This section covers 36 nodes and 45 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1215,14 +1378,14 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 6. Serving API ====== -->
-<h2 id="serve-api">6. Serving API</h2>
-<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md. This section covers 401 nodes and 861 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 7. Serving API ====== -->
+<h2 id="serve-api">7. Serving API</h2>
+<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md. This section covers 403 nodes and 863 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (401 nodes, 861 edges)
+    %% Section: Serving API (403 nodes, 863 edges)
     subgraph serve_api_services_vertex_search_bridge_server_j_96187428["services/vertex-search-bridge/server.js"]
         services_vertex_search_bridge_server_server_c3284e62("server<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_3ccdc721("server.js")
@@ -1271,7 +1434,7 @@ flowchart LR
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_nudge_telemetry_in_fd39db85
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_decision_helpers_e_2ee5cb6f
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_decision_helpers_g_335605d1
-    %% Omitted for readability: 383 nodes, 0 edges
+    %% Omitted for readability: 385 nodes, 0 edges
     class services_vertex_search_bridge_server_server_c3284e62 function;
     class services_vertex_search_bridge_server_3ccdc721 module;
     class services_vertex_search_bridge_server_buildsessio_a136528f function;
@@ -1570,13 +1733,13 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x342, contains x244, indirect call x131, imports x88. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x342, contains x246, indirect call x131, imports x88. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 7. Security & Global Graph ====== -->
-<h2 id="security-global">7. Security &amp; Global Graph</h2>
+<!-- ====== 8. Security & Global Graph ====== -->
+<h2 id="security-global">8. Security &amp; Global Graph</h2>
 <p>Security &amp; Global Graph groups implementation around sync, services, reposh, scripts, mostly in scripts/sync-services-to-repo.sh. This section covers 3 nodes and 3 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1652,14 +1815,14 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 8. Tests & Fixtures ====== -->
-<h2 id="tests-fixtures">8. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, tests/test_graphify_integration.py, tests/test_workspace_mutations.js. This section covers 339 nodes and 472 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 9. Tests & Fixtures ====== -->
+<h2 id="tests-fixtures">9. Tests &amp; Fixtures</h2>
+<p>Tests &amp; Fixtures groups implementation around test, services, vertex, search, mostly in tests/test_agent_evaluation.py, tests/test_graphify_integration.py, tests/test_workspace_mutations.js. This section covers 328 nodes and 452 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (339 nodes, 472 edges)
+    %% Section: Tests &amp; Fixtures (328 nodes, 452 edges)
     subgraph tests_fixtures_tests_test_agent_evaluation_py_f3d133d4["tests/test_agent_evaluation.py"]
         tests_test_agent_evaluation_testevaluationharnes_24b65e64("TestEvaluationHarnessWorkflow<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_3f394a29("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
@@ -1669,11 +1832,11 @@ flowchart LR
         tests_test_agent_evaluation_testevaluationharnes_b4c8783d("test_input_envelope_expressions()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_d5e21f36("test_metrics_expression_anchoring()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_c9f536cd("test_llm_judge_parameter_locking()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testgoldendatasetpre_61f13a8f("TestGoldenDatasetPresence<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testgoldendatasetpre_1f69ba41("test_golden_dataset_fixture_exists()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testgoldendatasetpre_9beaee2e("test_golden_dataset_fixture_schema_and_tool_names()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded("TestWorkflowTelemetry<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testworkflowtelemetr_13c4307e("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testworkflowtelemetr_03915a7c("_get_agent_node()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4("test_agent_node_return_intermediate_steps_enabled()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testworkflowtelemetr_0a59c487("test_agent_node_streaming_disabled()<br/><small>tests/test_agent_evaluation.py</small>")
     end
     subgraph tests_fixtures_services_agy_daemon_test_daemon_p_41de055e["services/agy-daemon/test_daemon.py"]
         services_agy_daemon_test_daemon_be9f2181("test_daemon.py")
@@ -1689,16 +1852,19 @@ flowchart LR
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_b4c8783d
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_d5e21f36
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_c9f536cd
-    tests_test_agent_evaluation_testgoldendatasetpre_61f13a8f -->|method| tests_test_agent_evaluation_testgoldendatasetpre_1f69ba41
-    tests_test_agent_evaluation_testgoldendatasetpre_61f13a8f -->|method| tests_test_agent_evaluation_testgoldendatasetpre_9beaee2e
     tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_13c4307e
+    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
+    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4
+    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_0a59c487
     tests_test_agent_evaluation_testevaluationharnes_5e7cc6f0 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_4cdcc21f -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_b4c8783d -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_c9f536cd -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_d5e21f36 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
+    tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4 -->|calls| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
+    tests_test_agent_evaluation_testworkflowtelemetr_0a59c487 -->|calls| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
     services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_1bc119f5
-    %% Omitted for readability: 321 nodes, 0 edges
+    %% Omitted for readability: 310 nodes, 0 edges
     class tests_test_agent_evaluation_testevaluationharnes_24b65e64 test;
     class tests_test_agent_evaluation_testevaluationharnes_3f394a29 test;
     class tests_test_agent_evaluation_testevaluationharnes_9680a51c test;
@@ -1707,11 +1873,11 @@ flowchart LR
     class tests_test_agent_evaluation_testevaluationharnes_b4c8783d test;
     class tests_test_agent_evaluation_testevaluationharnes_d5e21f36 test;
     class tests_test_agent_evaluation_testevaluationharnes_c9f536cd test;
-    class tests_test_agent_evaluation_testgoldendatasetpre_61f13a8f test;
-    class tests_test_agent_evaluation_testgoldendatasetpre_1f69ba41 test;
-    class tests_test_agent_evaluation_testgoldendatasetpre_9beaee2e test;
     class tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded test;
     class tests_test_agent_evaluation_testworkflowtelemetr_13c4307e test;
+    class tests_test_agent_evaluation_testworkflowtelemetr_03915a7c test;
+    class tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4 test;
+    class tests_test_agent_evaluation_testworkflowtelemetr_0a59c487 test;
     class services_agy_daemon_test_daemon_be9f2181 test;
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
     class services_agy_daemon_daemon_1bc119f5 module;
@@ -2003,13 +2169,13 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x183, calls x80, imports x72, imports x46. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x174, calls x76, imports x65, imports x46. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 9. Daemon Services Agy ====== -->
-<h2 id="daemon-services-agy">9. Daemon Services Agy</h2>
+<!-- ====== 10. Daemon Services Agy ====== -->
+<h2 id="daemon-services-agy">10. Daemon Services Agy</h2>
 <p>Daemon Services Agy groups implementation around daemon, services, agy, daemonpy, mostly in services/agy-daemon/daemon.py. This section covers 16 nodes and 37 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2239,8 +2405,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 10. Sentinel Actor Modelmd ====== -->
-<h2 id="sentinel-actor-modelmd">10. Sentinel Actor Modelmd</h2>
+<!-- ====== 11. Sentinel Actor Modelmd ====== -->
+<h2 id="sentinel-actor-modelmd">11. Sentinel Actor Modelmd</h2>
 <p>Sentinel Actor Modelmd groups implementation around sentinel, actor, modelmd, architecture, mostly in architecture/SENTINEL_ACTOR_MODEL.md. This section covers 10 nodes and 9 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2394,8 +2560,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 11. Indexjs Services Sparky ====== -->
-<h2 id="indexjs-services-sparky">11. Indexjs Services Sparky</h2>
+<!-- ====== 12. Indexjs Services Sparky ====== -->
+<h2 id="indexjs-services-sparky">12. Indexjs Services Sparky</h2>
 <p>Indexjs Services Sparky groups implementation around indexjs, services, sparky, mcp, mostly in services/sparky-mcp/index.js. This section covers 10 nodes and 13 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2547,8 +2713,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 12. Cynefin Ooda Frameworkmd ====== -->
-<h2 id="cynefin-ooda-frameworkmd">12. Cynefin Ooda Frameworkmd</h2>
+<!-- ====== 13. Cynefin Ooda Frameworkmd ====== -->
+<h2 id="cynefin-ooda-frameworkmd">13. Cynefin Ooda Frameworkmd</h2>
 <p>Cynefin Ooda Frameworkmd groups implementation around cynefin, ooda, frameworkmd, architecture, mostly in architecture/OODA_CYNEFIN_FRAMEWORK.md. This section covers 9 nodes and 8 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2691,8 +2857,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 13. Readmemd Automated Backup ====== -->
-<h2 id="readmemd-automated-backup">13. Readmemd Automated Backup</h2>
+<!-- ====== 14. Readmemd Automated Backup ====== -->
+<h2 id="readmemd-automated-backup">14. Readmemd Automated Backup</h2>
 <p>Readmemd Automated Backup groups implementation around readmemd, automated, backup, disaster, mostly in README.md. This section covers 9 nodes and 8 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2835,8 +3001,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 14. Sparky Watchdogsh Containers ====== -->
-<h2 id="sparky-watchdogsh-containers">14. Sparky Watchdogsh Containers</h2>
+<!-- ====== 15. Sparky Watchdogsh Containers ====== -->
+<h2 id="sparky-watchdogsh-containers">15. Sparky Watchdogsh Containers</h2>
 <p>Sparky Watchdogsh Containers groups implementation around sparky, watchdogsh, containers, n8n, mostly in n8n-stack/scripts/sparky-watchdog.sh. This section covers 8 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2968,28 +3134,68 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 15. Backupsh Scripts Encrypt ====== -->
-<h2 id="backupsh-scripts-encrypt">15. Backupsh Scripts Encrypt</h2>
-<p>Backupsh Scripts Encrypt groups implementation around backupsh, scripts, encrypt, home, mostly in scripts/backup.sh. This section covers 6 nodes and 7 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 16. Other ====== -->
+<h2 id="other">16. Other</h2>
+<p>Other groups implementation around n8n, scripts, stack, patch, mostly in scripts/backup.sh, scripts/restore.sh, containers/n8n-stack/README.md. This section covers 33 nodes and 28 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Backupsh Scripts Encrypt (6 nodes, 7 edges)
-    scripts_backup_sh_entry_941779f4("backup.sh script<br/><small>scripts/backup.sh</small>")
-    scripts_backup_run_encrypted_secrets_stage_7de502d5("encrypted secrets stage()<br/><small>scripts/backup.sh</small>")
-    scripts_backup_encrypt_file_f7031a5e("encrypt_file()<br/><small>scripts/backup.sh</small>")
-    scripts_backup_home_72d53e5e("HOME<br/><small>scripts/backup.sh</small>")
-    scripts_backup_path_cdd856c6("PATH<br/><small>scripts/backup.sh</small>")
-    scripts_backup_4aaabf4c("backup.sh")
+    %% Section: Other (33 nodes, 28 edges)
+    subgraph other_scripts_backup_sh_bfffff1e["scripts/backup.sh"]
+        scripts_backup_sh_entry_941779f4("backup.sh script<br/><small>scripts/backup.sh</small>")
+        scripts_backup_run_encrypted_secrets_stage_7de502d5("encrypted secrets stage()<br/><small>scripts/backup.sh</small>")
+        scripts_backup_encrypt_file_f7031a5e("encrypt_file()<br/><small>scripts/backup.sh</small>")
+        scripts_backup_home_72d53e5e("HOME<br/><small>scripts/backup.sh</small>")
+        scripts_backup_path_cdd856c6("PATH<br/><small>scripts/backup.sh</small>")
+    end
+    subgraph other_n8n_stack_scripts_postgres_maintenance_sh_58b1f505["n8n-stack/scripts/postgres-maintenance.sh"]
+        containers_n8n_stack_scripts_postgres_maintenanc_ffa26200("postgres-maintenance.sh script<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
+        containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26("run_sql()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
+        containers_n8n_stack_scripts_postgres_maintenanc_47501f84("postgres-maintenance.sh")
+        containers_n8n_stack_scripts_postgres_maintenanc_49b775ae("run_sql_query()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
+    end
+    subgraph other_scripts_restore_sh_082b8c82["scripts/restore.sh"]
+        scripts_restore_sh_entry_5705b250("restore.sh script<br/><small>scripts/restore.sh</small>")
+        scripts_restore_sync_published_versions_sql_25e55164("published versions sql()<br/><small>scripts/restore.sh</small>")
+        scripts_restore_verify_and_extract_secrets_39ea2100("verify_and_extract_secrets()<br/><small>scripts/restore.sh</small>")
+    end
+    subgraph other_n8n_stack_scripts_deploy_bridge_sh_ced6878c["n8n-stack/scripts/deploy-bridge.sh"]
+        containers_n8n_stack_scripts_deploy_bridge_e8bc9332("deploy-bridge.sh")
+        containers_n8n_stack_scripts_deploy_bridge_sh_en_69b20388("deploy-bridge.sh script<br/><small>n8n-stack/scripts/deploy-bridge.sh</small>")
+    end
+    subgraph other_n8n_stack_scripts_patch_gemini4_langchain_8198e9e9["n8n-stack/scripts/patch-gemini4-langchain.sh"]
+        containers_n8n_stack_scripts_patch_gemini4_langc_de0c86d3("patch-gemini4-langchain.sh script<br/><small>n8n-stack/scripts/patch-gemini4-langchain.sh</small>")
+        containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7("scripts/patch-gemini4-langchain.sh")
+    end
+    subgraph other_n8n_stack_scripts_patch_n8n_memory_orphans_bffc2658["n8n-stack/scripts/patch-n8n-memory-orphans.sh"]
+        containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263("patch-n8n-memory-orphans.sh script<br/><small>n8n-stack/scripts/patch-n8n-memory-orphans.sh</small>")
+        containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c("scripts/patch-n8n-memory-orphans.sh")
+    end
+    containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 -->|calls| containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26
     scripts_backup_run_encrypted_secrets_stage_7de502d5 -->|calls| scripts_backup_encrypt_file_f7031a5e
     scripts_backup_sh_entry_941779f4 -->|calls| scripts_backup_run_encrypted_secrets_stage_7de502d5
+    scripts_restore_sh_entry_5705b250 -->|calls| scripts_restore_sync_published_versions_sql_25e55164
+    scripts_restore_sh_entry_5705b250 -->|calls| scripts_restore_verify_and_extract_secrets_39ea2100
+    %% Omitted for readability: 15 nodes, 0 edges
     class scripts_backup_sh_entry_941779f4 function;
     class scripts_backup_run_encrypted_secrets_stage_7de502d5 function;
     class scripts_backup_encrypt_file_f7031a5e function;
     class scripts_backup_home_72d53e5e klass;
     class scripts_backup_path_cdd856c6 klass;
-    class scripts_backup_4aaabf4c function;
+    class containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 function;
+    class containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26 function;
+    class containers_n8n_stack_scripts_postgres_maintenanc_47501f84 function;
+    class containers_n8n_stack_scripts_postgres_maintenanc_49b775ae function;
+    class scripts_restore_sh_entry_5705b250 ui;
+    class scripts_restore_sync_published_versions_sql_25e55164 function;
+    class scripts_restore_verify_and_extract_secrets_39ea2100 function;
+    class containers_n8n_stack_scripts_deploy_bridge_e8bc9332 function;
+    class containers_n8n_stack_scripts_deploy_bridge_sh_en_69b20388 function;
+    class containers_n8n_stack_scripts_patch_gemini4_langc_de0c86d3 function;
+    class containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7 function;
+    class containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263 function;
+    class containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -3059,6 +3265,198 @@ flowchart LR
   <td><code>encrypted secrets stage()</code><br><small style="color:var(--muted)">scripts/backup.sh</small></td>
   <td>backup.sh script node in scripts/backup.sh.</td>
 </tr>
+<tr>
+  <td>7</td>
+  <td><code>restore.sh</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>restore.sh node in scripts/restore.sh.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>HOME</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>HOME node in scripts/restore.sh.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>PATH</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>PATH node in scripts/restore.sh.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>restore.sh script</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>published versions sql()</code><br><small style="color:var(--muted)">scripts/restore.sh</small><br><code>verify_and_extract_secrets()</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td>restore.sh script node in scripts/restore.sh.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>sync_published_versions_sql()</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>restore.sh script</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td>No direct outbound edge</td>
+  <td>sync_published_versions_sql() node in scripts/restore.sh.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>verify_and_extract_secrets()</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>restore.sh script</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
+  <td>No direct outbound edge</td>
+  <td>verify_and_extract_secrets() node in scripts/restore.sh.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>n8n-stack/README.md</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing n8n-stack/README.md.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>Architecture</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Architecture.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>🔒 Crucial Notes on `N8N_ENCRYPTION_KEY`</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🔒 Crucial Notes on `N8N_ENCRYPTION_KEY`.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>🚀 Deployment Instructions</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 🚀 Deployment Instructions.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>n8n Stack Configuration &amp; Deployment</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing n8n Stack Configuration &amp; Deployment.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>postgres-maintenance.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>postgres-maintenance.sh node in n8n-stack/scripts/postgres-maintenance.sh.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>run_sql()</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>postgres-maintenance.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
+  <td>No direct outbound edge</td>
+  <td>run_sql() node in n8n-stack/scripts/postgres-maintenance.sh.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>run_sql_query()</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>run_sql_query() node in n8n-stack/scripts/postgres-maintenance.sh.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>postgres-maintenance.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>run_sql()</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
+  <td>postgres-maintenance.sh script node in n8n-stack/scripts/postgres-maintenance.sh.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>scripts/patch-gemini4-langchain.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-gemini4-langchain.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>scripts/patch-gemini4-langchain.sh node in n8n-stack/scripts/patch-gemini4-langchain.sh.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>patch-gemini4-langchain.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-gemini4-langchain.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>patch-gemini4-langchain.sh script node in n8n-stack/scripts/patch-gemini4-langchain.sh.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>scripts/patch-n8n-memory-orphans.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-n8n-memory-orphans.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>scripts/patch-n8n-memory-orphans.sh node in n8n-stack/scripts/patch-n8n-memory-orphans.sh.</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>patch-n8n-memory-orphans.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-n8n-memory-orphans.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>patch-n8n-memory-orphans.sh script node in n8n-stack/scripts/patch-n8n-memory-orphans.sh.</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><code>deploy-bridge.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/deploy-bridge.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>deploy-bridge.sh node in n8n-stack/scripts/deploy-bridge.sh.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>deploy-bridge.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/deploy-bridge.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>deploy-bridge.sh script node in n8n-stack/scripts/deploy-bridge.sh.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>eval-history.md</code><br><small style="color:var(--muted)">docs/eval-history.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing eval-history.md.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>Sparky Agent Evaluation History (`DEF-07`)</code><br><small style="color:var(--muted)">docs/eval-history.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Sparky Agent Evaluation History (`DEF-07`).</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>n8n-sparky/patch-gemini4-langchain.sh</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-gemini4-langchain.sh</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>n8n-sparky/patch-gemini4-langchain.sh node in services/n8n-sparky/patch-gemini4-langchain.sh.</td>
+</tr>
 </table>
 
 <div class="grid">
@@ -3067,332 +3465,18 @@ flowchart LR
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>scripts/backup.sh</code></td><td>6 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: defines x4, calls x2, contains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 16. Other ====== -->
-<h2 id="other">16. Other</h2>
-<p>Other groups implementation around n8n, scripts, stack, patch, mostly in scripts/restore.sh, containers/n8n-stack/README.md, n8n-stack/scripts/postgres-maintenance.sh. This section covers 27 nodes and 21 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Other (27 nodes, 21 edges)
-    subgraph other_scripts_restore_sh_082b8c82["scripts/restore.sh"]
-        scripts_restore_sh_entry_5705b250("restore.sh script<br/><small>scripts/restore.sh</small>")
-        scripts_restore_sync_published_versions_sql_25e55164("published versions sql()<br/><small>scripts/restore.sh</small>")
-        scripts_restore_verify_and_extract_secrets_39ea2100("verify_and_extract_secrets()<br/><small>scripts/restore.sh</small>")
-        scripts_restore_home_a78cfefa("HOME<br/><small>scripts/restore.sh</small>")
-        scripts_restore_path_628a97e2("PATH<br/><small>scripts/restore.sh</small>")
-        scripts_restore_6fe4085c("restore.sh")
-    end
-    subgraph other_n8n_stack_scripts_postgres_maintenance_sh_58b1f505["n8n-stack/scripts/postgres-maintenance.sh"]
-        containers_n8n_stack_scripts_postgres_maintenanc_ffa26200("postgres-maintenance.sh script<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
-        containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26("run_sql()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
-        containers_n8n_stack_scripts_postgres_maintenanc_47501f84("postgres-maintenance.sh")
-        containers_n8n_stack_scripts_postgres_maintenanc_49b775ae("run_sql_query()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
-    end
-    subgraph other_n8n_stack_scripts_deploy_bridge_sh_ced6878c["n8n-stack/scripts/deploy-bridge.sh"]
-        containers_n8n_stack_scripts_deploy_bridge_e8bc9332("deploy-bridge.sh")
-        containers_n8n_stack_scripts_deploy_bridge_sh_en_69b20388("deploy-bridge.sh script<br/><small>n8n-stack/scripts/deploy-bridge.sh</small>")
-    end
-    subgraph other_n8n_stack_scripts_patch_gemini4_langchain_8198e9e9["n8n-stack/scripts/patch-gemini4-langchain.sh"]
-        containers_n8n_stack_scripts_patch_gemini4_langc_de0c86d3("patch-gemini4-langchain.sh script<br/><small>n8n-stack/scripts/patch-gemini4-langchain.sh</small>")
-        containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7("scripts/patch-gemini4-langchain.sh")
-    end
-    subgraph other_n8n_stack_scripts_patch_n8n_memory_orphans_bffc2658["n8n-stack/scripts/patch-n8n-memory-orphans.sh"]
-        containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263("patch-n8n-memory-orphans.sh script<br/><small>n8n-stack/scripts/patch-n8n-memory-orphans.sh</small>")
-        containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c("scripts/patch-n8n-memory-orphans.sh")
-    end
-    subgraph other_services_n8n_sparky_patch_gemini4_langchai_584e621f["services/n8n-sparky/patch-gemini4-langchain.sh"]
-        services_n8n_sparky_patch_gemini4_langchain_1297aa67("n8n-sparky/patch-gemini4-langchain.sh")
-        services_n8n_sparky_patch_gemini4_langchain_sh_e_a532741a("patch-gemini4-langchain.sh script<br/><small>services/n8n-sparky/patch-gemini4-langchain.sh</small>")
-    end
-    containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 -->|calls| containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26
-    scripts_restore_sh_entry_5705b250 -->|calls| scripts_restore_sync_published_versions_sql_25e55164
-    scripts_restore_sh_entry_5705b250 -->|calls| scripts_restore_verify_and_extract_secrets_39ea2100
-    %% Omitted for readability: 9 nodes, 0 edges
-    class scripts_restore_sh_entry_5705b250 ui;
-    class scripts_restore_sync_published_versions_sql_25e55164 function;
-    class scripts_restore_verify_and_extract_secrets_39ea2100 function;
-    class scripts_restore_home_a78cfefa klass;
-    class scripts_restore_path_628a97e2 klass;
-    class scripts_restore_6fe4085c ui;
-    class containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 function;
-    class containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26 function;
-    class containers_n8n_stack_scripts_postgres_maintenanc_47501f84 function;
-    class containers_n8n_stack_scripts_postgres_maintenanc_49b775ae function;
-    class containers_n8n_stack_scripts_deploy_bridge_e8bc9332 function;
-    class containers_n8n_stack_scripts_deploy_bridge_sh_en_69b20388 function;
-    class containers_n8n_stack_scripts_patch_gemini4_langc_de0c86d3 function;
-    class containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7 function;
-    class containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263 function;
-    class containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c function;
-    class services_n8n_sparky_patch_gemini4_langchain_1297aa67 function;
-    class services_n8n_sparky_patch_gemini4_langchain_sh_e_a532741a function;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>restore.sh</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>restore.sh node in scripts/restore.sh.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>HOME</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>HOME node in scripts/restore.sh.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>PATH</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>PATH node in scripts/restore.sh.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>restore.sh script</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>published versions sql()</code><br><small style="color:var(--muted)">scripts/restore.sh</small><br><code>verify_and_extract_secrets()</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td>restore.sh script node in scripts/restore.sh.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>sync_published_versions_sql()</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>restore.sh script</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td>No direct outbound edge</td>
-  <td>sync_published_versions_sql() node in scripts/restore.sh.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>verify_and_extract_secrets()</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>restore.sh script</code><br><small style="color:var(--muted)">scripts/restore.sh</small></td>
-  <td>No direct outbound edge</td>
-  <td>verify_and_extract_secrets() node in scripts/restore.sh.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>n8n-stack/README.md</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing n8n-stack/README.md.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>Architecture</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Architecture.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>🔒 Crucial Notes on `N8N_ENCRYPTION_KEY`</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 🔒 Crucial Notes on `N8N_ENCRYPTION_KEY`.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>🚀 Deployment Instructions</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 🚀 Deployment Instructions.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>n8n Stack Configuration &amp; Deployment</code><br><small style="color:var(--muted)">containers/n8n-stack/README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing n8n Stack Configuration &amp; Deployment.</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>postgres-maintenance.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>postgres-maintenance.sh node in n8n-stack/scripts/postgres-maintenance.sh.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>run_sql()</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>postgres-maintenance.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
-  <td>No direct outbound edge</td>
-  <td>run_sql() node in n8n-stack/scripts/postgres-maintenance.sh.</td>
-</tr>
-<tr>
-  <td>14</td>
-  <td><code>run_sql_query()</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>run_sql_query() node in n8n-stack/scripts/postgres-maintenance.sh.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>postgres-maintenance.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>run_sql()</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
-  <td>postgres-maintenance.sh script node in n8n-stack/scripts/postgres-maintenance.sh.</td>
-</tr>
-<tr>
-  <td>16</td>
-  <td><code>scripts/patch-gemini4-langchain.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-gemini4-langchain.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>scripts/patch-gemini4-langchain.sh node in n8n-stack/scripts/patch-gemini4-langchain.sh.</td>
-</tr>
-<tr>
-  <td>17</td>
-  <td><code>patch-gemini4-langchain.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-gemini4-langchain.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>patch-gemini4-langchain.sh script node in n8n-stack/scripts/patch-gemini4-langchain.sh.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>scripts/patch-n8n-memory-orphans.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-n8n-memory-orphans.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>scripts/patch-n8n-memory-orphans.sh node in n8n-stack/scripts/patch-n8n-memory-orphans.sh.</td>
-</tr>
-<tr>
-  <td>19</td>
-  <td><code>patch-n8n-memory-orphans.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-n8n-memory-orphans.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>patch-n8n-memory-orphans.sh script node in n8n-stack/scripts/patch-n8n-memory-orphans.sh.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>deploy-bridge.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/deploy-bridge.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>deploy-bridge.sh node in n8n-stack/scripts/deploy-bridge.sh.</td>
-</tr>
-<tr>
-  <td>21</td>
-  <td><code>deploy-bridge.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/deploy-bridge.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>deploy-bridge.sh script node in n8n-stack/scripts/deploy-bridge.sh.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>eval-history.md</code><br><small style="color:var(--muted)">docs/eval-history.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing eval-history.md.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>Sparky Agent Evaluation History (`DEF-07`)</code><br><small style="color:var(--muted)">docs/eval-history.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Sparky Agent Evaluation History (`DEF-07`).</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>n8n-sparky/patch-gemini4-langchain.sh</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-gemini4-langchain.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>n8n-sparky/patch-gemini4-langchain.sh node in services/n8n-sparky/patch-gemini4-langchain.sh.</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>patch-gemini4-langchain.sh script</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-gemini4-langchain.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>patch-gemini4-langchain.sh script node in services/n8n-sparky/patch-gemini4-langchain.sh.</td>
-</tr>
-<tr>
-  <td>26</td>
-  <td><code>n8n-sparky/patch-n8n-memory-orphans.sh</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-n8n-memory-orphans.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>n8n-sparky/patch-n8n-memory-orphans.sh node in services/n8n-sparky/patch-n8n-memory-orphans.sh.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>patch-n8n-memory-orphans.sh script</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-n8n-memory-orphans.sh</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>patch-n8n-memory-orphans.sh script node in services/n8n-sparky/patch-n8n-memory-orphans.sh.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>scripts/restore.sh</code></td><td>6 nodes</td></tr>
+<tr><td><code>scripts/restore.sh</code></td><td>6 nodes</td></tr>
 <tr><td><code>containers/n8n-stack/README.md</code></td><td>5 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/postgres-maintenance.sh</code></td><td>4 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/deploy-bridge.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/patch-gemini4-langchain.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/patch-n8n-memory-orphans.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>docs/eval-history.md</code></td><td>2 nodes</td></tr>
-<tr><td><code>services/n8n-sparky/patch-gemini4-langchain.sh</code></td><td>2 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x12, defines x6, calls x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x13, defines x10, calls x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3403,17 +3487,17 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>946</td></tr>
-      <tr><td>Edges</td><td>1670</td></tr>
+      <tr><td>Nodes</td><td>948</td></tr>
+      <tr><td>Edges</td><td>1672</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>71</td></tr>
+      <tr><td>Communities</td><td>74</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>1487</td></tr>
+      <tr><td>EXTRACTED</td><td>1489</td></tr>
       <tr><td>INFERRED</td><td>183</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -3422,7 +3506,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-03 09:09 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-03 10:22 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

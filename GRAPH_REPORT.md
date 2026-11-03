@@ -1,12 +1,12 @@
 # Graph Report - sparky-backup  (2026-11-03)
 
 ## Corpus Check
-- 84 files · ~131,704 words
+- 84 files · ~131,890 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: (none) 5, .service 5, .example 1)
 
 ## Summary
-- 946 nodes · 1670 edges · 71 communities (54 shown, 17 thin omitted)
+- 948 nodes · 1672 edges · 74 communities (56 shown, 18 thin omitted)
 - Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 183 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
@@ -82,9 +82,12 @@
 - server
 - ref_child_process
 - run-agent-eval.sh
+- n8n-sparky/test-n8n-patches.js
 - sync-services-to-repo.sh
 - n8n-stack/scripts/deploy-bridge.sh
 - eval-history.md
+- ref_path
+- TestGoldenDatasetPresence
 - n8n-sparky/patch-gemini4-langchain.sh
 - n8n-sparky/patch-n8n-memory-orphans.sh
 
@@ -115,7 +118,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (71 total, 17 thin omitted)
+## Communities (74 total, 18 thin omitted)
 
 ### Community 0 - "server.js"
 Cohesion: 0.05
@@ -226,8 +229,8 @@ Cohesion: 0.13
 Nodes (11): TOOLS, assert, { createMcpHttpServer }, crypto, fs, RFC-7591, os, path (+3 more)
 
 ### Community 26 - "scripts/test-n8n-patches.js"
-Cohesion: 0.05
-Nodes (39): assert, { cleanupOrphanedMessages }, entries, fs, geminiCjsPath, geminiMessages, geminiMessagesPath, { getGeminiAPI } (+31 more)
+Cohesion: 0.12
+Nodes (15): assert, { cleanupOrphanedMessages }, entries, fs, geminiCjsPath, geminiMessages, geminiMessagesPath, { getGeminiAPI } (+7 more)
 
 ### Community 27 - "readStreamUtf8"
 Cohesion: 0.26
@@ -246,8 +249,8 @@ Cohesion: 0.47
 Nodes (5): HOME, PATH, restore.sh script, sync_published_versions_sql(), verify_and_extract_secrets()
 
 ### Community 35 - "correction-learner.js"
-Cohesion: 0.11
-Nodes (28): RFC-2822, DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`), containsSecretOrPassword(), createCorrectionLearner(), extractAndSaveCorrection(), detectCorrectionSignal(), findDuplicateFieldNote(), redactAllSecrets() (+20 more)
+Cohesion: 0.10
+Nodes (30): RFC-2822, DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`), containsSecretOrPassword(), createCorrectionLearner(), extractAndSaveCorrection(), detectCorrectionSignal(), findDuplicateFieldNote(), redactAllSecrets() (+22 more)
 
 ### Community 36 - "probe-incident-signatures.js"
 Cohesion: 0.17
@@ -361,10 +364,18 @@ Nodes (5): { execFile }, formatPgCell(), formatPgResultAsPsql(), RAW_STRING_OIDS
 Cohesion: 0.50
 Nodes (3): HOME, PATH, run-agent-eval.sh script
 
+### Community 66 - "n8n-sparky/test-n8n-patches.js"
+Cohesion: 0.13
+Nodes (15): assert, { cleanupOrphanedMessages }, entries, fs, geminiCjsPath, geminiMessages, geminiMessagesPath, { getGeminiAPI } (+7 more)
+
+### Community 70 - "ref_path"
+Cohesion: 0.25
+Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrateUrlParam(), path, runPsql() (+1 more)
+
 ## Knowledge Gaps
 - **20 isolated node(s):** `PATH`, `PATH`, `HOME`, `REGISTRY_AUTH_FILE`, `PATH` (+15 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 456 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 458 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **18 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

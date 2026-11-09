@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `83ac5403`
+- Built from commit: `1164baad`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -46,7 +46,7 @@
 - readStreamUtf8
 - update.sh
 - memory-hygiene.js
-- db-adapter.test.js
+- whatsapp-egress.test.js
 - patch-gemini4-langchain.sh
 - install-apps.sh
 - restore.sh
@@ -56,13 +56,13 @@
 - heartbeat-store.js
 - quiet-hours.test.js
 - host-adapters.test.js
-- whatsapp-egress.test.js
+- ref_path
 - lifecycle.test.js
 - config.test.js
 - phase2c-ops.test.js
 - TestEvaluationSafetyGuard
 - migrate-loop-keys.js
-- createDb
+- ref_child_process
 - index.js
 - server
 - patch-n8n-memory-orphans.sh
@@ -72,21 +72,21 @@
 - config.js
 - TestDaemon
 - callVertexApiWithRetry
-- ref_child_process
+- queryPostgresWithStdin
 - ref_node_assert
 - server-endpoints.test.js
 - vertex-search-bridge/package.json
 - ref_node_test
 - daemon.py
 - Runbook: Containerized Vertex Search Bridge & Sub-Minute Systemd Rollback (`DEF-10`)
-- queryPostgresWithStdin
 - .execute_task
+- db-adapter.test.js
 - run-agent-eval.sh
 - nudge-telemetry.js
 - sync-services-to-repo.sh
 - n8n-stack/scripts/deploy-bridge.sh
 - eval-history.md
-- ref_path
+- createDb
 - test_daemon.py
 - Requirements Anchor: `[Sparky-AI]` Event-Driven Email Handoff to Gemini App
 - n8n-sparky/patch-gemini4-langchain.sh
@@ -243,9 +243,9 @@ Nodes (12): readStreamUtf8(), callGoogleRoutesApi(), callOsrmFallback(), compute
 Cohesion: 0.16
 Nodes (22): DEF-05: Semantic Memory Contradiction Detection & Temporal Decay, computeRecencyBoost(), createMemoryHygieneStore(), findCandidateNeighbors(), ingestMemoryWithHygiene(), reconcileExistingMemories(), EPISODIC_TYPES, hasFactMutationTokens() (+14 more)
 
-### Community 30 - "db-adapter.test.js"
+### Community 30 - "whatsapp-egress.test.js"
 Cohesion: 0.25
-Nodes (5): assert, DB_PATH, fs, path, test
+Nodes (5): assert, EGRESS_PATH, fs, path, test
 
 ### Community 33 - "restore.sh"
 Cohesion: 0.47
@@ -279,9 +279,9 @@ Nodes (17): BYPASS_SOURCES, computeQuietHoursVerdict(), getLocalHour(), hourForm
 Cohesion: 0.17
 Nodes (7): assert, fs, HOST_ADAPTERS_PATH, http, net, path, test
 
-### Community 40 - "whatsapp-egress.test.js"
+### Community 40 - "ref_path"
 Cohesion: 0.25
-Nodes (5): assert, EGRESS_PATH, fs, path, test
+Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrateUrlParam(), path, runPsql() (+1 more)
 
 ### Community 41 - "lifecycle.test.js"
 Cohesion: 0.17
@@ -299,9 +299,9 @@ Nodes (7): assert, { execFileSync }, fs, path, PATHS, readOrSkip(), test
 Cohesion: 0.08
 Nodes (48): classifyFamilyInboundText(), createFamilyRelayService(), configureFamilyMember(), handleFamilyInbound(), loadCtx(), loadFamilyLoops(), processFamilyInbound(), recordChatHistory() (+40 more)
 
-### Community 46 - "createDb"
-Cohesion: 0.53
-Nodes (5): createDb(), getOrInitPgPool(), queryPostgresJson(), queryPostgresScript(), queryPostgresWithStdin()
+### Community 46 - "ref_child_process"
+Cohesion: 0.33
+Nodes (5): { execFile }, formatPgCell(), formatPgResultAsPsql(), RAW_STRING_OIDS, registerRawStringTypeParsers()
 
 ### Community 47 - "index.js"
 Cohesion: 0.23
@@ -331,9 +331,9 @@ Nodes (8): compactSessionChatHistory(), compactToolObservationContent(), createM
 Cohesion: 0.18
 Nodes (13): analyzeImageBuffer(), callGeminiJson(), callVertexApiWithRetry(), generateEmbedding(), getCircuitBreaker(), insertSemanticMemory(), kgStore, memoryHygieneStore (+5 more)
 
-### Community 56 - "ref_child_process"
-Cohesion: 0.33
-Nodes (5): { execFile }, formatPgCell(), formatPgResultAsPsql(), RAW_STRING_OIDS, registerRawStringTypeParsers()
+### Community 56 - "queryPostgresWithStdin"
+Cohesion: 0.20
+Nodes (11): atomicWriteJson(), loadBriefedMeetings(), loopStore, markBriefedMeeting(), queryPostgresWithStdin(), resolveDecision(), saveContext(), saveDecisions() (+3 more)
 
 ### Community 57 - "ref_node_assert"
 Cohesion: 0.29
@@ -359,9 +359,9 @@ Nodes (3): extract_stream_json_result(), read_heartbeat_meta(), sd_notify()
 Cohesion: 0.33
 Nodes (5): Emergency Sub-Minute Rollback to Host `systemd` (`vertex-search.service`), Overview, Returning from Host `systemd` to Container (`vertex-bridge`), Runbook: Containerized Vertex Search Bridge & Sub-Minute Systemd Rollback (`DEF-10`), Standard Deployment & Digest Rollback (`deploy-bridge.sh`)
 
-### Community 63 - "queryPostgresWithStdin"
-Cohesion: 0.20
-Nodes (11): atomicWriteJson(), loadBriefedMeetings(), loopStore, markBriefedMeeting(), queryPostgresWithStdin(), resolveDecision(), saveContext(), saveDecisions() (+3 more)
+### Community 64 - "db-adapter.test.js"
+Cohesion: 0.25
+Nodes (5): assert, DB_PATH, fs, path, test
 
 ### Community 65 - "run-agent-eval.sh"
 Cohesion: 0.50
@@ -371,9 +371,9 @@ Nodes (3): HOME, PATH, run-agent-eval.sh script
 Cohesion: 0.09
 Nodes (33): RFC-2822, classifyDecisionChoice(), computeSenderAdjustment(), createNudgeTelemetryStore(), getEffectivenessReport(), getSenderFeedback(), extractSenderKey(), formatTriageFeedbackXml() (+25 more)
 
-### Community 70 - "ref_path"
-Cohesion: 0.25
-Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrateUrlParam(), path, runPsql() (+1 more)
+### Community 70 - "createDb"
+Cohesion: 0.53
+Nodes (5): createDb(), getOrInitPgPool(), queryPostgresJson(), queryPostgresScript(), queryPostgresWithStdin()
 
 ## Knowledge Gaps
 - **20 isolated node(s):** `PATH`, `PATH`, `HOME`, `REGISTRY_AUTH_FILE`, `PATH` (+15 more)
@@ -384,7 +384,7 @@ Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrat
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `createKgStore()` connect `kg-store.js` to `server.js`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **What connects `PATH`, `PATH`, `HOME` to the rest of the system?**
   _20 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `server.js` be split into smaller, more focused modules?**
@@ -393,7 +393,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **Should `test_workspace_mutations.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11428571428571428 - nodes in this community are weakly interconnected._
-- **Why does `createDb()` connect `createDb` to `ref_child_process`, `ref_node_assert`, `server.js`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `createDb()` connect `createDb` to `server.js`, `ref_node_assert`, `ref_child_process`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **Should `family-relay.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11904761904761904 - nodes in this community are weakly interconnected._

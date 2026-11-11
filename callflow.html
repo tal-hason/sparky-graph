@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 1025 nodes, 1859 edges, 75 communities. Commit: 8ec85fd</p>
+<p class="subtitle">Generated from graphify knowledge graph: 1068 nodes, 1960 edges, 75 communities. Commit: 195bf87</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -98,11 +98,11 @@ flowchart LR
     class CLI_SKILLS_9964CBB8 module;
     INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>35 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>455 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>512 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>358 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>344 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
     SERVICES_SPARKY_MCP_D7A382D7("Services Sparky Mcp<br/><small>12 nodes</small>")
     class SERVICES_SPARKY_MCP_D7A382D7 module;
@@ -118,13 +118,13 @@ flowchart LR
     class BACKUPSH_SCRIPTS_ENCRYPT_C017EB1B module;
     OTHER_D0941E68("Other<br/><small>34 nodes</small>")
     class OTHER_D0941E68 module;
-    SERVE_API_35EC8E86 -->|imports x36| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x15| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|imports x7| CLI_SKILLS_9964CBB8
-    SERVE_API_35EC8E86 -->|imports x7| ANALYSIS_CLUSTERING_C79796DA
+    SERVE_API_35EC8E86 -->|imports x40| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x13| SERVE_API_35EC8E86
+    TESTS_FIXTURES_B84B1DCC -->|imports x7| CLI_SKILLS_9964CBB8
+    TESTS_FIXTURES_B84B1DCC -->|imports x6| ANALYSIS_CLUSTERING_C79796DA
     INGEST_CACHE_UPDATE_FF457338 -->|imports x5| SERVICES_SPARKY_MCP_D7A382D7
-    TESTS_FIXTURES_B84B1DCC -->|imports x5| CLI_SKILLS_9964CBB8
-    TESTS_FIXTURES_B84B1DCC -->|imports x4| ANALYSIS_CLUSTERING_C79796DA
+    SERVE_API_35EC8E86 -->|imports x5| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x5| ANALYSIS_CLUSTERING_C79796DA
     INGEST_CACHE_UPDATE_FF457338 -->|imports x3| CLI_SKILLS_9964CBB8
     TESTS_FIXTURES_B84B1DCC -->|imports x3| SERVICES_SPARKY_MCP_D7A382D7
     SERVICES_SPARKY_MCP_D7A382D7 -->|imports x3| CLI_SKILLS_9964CBB8
@@ -146,22 +146,22 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>49</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>40</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>455</td><td><code>45, 16, 0, 10, 35, 29, 48, 36, 66, 38, 8, 55, 27, 11, 56, 51, 62</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>358</td><td><code>5, 4, 26, 53, 1, 37, 25, 39, 41, 58, 60, 9, 15, 42, 43, 61, 30, 64, 44, 70, 46, 50, 3, 54, 57, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Backupsh Scripts Encrypt</td><td>6</td><td><code>23</code></td></tr><tr><td>Other</td><td>34</td><td><code>33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Graph Build</td><td>49</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>40</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>512</td><td><code>45, 16, 0, 36, 35, 66, 10, 3, 29, 48, 38, 53, 27, 55, 11, 51, 56, 62</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>344</td><td><code>5, 1, 26, 4, 37, 25, 9, 39, 41, 61, 58, 60, 15, 42, 43, 30, 64, 44, 54, 8, 70, 46, 50, 57, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Backupsh Scripts Encrypt</td><td>6</td><td><code>23</code></td></tr><tr><td>Other</td><td>34</td><td><code>33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">Graph Build -&gt; Tests &amp; Fixtures -&gt; Serving API -&gt; CLI &amp; Skill Installers -&gt; Analysis &amp; Clustering -&gt; Outputs &amp; Docs -&gt; Ingestion &amp; Updates</div>
+    <div class="arrow-chain">Graph Build -&gt; Serving API -&gt; Tests &amp; Fixtures -&gt; CLI &amp; Skill Installers -&gt; Analysis &amp; Clustering -&gt; Outputs &amp; Docs -&gt; Ingestion &amp; Updates</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>1025 nodes · 1859 edges · 75 communities (52 shown, 23 thin omitted)</li>
-      <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 203 edges (avg confidence: 0.86)</li>
+      <li>1068 nodes · 1960 edges · 75 communities (52 shown, 23 thin omitted)</li>
+      <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 220 edges (avg confidence: 0.85)</li>
       <li>Token cost: 0 input · 0 output</li>
-      <li>1. `server` - 82 edges</li>
+      <li>1. `server` - 83 edges</li>
       <li>2. `TaskDaemon` - 21 edges</li>
       <li>3. `queryPostgresJson()` - 20 edges</li>
     </ul>
@@ -1394,12 +1394,12 @@ flowchart LR
 
 <!-- ====== 7. Serving API ====== -->
 <h2 id="serve-api">7. Serving API</h2>
-<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, services/vertex-search-bridge/family-relay.js. This section covers 455 nodes and 1040 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, services/vertex-search-bridge/model-router.js. This section covers 512 nodes and 1145 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (455 nodes, 1040 edges)
+    %% Section: Serving API (512 nodes, 1145 edges)
     subgraph serve_api_services_vertex_search_bridge_host_ada_93766852["services/vertex-search-bridge/host-adapters.js"]
         services_vertex_search_bridge_host_adapters_crea_479719ca("assertSafeBrowserUrl()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
         services_vertex_search_bridge_host_adapters_vali_26bd07f0("validateUrlForBrowser()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
@@ -1418,10 +1418,10 @@ flowchart LR
         services_vertex_search_bridge_server_querypostgr_2572da55("queryPostgresScript()<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_createdecis_71782b9a("createDecision()<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_querypostgr_f41a7819("queryPostgresJson()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_atomicwrite_e6e2c775("atomicWriteJson()<br/><small>services/vertex-search-bridge/server.js</small>")
     end
-    services_vertex_search_bridge_kg_store_createkgs_338b862f("upsertKgEntity()<br/><small>services/vertex-search-bridge/kg-store.js</small>")
+    services_vertex_search_bridge_nudge_telemetry_in_fd39db85("inferDecisionSource()<br/><small>services/vertex-search-bridge/nudge-telemetry.js</small>")
     services_vertex_search_bridge_test_memory_hygien_f891ecdc("memory-hygiene.test.js")
+    services_vertex_search_bridge_test_model_router_b8720082("model-router.test.js")
     services_vertex_search_bridge_server_querypostgr_2572da55 -->|calls| services_vertex_search_bridge_server_querypostgr_2572da55
     services_vertex_search_bridge_host_adapters_crea_479719ca -->|calls| services_vertex_search_bridge_host_adapters_vali_26bd07f0
     services_vertex_search_bridge_host_adapters_crea_ea040b16 -->|calls| services_vertex_search_bridge_host_adapters_crea_479719ca
@@ -1430,16 +1430,16 @@ flowchart LR
     services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_iswa_9b0b5beb
     services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_fetc_981b1569
     services_vertex_search_bridge_host_adapters_vali_26bd07f0 -->|calls| services_vertex_search_bridge_host_adapters_ispr_7476077b
+    services_vertex_search_bridge_server_createdecis_71782b9a -->|calls| services_vertex_search_bridge_nudge_telemetry_in_fd39db85
     services_vertex_search_bridge_server_createdecis_71782b9a -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
-    services_vertex_search_bridge_server_createdecis_71782b9a -->|calls| services_vertex_search_bridge_server_atomicwrite_e6e2c775
     services_vertex_search_bridge_server_buildsessio_a136528f -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
     services_vertex_search_bridge_server_querypostgr_f41a7819 -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_buildsessio_a136528f
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
-    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_atomicwrite_e6e2c775
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_createdecis_71782b9a
     services_vertex_search_bridge_server_familyrelay_213cdabe -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
-    %% Omitted for readability: 437 nodes, 0 edges
+    services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_nudge_telemetry_in_fd39db85
+    %% Omitted for readability: 494 nodes, 0 edges
     class services_vertex_search_bridge_host_adapters_crea_479719ca async;
     class services_vertex_search_bridge_host_adapters_vali_26bd07f0 function;
     class services_vertex_search_bridge_host_adapters_crea_ea040b16 function;
@@ -1455,9 +1455,9 @@ flowchart LR
     class services_vertex_search_bridge_server_querypostgr_2572da55 function;
     class services_vertex_search_bridge_server_createdecis_71782b9a function;
     class services_vertex_search_bridge_server_querypostgr_f41a7819 function;
-    class services_vertex_search_bridge_server_atomicwrite_e6e2c775 function;
-    class services_vertex_search_bridge_kg_store_createkgs_338b862f function;
+    class services_vertex_search_bridge_nudge_telemetry_in_fd39db85 function;
     class services_vertex_search_bridge_test_memory_hygien_f891ecdc test;
+    class services_vertex_search_bridge_test_model_router_b8720082 test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1633,91 +1633,91 @@ flowchart LR
 </tr>
 <tr>
   <td>20</td>
-  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>family-relay.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/family-relay.test.js</small><br><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+1 more</td>
-  <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>formatDueBucket()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>normalizeLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>buildCanonicalLoopKey() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
+  <td><span class="tag tag-hook">UI</span></td>
+  <td><code>loop-store.integration.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-store.integration.test.js</small><br><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>markLoopNotified()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>runOpenLoopsGC()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br>+1 more</td>
+  <td>createLoopStore() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>buildSessionPreamble()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>getSystemAudit()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+2 more</td>
-  <td><code>effectiveDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>formatIsraelDate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>classifyLoopsByDue() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>resolveDecision()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>safeTable()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>sqlJsonb()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
+  <td>completeOpenLoopById() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>effectiveDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>markLoopNotified()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>effectiveDue() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>checkAndDispatchDueReminders()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>safeTable()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
+  <td>markLoopNotified() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>encodeCanonicalLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>runOpenLoopsGC()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>encodeCanonicalLoopId() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>safeTable()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
+  <td>runOpenLoopsGC() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>24</td>
-  <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>safeTable()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br>+1 more</td>
-  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>extractLoopEntityKey() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>markLoopNotified()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>runOpenLoopsGC()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br>+1 more</td>
+  <td>No direct outbound edge</td>
+  <td>safeTable() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>25</td>
-  <td><code>formatDueBucket()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>upsertOpenLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>formatDueBucket() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>createLoopStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>safeTable()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>sqlJsonb()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br>+2 more</td>
+  <td>upsertOpenLoop() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>formatIsraelDate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>sqlJsonb()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br>+5 more</td>
   <td>No direct outbound edge</td>
-  <td>formatIsraelDate() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td>sqlJsonb() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>family-relay.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/family-relay.test.js</small><br><code>loop-keys.fixture.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.fixture.test.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+5 more</td>
-  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>encodeCanonicalLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>generateDeterministicLoopId() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>completeOpenLoopById()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>loadFamilyLoops()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br>+8 more</td>
+  <td>No direct outbound edge</td>
+  <td>sqlStr() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>normalizeLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>sqlTimestamptz()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br>+2 more</td>
-  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>normalizeLoopTitle() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>loop-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>upsertOpenLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>sqlTimestamptz() node in services/vertex-search-bridge/loop-store.js.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>normalizeSubject()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>loadAllRows()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>normalizeSubject() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>runMigration()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
+  <td><code>queryPostgresWithStdin()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
+  <td>loadAllRows() node in vertex-search-bridge/scripts/migrate-loop-keys.js.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>senderDomain()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>queryPostgresWithStdin()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
-  <td>senderDomain() node in services/vertex-search-bridge/loop-keys.js.</td>
+  <td><code>loadAllRows()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small><br><code>runMigration()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/migrate-loop-keys.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>queryPostgresWithStdin() node in vertex-search-bridge/scripts/migrate-loop-keys.js.</td>
 </tr>
 </table>
 
@@ -1726,19 +1726,19 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>120 nodes</td></tr>
+      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>123 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/kg-store.js</code></td><td>38 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/model-router.js</code></td><td>28 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/family-relay.js</code></td><td>24 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/memory-hygiene.js</code></td><td>21 nodes</td></tr>
 <tr><td><code>docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md</code></td><td>20 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/host-adapters.js</code></td><td>18 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/handoff-store.js</code></td><td>16 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/loop-keys.js</code></td><td>14 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/config.js</code></td><td>17 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x447, contains x280, indirect call x147, imports x114. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x473, contains x308, indirect call x173, imports x121. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1822,12 +1822,12 @@ flowchart LR
 
 <!-- ====== 9. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">9. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, services/agy-daemon/daemon.py, tests/test_graphify_integration.py. This section covers 358 nodes and 500 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, services/agy-daemon/daemon.py, tests/test_graphify_integration.py. This section covers 344 nodes and 494 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (358 nodes, 500 edges)
+    %% Section: Tests &amp; Fixtures (344 nodes, 494 edges)
     subgraph tests_fixtures_tests_test_agent_evaluation_py_f3d133d4["tests/test_agent_evaluation.py"]
         tests_test_agent_evaluation_testevaluationharnes_24b65e64("TestEvaluationHarnessWorkflow<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_3f394a29("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
@@ -1838,7 +1838,9 @@ flowchart LR
         tests_test_agent_evaluation_testevaluationharnes_d5e21f36("test_metrics_expression_anchoring()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_c9f536cd("test_llm_judge_parameter_locking()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationsafety_81af6351("TestEvaluationSafetyGuard<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testevaluationsafety_a0c88f0b("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_14e1e598("test_dual_prompt_dispatch_guardrail_present()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_01909a47("test_conversational_handshake_decoupled_exception_present()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_9b06f145("test_turn1_recall_context_exemption_present()<br/><small>tests/test_agent_evaluation.py</small>")
     end
     subgraph tests_fixtures_services_agy_daemon_daemon_py_976213a8["services/agy-daemon/daemon.py"]
         services_agy_daemon_daemon_taskdaemon_ea787a57("TaskDaemon<br/><small>services/agy-daemon/daemon.py</small>")
@@ -1849,11 +1851,7 @@ flowchart LR
         services_agy_daemon_test_daemon_be9f2181("test_daemon.py")
         services_agy_daemon_test_daemon_testdaemon_c1a640de("TestDaemon<br/><small>services/agy-daemon/test_daemon.py</small>")
     end
-    subgraph tests_fixtures_tests_test_graphify_integration_p_70c71ca2["tests/test_graphify_integration.py"]
-        tests_test_graphify_integration_teststrictexclus_57e082d3("TestStrictExclusionBoundary<br/><small>tests/test_graphify_integration.py</small>")
-        tests_test_graphify_integration_teststrictexclus_1a8620a8("test_graphifyignore_exists_and_fences_excluded_paths()<br/><small>tests/test_graphify_integration.py</small>")
-    end
-    services_vertex_search_bridge_test_lifecycle_tes_8f013867("lifecycle.test.js")
+    services_vertex_search_bridge_test_loop_keys_tes_66d6319b("loop-keys.test.js")
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_3f394a29
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_4cdcc21f
@@ -1861,8 +1859,9 @@ flowchart LR
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_b4c8783d
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_d5e21f36
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_c9f536cd
-    tests_test_graphify_integration_teststrictexclus_57e082d3 -->|method| tests_test_graphify_integration_teststrictexclus_1a8620a8
-    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_a0c88f0b
+    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_14e1e598
+    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_01909a47
+    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_9b06f145
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_run_2190cef7
     tests_test_agent_evaluation_testevaluationharnes_5e7cc6f0 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_4cdcc21f -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
@@ -1872,7 +1871,7 @@ flowchart LR
     services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_taskdaemon_ea787a57
     services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_1bc119f5
     services_agy_daemon_test_daemon_testdaemon_c1a640de -->|uses| services_agy_daemon_daemon_taskdaemon_ea787a57
-    %% Omitted for readability: 340 nodes, 0 edges
+    %% Omitted for readability: 326 nodes, 0 edges
     class tests_test_agent_evaluation_testevaluationharnes_24b65e64 test;
     class tests_test_agent_evaluation_testevaluationharnes_3f394a29 test;
     class tests_test_agent_evaluation_testevaluationharnes_9680a51c test;
@@ -1882,15 +1881,15 @@ flowchart LR
     class tests_test_agent_evaluation_testevaluationharnes_d5e21f36 test;
     class tests_test_agent_evaluation_testevaluationharnes_c9f536cd test;
     class tests_test_agent_evaluation_testevaluationsafety_81af6351 test;
-    class tests_test_agent_evaluation_testevaluationsafety_a0c88f0b test;
+    class tests_test_agent_evaluation_testevaluationsafety_14e1e598 test;
+    class tests_test_agent_evaluation_testevaluationsafety_01909a47 test;
+    class tests_test_agent_evaluation_testevaluationsafety_9b06f145 test;
     class services_agy_daemon_daemon_taskdaemon_ea787a57 klass;
     class services_agy_daemon_daemon_1bc119f5 module;
     class services_agy_daemon_daemon_taskdaemon_run_2190cef7 function;
     class services_agy_daemon_test_daemon_be9f2181 test;
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
-    class tests_test_graphify_integration_teststrictexclus_57e082d3 test;
-    class tests_test_graphify_integration_teststrictexclus_1a8620a8 test;
-    class services_vertex_search_bridge_test_lifecycle_tes_8f013867 test;
+    class services_vertex_search_bridge_test_loop_keys_tes_66d6319b test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -2159,19 +2158,19 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>tests/test_agent_evaluation.py</code></td><td>31 nodes</td></tr>
+      <tr><td><code>tests/test_agent_evaluation.py</code></td><td>38 nodes</td></tr>
 <tr><td><code>services/agy-daemon/daemon.py</code></td><td>30 nodes</td></tr>
 <tr><td><code>tests/test_graphify_integration.py</code></td><td>30 nodes</td></tr>
 <tr><td><code>vertex-search-bridge/test/family-relay.test.js</code></td><td>20 nodes</td></tr>
 <tr><td><code>tests/test_workspace_mutations.js</code></td><td>19 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/test-n8n-patches.js</code></td><td>16 nodes</td></tr>
 <tr><td><code>services/n8n-sparky/test-n8n-patches.js</code></td><td>16 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/config.js</code></td><td>16 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/loop-keys.js</code></td><td>14 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x189, calls x91, imports x73, method x56. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x180, calls x97, imports x65, method x61. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3386,8 +3385,8 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>1025</td></tr>
-      <tr><td>Edges</td><td>1859</td></tr>
+      <tr><td>Nodes</td><td>1068</td></tr>
+      <tr><td>Edges</td><td>1960</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
       <tr><td>Communities</td><td>75</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
@@ -3396,8 +3395,8 @@ flowchart LR
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>1656</td></tr>
-      <tr><td>INFERRED</td><td>203</td></tr>
+      <tr><td>EXTRACTED</td><td>1740</td></tr>
+      <tr><td>INFERRED</td><td>220</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
   </div>
@@ -3405,7 +3404,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-11 11:03 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-11 12:37 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

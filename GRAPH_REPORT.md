@@ -1,4 +1,4 @@
-# Graph Report - sparky-backup  (2026-11-09)
+# Graph Report - sparky-backup  (2026-11-11)
 
 ## Corpus Check
 - 89 files · ~141,793 words
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1164baad`
+- Built from commit: `da113a8b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -394,6 +394,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `test_workspace_mutations.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11428571428571428 - nodes in this community are weakly interconnected._
 - **Why does `createDb()` connect `createDb` to `server.js`, `ref_node_assert`, `ref_child_process`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Should `family-relay.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.11904761904761904 - nodes in this community are weakly interconnected._

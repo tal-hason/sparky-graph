@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 1021 nodes, 1853 edges, 76 communities. Commit: 50f7c12</p>
+<p class="subtitle">Generated from graphify knowledge graph: 1021 nodes, 1853 edges, 76 communities. Commit: b6d6316</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -146,7 +146,7 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>70</td><td><code>61, 7, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>40</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>476</td><td><code>16, 45, 0, 35, 66, 10, 48, 29, 36, 38, 53, 27, 5, 55, 51, 56, 46, 57, 62, 70, 50</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>296</td><td><code>1, 26, 9, 4, 37, 71, 25, 39, 41, 58, 60, 15, 42, 43, 54, 30, 64, 3, 44, 11, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>16</td><td><code>8</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>40</td><td><code>23, 33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Graph Build</td><td>70</td><td><code>5, 7, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>40</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>476</td><td><code>16, 45, 0, 35, 66, 10, 48, 29, 36, 38, 53, 27, 11, 55, 51, 56, 46, 57, 62, 63, 50</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>296</td><td><code>1, 26, 9, 4, 37, 61, 25, 39, 41, 58, 60, 15, 42, 43, 54, 30, 64, 3, 44, 70, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>16</td><td><code>8</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>40</td><td><code>23, 33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
@@ -176,6 +176,16 @@ flowchart LR
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
     %% Section: Graph Build (70 nodes, 70 edges)
+    subgraph build_graph_External_generated_653891f5["External / generated"]
+        json_05d97e6e("json")
+        socket_897d2105("socket")
+        time_714eea0f("time")
+        signal_36ab4aaa("signal")
+        logging_42f7b07d("logging")
+        threading_c3015aa7("threading")
+        requests_54faec36("requests")
+        datetime_89ffad08("datetime")
+    end
     subgraph build_graph_services_agy_daemon_daemon_py_43b0b296["services/agy-daemon/daemon.py"]
         services_agy_daemon_daemon_1bc119f5("daemon.py")
         services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b("execute_task()<br/><small>services/agy-daemon/daemon.py</small>")
@@ -186,20 +196,8 @@ flowchart LR
         services_agy_daemon_daemon_resolve_timeouts_8fe43849("resolve_timeouts()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3("_terminate_process_group()<br/><small>services/agy-daemon/daemon.py</small>")
     end
-    subgraph build_graph_External_generated_653891f5["External / generated"]
-        json_05d97e6e("json")
-        socket_897d2105("socket")
-        time_714eea0f("time")
-        signal_36ab4aaa("signal")
-        logging_42f7b07d("logging")
-        threading_c3015aa7("threading")
-        requests_54faec36("requests")
-    end
-    subgraph build_graph_services_vertex_search_bridge_packag_762f8a70["services/vertex-search-bridge/package.json"]
-        services_vertex_search_bridge_package_1faf6d56("vertex-search-bridge/package.json")
-        ref_pg_848e5969("pg<br/><small>services/vertex-search-bridge/package.json</small>")
-    end
     services_agy_daemon_test_daemon_testdaemon_test_8d17a8dc("test_t43_legacy_timeout_ignored_unless_hard_timeout()<br/><small>services/agy-daemon/test_daemon.py</small>")
+    services_vertex_search_bridge_package_1faf6d56("vertex-search-bridge/package.json")
     services_agy_daemon_daemon_extract_stream_json_r_8a103bbe -->|calls| json_05d97e6e
     services_agy_daemon_daemon_read_heartbeat_meta_7689efa0 -->|calls| json_05d97e6e
     services_agy_daemon_daemon_sd_notify_8cb35845 -->|calls| socket_897d2105
@@ -210,7 +208,6 @@ flowchart LR
     services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b -->|calls| services_agy_daemon_daemon_extract_stream_json_r_8a103bbe
     services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1 -->|calls| services_agy_daemon_daemon_sd_notify_8cb35845
     services_agy_daemon_test_daemon_testdaemon_test_8d17a8dc -->|calls| services_agy_daemon_daemon_resolve_timeouts_8fe43849
-    services_vertex_search_bridge_package_1faf6d56 -->|imports| ref_pg_848e5969
     services_agy_daemon_daemon_1bc119f5 -->|imports| time_714eea0f
     services_agy_daemon_daemon_1bc119f5 -->|imports| json_05d97e6e
     services_agy_daemon_daemon_1bc119f5 -->|imports| socket_897d2105
@@ -218,7 +215,16 @@ flowchart LR
     services_agy_daemon_daemon_1bc119f5 -->|imports| logging_42f7b07d
     services_agy_daemon_daemon_1bc119f5 -->|imports| threading_c3015aa7
     services_agy_daemon_daemon_1bc119f5 -->|imports| requests_54faec36
+    services_agy_daemon_daemon_1bc119f5 -->|imports| datetime_89ffad08
     %% Omitted for readability: 52 nodes, 0 edges
+    class json_05d97e6e function;
+    class socket_897d2105 function;
+    class time_714eea0f function;
+    class signal_36ab4aaa function;
+    class logging_42f7b07d function;
+    class threading_c3015aa7 function;
+    class requests_54faec36 function;
+    class datetime_89ffad08 function;
     class services_agy_daemon_daemon_1bc119f5 module;
     class services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b function;
     class services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1 function;
@@ -227,16 +233,8 @@ flowchart LR
     class services_agy_daemon_daemon_sd_notify_8cb35845 function;
     class services_agy_daemon_daemon_resolve_timeouts_8fe43849 function;
     class services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3 function;
-    class json_05d97e6e function;
-    class socket_897d2105 function;
-    class time_714eea0f function;
-    class signal_36ab4aaa function;
-    class logging_42f7b07d function;
-    class threading_c3015aa7 function;
-    class requests_54faec36 function;
-    class services_vertex_search_bridge_package_1faf6d56 function;
-    class ref_pg_848e5969 function;
     class services_agy_daemon_test_daemon_testdaemon_test_8d17a8dc test;
+    class services_vertex_search_bridge_package_1faf6d56 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1420,13 +1418,11 @@ flowchart LR
         services_vertex_search_bridge_server_buildsessio_a136528f("buildSessionPreamble()<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_familyrelay_213cdabe("familyRelay<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_querypostgr_2572da55("queryPostgresScript()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_createdecis_71782b9a("createDecision()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_querypostgr_f41a7819("queryPostgresJson()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_atomicwrite_e6e2c775("atomicWriteJson()<br/><small>services/vertex-search-bridge/server.js</small>")
     end
-    subgraph serve_api_services_vertex_search_bridge_kg_store_4f2ce889["services/vertex-search-bridge/kg-store.js"]
-        services_vertex_search_bridge_kg_store_createkgs_338b862f("upsertKgEntity()<br/><small>services/vertex-search-bridge/kg-store.js</small>")
-        services_vertex_search_bridge_kg_store_buildasci_cbdef381("buildAsciiVaultSlug()<br/><small>services/vertex-search-bridge/kg-store.js</small>")
-        services_vertex_search_bridge_kg_store_normalize_14958df4("normalizeEntitySlug()<br/><small>services/vertex-search-bridge/kg-store.js</small>")
-        services_vertex_search_bridge_kg_store_normalize_f68d2cab("normalizeEntityType()<br/><small>services/vertex-search-bridge/kg-store.js</small>")
-    end
+    services_vertex_search_bridge_kg_store_createkgs_338b862f("upsertKgEntity()<br/><small>services/vertex-search-bridge/kg-store.js</small>")
     services_vertex_search_bridge_test_memory_hygien_f891ecdc("memory-hygiene.test.js")
     services_vertex_search_bridge_server_querypostgr_2572da55 -->|calls| services_vertex_search_bridge_server_querypostgr_2572da55
     services_vertex_search_bridge_host_adapters_crea_479719ca -->|calls| services_vertex_search_bridge_host_adapters_vali_26bd07f0
@@ -1436,10 +1432,15 @@ flowchart LR
     services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_iswa_9b0b5beb
     services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_fetc_981b1569
     services_vertex_search_bridge_host_adapters_vali_26bd07f0 -->|calls| services_vertex_search_bridge_host_adapters_ispr_7476077b
-    services_vertex_search_bridge_kg_store_buildasci_cbdef381 -->|calls| services_vertex_search_bridge_kg_store_normalize_14958df4
-    services_vertex_search_bridge_kg_store_buildasci_cbdef381 -->|calls| services_vertex_search_bridge_kg_store_normalize_f68d2cab
-    services_vertex_search_bridge_kg_store_createkgs_338b862f -->|calls| services_vertex_search_bridge_kg_store_normalize_f68d2cab
+    services_vertex_search_bridge_server_createdecis_71782b9a -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
+    services_vertex_search_bridge_server_createdecis_71782b9a -->|calls| services_vertex_search_bridge_server_atomicwrite_e6e2c775
+    services_vertex_search_bridge_server_buildsessio_a136528f -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
+    services_vertex_search_bridge_server_querypostgr_f41a7819 -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_buildsessio_a136528f
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_atomicwrite_e6e2c775
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_createdecis_71782b9a
+    services_vertex_search_bridge_server_familyrelay_213cdabe -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
     %% Omitted for readability: 458 nodes, 0 edges
     class services_vertex_search_bridge_host_adapters_crea_479719ca async;
     class services_vertex_search_bridge_host_adapters_vali_26bd07f0 function;
@@ -1454,10 +1455,10 @@ flowchart LR
     class services_vertex_search_bridge_server_buildsessio_a136528f function;
     class services_vertex_search_bridge_server_familyrelay_213cdabe function;
     class services_vertex_search_bridge_server_querypostgr_2572da55 function;
+    class services_vertex_search_bridge_server_createdecis_71782b9a function;
+    class services_vertex_search_bridge_server_querypostgr_f41a7819 function;
+    class services_vertex_search_bridge_server_atomicwrite_e6e2c775 function;
     class services_vertex_search_bridge_kg_store_createkgs_338b862f function;
-    class services_vertex_search_bridge_kg_store_buildasci_cbdef381 function;
-    class services_vertex_search_bridge_kg_store_normalize_14958df4 function;
-    class services_vertex_search_bridge_kg_store_normalize_f68d2cab function;
     class services_vertex_search_bridge_test_memory_hygien_f891ecdc test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -1839,21 +1840,16 @@ flowchart LR
         tests_test_agent_evaluation_testevaluationharnes_d5e21f36("test_metrics_expression_anchoring()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_c9f536cd("test_llm_judge_parameter_locking()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded("TestWorkflowTelemetry<br/><small>tests/test_agent_evaluation.py</small>")
-    end
-    subgraph tests_fixtures_tests_test_graphify_integration_p_70c71ca2["tests/test_graphify_integration.py"]
-        tests_test_graphify_integration_testeopskillandb_2e9df8f8("TestEopSkillAndBackupScriptContract<br/><small>tests/test_graphify_integration.py</small>")
-        tests_test_graphify_integration_testeopskillandb_e10aba8f("test_eop_skill_parity_and_graphify_contract()<br/><small>tests/test_graphify_integration.py</small>")
-        tests_test_graphify_integration_testeopskillandb_44bbdc04("test_backup_sh_syntax_and_fail_open_graphify_update()<br/><small>tests/test_graphify_integration.py</small>")
-        tests_test_graphify_integration_testeopskillandb_9ad1383a("test_publish_graph_script_syntax_and_dry_run_stage()<br/><small>tests/test_graphify_integration.py</small>")
+        tests_test_agent_evaluation_testworkflowtelemetr_13c4307e("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testworkflowtelemetr_03915a7c("_get_agent_node()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4("test_agent_node_return_intermediate_steps_enabled()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testworkflowtelemetr_0a59c487("test_agent_node_streaming_disabled()<br/><small>tests/test_agent_evaluation.py</small>")
     end
     services_agy_daemon_test_daemon_testdaemon_c1a640de("TestDaemon<br/><small>services/agy-daemon/test_daemon.py</small>")
     services_vertex_search_bridge_test_family_relay_a764c479("family-relay.test.js")
     services_vertex_search_bridge_test_heartbeat_sto_59f43e19("heartbeat-store.test.js")
     services_vertex_search_bridge_test_lifecycle_tes_8f013867("lifecycle.test.js")
     services_vertex_search_bridge_test_loop_keys_tes_66d6319b("loop-keys.test.js")
-    tests_test_graphify_integration_testeopskillandb_2e9df8f8 -->|method| tests_test_graphify_integration_testeopskillandb_e10aba8f
-    tests_test_graphify_integration_testeopskillandb_2e9df8f8 -->|method| tests_test_graphify_integration_testeopskillandb_44bbdc04
-    tests_test_graphify_integration_testeopskillandb_2e9df8f8 -->|method| tests_test_graphify_integration_testeopskillandb_9ad1383a
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_3f394a29
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_4cdcc21f
@@ -1861,11 +1857,17 @@ flowchart LR
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_b4c8783d
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_d5e21f36
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_c9f536cd
+    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_13c4307e
+    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
+    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4
+    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_0a59c487
     tests_test_agent_evaluation_testevaluationharnes_5e7cc6f0 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_4cdcc21f -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_b4c8783d -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_c9f536cd -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_d5e21f36 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
+    tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4 -->|calls| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
+    tests_test_agent_evaluation_testworkflowtelemetr_0a59c487 -->|calls| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
     %% Omitted for readability: 278 nodes, 0 edges
     class tests_test_agent_evaluation_testevaluationharnes_24b65e64 test;
     class tests_test_agent_evaluation_testevaluationharnes_3f394a29 test;
@@ -1876,10 +1878,10 @@ flowchart LR
     class tests_test_agent_evaluation_testevaluationharnes_d5e21f36 test;
     class tests_test_agent_evaluation_testevaluationharnes_c9f536cd test;
     class tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded test;
-    class tests_test_graphify_integration_testeopskillandb_2e9df8f8 test;
-    class tests_test_graphify_integration_testeopskillandb_e10aba8f test;
-    class tests_test_graphify_integration_testeopskillandb_44bbdc04 test;
-    class tests_test_graphify_integration_testeopskillandb_9ad1383a test;
+    class tests_test_agent_evaluation_testworkflowtelemetr_13c4307e test;
+    class tests_test_agent_evaluation_testworkflowtelemetr_03915a7c test;
+    class tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4 test;
+    class tests_test_agent_evaluation_testworkflowtelemetr_0a59c487 test;
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
     class services_vertex_search_bridge_test_family_relay_a764c479 test;
     class services_vertex_search_bridge_test_heartbeat_sto_59f43e19 test;
@@ -3526,7 +3528,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-11 10:32 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-11 10:33 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

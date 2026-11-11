@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 1025 nodes, 1858 edges, 75 communities. Commit: 793b2ae</p>
+<p class="subtitle">Generated from graphify knowledge graph: 1025 nodes, 1859 edges, 75 communities. Commit: 8ec85fd</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -98,11 +98,11 @@ flowchart LR
     class CLI_SKILLS_9964CBB8 module;
     INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>35 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>475 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>455 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>338 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>358 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
     SERVICES_SPARKY_MCP_D7A382D7("Services Sparky Mcp<br/><small>12 nodes</small>")
     class SERVICES_SPARKY_MCP_D7A382D7 module;
@@ -118,8 +118,8 @@ flowchart LR
     class BACKUPSH_SCRIPTS_ENCRYPT_C017EB1B module;
     OTHER_D0941E68("Other<br/><small>34 nodes</small>")
     class OTHER_D0941E68 module;
-    SERVE_API_35EC8E86 -->|imports x38| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x14| SERVE_API_35EC8E86
+    SERVE_API_35EC8E86 -->|imports x36| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x15| SERVE_API_35EC8E86
     SERVE_API_35EC8E86 -->|imports x7| CLI_SKILLS_9964CBB8
     SERVE_API_35EC8E86 -->|imports x7| ANALYSIS_CLUSTERING_C79796DA
     INGEST_CACHE_UPDATE_FF457338 -->|imports x5| SERVICES_SPARKY_MCP_D7A382D7
@@ -146,7 +146,7 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>49</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>40</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>475</td><td><code>45, 16, 0, 10, 35, 29, 48, 36, 66, 38, 53, 8, 55, 27, 11, 56, 51, 62</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>338</td><td><code>5, 4, 26, 1, 37, 25, 9, 39, 41, 58, 60, 15, 42, 43, 61, 30, 64, 3, 44, 70, 46, 50, 54, 57, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Backupsh Scripts Encrypt</td><td>6</td><td><code>23</code></td></tr><tr><td>Other</td><td>34</td><td><code>33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Graph Build</td><td>49</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>40</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>22</td><td><code>2, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>455</td><td><code>45, 16, 0, 10, 35, 29, 48, 36, 66, 38, 8, 55, 27, 11, 56, 51, 62</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>358</td><td><code>5, 4, 26, 53, 1, 37, 25, 39, 41, 58, 60, 9, 15, 42, 43, 61, 30, 64, 44, 70, 46, 50, 3, 54, 57, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Backupsh Scripts Encrypt</td><td>6</td><td><code>23</code></td></tr><tr><td>Other</td><td>34</td><td><code>33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
@@ -158,8 +158,8 @@ flowchart LR
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>1025 nodes · 1858 edges · 75 communities (52 shown, 23 thin omitted)</li>
-      <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 202 edges (avg confidence: 0.86)</li>
+      <li>1025 nodes · 1859 edges · 75 communities (52 shown, 23 thin omitted)</li>
+      <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 203 edges (avg confidence: 0.86)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `server` - 82 edges</li>
       <li>2. `TaskDaemon` - 21 edges</li>
@@ -1394,12 +1394,12 @@ flowchart LR
 
 <!-- ====== 7. Serving API ====== -->
 <h2 id="serve-api">7. Serving API</h2>
-<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, services/vertex-search-bridge/family-relay.js. This section covers 475 nodes and 1064 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, services/vertex-search-bridge/family-relay.js. This section covers 455 nodes and 1040 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (475 nodes, 1064 edges)
+    %% Section: Serving API (455 nodes, 1040 edges)
     subgraph serve_api_services_vertex_search_bridge_host_ada_93766852["services/vertex-search-bridge/host-adapters.js"]
         services_vertex_search_bridge_host_adapters_crea_479719ca("assertSafeBrowserUrl()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
         services_vertex_search_bridge_host_adapters_vali_26bd07f0("validateUrlForBrowser()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
@@ -1439,7 +1439,7 @@ flowchart LR
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_atomicwrite_e6e2c775
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_createdecis_71782b9a
     services_vertex_search_bridge_server_familyrelay_213cdabe -->|calls| services_vertex_search_bridge_server_querypostgr_f41a7819
-    %% Omitted for readability: 457 nodes, 0 edges
+    %% Omitted for readability: 437 nodes, 0 edges
     class services_vertex_search_bridge_host_adapters_crea_479719ca async;
     class services_vertex_search_bridge_host_adapters_vali_26bd07f0 function;
     class services_vertex_search_bridge_host_adapters_crea_ea040b16 function;
@@ -1732,13 +1732,13 @@ flowchart LR
 <tr><td><code>services/vertex-search-bridge/memory-hygiene.js</code></td><td>21 nodes</td></tr>
 <tr><td><code>docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md</code></td><td>20 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/host-adapters.js</code></td><td>18 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/config.js</code></td><td>16 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/handoff-store.js</code></td><td>16 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/loop-keys.js</code></td><td>14 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x449, contains x289, indirect call x156, imports x114. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x447, contains x280, indirect call x147, imports x114. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1822,12 +1822,12 @@ flowchart LR
 
 <!-- ====== 9. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">9. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, services/agy-daemon/daemon.py, tests/test_graphify_integration.py. This section covers 338 nodes and 474 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, services/agy-daemon/daemon.py, tests/test_graphify_integration.py. This section covers 358 nodes and 500 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (338 nodes, 474 edges)
+    %% Section: Tests &amp; Fixtures (358 nodes, 500 edges)
     subgraph tests_fixtures_tests_test_agent_evaluation_py_f3d133d4["tests/test_agent_evaluation.py"]
         tests_test_agent_evaluation_testevaluationharnes_24b65e64("TestEvaluationHarnessWorkflow<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_3f394a29("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
@@ -1837,10 +1837,8 @@ flowchart LR
         tests_test_agent_evaluation_testevaluationharnes_b4c8783d("test_input_envelope_expressions()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_d5e21f36("test_metrics_expression_anchoring()<br/><small>tests/test_agent_evaluation.py</small>")
         tests_test_agent_evaluation_testevaluationharnes_c9f536cd("test_llm_judge_parameter_locking()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded("TestWorkflowTelemetry<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_13c4307e("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_03915a7c("_get_agent_node()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4("test_agent_node_return_intermediate_steps_enabled()<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_81af6351("TestEvaluationSafetyGuard<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationsafety_a0c88f0b("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
     end
     subgraph tests_fixtures_services_agy_daemon_daemon_py_976213a8["services/agy-daemon/daemon.py"]
         services_agy_daemon_daemon_taskdaemon_ea787a57("TaskDaemon<br/><small>services/agy-daemon/daemon.py</small>")
@@ -1851,6 +1849,10 @@ flowchart LR
         services_agy_daemon_test_daemon_be9f2181("test_daemon.py")
         services_agy_daemon_test_daemon_testdaemon_c1a640de("TestDaemon<br/><small>services/agy-daemon/test_daemon.py</small>")
     end
+    subgraph tests_fixtures_tests_test_graphify_integration_p_70c71ca2["tests/test_graphify_integration.py"]
+        tests_test_graphify_integration_teststrictexclus_57e082d3("TestStrictExclusionBoundary<br/><small>tests/test_graphify_integration.py</small>")
+        tests_test_graphify_integration_teststrictexclus_1a8620a8("test_graphifyignore_exists_and_fences_excluded_paths()<br/><small>tests/test_graphify_integration.py</small>")
+    end
     services_vertex_search_bridge_test_lifecycle_tes_8f013867("lifecycle.test.js")
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_3f394a29
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_9680a51c
@@ -1859,20 +1861,18 @@ flowchart LR
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_b4c8783d
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_d5e21f36
     tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_c9f536cd
-    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_13c4307e
-    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
-    tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded -->|method| tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4
+    tests_test_graphify_integration_teststrictexclus_57e082d3 -->|method| tests_test_graphify_integration_teststrictexclus_1a8620a8
+    tests_test_agent_evaluation_testevaluationsafety_81af6351 -->|method| tests_test_agent_evaluation_testevaluationsafety_a0c88f0b
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_run_2190cef7
     tests_test_agent_evaluation_testevaluationharnes_5e7cc6f0 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_4cdcc21f -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_b4c8783d -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_c9f536cd -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
     tests_test_agent_evaluation_testevaluationharnes_d5e21f36 -->|calls| tests_test_agent_evaluation_testevaluationharnes_9680a51c
-    tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4 -->|calls| tests_test_agent_evaluation_testworkflowtelemetr_03915a7c
     services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_taskdaemon_ea787a57
     services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_1bc119f5
     services_agy_daemon_test_daemon_testdaemon_c1a640de -->|uses| services_agy_daemon_daemon_taskdaemon_ea787a57
-    %% Omitted for readability: 320 nodes, 0 edges
+    %% Omitted for readability: 340 nodes, 0 edges
     class tests_test_agent_evaluation_testevaluationharnes_24b65e64 test;
     class tests_test_agent_evaluation_testevaluationharnes_3f394a29 test;
     class tests_test_agent_evaluation_testevaluationharnes_9680a51c test;
@@ -1881,15 +1881,15 @@ flowchart LR
     class tests_test_agent_evaluation_testevaluationharnes_b4c8783d test;
     class tests_test_agent_evaluation_testevaluationharnes_d5e21f36 test;
     class tests_test_agent_evaluation_testevaluationharnes_c9f536cd test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_8b0c6ded test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_13c4307e test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_03915a7c test;
-    class tests_test_agent_evaluation_testworkflowtelemetr_e5228ba4 test;
+    class tests_test_agent_evaluation_testevaluationsafety_81af6351 test;
+    class tests_test_agent_evaluation_testevaluationsafety_a0c88f0b test;
     class services_agy_daemon_daemon_taskdaemon_ea787a57 klass;
     class services_agy_daemon_daemon_1bc119f5 module;
     class services_agy_daemon_daemon_taskdaemon_run_2190cef7 function;
     class services_agy_daemon_test_daemon_be9f2181 test;
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
+    class tests_test_graphify_integration_teststrictexclus_57e082d3 test;
+    class tests_test_graphify_integration_teststrictexclus_1a8620a8 test;
     class services_vertex_search_bridge_test_lifecycle_tes_8f013867 test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -2166,12 +2166,12 @@ flowchart LR
 <tr><td><code>tests/test_workspace_mutations.js</code></td><td>19 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/test-n8n-patches.js</code></td><td>16 nodes</td></tr>
 <tr><td><code>services/n8n-sparky/test-n8n-patches.js</code></td><td>16 nodes</td></tr>
-<tr><td><code>services/agy-daemon/test_daemon.py</code></td><td>12 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/config.js</code></td><td>16 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x180, calls x89, imports x69, method x56. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x189, calls x91, imports x73, method x56. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3387,7 +3387,7 @@ flowchart LR
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><td>Nodes</td><td>1025</td></tr>
-      <tr><td>Edges</td><td>1858</td></tr>
+      <tr><td>Edges</td><td>1859</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
       <tr><td>Communities</td><td>75</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
@@ -3397,7 +3397,7 @@ flowchart LR
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><td>EXTRACTED</td><td>1656</td></tr>
-      <tr><td>INFERRED</td><td>202</td></tr>
+      <tr><td>INFERRED</td><td>203</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
   </div>
@@ -3405,7 +3405,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-11 10:47 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-11 11:02 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

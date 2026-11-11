@@ -1,17 +1,17 @@
 # Graph Report - sparky-backup  (2026-11-11)
 
 ## Corpus Check
-- 90 files · ~144,859 words
+- 90 files · ~145,512 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: (none) 5, .service 5, .example 1)
 
 ## Summary
-- 1025 nodes · 1858 edges · 75 communities (52 shown, 23 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 202 edges (avg confidence: 0.86)
+- 1025 nodes · 1859 edges · 75 communities (52 shown, 23 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 203 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `793b2ae6`
+- Built from commit: `8ec85fd9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - server.js
 - family-relay.test.js
 - ref_fs
-- TestWorkflowTelemetry
+- TestStrictExclusionBoundary
 - test_workspace_mutations.js
 - TaskDaemon
 - Requirements Anchor: Sparky-AI Nightly Dreaming Knowledge Graph (`sparky-nightly-knowledge-graph`)
@@ -107,7 +107,7 @@
 ## Surprising Connections (you probably didn't know these)
 - `1. User Intent & Selected Architecture` --references--> `buildSessionPreamble()`  [INFERRED]
   docs/brainstorms/sparky-dynamic-model-routing-requirements.md → services/vertex-search-bridge/server.js
-- `2. Verified Architectural Invariants & Constraints` --references--> `compactSessionChatHistory()`  [INFERRED]
+- `2. Verified Architectural Invariants & Test Alignment` --references--> `compactSessionChatHistory()`  [INFERRED]
   docs/brainstorms/sparky-dynamic-model-routing-requirements.md → services/vertex-search-bridge/config.js
 - `DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`)` --references--> `detectCorrectionSignal()`  [INFERRED]
   docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/correction-learner.js
@@ -176,8 +176,8 @@ Cohesion: 0.21
 Nodes (15): { containsSecretOrPassword }, createHandoffStore(), claimHandoffs(), completeHandoff(), createHandoff(), ensureSchema(), getLatestHandoff(), listHandoffs() (+7 more)
 
 ### Community 9 - "test_graphify_integration.py"
-Cohesion: 0.14
-Nodes (5): _extract_source_files(), TestCodebaseInclusionInGraph, TestIncrementalUpdateIdempotency, TestPersonalMemoryGraphIsolation, TestStrictExclusionBoundary
+Cohesion: 0.18
+Nodes (4): _extract_source_files(), TestCodebaseInclusionInGraph, TestIncrementalUpdateIdempotency, TestPersonalMemoryGraphIsolation
 
 ### Community 10 - "1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)"
 Cohesion: 0.07
@@ -320,8 +320,8 @@ Cohesion: 0.50
 Nodes (3): HOME, PATH, publish-graph.sh script
 
 ### Community 53 - "config.js"
-Cohesion: 0.11
-Nodes (11): 1. User Intent & Selected Architecture, 2. Verified Architectural Invariants & Constraints, Requirements Anchor: Sparky-AI Dynamic Main Agent Model & Effort Routing, compactSessionChatHistory(), compactToolObservationContent(), createMetaTokenReader(), crypto, defaultConfig (+3 more)
+Cohesion: 0.09
+Nodes (12): 1. User Intent & Selected Architecture, 2. Verified Architectural Invariants & Test Alignment, Requirements Anchor: Sparky-AI Dynamic Main Agent Model & Effort Routing, compactSessionChatHistory(), compactToolObservationContent(), createMetaTokenReader(), crypto, defaultConfig (+4 more)
 
 ### Community 55 - "callVertexApiWithRetry"
 Cohesion: 0.18
@@ -361,23 +361,23 @@ Nodes (20): classifyDecisionChoice(), computeSenderAdjustment(), createNudgeTele
 
 ## Knowledge Gaps
 - **20 isolated node(s):** `PATH`, `PATH`, `HOME`, `REGISTRY_AUTH_FILE`, `PATH` (+15 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 486 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 485 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **23 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `createDb()` connect `test_workspace_mutations.js` to `server.js`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **Why does `TestWorkflowTelemetry` connect `config.js` to `test_graphify_integration.py`?**
+  _High betweenness centrality (0.212) - this node is a cross-community bridge._
 - **What connects `PATH`, `PATH`, `HOME` to the rest of the system?**
   _20 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.044444444444444446 - nodes in this community are weakly interconnected._
-- **Why does `createKgStore()` connect `kg-store.js` to `server.js`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Should `family-relay.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.1368421052631579 - nodes in this community are weakly interconnected._
 - **Should `test_workspace_mutations.js` be split into smaller, more focused modules?**
   _Cohesion score 0.05142857142857143 - nodes in this community are weakly interconnected._
 - **Should `TaskDaemon` be split into smaller, more focused modules?**
   _Cohesion score 0.07058001397624039 - nodes in this community are weakly interconnected._
+- **Should `Semantic Vector Memory & Cortex Sleep Consolidation Architecture` be split into smaller, more focused modules?**
+  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._

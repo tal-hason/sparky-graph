@@ -1,7 +1,7 @@
 # Graph Report - sparky-backup  (2026-11-11)
 
 ## Corpus Check
-- 94 files · ~159,664 words
+- 94 files · ~160,188 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: (none) 5, .service 5, .example 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9dc52ffc`
+- Built from commit: `5ebb784d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -409,7 +409,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.041666666666666664 - nodes in this community are weakly interconnected._
 - **Why does `createModelRouter()` connect `model-router.js` to `server.js`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Should `family-relay.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.05589225589225589 - nodes in this community are weakly interconnected._
 - **Why does `createHostAdapters()` connect `1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4)` to `server.js`?**

@@ -1,7 +1,7 @@
-# Graph Report - sparky-backup  (2026-11-11)
+# Graph Report - sparky-backup  (2026-11-12)
 
 ## Corpus Check
-- 94 files · ~160,730 words
+- 94 files · ~162,104 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: (none) 5, .service 5, .example 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e2af6ae5`
+- Built from commit: `06d87148`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

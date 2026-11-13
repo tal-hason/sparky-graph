@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 1114 nodes, 2036 edges, 76 communities. Commit: 5d70f4c</p>
+<p class="subtitle">Generated from graphify knowledge graph: 1114 nodes, 2038 edges, 76 communities. Commit: 5d70f4c</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -121,10 +121,10 @@ flowchart LR
     SERVE_API_35EC8E86 -->|imports x42| TESTS_FIXTURES_B84B1DCC
     TESTS_FIXTURES_B84B1DCC -->|imports x13| SERVE_API_35EC8E86
     TESTS_FIXTURES_B84B1DCC -->|imports x7| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x6| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x6| ANALYSIS_CLUSTERING_C79796DA
     TESTS_FIXTURES_B84B1DCC -->|imports x6| ANALYSIS_CLUSTERING_C79796DA
     INGEST_CACHE_UPDATE_FF457338 -->|imports x5| SERVICES_SPARKY_MCP_D7A382D7
-    SERVE_API_35EC8E86 -->|imports x5| CLI_SKILLS_9964CBB8
-    SERVE_API_35EC8E86 -->|imports x5| ANALYSIS_CLUSTERING_C79796DA
     INGEST_CACHE_UPDATE_FF457338 -->|imports x3| CLI_SKILLS_9964CBB8
     TESTS_FIXTURES_B84B1DCC -->|imports x3| SERVICES_SPARKY_MCP_D7A382D7
     SERVICES_SPARKY_MCP_D7A382D7 -->|imports x3| CLI_SKILLS_9964CBB8
@@ -158,7 +158,7 @@ flowchart LR
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>1114 nodes · 2036 edges · 76 communities (60 shown, 16 thin omitted)</li>
+      <li>1114 nodes · 2038 edges · 76 communities (60 shown, 16 thin omitted)</li>
       <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 231 edges (avg confidence: 0.85)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `server` - 83 edges</li>
@@ -644,7 +644,7 @@ flowchart LR
   <td>11</td>
   <td><code>ref_path</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br>+11 more</td>
+  <td><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br>+12 more</td>
   <td>No direct outbound edge</td>
   <td>ref_path node in project.</td>
 </tr>
@@ -961,7 +961,7 @@ flowchart LR
   <td>16</td>
   <td><code>ref_fs</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>bridge.js</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br>+14 more</td>
+  <td><code>bridge.js</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br>+15 more</td>
   <td>No direct outbound edge</td>
   <td>ref_fs node in project.</td>
 </tr>
@@ -3403,7 +3403,7 @@ flowchart LR
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><td>Nodes</td><td>1114</td></tr>
-      <tr><td>Edges</td><td>2036</td></tr>
+      <tr><td>Edges</td><td>2038</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
       <tr><td>Communities</td><td>76</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
@@ -3412,7 +3412,7 @@ flowchart LR
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>1805</td></tr>
+      <tr><td>EXTRACTED</td><td>1807</td></tr>
       <tr><td>INFERRED</td><td>231</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -3421,7 +3421,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-13 12:11 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-13 12:35 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

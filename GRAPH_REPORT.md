@@ -1,7 +1,7 @@
 # Graph Report - sparky-backup  (2026-11-14)
 
 ## Corpus Check
-- 94 files · ~164,707 words
+- 94 files · ~164,741 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: (none) 5, .service 5, .example 1)
 

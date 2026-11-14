@@ -1,4 +1,4 @@
-# Graph Report - sparky-backup  (2026-11-13)
+# Graph Report - sparky-backup  (2026-11-14)
 
 ## Corpus Check
 - 94 files · ~163,046 words
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5d70f4c7`
+- Built from commit: `9fe1da2d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

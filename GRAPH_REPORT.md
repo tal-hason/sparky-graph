@@ -1,7 +1,7 @@
 # Graph Report - sparky-backup  (2026-11-15)
 
 ## Corpus Check
-- 99 files · ~184,528 words
+- 99 files · ~184,848 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: (none) 5, .service 5, .example 1)
 
@@ -397,7 +397,7 @@ Nodes (3): 1. User Intent & Selected Architecture, 2. Verified Architectural Inv
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `createReactionActivityController()` connect `createReactionActivityController` to `server.js`?**
-  _High betweenness centrality (0.032) - this node is a cross-community bridge._
+  _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **What connects `PATH`, `PATH`, `HOME` to the rest of the system?**
   _20 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `server.js` be split into smaller, more focused modules?**

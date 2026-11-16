@@ -1,4 +1,4 @@
-# Graph Report - sparky-backup  (2026-11-15)
+# Graph Report - sparky-backup  (2026-11-16)
 
 ## Corpus Check
 - 100 files · ~193,915 words
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `345b6060`
+- Built from commit: `2414ffee`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -62,7 +62,7 @@
 - phase2c-ops.test.js
 - ref_path
 - family-relay.js
-- TestEvaluationSafetyGuard
+- family-relay.js
 - index.js
 - server
 - patch-n8n-memory-orphans.sh
@@ -70,7 +70,7 @@
 - reactionCommandService
 - publish-graph.sh
 - config.js
-- family-relay.js
+- TestEvaluationHarnessWorkflow
 - daemon.py
 - callVertexApiWithRetry
 - ref_child_process
@@ -86,7 +86,7 @@
 - sync-services-to-repo.sh
 - n8n-stack/scripts/deploy-bridge.sh
 - eval-history.md
-- TestEvaluationHarnessWorkflow
+- TestEvaluationSafetyGuard
 - atomicWriteJson
 - Requirements Anchor: `[Sparky-AI]` Event-Driven Email Handoff to Gemini App
 - n8n-sparky/patch-gemini4-langchain.sh
@@ -322,6 +322,10 @@ Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrat
 Cohesion: 0.06
 Nodes (54): buildCanonicalLoopKey(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey(), extractShipmentIdentifiers(), formatDueBucket(), formatIsraelDate() (+46 more)
 
+### Community 46 - "family-relay.js"
+Cohesion: 0.18
+Nodes (24): classifyFamilyInboundText(), createFamilyRelayService(), configureFamilyMember(), handleFamilyInbound(), loadCtx(), loadFamilyLoops(), processFamilyInbound(), recordChatHistory() (+16 more)
+
 ### Community 47 - "index.js"
 Cohesion: 0.23
 Nodes (10): processJsonRpcMessage(), { bridgeRequest }, dispatchAgyMissionToDrive(), fs, handleToolCall(), readHeartbeatMeta(), readline, sendJsonRpc() (+2 more)
@@ -345,10 +349,6 @@ Nodes (3): HOME, PATH, publish-graph.sh script
 ### Community 53 - "config.js"
 Cohesion: 0.14
 Nodes (8): compactSessionChatHistory(), compactToolObservationContent(), createMetaTokenReader(), crypto, defaultConfig, fs, normalizeHistoryRow(), path
-
-### Community 54 - "family-relay.js"
-Cohesion: 0.18
-Nodes (24): classifyFamilyInboundText(), createFamilyRelayService(), configureFamilyMember(), handleFamilyInbound(), loadCtx(), loadFamilyLoops(), processFamilyInbound(), recordChatHistory() (+16 more)
 
 ### Community 55 - "daemon.py"
 Cohesion: 0.14

@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 1237 nodes, 2359 edges, 84 communities. Commit: 345b606</p>
+<p class="subtitle">Generated from graphify knowledge graph: 1237 nodes, 2359 edges, 84 communities. Commit: 2414ffe</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -146,7 +146,7 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>63</td><td><code>7, 55, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>44</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>26</td><td><code>2, 65, 78, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>646</td><td><code>36, 45, 11, 0, 16, 10, 3, 29, 48, 35, 54, 38, 8, 51, 27, 53, 50, 56, 71, 57, 64, 62, 82, 83</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>340</td><td><code>4, 1, 9, 15, 26, 37, 40, 30, 61, 25, 41, 39, 58, 60, 42, 43, 70, 46, 75, 80, 63, 66, 79, 81, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>21</td><td><code>5</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>40</td><td><code>23, 33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Graph Build</td><td>63</td><td><code>7, 55, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>44</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>26</td><td><code>2, 65, 78, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>646</td><td><code>36, 45, 11, 0, 16, 10, 3, 29, 48, 35, 46, 38, 8, 51, 27, 53, 50, 56, 71, 57, 64, 62, 82, 83</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>340</td><td><code>4, 1, 9, 15, 26, 37, 40, 30, 61, 25, 41, 39, 58, 60, 42, 43, 54, 70, 75, 80, 63, 66, 79, 81, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>21</td><td><code>5</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>40</td><td><code>23, 33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
@@ -1886,7 +1886,7 @@ flowchart LR
     end
     subgraph tests_fixtures_tests_test_agent_evaluation_py_f3d133d4["tests/test_agent_evaluation.py"]
         tests_test_agent_evaluation_testevaluationharnes_24b65e64("TestEvaluationHarnessWorkflow<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testevaluationsafety_81af6351("TestEvaluationSafetyGuard<br/><small>tests/test_agent_evaluation.py</small>")
+        tests_test_agent_evaluation_testevaluationharnes_3f394a29("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
     end
     services_vertex_search_bridge_test_heartbeat_sto_59f43e19("heartbeat-store.test.js")
     services_vertex_search_bridge_test_lifecycle_tes_8f013867("lifecycle.test.js")
@@ -1898,6 +1898,7 @@ flowchart LR
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_8c342b16
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_96295464
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_518ba3ea
+    tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_3f394a29
     services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_518ba3ea
     services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_1f6ac6d7
     services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_a03f6eff
@@ -1918,7 +1919,7 @@ flowchart LR
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
     class services_agy_daemon_test_daemon_be9f2181 test;
     class tests_test_agent_evaluation_testevaluationharnes_24b65e64 test;
-    class tests_test_agent_evaluation_testevaluationsafety_81af6351 test;
+    class tests_test_agent_evaluation_testevaluationharnes_3f394a29 test;
     class services_vertex_search_bridge_test_heartbeat_sto_59f43e19 test;
     class services_vertex_search_bridge_test_lifecycle_tes_8f013867 test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
@@ -3608,7 +3609,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-16 01:00 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-16 01:30 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

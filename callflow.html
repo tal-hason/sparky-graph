@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 1237 nodes, 2359 edges, 84 communities. Commit: 2414ffe</p>
+<p class="subtitle">Generated from graphify knowledge graph: 1272 nodes, 2426 edges, 85 communities. Commit: 97673ce</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -88,7 +88,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>63 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>46 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
     ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>11 nodes</small>")
     class ANALYSIS_CLUSTERING_C79796DA module;
@@ -98,13 +98,13 @@ flowchart LR
     class CLI_SKILLS_9964CBB8 module;
     INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>35 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>646 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>647 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>340 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>394 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
-    DAEMON_SERVICES_AGY_CD07B619("Daemon Services Agy<br/><small>21 nodes</small>")
+    DAEMON_SERVICES_AGY_CD07B619("Daemon Services Agy<br/><small>18 nodes</small>")
     class DAEMON_SERVICES_AGY_CD07B619 module;
     SERVICES_SPARKY_MCP_D7A382D7("Services Sparky Mcp<br/><small>12 nodes</small>")
     class SERVICES_SPARKY_MCP_D7A382D7 module;
@@ -118,18 +118,18 @@ flowchart LR
     class SPARKY_WATCHDOGSH_CONTAINERS_BEFA76BE module;
     OTHER_D0941E68("Other<br/><small>40 nodes</small>")
     class OTHER_D0941E68 module;
-    SERVE_API_35EC8E86 -->|imports x36| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x18| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|imports x9| CLI_SKILLS_9964CBB8
-    SERVE_API_35EC8E86 -->|imports x8| ANALYSIS_CLUSTERING_C79796DA
-    TESTS_FIXTURES_B84B1DCC -->|imports x6| BUILD_GRAPH_321CBB04
-    DAEMON_SERVICES_AGY_CD07B619 -->|calls x5| BUILD_GRAPH_321CBB04
+    SERVE_API_35EC8E86 -->|imports x39| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x19| SERVE_API_35EC8E86
+    SERVE_API_35EC8E86 -->|imports x8| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x7| ANALYSIS_CLUSTERING_C79796DA
+    TESTS_FIXTURES_B84B1DCC -->|calls x6| DAEMON_SERVICES_AGY_CD07B619
+    TESTS_FIXTURES_B84B1DCC -->|imports x6| CLI_SKILLS_9964CBB8
     INGEST_CACHE_UPDATE_FF457338 -->|imports x5| SERVICES_SPARKY_MCP_D7A382D7
-    TESTS_FIXTURES_B84B1DCC -->|imports x5| CLI_SKILLS_9964CBB8
-    BUILD_GRAPH_321CBB04 -->|imports x5| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x4| ANALYSIS_CLUSTERING_C79796DA
-    TESTS_FIXTURES_B84B1DCC -->|uses x3| DAEMON_SERVICES_AGY_CD07B619
+    TESTS_FIXTURES_B84B1DCC -->|imports x5| ANALYSIS_CLUSTERING_C79796DA
+    DAEMON_SERVICES_AGY_CD07B619 -->|method x4| TESTS_FIXTURES_B84B1DCC
     INGEST_CACHE_UPDATE_FF457338 -->|imports x3| CLI_SKILLS_9964CBB8
+    TESTS_FIXTURES_B84B1DCC -->|imports x3| SERVICES_SPARKY_MCP_D7A382D7
+    SERVICES_SPARKY_MCP_D7A382D7 -->|imports x3| CLI_SKILLS_9964CBB8
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -146,22 +146,22 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>63</td><td><code>7, 55, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>44</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>26</td><td><code>2, 65, 78, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>646</td><td><code>36, 45, 11, 0, 16, 10, 3, 29, 48, 35, 46, 38, 8, 51, 27, 53, 50, 56, 71, 57, 64, 62, 82, 83</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>340</td><td><code>4, 1, 9, 15, 26, 37, 40, 30, 61, 25, 41, 39, 58, 60, 42, 43, 54, 70, 75, 80, 63, 66, 79, 81, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>21</td><td><code>5</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>40</td><td><code>23, 33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Graph Build</td><td>46</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>44</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>26</td><td><code>2, 65, 78, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>647</td><td><code>36, 0, 45, 16, 11, 35, 10, 46, 3, 29, 48, 38, 8, 50, 53, 51, 27, 56, 57, 71, 64, 84, 62, 83</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>394</td><td><code>4, 1, 15, 55, 9, 26, 37, 40, 30, 61, 25, 39, 41, 58, 60, 42, 43, 54, 81, 82, 70, 75, 80, 63, 66, 79, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>18</td><td><code>5</code></td></tr><tr><td>Services Sparky Mcp</td><td>12</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>9</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Other</td><td>40</td><td><code>23, 33, 20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">Outputs &amp; Docs -&gt; Graph Build -&gt; Tests &amp; Fixtures -&gt; Serving API -&gt; CLI &amp; Skill Installers -&gt; Analysis &amp; Clustering -&gt; Ingestion &amp; Updates</div>
+    <div class="arrow-chain">Outputs &amp; Docs -&gt; Graph Build -&gt; Serving API -&gt; Tests &amp; Fixtures -&gt; Daemon Services Agy -&gt; Analysis &amp; Clustering -&gt; CLI &amp; Skill Installers</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>1237 nodes · 2359 edges · 84 communities (59 shown, 25 thin omitted)</li>
-      <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 266 edges (avg confidence: 0.85)</li>
+      <li>1272 nodes · 2426 edges · 85 communities (62 shown, 23 thin omitted)</li>
+      <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 271 edges (avg confidence: 0.85)</li>
       <li>Token cost: 0 input · 0 output</li>
-      <li>1. `server` - 98 edges</li>
+      <li>1. `server` - 107 edges</li>
       <li>2. `TaskDaemon` - 21 edges</li>
       <li>3. `queryPostgresJson()` - 21 edges</li>
     </ul>
@@ -170,71 +170,56 @@ flowchart LR
 <hr>
 <!-- ====== 2. Graph Build ====== -->
 <h2 id="build-graph">2. Graph Build</h2>
-<p>Graph Build groups implementation around services, vector, semantic, architecture, mostly in architecture/SEMANTIC_VECTOR_MEMORY.md, services/vertex-search-bridge/package.json, services/agy-daemon/daemon.py. This section covers 63 nodes and 60 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Graph Build groups implementation around vector, semantic, architecture, packagejson, mostly in architecture/SEMANTIC_VECTOR_MEMORY.md, services/vertex-search-bridge/package.json, services/sparky-mcp/package.json. This section covers 46 nodes and 41 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Graph Build (63 nodes, 60 edges)
-    subgraph build_graph_External_generated_653891f5["External / generated"]
-        json_05d97e6e("json")
-        socket_897d2105("socket")
-        time_714eea0f("time")
-        signal_36ab4aaa("signal")
-        logging_42f7b07d("logging")
-        threading_c3015aa7("threading")
-        requests_54faec36("requests")
-        datetime_89ffad08("datetime")
-    end
-    subgraph build_graph_services_agy_daemon_daemon_py_43b0b296["services/agy-daemon/daemon.py"]
-        services_agy_daemon_daemon_1bc119f5("daemon.py")
-        services_agy_daemon_daemon_read_heartbeat_meta_7689efa0("read_heartbeat_meta()<br/><small>services/agy-daemon/daemon.py</small>")
-        services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1("_handle_exit()<br/><small>services/agy-daemon/daemon.py</small>")
-        services_agy_daemon_daemon_extract_stream_json_r_8a103bbe("extract_stream_json_result()<br/><small>services/agy-daemon/daemon.py</small>")
-        services_agy_daemon_daemon_sd_notify_8cb35845("sd_notify()<br/><small>services/agy-daemon/daemon.py</small>")
-    end
-    subgraph build_graph_scripts_publish_graph_sh_84522207["scripts/publish-graph.sh"]
-        scripts_publish_graph_home_425f09d1("HOME<br/><small>scripts/publish-graph.sh</small>")
-        scripts_publish_graph_path_bcd411cd("PATH<br/><small>scripts/publish-graph.sh</small>")
+    %% Section: Graph Build (46 nodes, 41 edges)
+    subgraph build_graph_services_sparky_mcp_package_json_71d3eabc["services/sparky-mcp/package.json"]
+        services_sparky_mcp_package_description_cc86baf5("description<br/><small>services/sparky-mcp/package.json</small>")
+        services_sparky_mcp_package_main_1b0f0b19("main<br/><small>services/sparky-mcp/package.json</small>")
+        services_sparky_mcp_package_name_3100318c("name<br/><small>services/sparky-mcp/package.json</small>")
+        services_sparky_mcp_package_private_b84ace76("private<br/><small>services/sparky-mcp/package.json</small>")
+        services_sparky_mcp_package_scripts_f094139b("scripts<br/><small>services/sparky-mcp/package.json</small>")
+        services_sparky_mcp_package_fc1b6c20("sparky-mcp/package.json")
+        services_sparky_mcp_package_scripts_test_8d99c766("test<br/><small>services/sparky-mcp/package.json</small>")
+        services_sparky_mcp_package_version_c3b53f98("version<br/><small>services/sparky-mcp/package.json</small>")
     end
     subgraph build_graph_services_vertex_search_bridge_packag_762f8a70["services/vertex-search-bridge/package.json"]
         services_vertex_search_bridge_package_1faf6d56("vertex-search-bridge/package.json")
         ref_pg_848e5969("pg<br/><small>services/vertex-search-bridge/package.json</small>")
+        services_vertex_search_bridge_package_dependenci_7a95d545("dependencies<br/><small>services/vertex-search-bridge/package.json</small>")
+        services_vertex_search_bridge_package_descriptio_95d3ecf9("description<br/><small>services/vertex-search-bridge/package.json</small>")
+        services_vertex_search_bridge_package_engines_66c377c8("engines<br/><small>services/vertex-search-bridge/package.json</small>")
+        services_vertex_search_bridge_package_main_064772a6("main<br/><small>services/vertex-search-bridge/package.json</small>")
     end
-    services_agy_daemon_test_daemon_testdaemon_test_7ec34f4f("test_extract_stream_json_result()<br/><small>services/agy-daemon/test_daemon.py</small>")
-    services_agy_daemon_daemon_extract_stream_json_r_8a103bbe -->|calls| json_05d97e6e
-    services_agy_daemon_daemon_read_heartbeat_meta_7689efa0 -->|calls| json_05d97e6e
-    services_agy_daemon_daemon_sd_notify_8cb35845 -->|calls| socket_897d2105
-    services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1 -->|calls| services_agy_daemon_daemon_sd_notify_8cb35845
-    services_agy_daemon_test_daemon_testdaemon_test_7ec34f4f -->|calls| services_agy_daemon_daemon_extract_stream_json_r_8a103bbe
-    services_agy_daemon_daemon_1bc119f5 -->|imports| time_714eea0f
-    services_agy_daemon_daemon_1bc119f5 -->|imports| json_05d97e6e
-    services_agy_daemon_daemon_1bc119f5 -->|imports| socket_897d2105
-    services_agy_daemon_daemon_1bc119f5 -->|imports| signal_36ab4aaa
-    services_agy_daemon_daemon_1bc119f5 -->|imports| logging_42f7b07d
-    services_agy_daemon_daemon_1bc119f5 -->|imports| threading_c3015aa7
-    services_agy_daemon_daemon_1bc119f5 -->|imports| requests_54faec36
-    services_agy_daemon_daemon_1bc119f5 -->|imports| datetime_89ffad08
+    subgraph build_graph_scripts_publish_graph_sh_84522207["scripts/publish-graph.sh"]
+        scripts_publish_graph_home_425f09d1("HOME<br/><small>scripts/publish-graph.sh</small>")
+        scripts_publish_graph_path_bcd411cd("PATH<br/><small>scripts/publish-graph.sh</small>")
+        scripts_publish_graph_9c22330c("publish-graph.sh")
+        scripts_publish_graph_sh_entry_b0c7f1e6("publish-graph.sh script<br/><small>scripts/publish-graph.sh</small>")
+    end
     services_vertex_search_bridge_package_1faf6d56 -->|imports| ref_pg_848e5969
-    %% Omitted for readability: 45 nodes, 0 edges
-    class json_05d97e6e function;
-    class socket_897d2105 function;
-    class time_714eea0f function;
-    class signal_36ab4aaa function;
-    class logging_42f7b07d function;
-    class threading_c3015aa7 function;
-    class requests_54faec36 function;
-    class datetime_89ffad08 function;
-    class services_agy_daemon_daemon_1bc119f5 module;
-    class services_agy_daemon_daemon_read_heartbeat_meta_7689efa0 function;
-    class services_agy_daemon_daemon_taskdaemon_handle_exi_3e2c63e1 function;
-    class services_agy_daemon_daemon_extract_stream_json_r_8a103bbe async;
-    class services_agy_daemon_daemon_sd_notify_8cb35845 function;
-    class scripts_publish_graph_home_425f09d1 klass;
-    class scripts_publish_graph_path_bcd411cd klass;
+    %% Omitted for readability: 28 nodes, 0 edges
+    class services_sparky_mcp_package_description_cc86baf5 function;
+    class services_sparky_mcp_package_main_1b0f0b19 function;
+    class services_sparky_mcp_package_name_3100318c function;
+    class services_sparky_mcp_package_private_b84ace76 function;
+    class services_sparky_mcp_package_scripts_f094139b function;
+    class services_sparky_mcp_package_fc1b6c20 function;
+    class services_sparky_mcp_package_scripts_test_8d99c766 function;
+    class services_sparky_mcp_package_version_c3b53f98 function;
     class services_vertex_search_bridge_package_1faf6d56 function;
     class ref_pg_848e5969 function;
-    class services_agy_daemon_test_daemon_testdaemon_test_7ec34f4f test;
+    class services_vertex_search_bridge_package_dependenci_7a95d545 function;
+    class services_vertex_search_bridge_package_descriptio_95d3ecf9 function;
+    class services_vertex_search_bridge_package_engines_66c377c8 function;
+    class services_vertex_search_bridge_package_main_064772a6 function;
+    class scripts_publish_graph_home_425f09d1 klass;
+    class scripts_publish_graph_path_bcd411cd klass;
+    class scripts_publish_graph_9c22330c function;
+    class scripts_publish_graph_sh_entry_b0c7f1e6 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -410,91 +395,91 @@ flowchart LR
 </tr>
 <tr>
   <td>20</td>
-  <td><code>extract_stream_json_result()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-async">Async</span></td>
-  <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>test_daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/test_daemon.py</small><br><code>test_extract_stream_json_result()</code><br><small style="color:var(--muted)">services/agy-daemon/test_daemon.py</small></td>
-  <td><code>json</code></td>
-  <td>extract_stream_json_result() node in services/agy-daemon/daemon.py.</td>
+  <td><code>vertex-search-bridge/package.json</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>pg</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
+  <td>vertex-search-bridge/package.json node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>read_heartbeat_meta()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td><code>dependencies</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><code>json</code></td>
-  <td>read_heartbeat_meta() node in services/agy-daemon/daemon.py.</td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>dependencies node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>sd_notify()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td><code>pg</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>_handle_exit()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><code>socket</code></td>
-  <td>sd_notify() node in services/agy-daemon/daemon.py.</td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>pg node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>._handle_exit()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td><code>description</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><code>sd_notify()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>._handle_exit() node in services/agy-daemon/daemon.py.</td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>description node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>24</td>
-  <td><code>.test_extract_stream_json_result()</code><br><small style="color:var(--muted)">services/agy-daemon/test_daemon.py</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>TestDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/test_daemon.py</small></td>
-  <td><code>extract_stream_json_result()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td><code>engines</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>engines node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>25</td>
-  <td><code>daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>test_daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/test_daemon.py</small></td>
-  <td><code>datetime</code><br><code>json</code><br><code>logging</code><br>+9 more</td>
-  <td>Module file in services/agy-daemon/daemon.py.</td>
+  <td><code>node</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>node node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>@ai-rules 1. Antigravity Headless Automation Daemon (`agy-daemon.service`). 2.…</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>main</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Design note for @ai-rules 1. Antigravity Headless Automation Daemon (`agy-daemon.service`). 2.….</td>
+  <td>main node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>Send a systemd notification datagram to NOTIFY_SOCKET (zero external…</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>name</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Design note for Send a systemd notification datagram to NOTIFY_SOCKET (zero external….</td>
+  <td>name node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>Parse NDJSON lines from `agy -p ... --output-format stream-json`. Extracts…</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
+  <td><code>private</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
+  <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>Design note for Parse NDJSON lines from `agy -p ... --output-format stream-json`. Extracts….</td>
+  <td>private node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>datetime</code><br><small style="color:var(--muted)"></small></td>
+  <td><code>version</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>datetime node in project.</td>
+  <td>version node in services/vertex-search-bridge/package.json.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>json</code><br><small style="color:var(--muted)"></small></td>
+  <td><code>pg</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>extract_stream_json_result()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>read_heartbeat_meta()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br>+3 more</td>
+  <td><code>getOrInitPgPool()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/db.js</small><br><code>vertex-search-bridge/package.json</code><br><small style="color:var(--muted)">services/vertex-search-bridge/package.json</small></td>
   <td>No direct outbound edge</td>
-  <td>json node in project.</td>
+  <td>pg node in services/vertex-search-bridge/package.json.</td>
 </tr>
 </table>
 
@@ -505,16 +490,14 @@ flowchart LR
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>architecture/SEMANTIC_VECTOR_MEMORY.md</code></td><td>19 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/package.json</code></td><td>11 nodes</td></tr>
-<tr><td><code>services/agy-daemon/daemon.py</code></td><td>8 nodes</td></tr>
 <tr><td><code>services/sparky-mcp/package.json</code></td><td>8 nodes</td></tr>
 <tr><td><code>docs/brainstorms/sparky-nightly-knowledge-graph-requirements.md</code></td><td>4 nodes</td></tr>
 <tr><td><code>scripts/publish-graph.sh</code></td><td>4 nodes</td></tr>
-<tr><td><code>services/agy-daemon/test_daemon.py</code></td><td>1 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x41, imports x8, calls x5, explains x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x38, defines x2, imports x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1429,12 +1412,23 @@ flowchart LR
 
 <!-- ====== 7. Serving API ====== -->
 <h2 id="serve-api">7. Serving API</h2>
-<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, services/vertex-search-bridge/model-router.js. This section covers 646 nodes and 1509 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/kg-store.js, services/vertex-search-bridge/model-router.js. This section covers 647 nodes and 1523 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (646 nodes, 1509 edges)
+    %% Section: Serving API (647 nodes, 1523 edges)
+    subgraph serve_api_services_vertex_search_bridge_server_j_96187428["services/vertex-search-bridge/server.js"]
+        services_vertex_search_bridge_server_server_c3284e62("server<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_3ccdc721("server.js")
+        services_vertex_search_bridge_server_buildsessio_a136528f("buildSessionPreamble()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_handlewhats_59388f83("handleWhatsappTtsRoute()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_reactioncom_72668b15("reactionCommandService<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_hasvideo_cf837e2e("hasVideo()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_isvirtualli_cb6ceea8("isVirtualLink()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_isphysical_6b4d98a1("isPhysical()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_querypostgr_2572da55("queryPostgresScript()<br/><small>services/vertex-search-bridge/server.js</small>")
+    end
     subgraph serve_api_services_vertex_search_bridge_host_ada_93766852["services/vertex-search-bridge/host-adapters.js"]
         services_vertex_search_bridge_host_adapters_crea_479719ca("assertSafeBrowserUrl()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
         services_vertex_search_bridge_host_adapters_vali_26bd07f0("validateUrlForBrowser()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
@@ -1445,20 +1439,9 @@ flowchart LR
         services_vertex_search_bridge_host_adapters_fetc_981b1569("fetchViaJina()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
         services_vertex_search_bridge_host_adapters_ispr_7476077b("isPrivateOrLocalIp()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
     end
-    subgraph serve_api_services_vertex_search_bridge_server_j_96187428["services/vertex-search-bridge/server.js"]
-        services_vertex_search_bridge_server_server_c3284e62("server<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_3ccdc721("server.js")
-        services_vertex_search_bridge_server_buildsessio_a136528f("buildSessionPreamble()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_handlewhats_59388f83("handleWhatsappTtsRoute()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_reactioncom_72668b15("reactionCommandService<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_querypostgr_2572da55("queryPostgresScript()<br/><small>services/vertex-search-bridge/server.js</small>")
-    end
-    subgraph serve_api_services_vertex_search_bridge_correcti_f5d784bc["services/vertex-search-bridge/correction-learner.js"]
-        services_vertex_search_bridge_correction_learner_3dd36f3d("extractAndSaveCorrection()<br/><small>services/vertex-search-bridge/correction-learner.js</small>")
-        services_vertex_search_bridge_correction_learner_4ae2bc57("detectCorrectionSignal()<br/><small>services/vertex-search-bridge/correction-learner.js</small>")
-        services_vertex_search_bridge_correction_learner_9d625d48("containsSecretOrPassword()<br/><small>services/vertex-search-bridge/correction-learner.js</small>")
-    end
     services_vertex_search_bridge_reaction_commands_909fb857("reaction-commands.js")
+    services_vertex_search_bridge_server_hasvideo_cf837e2e -->|calls| services_vertex_search_bridge_server_isvirtualli_cb6ceea8
+    services_vertex_search_bridge_server_isphysical_6b4d98a1 -->|calls| services_vertex_search_bridge_server_isvirtualli_cb6ceea8
     services_vertex_search_bridge_server_querypostgr_2572da55 -->|calls| services_vertex_search_bridge_server_querypostgr_2572da55
     services_vertex_search_bridge_host_adapters_crea_479719ca -->|calls| services_vertex_search_bridge_host_adapters_vali_26bd07f0
     services_vertex_search_bridge_host_adapters_crea_ea040b16 -->|calls| services_vertex_search_bridge_host_adapters_crea_479719ca
@@ -1467,17 +1450,21 @@ flowchart LR
     services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_iswa_9b0b5beb
     services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_fetc_981b1569
     services_vertex_search_bridge_host_adapters_vali_26bd07f0 -->|calls| services_vertex_search_bridge_host_adapters_ispr_7476077b
-    services_vertex_search_bridge_correction_learner_3dd36f3d -->|calls| services_vertex_search_bridge_correction_learner_4ae2bc57
-    services_vertex_search_bridge_correction_learner_3dd36f3d -->|calls| services_vertex_search_bridge_correction_learner_9d625d48
-    services_vertex_search_bridge_server_buildsessio_a136528f -->|calls| services_vertex_search_bridge_correction_learner_4ae2bc57
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_handlewhats_59388f83
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_buildsessio_a136528f
-    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_correction_learner_9d625d48
-    services_vertex_search_bridge_server_reactioncom_72668b15 -->|calls| services_vertex_search_bridge_correction_learner_9d625d48
-    services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_correction_learner_9d625d48
-    services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_correction_learner_4ae2bc57
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_hasvideo_cf837e2e
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_isphysical_6b4d98a1
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_reaction_commands_909fb857
-    %% Omitted for readability: 628 nodes, 0 edges
+    %% Omitted for readability: 629 nodes, 0 edges
+    class services_vertex_search_bridge_server_server_c3284e62 function;
+    class services_vertex_search_bridge_server_3ccdc721 module;
+    class services_vertex_search_bridge_server_buildsessio_a136528f function;
+    class services_vertex_search_bridge_server_handlewhats_59388f83 api;
+    class services_vertex_search_bridge_server_reactioncom_72668b15 entry;
+    class services_vertex_search_bridge_server_hasvideo_cf837e2e function;
+    class services_vertex_search_bridge_server_isvirtualli_cb6ceea8 function;
+    class services_vertex_search_bridge_server_isphysical_6b4d98a1 function;
+    class services_vertex_search_bridge_server_querypostgr_2572da55 function;
     class services_vertex_search_bridge_host_adapters_crea_479719ca async;
     class services_vertex_search_bridge_host_adapters_vali_26bd07f0 function;
     class services_vertex_search_bridge_host_adapters_crea_ea040b16 function;
@@ -1486,15 +1473,6 @@ flowchart LR
     class services_vertex_search_bridge_host_adapters_iswa_9b0b5beb function;
     class services_vertex_search_bridge_host_adapters_fetc_981b1569 function;
     class services_vertex_search_bridge_host_adapters_ispr_7476077b function;
-    class services_vertex_search_bridge_server_server_c3284e62 function;
-    class services_vertex_search_bridge_server_3ccdc721 module;
-    class services_vertex_search_bridge_server_buildsessio_a136528f function;
-    class services_vertex_search_bridge_server_handlewhats_59388f83 api;
-    class services_vertex_search_bridge_server_reactioncom_72668b15 entry;
-    class services_vertex_search_bridge_server_querypostgr_2572da55 function;
-    class services_vertex_search_bridge_correction_learner_3dd36f3d function;
-    class services_vertex_search_bridge_correction_learner_4ae2bc57 function;
-    class services_vertex_search_bridge_correction_learner_9d625d48 async;
     class services_vertex_search_bridge_reaction_commands_909fb857 entry;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -1519,126 +1497,30 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>buildAgyTaskPayload()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>agy-mission-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>handleAgyDispatch()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>handleAgyMissionRoute()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br>+2 more</td>
-  <td><code>buildFencedMissionPrompt()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td>buildAgyTaskPayload() node in services/vertex-search-bridge/agy-mission-client.js.</td>
+  <td><code>family-relay.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/family-relay.test.js</small><br><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+1 more</td>
+  <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>formatDueBucket()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>normalizeLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>buildCanonicalLoopKey() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>buildFencedMissionPrompt()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
+  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>buildAgyTaskPayload()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td><code>stripUntrustedContextTags()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td>Builds structured prompts for model calls.</td>
+  <td><code>buildSessionPreamble()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>getSystemAudit()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+3 more</td>
+  <td><code>effectiveDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>formatIsraelDate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>classifyLoopsByDue() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
+  <td><code>classifyShipmentLifecycle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>agy-mission-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>handleAgyMissionRoute()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>reactionCommandService</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br>+1 more</td>
-  <td><code>fetchAgyAccessToken()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>loadAgyDaemonConfig()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>dispatchAgyMissionToDrive() node in services/vertex-search-bridge/agy-mission-client.js.</td>
+  <td><code>advanceInTransitLoopOnKeepTracking()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+4 more</td>
+  <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>classifyShipmentLifecycle() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>4</td>
-  <td><code>fetchAgyAccessToken()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>fetchAgyAccessToken() node in services/vertex-search-bridge/agy-mission-client.js.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>loadAgyDaemonConfig()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>Reads, resolves, or persists project configuration.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>stripUntrustedContextTags()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>agy-mission-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>buildFencedMissionPrompt()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>stripUntrustedContextTags() node in services/vertex-search-bridge/agy-mission-client.js.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>computeSignature()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>incident-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>incident-store.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/incident-store.test.js</small><br><code>main()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/probe-incident-signatures.js</small><br>+4 more</td>
-  <td><code>normalizeErrorKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>computeSignature() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>createIncidentStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td><code>incident-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>incident-store.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/incident-store.test.js</small><br><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><code>draftLessonsFromCandidates()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>ensureTables()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>recordCandidate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>createIncidentStore() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>draftLessonsFromCandidates()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>createIncidentStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>draftLessonsFromCandidates() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>ensureTables()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>createIncidentStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>ensureTables() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>recordCandidate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>createIncidentStore()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><code>computeSignature()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>normalizeErrorKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br>+1 more</td>
-  <td>recordCandidate() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>normalizeErrorKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>computeSignature()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>incident-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>incident-store.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/incident-store.test.js</small><br>+5 more</td>
-  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>normalizeErrorKey() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>redactAndNormalizeError()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>incident-store.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><code>computeSignature()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>normalizeErrorKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>redactAndNormalizeError() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>14</td>
-  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>agy-mission-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>draftLessonsFromCandidates()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br>+16 more</td>
-  <td>No direct outbound edge</td>
-  <td>redactSecretsInError() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>draftLessonsFromCandidates()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small><br><code>recordCandidate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/incident-store.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>sqlStr() node in services/vertex-search-bridge/incident-store.js.</td>
-</tr>
-<tr>
-  <td>16</td>
   <td><code>computeDefaultShipmentFollowUp()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>advanceInTransitLoopOnKeepTracking()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+3 more</td>
@@ -1646,7 +1528,63 @@ flowchart LR
   <td>computeDefaultShipmentFollowUp() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>5</td>
+  <td><code>effectiveDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>effectiveDue() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>encodeCanonicalLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>encodeCanonicalLoopId() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>classifyShipmentLifecycle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+1 more</td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>extractLoopEntityKey() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>extractShipmentIdentifiers()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>extractShipmentIdentifiers() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>formatDueBucket()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>formatDueBucket() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>formatIsraelDate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>formatIsraelDate() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>family-relay.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/family-relay.test.js</small><br><code>loop-keys.fixture.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.fixture.test.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+5 more</td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>encodeCanonicalLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>generateDeterministicLoopId() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>12</td>
   <td><code>getJerusalemDateTimeParts()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>computeDefaultShipmentFollowUp()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>computeSnoozeTarget()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+3 more</td>
@@ -1654,7 +1592,39 @@ flowchart LR
   <td>getJerusalemDateTimeParts() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>13</td>
+  <td><code>normalizeLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br>+2 more</td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>normalizeLoopTitle() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>normalizeSubject()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>normalizeSubject() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>senderDomain()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small></td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>senderDomain() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>classifyShipmentLifecycle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>extractShipmentIdentifiers()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+7 more</td>
+  <td>No direct outbound edge</td>
+  <td>stripBidi() node in services/vertex-search-bridge/loop-keys.js.</td>
+</tr>
+<tr>
+  <td>17</td>
   <td><code>buildReactionLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>reaction-commands.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1662,7 +1632,7 @@ flowchart LR
   <td>buildReactionLoopTitle() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>18</td>
   <td><code>buildResult()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>dispatchByAction()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>handleAgyDispatch()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br>+2 more</td>
@@ -1670,7 +1640,7 @@ flowchart LR
   <td>buildResult() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>19</td>
   <td><code>computeSnoozeTarget()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>reaction-commands.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1678,7 +1648,7 @@ flowchart LR
   <td>computeSnoozeTarget() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>20</td>
   <td><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-cmd">Entry</span></td>
   <td><code>reaction-commands.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
@@ -1686,7 +1656,7 @@ flowchart LR
   <td>createReactionCommandService() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>21</td>
   <td><code>dispatchByAction()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>executeReactionCommand()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1694,7 +1664,7 @@ flowchart LR
   <td>dispatchByAction() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>22</td>
   <td><code>executeReactionCommand()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-cmd">Entry</span></td>
   <td><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1702,7 +1672,7 @@ flowchart LR
   <td>executeReactionCommand() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>23</td>
   <td><code>pruneCache()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>executeReactionCommand()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1710,7 +1680,7 @@ flowchart LR
   <td>Caches analysis results or computes cache keys.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>24</td>
   <td><code>handleAgyDispatch()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>dispatchByAction()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1718,7 +1688,7 @@ flowchart LR
   <td>handleAgyDispatch() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>25</td>
   <td><code>handleMemoryVault()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>dispatchByAction()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1726,7 +1696,7 @@ flowchart LR
   <td>handleMemoryVault() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>26</td>
   <td><code>handleTtsVoice()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>dispatchByAction()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1734,7 +1704,7 @@ flowchart LR
   <td>handleTtsVoice() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>27</td>
   <td><code>resolveJerusalemWallClockMs()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>computeSnoozeTarget()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1742,7 +1712,7 @@ flowchart LR
   <td>resolveJerusalemWallClockMs() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>28</td>
   <td><code>sanitizeSenderForTask()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>handleMemoryVault()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>reaction-commands.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
@@ -1750,12 +1720,20 @@ flowchart LR
   <td>sanitizeSenderForTask() node in services/vertex-search-bridge/reaction-commands.js.</td>
 </tr>
 <tr>
-  <td>30</td>
+  <td>29</td>
   <td><code>applyTriageDoneLoopMutation()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-triage-handlers.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>handleTriageDone()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-triage-handlers.js</small></td>
   <td>No direct outbound edge</td>
   <td>applyTriageDoneLoopMutation() node in services/vertex-search-bridge/reaction-triage-handlers.js.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>handleTriageDone()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-triage-handlers.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>dispatchByAction()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>reaction-commands.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>reaction-triage-handlers.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-triage-handlers.js</small></td>
+  <td><code>applyTriageDoneLoopMutation()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-triage-handlers.js</small></td>
+  <td>handleTriageDone() node in services/vertex-search-bridge/reaction-triage-handlers.js.</td>
 </tr>
 </table>
 
@@ -1764,19 +1742,19 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>145 nodes</td></tr>
+      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>152 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/kg-store.js</code></td><td>38 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/model-router.js</code></td><td>28 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/family-relay.js</code></td><td>24 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/reaction-commands.js</code></td><td>22 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/memory-hygiene.js</code></td><td>21 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/reaction-commands.js</code></td><td>21 nodes</td></tr>
 <tr><td><code>docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md</code></td><td>20 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/loop-keys.js</code></td><td>19 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x641, contains x383, indirect call x229, imports x169. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x655, contains x380, indirect call x231, imports x172. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1860,12 +1838,12 @@ flowchart LR
 
 <!-- ====== 9. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">9. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, vertex-search-bridge/test/reaction-commands.test.js, tests/test_graphify_integration.py. This section covers 340 nodes and 437 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, vertex-search-bridge/test/reaction-commands.test.js, tests/test_graphify_integration.py. This section covers 394 nodes and 522 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (340 nodes, 437 edges)
+    %% Section: Tests &amp; Fixtures (394 nodes, 522 edges)
     subgraph tests_fixtures_vertex_search_bridge_test_reactio_0810e822["vertex-search-bridge/test/reaction-commands.test.js"]
         services_vertex_search_bridge_test_reaction_comm_5503578d("reaction-commands.test.js")
         services_vertex_search_bridge_test_reaction_comm_da1a84a3("AgyDriver<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
@@ -1881,14 +1859,12 @@ flowchart LR
         services_vertex_search_bridge_test_reaction_comm_518ba3ea("createTokenProvider()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
     end
     subgraph tests_fixtures_services_agy_daemon_test_daemon_p_41de055e["services/agy-daemon/test_daemon.py"]
-        services_agy_daemon_test_daemon_testdaemon_c1a640de("TestDaemon<br/><small>services/agy-daemon/test_daemon.py</small>")
         services_agy_daemon_test_daemon_be9f2181("test_daemon.py")
+        services_agy_daemon_test_daemon_testdaemon_c1a640de("TestDaemon<br/><small>services/agy-daemon/test_daemon.py</small>")
     end
-    subgraph tests_fixtures_tests_test_agent_evaluation_py_f3d133d4["tests/test_agent_evaluation.py"]
-        tests_test_agent_evaluation_testevaluationharnes_24b65e64("TestEvaluationHarnessWorkflow<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testevaluationharnes_3f394a29("setUp()<br/><small>tests/test_agent_evaluation.py</small>")
-    end
-    services_vertex_search_bridge_test_heartbeat_sto_59f43e19("heartbeat-store.test.js")
+    services_agy_daemon_daemon_1bc119f5("daemon.py")
+    tests_test_agent_evaluation_testevaluationharnes_24b65e64("TestEvaluationHarnessWorkflow<br/><small>tests/test_agent_evaluation.py</small>")
+    services_vertex_search_bridge_test_family_relay_a764c479("family-relay.test.js")
     services_vertex_search_bridge_test_lifecycle_tes_8f013867("lifecycle.test.js")
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_ff69d7a4
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_a03f6eff
@@ -1898,12 +1874,12 @@ flowchart LR
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_8c342b16
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_96295464
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_518ba3ea
-    tests_test_agent_evaluation_testevaluationharnes_24b65e64 -->|method| tests_test_agent_evaluation_testevaluationharnes_3f394a29
     services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_518ba3ea
     services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_1f6ac6d7
     services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_a03f6eff
     services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_3940be11
-    %% Omitted for readability: 322 nodes, 0 edges
+    services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_1bc119f5
+    %% Omitted for readability: 376 nodes, 0 edges
     class services_vertex_search_bridge_test_reaction_comm_5503578d test;
     class services_vertex_search_bridge_test_reaction_comm_da1a84a3 test;
     class services_vertex_search_bridge_test_reaction_comm_ff69d7a4 test;
@@ -1916,11 +1892,11 @@ flowchart LR
     class services_vertex_search_bridge_test_reaction_comm_8c342b16 test;
     class services_vertex_search_bridge_test_reaction_comm_96295464 test;
     class services_vertex_search_bridge_test_reaction_comm_518ba3ea test;
-    class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
     class services_agy_daemon_test_daemon_be9f2181 test;
+    class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
+    class services_agy_daemon_daemon_1bc119f5 module;
     class tests_test_agent_evaluation_testevaluationharnes_24b65e64 test;
-    class tests_test_agent_evaluation_testevaluationharnes_3f394a29 test;
-    class services_vertex_search_bridge_test_heartbeat_sto_59f43e19 test;
+    class services_vertex_search_bridge_test_family_relay_a764c479 test;
     class services_vertex_search_bridge_test_lifecycle_tes_8f013867 test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -1945,14 +1921,46 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>callBridge()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><code>assertBalancedSentinelXml()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td><code>assertHostileEscaped()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>assertBalancedSentinelXml() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>assertHostileEscaped()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
+  <td><code>assertBalancedSentinelXml()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td>assertHostileEscaped() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>assertPreambleXmlShape()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>assertPreambleXmlShape() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>assertPromptContract()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Builds structured prompts for model calls.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>callBridge()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td><code>evaluateBriefingWithPreamble()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small><br><code>evaluateChainedCommute()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small><br><code>evaluateMorningSchedule()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td>No direct outbound edge</td>
   <td>callBridge() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>2</td>
+  <td>6</td>
   <td><code>callBridgeLoose()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -1960,7 +1968,7 @@ flowchart LR
   <td>callBridgeLoose() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>7</td>
   <td><code>cleanupReactionDeckTestRows()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -1968,7 +1976,15 @@ flowchart LR
   <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>8</td>
+  <td><code>cleanupTestSentinelState()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>runPsql()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>9</td>
   <td><code>evalExpr()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -1976,7 +1992,31 @@ flowchart LR
   <td>evalExpr() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>10</td>
+  <td><code>evaluateBriefingWithPreamble()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>callBridge()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td>evaluateBriefingWithPreamble() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>evaluateChainedCommute()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>callBridge()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td>evaluateChainedCommute() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>evaluateMorningSchedule()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>callBridge()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td>evaluateMorningSchedule() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>13</td>
   <td><code>execPsqlStrict()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td><code>cleanupReactionDeckTestRows()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
@@ -1984,7 +2024,7 @@ flowchart LR
   <td>execPsqlStrict() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>14</td>
   <td><code>loadMetaToken()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -1992,7 +2032,15 @@ flowchart LR
   <td>loadMetaToken() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>15</td>
+  <td><code>loadWorkflowNode()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>loadWorkflowNode() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>16</td>
   <td><code>rawBridgeReq()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -2000,7 +2048,15 @@ flowchart LR
   <td>rawBridgeReq() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>17</td>
+  <td><code>runCodeNode()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>ref_node_vm</code></td>
+  <td>runCodeNode() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>18</td>
   <td><code>runParse()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -2008,15 +2064,31 @@ flowchart LR
   <td>runParse() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>19</td>
   <td><code>runPsql()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>cleanupTestSentinelState()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small><br><code>saveAndSupersedeLivePendingDecisions()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small><br><code>seedTestOpenLoopMarker()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td>No direct outbound edge</td>
   <td>runPsql() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>20</td>
+  <td><code>saveAndSupersedeLivePendingDecisions()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>runPsql()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td>saveAndSupersedeLivePendingDecisions() node in vertex-search-bridge/test/server-endpoints.test.js.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>seedTestOpenLoopMarker()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td><span class="tag tag-func">Test</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>runPsql()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
+  <td>Verifies imports, entry points, or version behavior.</td>
+</tr>
+<tr>
+  <td>22</td>
   <td><code>formatOutput()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td><code>runTestSuite()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small><br><code>test_workspace_mutations.js</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
@@ -2024,7 +2096,7 @@ flowchart LR
   <td>formatOutput() node in tests/test_workspace_mutations.js.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>23</td>
   <td><code>loadWorkflowById()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td><code>runTestSuite()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small><br><code>test_workspace_mutations.js</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
@@ -2032,7 +2104,7 @@ flowchart LR
   <td>loadWorkflowById() node in tests/test_workspace_mutations.js.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>24</td>
   <td><code>normalizeRowPayload()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td><code>runTestSuite()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small><br><code>test_workspace_mutations.js</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
@@ -2040,7 +2112,7 @@ flowchart LR
   <td>normalizeRowPayload() node in tests/test_workspace_mutations.js.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>25</td>
   <td><code>recordResult()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td><code>runTestSuite()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
@@ -2048,7 +2120,7 @@ flowchart LR
   <td>recordResult() node in tests/test_workspace_mutations.js.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>26</td>
   <td><code>runTestSuite()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td><code>test_workspace_mutations.js</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
@@ -2056,15 +2128,7 @@ flowchart LR
   <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
-  <td>15</td>
-  <td><code>REACTION_COMMAND_MAP</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small></td>
-  <td><span class="tag tag-cmd">Entry</span></td>
-  <td><code>server-endpoints.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small><br><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>REACTION_COMMAND_MAP node in services/vertex-search-bridge/reaction-commands.js.</td>
-</tr>
-<tr>
-  <td>16</td>
+  <td>27</td>
   <td><code>server-endpoints.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -2072,7 +2136,7 @@ flowchart LR
   <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>28</td>
   <td><code>assert</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -2080,7 +2144,7 @@ flowchart LR
   <td>assert node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>29</td>
   <td><code>{ execFile }</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
@@ -2088,100 +2152,12 @@ flowchart LR
   <td>{ execFile } node in vertex-search-bridge/test/server-endpoints.test.js.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>30</td>
   <td><code>FAMILY_CONTEXT_FILES</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
   <td><span class="tag tag-func">Test</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>FAMILY_CONTEXT_FILES node in vertex-search-bridge/test/server-endpoints.test.js.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>fs</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>fs node in vertex-search-bridge/test/server-endpoints.test.js.</td>
-</tr>
-<tr>
-  <td>21</td>
-  <td><code>test</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>TOKEN</code><br><small style="color:var(--muted)">vertex-search-bridge/test/server-endpoints.test.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>TOKEN node in vertex-search-bridge/test/server-endpoints.test.js.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>test_workspace_mutations.js</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>formatOutput()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small><br><code>loadWorkflowById()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small><br><code>normalizeRowPayload()</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small><br>+6 more</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>APPEND_WF_PATH</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>APPEND_WF_PATH node in tests/test_workspace_mutations.js.</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>cleanupRegistry</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>cleanupRegistry node in tests/test_workspace_mutations.js.</td>
-</tr>
-<tr>
-  <td>26</td>
-  <td><code>CREATE_DOC_WF_PATH</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>CREATE_DOC_WF_PATH node in tests/test_workspace_mutations.js.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>CREATE_SHEET_WF_PATH</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>CREATE_SHEET_WF_PATH node in tests/test_workspace_mutations.js.</td>
-</tr>
-<tr>
-  <td>28</td>
-  <td><code>CREATE_SLIDES_WF_PATH</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>CREATE_SLIDES_WF_PATH node in tests/test_workspace_mutations.js.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>{ execSync, execFileSync }</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ execSync, execFileSync } node in tests/test_workspace_mutations.js.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>EXPECTED_HEADERS</code><br><small style="color:var(--muted)">tests/test_workspace_mutations.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>EXPECTED_HEADERS node in tests/test_workspace_mutations.js.</td>
 </tr>
 </table>
 
@@ -2193,33 +2169,33 @@ flowchart LR
       <tr><td><code>tests/test_agent_evaluation.py</code></td><td>43 nodes</td></tr>
 <tr><td><code>vertex-search-bridge/test/reaction-commands.test.js</code></td><td>30 nodes</td></tr>
 <tr><td><code>tests/test_graphify_integration.py</code></td><td>30 nodes</td></tr>
+<tr><td><code>vertex-search-bridge/test/server-endpoints.test.js</code></td><td>28 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/test-n8n-patches.js</code></td><td>25 nodes</td></tr>
 <tr><td><code>services/n8n-sparky/test-n8n-patches.js</code></td><td>25 nodes</td></tr>
 <tr><td><code>vertex-search-bridge/test/family-relay.test.js</code></td><td>20 nodes</td></tr>
 <tr><td><code>tests/test_workspace_mutations.js</code></td><td>19 nodes</td></tr>
-<tr><td><code>vertex-search-bridge/test/server-endpoints.test.js</code></td><td>16 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x206, imports x65, calls x61, method x55. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x241, calls x77, imports x76, method x56. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 10. Daemon Services Agy ====== -->
 <h2 id="daemon-services-agy">10. Daemon Services Agy</h2>
-<p>Daemon Services Agy groups implementation around daemon, services, agy, daemonpy, mostly in services/agy-daemon/daemon.py. This section covers 21 nodes and 45 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Daemon Services Agy groups implementation around daemon, services, agy, daemonpy, mostly in services/agy-daemon/daemon.py. This section covers 18 nodes and 39 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Daemon Services Agy (21 nodes, 45 edges)
+    %% Section: Daemon Services Agy (18 nodes, 39 edges)
     subgraph daemon_services_agy_services_agy_daemon_daemon_p_8f36dc3a["services/agy-daemon/daemon.py"]
         services_agy_daemon_daemon_taskdaemon_ea787a57("TaskDaemon<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_run_2190cef7("run()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f("recover_interrupted_tasks()<br/><small>services/agy-daemon/daemon.py</small>")
-        services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b("execute_task()<br/><small>services/agy-daemon/daemon.py</small>")
+        services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6("claim_task()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_init_597a2283("__init__()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785("_get_bridge_headers()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4("post_bridge_event()<br/><small>services/agy-daemon/daemon.py</small>")
@@ -2228,11 +2204,11 @@ flowchart LR
         services_agy_daemon_daemon_taskdaemon_list_folde_852913c6("_list_folder_files()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_list_pendi_51d806f1("list_pending_tasks()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48("list_processing_tasks()<br/><small>services/agy-daemon/daemon.py</small>")
-        services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6("claim_task()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_requeue_ta_00cf5ee7("requeue_task_to_pending()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_finalize_t_23a8974d("finalize_task()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_notify_n8n_f267d83f("notify_n8n()<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3("_terminate_process_group()<br/><small>services/agy-daemon/daemon.py</small>")
+        services_agy_daemon_daemon_rationale_346_db5c4795("On daemon startup, inspect any tasks le...<br/><small>services/agy-daemon/daemon.py</small>")
     end
     popen_8f31caa6("Popen")
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_init_597a2283
@@ -2249,21 +2225,21 @@ flowchart LR
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_finalize_t_23a8974d
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_notify_n8n_f267d83f
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3
-    services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b
     services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_run_2190cef7
     services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6 -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
-    services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b -->|calls| services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4
-    services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b -->|calls| services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3
     services_agy_daemon_daemon_taskdaemon_finalize_t_23a8974d -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
     services_agy_daemon_daemon_taskdaemon_list_folde_852913c6 -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
     services_agy_daemon_daemon_taskdaemon_list_pendi_51d806f1 -->|calls| services_agy_daemon_daemon_taskdaemon_list_folde_852913c6
     services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48 -->|calls| services_agy_daemon_daemon_taskdaemon_list_folde_852913c6
     services_agy_daemon_daemon_taskdaemon_lookup_bri_37f34063 -->|calls| services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785
-    %% Omitted for readability: 3 nodes, 17 edges
+    services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4 -->|calls| services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785
+    services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f -->|calls| services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48
+    services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
+    %% Omitted for readability: 0 nodes, 13 edges
     class services_agy_daemon_daemon_taskdaemon_ea787a57 klass;
     class services_agy_daemon_daemon_taskdaemon_run_2190cef7 function;
     class services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f function;
-    class services_agy_daemon_daemon_taskdaemon_execute_ta_cfaa027b function;
+    class services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6 function;
     class services_agy_daemon_daemon_taskdaemon_init_597a2283 function;
     class services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785 function;
     class services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4 function;
@@ -2272,11 +2248,11 @@ flowchart LR
     class services_agy_daemon_daemon_taskdaemon_list_folde_852913c6 function;
     class services_agy_daemon_daemon_taskdaemon_list_pendi_51d806f1 function;
     class services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48 function;
-    class services_agy_daemon_daemon_taskdaemon_claim_task_fa22e8a6 function;
     class services_agy_daemon_daemon_taskdaemon_requeue_ta_00cf5ee7 function;
     class services_agy_daemon_daemon_taskdaemon_finalize_t_23a8974d function;
     class services_agy_daemon_daemon_taskdaemon_notify_n8n_f267d83f function;
     class services_agy_daemon_daemon_taskdaemon_terminate_a89c33f3 function;
+    class services_agy_daemon_daemon_rationale_346_db5c4795 concept;
     class popen_8f31caa6 klass;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -2317,30 +2293,6 @@ flowchart LR
 </tr>
 <tr>
   <td>3</td>
-  <td><code>.execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><code>_read_stderr()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>_read_stdout()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>_terminate_process_group()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br>+5 more</td>
-  <td>.execute_task() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>_read_stderr()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>_read_stderr() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>_read_stdout()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>_read_stdout() node in services/agy-daemon/daemon.py.</td>
-</tr>
-<tr>
-  <td>6</td>
   <td><code>.finalize_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2348,7 +2300,7 @@ flowchart LR
   <td>.finalize_task() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>4</td>
   <td><code>.get_access_token()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_list_folder_files()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>claim_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>finalize_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br>+3 more</td>
@@ -2356,7 +2308,7 @@ flowchart LR
   <td>.get_access_token() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>5</td>
   <td><code>._get_bridge_headers()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>lookup_bridge_conversation_id()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>post_bridge_event()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2364,7 +2316,7 @@ flowchart LR
   <td>._get_bridge_headers() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>6</td>
   <td><code>.__init__()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2372,7 +2324,7 @@ flowchart LR
   <td>.__init__() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>7</td>
   <td><code>._list_folder_files()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>list_pending_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>list_processing_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2380,7 +2332,7 @@ flowchart LR
   <td>._list_folder_files() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>8</td>
   <td><code>.list_pending_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2388,7 +2340,7 @@ flowchart LR
   <td>.list_pending_tasks() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>9</td>
   <td><code>.list_processing_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2396,7 +2348,7 @@ flowchart LR
   <td>.list_processing_tasks() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>10</td>
   <td><code>.lookup_bridge_conversation_id()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2404,7 +2356,7 @@ flowchart LR
   <td>.lookup_bridge_conversation_id() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>11</td>
   <td><code>.notify_n8n()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2412,7 +2364,7 @@ flowchart LR
   <td>.notify_n8n() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>12</td>
   <td><code>.post_bridge_event()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br>+1 more</td>
@@ -2420,7 +2372,7 @@ flowchart LR
   <td>.post_bridge_event() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>13</td>
   <td><code>.recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2428,7 +2380,7 @@ flowchart LR
   <td>.recover_interrupted_tasks() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>14</td>
   <td><code>.requeue_task_to_pending()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>recover_interrupted_tasks()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2436,7 +2388,7 @@ flowchart LR
   <td>.requeue_task_to_pending() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>15</td>
   <td><code>.run()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2444,7 +2396,7 @@ flowchart LR
   <td>.run() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>16</td>
   <td><code>._terminate_process_group()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>execute_task()</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>TaskDaemon</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
@@ -2452,7 +2404,7 @@ flowchart LR
   <td>._terminate_process_group() node in services/agy-daemon/daemon.py.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>17</td>
   <td><code>Popen</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -2460,7 +2412,7 @@ flowchart LR
   <td>Popen node in project.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>18</td>
   <td><code>On daemon startup, inspect any tasks left in the `processing` folder. If…</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -2474,12 +2426,12 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/agy-daemon/daemon.py</code></td><td>20 nodes</td></tr>
+      <tr><td><code>services/agy-daemon/daemon.py</code></td><td>17 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x25, method x16, indirect call x2, references x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x22, method x15, references x1, explains x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3590,18 +3542,18 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>1237</td></tr>
-      <tr><td>Edges</td><td>2359</td></tr>
+      <tr><td>Nodes</td><td>1272</td></tr>
+      <tr><td>Edges</td><td>2426</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>84</td></tr>
+      <tr><td>Communities</td><td>85</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>2093</td></tr>
-      <tr><td>INFERRED</td><td>266</td></tr>
+      <tr><td>EXTRACTED</td><td>2155</td></tr>
+      <tr><td>INFERRED</td><td>271</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
   </div>
@@ -3609,7 +3561,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-16 01:30 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-16 10:00 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

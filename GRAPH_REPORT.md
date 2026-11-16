@@ -1,13 +1,13 @@
 # Graph Report - sparky-backup  (2026-11-16)
 
 ## Corpus Check
-- 102 files · ~200,759 words
+- 102 files · ~200,885 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: (none) 5, .service 5, .example 1)
 
 ## Summary
-- 1280 nodes · 2459 edges · 88 communities (65 shown, 23 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 278 edges (avg confidence: 0.85)
+- 1280 nodes · 2460 edges · 88 communities (65 shown, 23 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 279 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
@@ -66,7 +66,7 @@
 - index.js
 - buildSessionPreamble
 - patch-n8n-memory-orphans.sh
-- handleWhatsappTtsRoute
+- sentinel-commute-helpers.js
 - reactionCommandService
 - publish-graph.sh
 - config.js
@@ -122,12 +122,12 @@
   docs/brainstorms/sparky-dynamic-model-routing-requirements.md → services/vertex-search-bridge/server.js
 - `2. Verified Architectural Invariants & Test Alignment` --references--> `compactSessionChatHistory()`  [INFERRED]
   docs/brainstorms/sparky-dynamic-model-routing-requirements.md → services/vertex-search-bridge/config.js
+- `🛠️ Microservice Bridge (Port 5055)` --references--> `safeBuildSessionPreamble()`  [INFERRED]
+  README.md → services/vertex-search-bridge/server.js
 - `DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`)` --references--> `detectCorrectionSignal()`  [INFERRED]
   docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/correction-learner.js
 - `DEF-04: Real-Time In-Turn Correction Learning (`"No, I meant..."`)` --references--> `extractAndSaveCorrection()`  [INFERRED]
   docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/correction-learner.js
-- `DEF-10: Bridge Monolith Decomposition (`server.js`), Native PG Pool & `BRIDGE_URL` Env` --references--> `checkNfs()`  [INFERRED]
-  docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md → services/vertex-search-bridge/host-adapters.js
 
 ## Import Cycles
 - None detected.
@@ -211,8 +211,8 @@ Cohesion: 0.22
 Nodes (8): 1. Clear / Simple Domain (Known Knowns), 2. Complicated Domain (Known Unknowns), 3. Complex Domain (Unknown Unknowns), 4. Chaotic Domain (Unknowables / Crises), 5. Aporia / Confusion, Architectural Overview, Cynefin + OODA Loop Cognitive Framework, The Four Cynefin Domains in Sparky
 
 ### Community 14 - "Sparky-Plex: Autonomous Executive Assistant & Infrastructure"
-Cohesion: 0.22
-Nodes (8): Automated Backup, 🔄 Automated Backup & Disaster Recovery, Full Disaster Recovery, 🛠️ Microservice Bridge (Port 5055), 📁 Repository Structure, 🔒 Security & Privacy Notice, Sparky-Plex: Autonomous Executive Assistant & Infrastructure, 🏛️ System Architecture
+Cohesion: 0.25
+Nodes (7): Automated Backup, 🔄 Automated Backup & Disaster Recovery, Full Disaster Recovery, 📁 Repository Structure, 🔒 Security & Privacy Notice, Sparky-Plex: Autonomous Executive Assistant & Infrastructure, 🏛️ System Architecture
 
 ### Community 15 - "family-relay.test.js"
 Cohesion: 0.10
@@ -331,20 +331,20 @@ Cohesion: 0.07
 Nodes (55): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), computeDefaultShipmentFollowUp(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey() (+47 more)
 
 ### Community 46 - "redactSecretsInError"
-Cohesion: 0.10
-Nodes (32): ALLOWED_WORKSPACES, buildAgyTaskPayload(), buildFencedMissionPrompt(), dispatchAgyMissionToDrive(), fetchAgyAccessToken(), fs, loadAgyDaemonConfig(), { redactSecretsInError } (+24 more)
+Cohesion: 0.11
+Nodes (31): ALLOWED_WORKSPACES, buildAgyTaskPayload(), buildFencedMissionPrompt(), dispatchAgyMissionToDrive(), fetchAgyAccessToken(), fs, loadAgyDaemonConfig(), { redactSecretsInError } (+23 more)
 
 ### Community 47 - "index.js"
 Cohesion: 0.23
 Nodes (10): processJsonRpcMessage(), { bridgeRequest }, dispatchAgyMissionToDrive(), fs, handleToolCall(), readHeartbeatMeta(), readline, sendJsonRpc() (+2 more)
 
 ### Community 48 - "buildSessionPreamble"
-Cohesion: 0.14
-Nodes (25): buildSessionPreamble(), checkAndDispatchDueReminders(), effectiveDue(), getJerusalemOffsetString(), getSentinelEvent(), getSystemAudit(), isDateOnlyAutoShipmentLoop(), isFamilyConciergeLoop() (+17 more)
+Cohesion: 0.15
+Nodes (23): 🛠️ Microservice Bridge (Port 5055), buildSessionPreamble(), getJerusalemOffsetString(), getSentinelEvent(), getSystemAudit(), isFamilyConciergeLoop(), isTestLoop(), loadActivityStream() (+15 more)
 
-### Community 50 - "handleWhatsappTtsRoute"
-Cohesion: 0.33
-Nodes (9): normalizeReactionEmoji(), handleAgyMissionRoute(), handleReactionExecuteRoute(), handleWhatsappTtsRoute(), parsePersonaFromNote(), parseStrictJsonBody(), resolvePersonaConfig(), sendJsonResponse() (+1 more)
+### Community 50 - "sentinel-commute-helpers.js"
+Cohesion: 0.27
+Nodes (12): evaluateCommuteWindow(), filterAndSortEvents(), formatCommuteBriefingLine(), formatIsoTimeIl(), formatOriginLabel(), hasVideo(), isPhysical(), isVirtualLink() (+4 more)
 
 ### Community 51 - "reactionCommandService"
 Cohesion: 0.20
@@ -415,8 +415,8 @@ Cohesion: 0.50
 Nodes (4): scripts, start, test, test:ci
 
 ### Community 84 - "server"
-Cohesion: 0.14
-Nodes (25): evaluateCommuteWindow(), filterAndSortEvents(), formatCommuteBriefingLine(), formatIsoTimeIl(), formatOriginLabel(), hasVideo(), isPhysical(), isVirtualLink() (+17 more)
+Cohesion: 0.13
+Nodes (26): normalizeReactionEmoji(), checkAndDispatchDueReminders(), cleanNullableStr(), effectiveDue(), encodeMarkdownUrl(), fetchBufferFromUrl(), handleAgyMissionRoute(), handleReactionExecuteRoute() (+18 more)
 
 ### Community 85 - "test_workspace_mutations.js"
 Cohesion: 0.11
@@ -432,7 +432,7 @@ Nodes (6): getDecisionSourceAliases(), inferDecisionSource(), createDecision(), 
 
 ## Knowledge Gaps
 - **20 isolated node(s):** `PATH`, `PATH`, `HOME`, `REGISTRY_AUTH_FILE`, `PATH` (+15 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 568 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 567 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **23 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions

@@ -1,4 +1,4 @@
-# Graph Report - sparky-backup  (2026-11-18)
+# Graph Report - sparky-backup  (2026-11-19)
 
 ## Corpus Check
 - 105 files · ~213,110 words
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a5bc465f`
+- Built from commit: `e9d64144`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,7 +31,7 @@
 - Sentinel Actor Model & Conversational Handshake Architecture
 - The Four Cynefin Domains in Sparky
 - Sparky-Plex: Autonomous Executive Assistant & Infrastructure
-- family-relay.test.js
+- reaction-commands.js
 - kg-store.js
 - sparky-mcp/package.json
 - http-server.js
@@ -43,7 +43,7 @@
 - render-local-kg-html.sh
 - mcp.test.js
 - scripts/test-n8n-patches.js
-- readStreamUtf8
+- reactionCommandService
 - update.sh
 - memory-hygiene.js
 - ref_node_fs
@@ -54,7 +54,7 @@
 - nudge-telemetry.js
 - redactSecretsInError
 - heartbeat-store.js
-- reaction-commands.js
+- family-relay.test.js
 - host-adapters.test.js
 - n8n-sparky/test-n8n-patches.js
 - lifecycle.test.js
@@ -72,9 +72,9 @@
 - config.js
 - TestEvaluationHarnessWorkflow
 - TaskDaemon
-- generateEmbedding
-- db.js
 - ref_node_path
+- db.js
+- TestEvaluationSafetyGuard
 - vertex-search-bridge/package.json
 - ref_node_test
 - test_agent_evaluation.py
@@ -87,16 +87,16 @@
 - n8n-stack/scripts/deploy-bridge.sh
 - eval-history.md
 - TestDaemon
-- TestEvaluationSafetyGuard
+- TestWorkflowTelemetry
 - Requirements Anchor: `[Sparky-AI]` Event-Driven Email Handoff to Gemini App
 - n8n-sparky/patch-gemini4-langchain.sh
 - n8n-sparky/patch-n8n-memory-orphans.sh
-- TestWorkflowTelemetry
+- TestDynamicModelRoutingCallers
 - scripts/patch-retry-backoff.sh
 - n8n-sparky/patch-retry-backoff.sh
 - Requirements Anchor: Sparky-AI Dynamic Main Agent Model & Effort Routing
 - TestEopSkillAndBackupScriptContract
-- TestDynamicModelRoutingCallers
+- generateEmbedding
 - isTestPayload
 - sentinel-commute-helpers.test.js
 - vertex-fallback.test.js
@@ -219,9 +219,9 @@ Nodes (8): 1. Clear / Simple Domain (Known Knowns), 2. Complicated Domain (Known
 Cohesion: 0.22
 Nodes (8): Automated Backup, 🔄 Automated Backup & Disaster Recovery, Full Disaster Recovery, 🛠️ Microservice Bridge (Port 5055), 📁 Repository Structure, 🔒 Security & Privacy Notice, Sparky-Plex: Autonomous Executive Assistant & Infrastructure, 🏛️ System Architecture
 
-### Community 15 - "family-relay.test.js"
-Cohesion: 0.14
-Nodes (17): assert, BACKUP_FILE, { buildCanonicalLoopKey, generateDeterministicLoopId }, clone(), createFakeWorld(), mergeJsonbLiteral(), queryPostgresJson(), queryPostgresWithStdin() (+9 more)
+### Community 15 - "reaction-commands.js"
+Cohesion: 0.08
+Nodes (49): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), computeDefaultShipmentFollowUp(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey() (+41 more)
 
 ### Community 16 - "kg-store.js"
 Cohesion: 0.10
@@ -263,7 +263,7 @@ Nodes (10): assert, { createMcpHttpServer }, crypto, fs, RFC-7591, os, path, { s
 Cohesion: 0.10
 Nodes (18): { cleanupOrphanedMessages }, { ensureParams, failedAttemptHandler }, entries, failedHandlerPath, fs, geminiCjsPath, geminiMessages, geminiMessagesPath (+10 more)
 
-### Community 27 - "readStreamUtf8"
+### Community 27 - "reactionCommandService"
 Cohesion: 0.16
 Nodes (18): readStreamUtf8(), callGoogleRoutesApi(), callOsrmFallback(), callVertexApiWithRetry(), callVertexFastJson(), sendOnce(), computeCommute(), fetchMetaMedia() (+10 more)
 
@@ -273,7 +273,7 @@ Nodes (45): 1. Adaptive Autonomy & Closed-Loop Feedback (Epic E4), 2. Quality Ga
 
 ### Community 30 - "ref_node_fs"
 Cohesion: 0.25
-Nodes (5): assert, EGRESS_PATH, fs, path, test
+Nodes (5): assert, DB_PATH, fs, path, test
 
 ### Community 33 - "restore.sh"
 Cohesion: 0.47
@@ -291,9 +291,9 @@ Nodes (38): ALLOWED_WORKSPACES, buildAgyTaskPayload(), buildFencedMissionPrompt(
 Cohesion: 0.10
 Nodes (23): extractInteractiveOptions(), INTERACTIVE_SENTINEL_SOURCES, NON_DECISION_SOURCES, SOURCE_ALIAS_GROUPS, createHeartbeatStore(), flushSentinel(), listHeartbeats(), recordHeartbeat() (+15 more)
 
-### Community 38 - "reaction-commands.js"
-Cohesion: 0.08
-Nodes (49): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), computeDefaultShipmentFollowUp(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey() (+41 more)
+### Community 38 - "family-relay.test.js"
+Cohesion: 0.14
+Nodes (17): assert, BACKUP_FILE, { buildCanonicalLoopKey, generateDeterministicLoopId }, clone(), createFakeWorld(), mergeJsonbLiteral(), queryPostgresJson(), queryPostgresWithStdin() (+9 more)
 
 ### Community 39 - "host-adapters.test.js"
 Cohesion: 0.17
@@ -351,17 +351,13 @@ Nodes (3): HOME, PATH, publish-graph.sh script
 Cohesion: 0.14
 Nodes (8): compactSessionChatHistory(), compactToolObservationContent(), createMetaTokenReader(), crypto, defaultConfig, fs, normalizeHistoryRow(), path
 
-### Community 56 - "generateEmbedding"
-Cohesion: 0.40
-Nodes (6): generateEmbedding(), insertSemanticMemory(), memoryHygieneStore, sanitizeContent(), searchSemanticMemories(), searchSemanticMemoriesByVector()
+### Community 56 - "ref_node_path"
+Cohesion: 0.25
+Nodes (5): assert, EGRESS_PATH, fs, path, test
 
 ### Community 57 - "db.js"
 Cohesion: 0.21
 Nodes (11): pg, createDb(), getOrInitPgPool(), queryPostgresJson(), queryPostgresScript(), queryPostgresWithStdin(), { execFile }, formatPgCell() (+3 more)
-
-### Community 58 - "ref_node_path"
-Cohesion: 0.25
-Nodes (5): assert, DB_PATH, fs, path, test
 
 ### Community 59 - "vertex-search-bridge/package.json"
 Cohesion: 0.14
@@ -386,6 +382,10 @@ Nodes (3): HOME, PATH, run-agent-eval.sh script
 ### Community 78 - "Requirements Anchor: Sparky-AI Dynamic Main Agent Model & Effort Routing"
 Cohesion: 0.50
 Nodes (3): 1. User Intent & Selected Architecture, 2. Verified Architectural Invariants & Test Alignment, Requirements Anchor: Sparky-AI Dynamic Main Agent Model & Effort Routing
+
+### Community 80 - "generateEmbedding"
+Cohesion: 0.40
+Nodes (6): generateEmbedding(), insertSemanticMemory(), memoryHygieneStore, sanitizeContent(), searchSemanticMemories(), searchSemanticMemoriesByVector()
 
 ### Community 81 - "isTestPayload"
 Cohesion: 0.16
@@ -448,8 +448,8 @@ _Questions this graph is uniquely positioned to answer:_
   _20 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.033879781420765025 - nodes in this community are weakly interconnected._
-- **Why does `server` connect `server` to `server.js`, `model-router.js`, `redactSecretsInError`, `nudge-telemetry.js`, `reaction-commands.js`, `handleWhatsappTtsRoute`, `correction-learner.js`, `family-relay.js`, `isTestPayload`, `sentinel-commute-helpers.js`, `reactionCommandService`, `atomicWriteJson`, `callVertexWithCascade`, `generateEmbedding`, `readStreamUtf8`, `memory-hygiene.js`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
+- **Why does `server` connect `server` to `server.js`, `model-router.js`, `redactSecretsInError`, `nudge-telemetry.js`, `handleWhatsappTtsRoute`, `correction-learner.js`, `family-relay.js`, `reaction-commands.js`, `generateEmbedding`, `isTestPayload`, `sentinel-commute-helpers.js`, `reactionCommandService`, `atomicWriteJson`, `callVertexWithCascade`, `reactionCommandService`, `memory-hygiene.js`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Should `reaction-commands.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.07956989247311828 - nodes in this community are weakly interconnected._
 - **Why does `createDb()` connect `db.js` to `probe-db-parity.js`, `server.js`?**

@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 1389 nodes, 2736 edges, 82 communities. Commit: 7831a19</p>
+<p class="subtitle">Generated from graphify knowledge graph: 1389 nodes, 2738 edges, 81 communities. Commit: 7831a19</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -74,10 +74,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#services-sparky-mcp">Services Sparky Mcp</a>
     <a href="#sentinel-actor-modelmd">Sentinel Actor Modelmd</a>
     <a href="#cynefin-ooda-frameworkmd">Cynefin Ooda Frameworkmd</a>
-    <a href="#readmemd-automated-backup">Readmemd Automated Backup</a>
     <a href="#sparky-watchdogsh-containers">Sparky Watchdogsh Containers</a>
     <a href="#backupsh-scripts-encrypt">Backupsh Scripts Encrypt</a>
     <a href="#restoresh-scripts-home">Restoresh Scripts Home</a>
+    <a href="#n8n-stack-readmemd">N8N Stack Readmemd</a>
     <a href="#other">Other</a>
 </div>
 
@@ -96,11 +96,11 @@ flowchart LR
     class CLI_SKILLS_9964CBB8 module;
     INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>35 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>702 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>736 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>484 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>458 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
     SERVICES_SPARKY_MCP_D7A382D7("Services Sparky Mcp<br/><small>14 nodes</small>")
     class SERVICES_SPARKY_MCP_D7A382D7 module;
@@ -108,28 +108,28 @@ flowchart LR
     class SENTINEL_ACTOR_MODELMD_9221FD2D module;
     CYNEFIN_OODA_FRAMEWORKMD_0D28A4E4("Cynefin Ooda Frameworkmd<br/><small>9 nodes</small>")
     class CYNEFIN_OODA_FRAMEWORKMD_0D28A4E4 module;
-    READMEMD_AUTOMATED_BACKUP_2CB22FAA("Readmemd Automated Backup<br/><small>8 nodes</small>")
-    class READMEMD_AUTOMATED_BACKUP_2CB22FAA module;
     SPARKY_WATCHDOGSH_CONTAINERS_BEFA76BE("Sparky Watchdogsh Containers<br/><small>8 nodes</small>")
     class SPARKY_WATCHDOGSH_CONTAINERS_BEFA76BE module;
     BACKUPSH_SCRIPTS_ENCRYPT_C017EB1B("Backupsh Scripts Encrypt<br/><small>6 nodes</small>")
     class BACKUPSH_SCRIPTS_ENCRYPT_C017EB1B module;
     RESTORESH_SCRIPTS_HOME_0C9D8459("Restoresh Scripts Home<br/><small>6 nodes</small>")
     class RESTORESH_SCRIPTS_HOME_0C9D8459 module;
-    OTHER_D0941E68("Other<br/><small>28 nodes</small>")
+    N8N_STACK_READMEMD_2701DBB6("N8N Stack Readmemd<br/><small>5 nodes</small>")
+    class N8N_STACK_READMEMD_2701DBB6 module;
+    OTHER_D0941E68("Other<br/><small>23 nodes</small>")
     class OTHER_D0941E68 module;
-    SERVE_API_35EC8E86 -->|imports x77| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x16| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|imports x8| CLI_SKILLS_9964CBB8
-    TESTS_FIXTURES_B84B1DCC -->|imports x7| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x41| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x28| SERVE_API_35EC8E86
+    SERVE_API_35EC8E86 -->|imports x10| CLI_SKILLS_9964CBB8
     INGEST_CACHE_UPDATE_FF457338 -->|imports x5| SERVICES_SPARKY_MCP_D7A382D7
+    TESTS_FIXTURES_B84B1DCC -->|imports x5| CLI_SKILLS_9964CBB8
     INGEST_CACHE_UPDATE_FF457338 -->|imports x3| CLI_SKILLS_9964CBB8
+    CLI_SKILLS_9964CBB8 -->|references x3| SERVE_API_35EC8E86
     TESTS_FIXTURES_B84B1DCC -->|calls x3| SERVICES_SPARKY_MCP_D7A382D7
     SERVICES_SPARKY_MCP_D7A382D7 -->|imports x3| CLI_SKILLS_9964CBB8
     SERVE_API_35EC8E86 -->|imports x2| INGEST_CACHE_UPDATE_FF457338
+    INGEST_CACHE_UPDATE_FF457338 -->|imports x2| SERVE_API_35EC8E86
     TESTS_FIXTURES_B84B1DCC -->|imports x2| INGEST_CACHE_UPDATE_FF457338
-    CLI_SKILLS_9964CBB8 -->|references x2| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|imports| BUILD_GRAPH_321CBB04
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -146,7 +146,7 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Graph Build</td><td>46</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>26</td><td><code>2, 65, 78, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>702</td><td><code>0, 15, 3, 45, 36, 16, 29, 11, 10, 48, 5, 35, 8, 83, 27, 51, 53, 86, 50, 38, 64, 62, 63</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>484</td><td><code>55, 44, 4, 26, 37, 1, 40, 85, 46, 9, 25, 39, 41, 54, 60, 75, 42, 43, 30, 56, 82, 58, 61, 71, 79, 88, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>14</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Readmemd Automated Backup</td><td>8</td><td><code>14</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Backupsh Scripts Encrypt</td><td>6</td><td><code>23</code></td></tr><tr><td>Restoresh Scripts Home</td><td>6</td><td><code>33</code></td></tr><tr><td>Other</td><td>28</td><td><code>20, 21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Graph Build</td><td>46</td><td><code>7, 59, 17, 52, 6</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>26</td><td><code>2, 65, 78, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>35</td><td><code>18, 22, 28</code></td></tr><tr><td>Serving API</td><td>736</td><td><code>45, 3, 0, 15, 36, 16, 29, 11, 10, 48, 35, 5, 8, 83, 27, 51, 53, 86, 50, 38, 14, 64, 62, 63</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>458</td><td><code>55, 37, 4, 26, 1, 40, 85, 46, 30, 9, 25, 39, 41, 54, 60, 75, 42, 43, 44, 82, 58, 61, 71, 79, 88, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>14</td><td><code>47</code></td></tr><tr><td>Sentinel Actor Modelmd</td><td>10</td><td><code>12</code></td></tr><tr><td>Cynefin Ooda Frameworkmd</td><td>9</td><td><code>13</code></td></tr><tr><td>Sparky Watchdogsh Containers</td><td>8</td><td><code>19</code></td></tr><tr><td>Backupsh Scripts Encrypt</td><td>6</td><td><code>23</code></td></tr><tr><td>Restoresh Scripts Home</td><td>6</td><td><code>33</code></td></tr><tr><td>N8N Stack Readmemd</td><td>5</td><td><code>20</code></td></tr><tr><td>Other</td><td>23</td><td><code>21, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
@@ -158,10 +158,10 @@ flowchart LR
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>1389 nodes · 2736 edges · 82 communities (61 shown, 21 thin omitted)</li>
+      <li>1389 nodes · 2738 edges · 81 communities (60 shown, 21 thin omitted)</li>
       <li>Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 308 edges (avg confidence: 0.86)</li>
       <li>Token cost: 0 input · 0 output</li>
-      <li>1. `server` - 124 edges</li>
+      <li>1. `server` - 125 edges</li>
       <li>2. `redactSecretsInError()` - 23 edges</li>
       <li>3. `queryPostgresJson()` - 23 edges</li>
     </ul>
@@ -1249,68 +1249,70 @@ flowchart LR
 
 <!-- ====== 6. Serving API ====== -->
 <h2 id="serve-api">6. Serving API</h2>
-<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/model-router.js, services/vertex-search-bridge/kg-store.js. This section covers 702 nodes and 1655 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around bridge, vertex, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/model-router.js, services/vertex-search-bridge/kg-store.js. This section covers 736 nodes and 1753 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (702 nodes, 1655 edges)
-    subgraph serve_api_services_vertex_search_bridge_server_j_96187428["services/vertex-search-bridge/server.js"]
-        services_vertex_search_bridge_server_server_c3284e62("server<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_3ccdc721("server.js")
-        services_vertex_search_bridge_server_buildsessio_a136528f("buildSessionPreamble()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_handlewhats_59388f83("handleWhatsappTtsRoute()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_reactioncom_72668b15("reactionCommandService<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_ispassivesh_5aac1318("isPassiveShipmentFollowupLoop()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_isdateonlya_34548a1a("isDateOnlyAutoShipmentLoop()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_loadprocess_0c98ef14("loadProcessedDropzoneFiles()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_readdropzon_81cf2079("readDropzoneProcessedState()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_markprocess_76453caf("markProcessedDropzoneFile()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_atomicwrite_e6e2c775("atomicWriteJson()<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_querypostgr_2572da55("queryPostgresScript()<br/><small>services/vertex-search-bridge/server.js</small>")
-    end
+    %% Section: Serving API (736 nodes, 1753 edges)
     subgraph serve_api_services_vertex_search_bridge_host_ada_93766852["services/vertex-search-bridge/host-adapters.js"]
         services_vertex_search_bridge_host_adapters_crea_479719ca("assertSafeBrowserUrl()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
         services_vertex_search_bridge_host_adapters_vali_26bd07f0("validateUrlForBrowser()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
         services_vertex_search_bridge_host_adapters_crea_ea040b16("captureScreenshot()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
         services_vertex_search_bridge_host_adapters_crea_22c6eebd("renderPage()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
         services_vertex_search_bridge_host_adapters_extr_4b677985("extractReadableDom()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
+        services_vertex_search_bridge_host_adapters_iswa_9b0b5beb("isWafOrErrorPage()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
+        services_vertex_search_bridge_host_adapters_fetc_981b1569("fetchViaJina()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
+        services_vertex_search_bridge_host_adapters_ispr_7476077b("isPrivateOrLocalIp()<br/><small>services/vertex-search-bridge/host-adapters.js</small>")
     end
-    services_vertex_search_bridge_test_vertex_fallba_15a57aee("vertex-fallback.test.js")
+    subgraph serve_api_services_vertex_search_bridge_server_j_96187428["services/vertex-search-bridge/server.js"]
+        services_vertex_search_bridge_server_server_c3284e62("server<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_3ccdc721("server.js")
+        services_vertex_search_bridge_server_buildsessio_a136528f("buildSessionPreamble()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_handlewhats_59388f83("handleWhatsappTtsRoute()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_ispassivesh_5aac1318("isPassiveShipmentFollowupLoop()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_isdateonlya_34548a1a("isDateOnlyAutoShipmentLoop()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_querypostgr_2572da55("queryPostgresScript()<br/><small>services/vertex-search-bridge/server.js</small>")
+    end
+    services_vertex_search_bridge_loop_keys_classify_e0849161("classifyShipmentLifecycle()<br/><small>services/vertex-search-bridge/loop-keys.js</small>")
+    services_vertex_search_bridge_reaction_commands_909fb857("reaction-commands.js")
+    services_vertex_search_bridge_test_loop_keys_tes_66d6319b("loop-keys.test.js")
     services_vertex_search_bridge_server_ispassivesh_5aac1318 -->|calls| services_vertex_search_bridge_server_isdateonlya_34548a1a
-    services_vertex_search_bridge_server_loadprocess_0c98ef14 -->|calls| services_vertex_search_bridge_server_readdropzon_81cf2079
-    services_vertex_search_bridge_server_markprocess_76453caf -->|calls| services_vertex_search_bridge_server_readdropzon_81cf2079
-    services_vertex_search_bridge_server_markprocess_76453caf -->|calls| services_vertex_search_bridge_server_atomicwrite_e6e2c775
+    services_vertex_search_bridge_server_ispassivesh_5aac1318 -->|calls| services_vertex_search_bridge_loop_keys_classify_e0849161
     services_vertex_search_bridge_server_querypostgr_2572da55 -->|calls| services_vertex_search_bridge_server_querypostgr_2572da55
     services_vertex_search_bridge_host_adapters_crea_479719ca -->|calls| services_vertex_search_bridge_host_adapters_vali_26bd07f0
     services_vertex_search_bridge_host_adapters_crea_ea040b16 -->|calls| services_vertex_search_bridge_host_adapters_crea_479719ca
     services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_crea_479719ca
     services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_extr_4b677985
-    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_loadprocess_0c98ef14
-    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_markprocess_76453caf
+    services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_iswa_9b0b5beb
+    services_vertex_search_bridge_host_adapters_crea_22c6eebd -->|calls| services_vertex_search_bridge_host_adapters_fetc_981b1569
+    services_vertex_search_bridge_host_adapters_vali_26bd07f0 -->|calls| services_vertex_search_bridge_host_adapters_ispr_7476077b
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_handlewhats_59388f83
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_buildsessio_a136528f
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_ispassivesh_5aac1318
-    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_atomicwrite_e6e2c775
-    %% Omitted for readability: 684 nodes, 0 edges
-    class services_vertex_search_bridge_server_server_c3284e62 function;
-    class services_vertex_search_bridge_server_3ccdc721 module;
-    class services_vertex_search_bridge_server_buildsessio_a136528f function;
-    class services_vertex_search_bridge_server_handlewhats_59388f83 api;
-    class services_vertex_search_bridge_server_reactioncom_72668b15 entry;
-    class services_vertex_search_bridge_server_ispassivesh_5aac1318 function;
-    class services_vertex_search_bridge_server_isdateonlya_34548a1a function;
-    class services_vertex_search_bridge_server_loadprocess_0c98ef14 async;
-    class services_vertex_search_bridge_server_readdropzon_81cf2079 async;
-    class services_vertex_search_bridge_server_markprocess_76453caf async;
-    class services_vertex_search_bridge_server_atomicwrite_e6e2c775 function;
-    class services_vertex_search_bridge_server_querypostgr_2572da55 function;
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_loop_keys_classify_e0849161
+    services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_reaction_commands_909fb857
+    services_vertex_search_bridge_reaction_commands_909fb857 -->|imports| services_vertex_search_bridge_loop_keys_classify_e0849161
+    services_vertex_search_bridge_test_loop_keys_tes_66d6319b -->|imports| services_vertex_search_bridge_loop_keys_classify_e0849161
+    %% Omitted for readability: 718 nodes, 0 edges
     class services_vertex_search_bridge_host_adapters_crea_479719ca async;
     class services_vertex_search_bridge_host_adapters_vali_26bd07f0 function;
     class services_vertex_search_bridge_host_adapters_crea_ea040b16 function;
     class services_vertex_search_bridge_host_adapters_crea_22c6eebd function;
     class services_vertex_search_bridge_host_adapters_extr_4b677985 function;
-    class services_vertex_search_bridge_test_vertex_fallba_15a57aee test;
+    class services_vertex_search_bridge_host_adapters_iswa_9b0b5beb function;
+    class services_vertex_search_bridge_host_adapters_fetc_981b1569 function;
+    class services_vertex_search_bridge_host_adapters_ispr_7476077b function;
+    class services_vertex_search_bridge_server_server_c3284e62 function;
+    class services_vertex_search_bridge_server_3ccdc721 module;
+    class services_vertex_search_bridge_server_buildsessio_a136528f function;
+    class services_vertex_search_bridge_server_handlewhats_59388f83 api;
+    class services_vertex_search_bridge_server_ispassivesh_5aac1318 function;
+    class services_vertex_search_bridge_server_isdateonlya_34548a1a function;
+    class services_vertex_search_bridge_server_querypostgr_2572da55 function;
+    class services_vertex_search_bridge_loop_keys_classify_e0849161 function;
+    class services_vertex_search_bridge_reaction_commands_909fb857 entry;
+    class services_vertex_search_bridge_test_loop_keys_tes_66d6319b test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1334,306 +1336,243 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>isDateOnlyAutoShipmentLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>classifyFamilyInboundText()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>isPassiveShipmentFollowupLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>processFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
   <td>No direct outbound edge</td>
-  <td>isDateOnlyAutoShipmentLoop() node in services/vertex-search-bridge/server.js.</td>
+  <td>classifyFamilyInboundText() node in services/vertex-search-bridge/family-relay.js.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>isPassiveShipmentFollowupLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>createFamilyRelayService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>checkAndDispatchDueReminders()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><code>classifyShipmentLifecycle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>isDateOnlyAutoShipmentLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td>isPassiveShipmentFollowupLoop() node in services/vertex-search-bridge/server.js.</td>
+  <td><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>configureFamilyMember()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>handleFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>recordChatHistory()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br>+1 more</td>
+  <td>createFamilyRelayService() node in services/vertex-search-bridge/family-relay.js.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>loadProcessedDropzoneFiles()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-async">Async</span></td>
-  <td><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><code>readDropzoneProcessedState()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td>loadProcessedDropzoneFiles() node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>markProcessedDropzoneFile()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-async">Async</span></td>
-  <td><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><code>atomicWriteJson()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>readDropzoneProcessedState()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td>markProcessedDropzoneFile() node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>queryPostgresScript()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>configureFamilyMember()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>queryPostgresScript()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><code>queryPostgresScript()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td>queryPostgresScript() node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>readDropzoneProcessedState()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-async">Async</span></td>
-  <td><code>loadProcessedDropzoneFiles()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>markProcessedDropzoneFile()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>readDropzoneProcessedState() node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>agy-mission-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>ALLOWED_AGY_MODELS</code><br><small style="color:var(--muted)">services/vertex-search-bridge/agy-mission-client.js</small><br><code>ALLOWED_ROUTER_MODELS</code><br><small style="color:var(--muted)">services/vertex-search-bridge/model-router.js</small><br>+123 more</td>
-  <td>server.js node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>{
-  ALLOWED_WORKSPACES,
-  ALLOWED_AGY_MODELS,
-  validateOptionalAgyModel,
-  buildAgyTaskPayload,
-  dispatchAgyMissionToDrive,
-}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  ALLOWED_WORKSPACES,
-  ALLOWED_AGY_MODELS,
-  validateOptionalAgyModel,
-  buildAgyTaskPayload,
-  dispatchAgyMissionToDrive,
-} node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>BRIDGE_API_TOKEN</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-endpoint">API</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>BRIDGE_API_TOKEN node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>BRIDGE_STARTED_AT</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>BRIDGE_STARTED_AT node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>circuitBreakers</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>circuitBreakers node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>{
-  classifyDecisionChoice,
-  inferDecisionSource,
-  extractSenderKey,
-  computeSenderAdjustment,
-  formatTriageFeedbackXml,
-  createNudgeTelemetryStore,
-}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  classifyDecisionChoice,
-  inferDecisionSource,
-  extractSenderKey,
-  computeSenderAdjustment,
-  formatTriageFeedbackXml,
-  createNudgeTelemetryStore,
-} node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>{
-  COGNITIVE_TIERS,
-  CALLER_DEFAULT_ROUTES,
-  HEAVY_MODELS,
-  ALLOWED_ROUTER_MODELS,
-  classifyStage1FastPath,
-  createModelRouter,
-}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-endpoint">API</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  COGNITIVE_TIERS,
-  CALLER_DEFAULT_ROUTES,
-  HEAVY_MODELS,
-  ALLOWED_ROUTER_MODELS,
-  classifyStage1FastPath,
-  createModelRouter,
-} node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>14</td>
-  <td><code>{
-  computeRecencyBoost,
-  rankMemoriesWithDecay,
-  hasFactMutationTokens,
-  mergeContextNotes,
-  projectContextNotes,
-  searchContextNotesLexical,
-  createMemoryHygieneStore,
-}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  computeRecencyBoost,
-  rankMemoriesWithDecay,
-  hasFactMutationTokens,
-  mergeContextNotes,
-  projectContextNotes,
-  searchContextNotesLexical,
-  createMemoryHygieneStore,
-} node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>config</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
+  <td><code>createFamilyRelayService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>sendOutboundRelay()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>getAuthorizedUsers()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>loadCtx()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>normalizeIsraeliPhone()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br>+3 more</td>
   <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
-  <td>16</td>
-  <td><code>{
-  containsSecretOrPassword,
-  redactAllSecrets,
-  stripChatWrapper,
-  detectCorrectionSignal,
-  findDuplicateFieldNote,
-  createCorrectionLearner,
-}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-async">Async</span></td>
-  <td>External entry / no inbound edge</td>
+  <td>4</td>
+  <td><code>handleFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createFamilyRelayService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>loadCtx()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>normalizeIsraeliPhone()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>processFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br>+2 more</td>
+  <td>handleFamilyInbound() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>loadCtx()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>configureFamilyMember()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>handleFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>sendOutboundRelay()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
   <td>No direct outbound edge</td>
+  <td>loadCtx() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>loadFamilyLoops()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>processFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
+  <td>loadFamilyLoops() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>processFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>classifyFamilyInboundText()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>loadFamilyLoops()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>recordChatHistory()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br>+3 more</td>
+  <td>processFamilyInbound() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>recordChatHistory()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createFamilyRelayService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>processFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>sendOutboundRelay()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>sqlJsonb()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
   <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
 </tr>
 <tr>
-  <td>17</td>
-  <td><code>correctionLearner</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td>9</td>
+  <td><code>rememberInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>handleFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
   <td>No direct outbound edge</td>
-  <td>correctionLearner node in services/vertex-search-bridge/server.js.</td>
+  <td>rememberInbound() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>sendOutboundRelay()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createFamilyRelayService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>configureFamilyMember()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>loadCtx()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>normalizeIsraeliPhone()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br>+3 more</td>
+  <td>sendOutboundRelay() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>sendToTal()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>processFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>sendToTal() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>updateLoopMetadata()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>processFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>sqlJsonb()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small><br><code>sqlStr()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-store.js</small></td>
+  <td>updateLoopMetadata() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>writeBackupMirror()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>configureFamilyMember()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>getAuthorizedUsers()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td>writeBackupMirror() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>getAuthorizedUsers()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>configureFamilyMember()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>resolveAuthorizedUserByPhone()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>resolveFamilyMemberByTarget()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br>+1 more</td>
+  <td>No direct outbound edge</td>
+  <td>getAuthorizedUsers() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>normKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>configureFamilyMember()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>resolveFamilyMemberByTarget()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>normKey() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>resolveFamilyMemberByTarget()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>configureFamilyMember()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>sendOutboundRelay()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><code>getAuthorizedUsers()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>normalizeIsraeliPhone()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>normKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td>resolveFamilyMemberByTarget() node in services/vertex-search-bridge/family-relay.js.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>sanitizeFamilyText()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>processFamilyInbound()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>sendOutboundRelay()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>sanitizeFamilyText() node in services/vertex-search-bridge/family-relay.js.</td>
 </tr>
 <tr>
   <td>18</td>
-  <td><code>{ createDb }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ createDb } node in services/vertex-search-bridge/server.js.</td>
+  <td><code>family-relay.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/family-relay.test.js</small><br><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+1 more</td>
+  <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>formatDueBucket()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>normalizeLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>buildCanonicalLoopKey() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>19</td>
-  <td><code>{ createHandoffStore, formatHandoffsXml }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ createHandoffStore, formatHandoffsXml } node in services/vertex-search-bridge/server.js.</td>
+  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>buildSessionPreamble()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>getSystemAudit()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+3 more</td>
+  <td><code>effectiveDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>formatIsraelDate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>classifyLoopsByDue() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>20</td>
-  <td><code>{ createHostAdapters }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>classifyShipmentLifecycle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ createHostAdapters } node in services/vertex-search-bridge/server.js.</td>
+  <td><code>advanceInTransitLoopOnKeepTracking()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>isPassiveShipmentFollowupLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br>+5 more</td>
+  <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>classifyShipmentLifecycle() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>{ createKgStore }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ createKgStore } node in services/vertex-search-bridge/server.js.</td>
+  <td><code>computeDefaultShipmentFollowUp()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>advanceInTransitLoopOnKeepTracking()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>createReactionCommandService()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+3 more</td>
+  <td><code>getJerusalemDateTimeParts()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>computeDefaultShipmentFollowUp() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>{ createLoopStore }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>effectiveDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small></td>
   <td>No direct outbound edge</td>
-  <td>{ createLoopStore } node in services/vertex-search-bridge/server.js.</td>
+  <td>effectiveDue() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>{ createReactionActivityController }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>encodeCanonicalLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td>No direct outbound edge</td>
-  <td>{ createReactionActivityController } node in services/vertex-search-bridge/server.js.</td>
+  <td>encodeCanonicalLoopId() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>24</td>
-  <td><code>{ createWhatsAppEgress, stripModelControlTokens, isTestPayload }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>extractLoopEntityKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>classifyShipmentLifecycle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+1 more</td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>extractLoopEntityKey() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>25</td>
-  <td><code>crypto</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>extractShipmentIdentifiers()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>crypto node in services/vertex-search-bridge/server.js.</td>
+  <td><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>extractShipmentIdentifiers() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>db</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>formatDueBucket()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td>No direct outbound edge</td>
-  <td>db node in services/vertex-search-bridge/server.js.</td>
+  <td>formatDueBucket() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>disambiguatedByMessageId</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>formatIsraelDate()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>classifyLoopsByDue()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td>No direct outbound edge</td>
-  <td>disambiguatedByMessageId node in services/vertex-search-bridge/server.js.</td>
+  <td>formatIsraelDate() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>DROPZONE_PROCESSED_FILE</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-async">Async</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>DROPZONE_PROCESSED_FILE node in services/vertex-search-bridge/server.js.</td>
+  <td><code>generateDeterministicLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>family-relay.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/family-relay.test.js</small><br><code>loop-keys.fixture.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.fixture.test.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+5 more</td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>encodeCanonicalLoopId()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>generateDeterministicLoopId() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>{ execSync, execFile }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>getJerusalemDateTimeParts()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>computeDefaultShipmentFollowUp()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>computeSnoozeTarget()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/reaction-commands.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br>+3 more</td>
   <td>No direct outbound edge</td>
-  <td>{ execSync, execFile } node in services/vertex-search-bridge/server.js.</td>
+  <td>getJerusalemDateTimeParts() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>executedModelByMessageId</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>normalizeLoopTitle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>executedModelByMessageId node in services/vertex-search-bridge/server.js.</td>
+  <td><code>buildCanonicalLoopKey()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>loop-keys.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/loop-keys.test.js</small><br>+2 more</td>
+  <td><code>stripBidi()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small></td>
+  <td>normalizeLoopTitle() node in services/vertex-search-bridge/loop-keys.js.</td>
 </tr>
 </table>
 
@@ -1649,12 +1588,12 @@ flowchart LR
 <tr><td><code>services/vertex-search-bridge/reaction-commands.js</code></td><td>22 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/memory-hygiene.js</code></td><td>21 nodes</td></tr>
 <tr><td><code>docs/DEFERRED_AUTONOMOUS_LIFECYCLE_BACKLOG.md</code></td><td>20 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/host-adapters.js</code></td><td>18 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/loop-keys.js</code></td><td>19 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x722, contains x422, indirect call x240, imports x179. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x754, contains x438, indirect call x256, imports x198. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1738,13 +1677,14 @@ flowchart LR
 
 <!-- ====== 8. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">8. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, vertex-search-bridge/test/server-endpoints.test.js, services/agy-daemon/daemon.py. This section covers 484 nodes and 739 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in tests/test_agent_evaluation.py, vertex-search-bridge/test/server-endpoints.test.js, services/agy-daemon/daemon.py. This section covers 458 nodes and 675 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (484 nodes, 739 edges)
+    %% Section: Tests &amp; Fixtures (458 nodes, 675 edges)
     subgraph tests_fixtures_vertex_search_bridge_test_reactio_0810e822["vertex-search-bridge/test/reaction-commands.test.js"]
+        services_vertex_search_bridge_test_reaction_comm_5503578d("reaction-commands.test.js")
         services_vertex_search_bridge_test_reaction_comm_da1a84a3("AgyDriver<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
         services_vertex_search_bridge_test_reaction_comm_ff69d7a4("constructor()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
         services_vertex_search_bridge_test_reaction_comm_a03f6eff("withTempAgyConfig()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
@@ -1760,14 +1700,13 @@ flowchart LR
     subgraph tests_fixtures_services_agy_daemon_daemon_py_976213a8["services/agy-daemon/daemon.py"]
         services_agy_daemon_daemon_taskdaemon_ea787a57("TaskDaemon<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_1bc119f5("daemon.py")
+        services_agy_daemon_daemon_taskdaemon_run_2190cef7("run()<br/><small>services/agy-daemon/daemon.py</small>")
     end
     subgraph tests_fixtures_services_agy_daemon_test_daemon_p_41de055e["services/agy-daemon/test_daemon.py"]
         services_agy_daemon_test_daemon_testdaemon_c1a640de("TestDaemon<br/><small>services/agy-daemon/test_daemon.py</small>")
         services_agy_daemon_test_daemon_be9f2181("test_daemon.py")
     end
     tests_test_graphify_integration_testantigravitys_d8cee423("TestAntigravitySkillAndRulesRegistration<br/><small>tests/test_graphify_integration.py</small>")
-    services_vertex_search_bridge_test_family_relay_a764c479("family-relay.test.js")
-    services_vertex_search_bridge_test_loop_keys_tes_66d6319b("loop-keys.test.js")
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_ff69d7a4
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_a03f6eff
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_1f6ac6d7
@@ -1776,10 +1715,16 @@ flowchart LR
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_8c342b16
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_96295464
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_518ba3ea
+    services_agy_daemon_daemon_taskdaemon_ea787a57 -->|method| services_agy_daemon_daemon_taskdaemon_run_2190cef7
+    services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_518ba3ea
+    services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_1f6ac6d7
+    services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_a03f6eff
+    services_vertex_search_bridge_test_reaction_comm_5503578d -->|calls| services_vertex_search_bridge_test_reaction_comm_3940be11
     services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_taskdaemon_ea787a57
     services_agy_daemon_test_daemon_be9f2181 -->|imports| services_agy_daemon_daemon_1bc119f5
     services_agy_daemon_test_daemon_testdaemon_c1a640de -->|uses| services_agy_daemon_daemon_taskdaemon_ea787a57
-    %% Omitted for readability: 466 nodes, 0 edges
+    %% Omitted for readability: 440 nodes, 0 edges
+    class services_vertex_search_bridge_test_reaction_comm_5503578d test;
     class services_vertex_search_bridge_test_reaction_comm_da1a84a3 test;
     class services_vertex_search_bridge_test_reaction_comm_ff69d7a4 test;
     class services_vertex_search_bridge_test_reaction_comm_a03f6eff test;
@@ -1793,11 +1738,10 @@ flowchart LR
     class services_vertex_search_bridge_test_reaction_comm_518ba3ea test;
     class services_agy_daemon_daemon_taskdaemon_ea787a57 klass;
     class services_agy_daemon_daemon_1bc119f5 module;
+    class services_agy_daemon_daemon_taskdaemon_run_2190cef7 function;
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
     class services_agy_daemon_test_daemon_be9f2181 test;
     class tests_test_graphify_integration_testantigravitys_d8cee423 test;
-    class services_vertex_search_bridge_test_family_relay_a764c479 test;
-    class services_vertex_search_bridge_test_loop_keys_tes_66d6319b test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -2078,7 +2022,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x287, calls x166, imports x92, method x79. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x279, calls x153, method x79, imports x79. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -2577,141 +2521,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 12. Readmemd Automated Backup ====== -->
-<h2 id="readmemd-automated-backup">12. Readmemd Automated Backup</h2>
-<p>Readmemd Automated Backup groups implementation around readmemd, automated, backup, disaster, mostly in README.md. This section covers 8 nodes and 7 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Readmemd Automated Backup (8 nodes, 7 edges)
-    readme_sparky_plex_autonomous_executive_assistan_13924a65("Sparky-Plex: Autonomous Executive Assis...<br/><small>README.md</small>")
-    readme_automated_backup_disaster_recovery_241faf29("🔄 Automated Backup &amp; Disaster Recovery<br/><small>README.md</small>")
-    readme_f78a71af("README.md")
-    readme_automated_backup_957de9b5("Automated Backup<br/><small>README.md</small>")
-    readme_full_disaster_recovery_5d96e86b("Full Disaster Recovery<br/><small>README.md</small>")
-    readme_security_privacy_notice_5fe0f972("🔒 Security &amp; Privacy Notice<br/><small>README.md</small>")
-    readme_system_architecture_4e810723("🏛️ System Architecture<br/><small>README.md</small>")
-    readme_repository_structure_895860fe("📁 Repository Structure<br/><small>README.md</small>")
-    readme_f78a71af -->|contains| readme_sparky_plex_autonomous_executive_assistan_13924a65
-    readme_automated_backup_disaster_recovery_241faf29 -->|contains| readme_automated_backup_957de9b5
-    readme_automated_backup_disaster_recovery_241faf29 -->|contains| readme_full_disaster_recovery_5d96e86b
-    readme_sparky_plex_autonomous_executive_assistan_13924a65 -->|contains| readme_automated_backup_disaster_recovery_241faf29
-    readme_sparky_plex_autonomous_executive_assistan_13924a65 -->|contains| readme_security_privacy_notice_5fe0f972
-    readme_sparky_plex_autonomous_executive_assistan_13924a65 -->|contains| readme_repository_structure_895860fe
-    readme_sparky_plex_autonomous_executive_assistan_13924a65 -->|contains| readme_system_architecture_4e810723
-    class readme_sparky_plex_autonomous_executive_assistan_13924a65 concept;
-    class readme_automated_backup_disaster_recovery_241faf29 concept;
-    class readme_f78a71af concept;
-    class readme_automated_backup_957de9b5 concept;
-    class readme_full_disaster_recovery_5d96e86b concept;
-    class readme_security_privacy_notice_5fe0f972 concept;
-    class readme_system_architecture_4e810723 concept;
-    class readme_repository_structure_895860fe concept;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>README.md</code><br><small style="color:var(--muted)">README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing README.md.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>Automated Backup</code><br><small style="color:var(--muted)">README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Automated Backup.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>🔄 Automated Backup &amp; Disaster Recovery</code><br><small style="color:var(--muted)">README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 🔄 Automated Backup &amp; Disaster Recovery.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>Full Disaster Recovery</code><br><small style="color:var(--muted)">README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Full Disaster Recovery.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>📁 Repository Structure</code><br><small style="color:var(--muted)">README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 📁 Repository Structure.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>🔒 Security &amp; Privacy Notice</code><br><small style="color:var(--muted)">README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 🔒 Security &amp; Privacy Notice.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>Sparky-Plex: Autonomous Executive Assistant &amp; Infrastructure</code><br><small style="color:var(--muted)">README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Sparky-Plex: Autonomous Executive Assistant &amp; Infrastructure.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>🏛️ System Architecture</code><br><small style="color:var(--muted)">README.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 🏛️ System Architecture.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>README.md</code></td><td>8 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x7. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 13. Sparky Watchdogsh Containers ====== -->
-<h2 id="sparky-watchdogsh-containers">13. Sparky Watchdogsh Containers</h2>
+<!-- ====== 12. Sparky Watchdogsh Containers ====== -->
+<h2 id="sparky-watchdogsh-containers">12. Sparky Watchdogsh Containers</h2>
 <p>Sparky Watchdogsh Containers groups implementation around sparky, watchdogsh, containers, n8n, mostly in n8n-stack/scripts/sparky-watchdog.sh. This section covers 8 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2843,8 +2654,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 14. Backupsh Scripts Encrypt ====== -->
-<h2 id="backupsh-scripts-encrypt">14. Backupsh Scripts Encrypt</h2>
+<!-- ====== 13. Backupsh Scripts Encrypt ====== -->
+<h2 id="backupsh-scripts-encrypt">13. Backupsh Scripts Encrypt</h2>
 <p>Backupsh Scripts Encrypt groups implementation around backupsh, scripts, encrypt, home, mostly in scripts/backup.sh. This section covers 6 nodes and 7 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2951,8 +2762,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 15. Restoresh Scripts Home ====== -->
-<h2 id="restoresh-scripts-home">15. Restoresh Scripts Home</h2>
+<!-- ====== 14. Restoresh Scripts Home ====== -->
+<h2 id="restoresh-scripts-home">14. Restoresh Scripts Home</h2>
 <p>Restoresh Scripts Home groups implementation around restoresh, scripts, home, path, mostly in scripts/restore.sh. This section covers 6 nodes and 7 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3059,68 +2870,28 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 16. Other ====== -->
-<h2 id="other">16. Other</h2>
-<p>Other groups implementation around n8n, patch, stack, containers, mostly in containers/n8n-stack/README.md, n8n-stack/scripts/postgres-maintenance.sh, docs/brainstorms/sparky-self-email-filter-event-requirements.md. This section covers 28 nodes and 18 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 15. N8N Stack Readmemd ====== -->
+<h2 id="n8n-stack-readmemd">15. N8N Stack Readmemd</h2>
+<p>N8N Stack Readmemd groups implementation around n8n, stack, readmemd, containers, mostly in containers/n8n-stack/README.md. This section covers 5 nodes and 4 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Other (28 nodes, 18 edges)
-    subgraph other_n8n_stack_scripts_postgres_maintenance_sh_58b1f505["n8n-stack/scripts/postgres-maintenance.sh"]
-        containers_n8n_stack_scripts_postgres_maintenanc_ffa26200("postgres-maintenance.sh script<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
-        containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26("run_sql()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
-        containers_n8n_stack_scripts_postgres_maintenanc_47501f84("postgres-maintenance.sh")
-        containers_n8n_stack_scripts_postgres_maintenanc_49b775ae("run_sql_query()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
-    end
-    subgraph other_n8n_stack_scripts_deploy_bridge_sh_ced6878c["n8n-stack/scripts/deploy-bridge.sh"]
-        containers_n8n_stack_scripts_deploy_bridge_e8bc9332("deploy-bridge.sh")
-        containers_n8n_stack_scripts_deploy_bridge_sh_en_69b20388("deploy-bridge.sh script<br/><small>n8n-stack/scripts/deploy-bridge.sh</small>")
-    end
-    subgraph other_n8n_stack_scripts_patch_gemini4_langchain_8198e9e9["n8n-stack/scripts/patch-gemini4-langchain.sh"]
-        containers_n8n_stack_scripts_patch_gemini4_langc_de0c86d3("patch-gemini4-langchain.sh script<br/><small>n8n-stack/scripts/patch-gemini4-langchain.sh</small>")
-        containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7("scripts/patch-gemini4-langchain.sh")
-    end
-    subgraph other_n8n_stack_scripts_patch_n8n_memory_orphans_bffc2658["n8n-stack/scripts/patch-n8n-memory-orphans.sh"]
-        containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263("patch-n8n-memory-orphans.sh script<br/><small>n8n-stack/scripts/patch-n8n-memory-orphans.sh</small>")
-        containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c("scripts/patch-n8n-memory-orphans.sh")
-    end
-    subgraph other_n8n_stack_scripts_patch_retry_backoff_sh_5d1ee102["n8n-stack/scripts/patch-retry-backoff.sh"]
-        containers_n8n_stack_scripts_patch_retry_backoff_d020f8ac("patch-retry-backoff.sh script<br/><small>n8n-stack/scripts/patch-retry-backoff.sh</small>")
-        containers_n8n_stack_scripts_patch_retry_backoff_8f972a6c("scripts/patch-retry-backoff.sh")
-    end
-    subgraph other_services_n8n_sparky_patch_gemini4_langchai_584e621f["services/n8n-sparky/patch-gemini4-langchain.sh"]
-        services_n8n_sparky_patch_gemini4_langchain_1297aa67("n8n-sparky/patch-gemini4-langchain.sh")
-        services_n8n_sparky_patch_gemini4_langchain_sh_e_a532741a("patch-gemini4-langchain.sh script<br/><small>services/n8n-sparky/patch-gemini4-langchain.sh</small>")
-    end
-    subgraph other_services_n8n_sparky_patch_n8n_memory_orpha_c28af2f0["services/n8n-sparky/patch-n8n-memory-orphans.sh"]
-        services_n8n_sparky_patch_n8n_memory_orphans_a28150f4("n8n-sparky/patch-n8n-memory-orphans.sh")
-        services_n8n_sparky_patch_n8n_memory_orphans_sh_8e82bc30("patch-n8n-memory-orphans.sh script<br/><small>services/n8n-sparky/patch-n8n-memory-orphans.sh</small>")
-    end
-    subgraph other_services_n8n_sparky_patch_retry_backoff_sh_03cd2e09["services/n8n-sparky/patch-retry-backoff.sh"]
-        services_n8n_sparky_patch_retry_backoff_92ff2894("n8n-sparky/patch-retry-backoff.sh")
-        services_n8n_sparky_patch_retry_backoff_sh_entry_d5894a91("patch-retry-backoff.sh script<br/><small>services/n8n-sparky/patch-retry-backoff.sh</small>")
-    end
-    containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 -->|calls| containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26
-    %% Omitted for readability: 10 nodes, 0 edges
-    class containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 function;
-    class containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26 function;
-    class containers_n8n_stack_scripts_postgres_maintenanc_47501f84 function;
-    class containers_n8n_stack_scripts_postgres_maintenanc_49b775ae function;
-    class containers_n8n_stack_scripts_deploy_bridge_e8bc9332 function;
-    class containers_n8n_stack_scripts_deploy_bridge_sh_en_69b20388 function;
-    class containers_n8n_stack_scripts_patch_gemini4_langc_de0c86d3 function;
-    class containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7 function;
-    class containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263 function;
-    class containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c function;
-    class containers_n8n_stack_scripts_patch_retry_backoff_d020f8ac function;
-    class containers_n8n_stack_scripts_patch_retry_backoff_8f972a6c function;
-    class services_n8n_sparky_patch_gemini4_langchain_1297aa67 function;
-    class services_n8n_sparky_patch_gemini4_langchain_sh_e_a532741a function;
-    class services_n8n_sparky_patch_n8n_memory_orphans_a28150f4 function;
-    class services_n8n_sparky_patch_n8n_memory_orphans_sh_8e82bc30 function;
-    class services_n8n_sparky_patch_retry_backoff_92ff2894 function;
-    class services_n8n_sparky_patch_retry_backoff_sh_entry_d5894a91 function;
+    %% Section: N8N Stack Readmemd (5 nodes, 4 edges)
+    containers_n8n_stack_readme_n8n_stack_configurat_48361e72("n8n Stack Configuration &amp; Deployment<br/><small>containers/n8n-stack/README.md</small>")
+    containers_n8n_stack_readme_6e5c6f11("n8n-stack/README.md")
+    containers_n8n_stack_readme_deployment_instructi_a0326b62("🚀 Deployment Instructions<br/><small>containers/n8n-stack/README.md</small>")
+    containers_n8n_stack_readme_architecture_4a8cc931("Architecture<br/><small>containers/n8n-stack/README.md</small>")
+    containers_n8n_stack_readme_crucial_notes_on_n8n_3f30bbe0("🔒 Crucial Notes on N8N_ENCRYPTION_KEY<br/><small>containers/n8n-stack/README.md</small>")
+    containers_n8n_stack_readme_6e5c6f11 -->|contains| containers_n8n_stack_readme_n8n_stack_configurat_48361e72
+    containers_n8n_stack_readme_n8n_stack_configurat_48361e72 -->|contains| containers_n8n_stack_readme_deployment_instructi_a0326b62
+    containers_n8n_stack_readme_n8n_stack_configurat_48361e72 -->|contains| containers_n8n_stack_readme_architecture_4a8cc931
+    containers_n8n_stack_readme_n8n_stack_configurat_48361e72 -->|contains| containers_n8n_stack_readme_crucial_notes_on_n8n_3f30bbe0
+    class containers_n8n_stack_readme_n8n_stack_configurat_48361e72 concept;
+    class containers_n8n_stack_readme_6e5c6f11 concept;
+    class containers_n8n_stack_readme_deployment_instructi_a0326b62 concept;
+    class containers_n8n_stack_readme_architecture_4a8cc931 concept;
+    class containers_n8n_stack_readme_crucial_notes_on_n8n_3f30bbe0 concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -3182,8 +2953,108 @@ flowchart LR
   <td>No direct outbound edge</td>
   <td>Documentation node describing n8n Stack Configuration &amp; Deployment.</td>
 </tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>containers/n8n-stack/README.md</code></td><td>5 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 16. Other ====== -->
+<h2 id="other">16. Other</h2>
+<p>Other groups implementation around n8n, patch, scripts, sparky, mostly in n8n-stack/scripts/postgres-maintenance.sh, docs/brainstorms/sparky-self-email-filter-event-requirements.md, n8n-stack/scripts/patch-gemini4-langchain.sh. This section covers 23 nodes and 14 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Other (23 nodes, 14 edges)
+    subgraph other_n8n_stack_scripts_postgres_maintenance_sh_58b1f505["n8n-stack/scripts/postgres-maintenance.sh"]
+        containers_n8n_stack_scripts_postgres_maintenanc_ffa26200("postgres-maintenance.sh script<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
+        containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26("run_sql()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
+        containers_n8n_stack_scripts_postgres_maintenanc_47501f84("postgres-maintenance.sh")
+        containers_n8n_stack_scripts_postgres_maintenanc_49b775ae("run_sql_query()<br/><small>n8n-stack/scripts/postgres-maintenance.sh</small>")
+    end
+    subgraph other_n8n_stack_scripts_deploy_bridge_sh_ced6878c["n8n-stack/scripts/deploy-bridge.sh"]
+        containers_n8n_stack_scripts_deploy_bridge_e8bc9332("deploy-bridge.sh")
+        containers_n8n_stack_scripts_deploy_bridge_sh_en_69b20388("deploy-bridge.sh script<br/><small>n8n-stack/scripts/deploy-bridge.sh</small>")
+    end
+    subgraph other_n8n_stack_scripts_patch_gemini4_langchain_8198e9e9["n8n-stack/scripts/patch-gemini4-langchain.sh"]
+        containers_n8n_stack_scripts_patch_gemini4_langc_de0c86d3("patch-gemini4-langchain.sh script<br/><small>n8n-stack/scripts/patch-gemini4-langchain.sh</small>")
+        containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7("scripts/patch-gemini4-langchain.sh")
+    end
+    subgraph other_n8n_stack_scripts_patch_n8n_memory_orphans_bffc2658["n8n-stack/scripts/patch-n8n-memory-orphans.sh"]
+        containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263("patch-n8n-memory-orphans.sh script<br/><small>n8n-stack/scripts/patch-n8n-memory-orphans.sh</small>")
+        containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c("scripts/patch-n8n-memory-orphans.sh")
+    end
+    subgraph other_n8n_stack_scripts_patch_retry_backoff_sh_5d1ee102["n8n-stack/scripts/patch-retry-backoff.sh"]
+        containers_n8n_stack_scripts_patch_retry_backoff_d020f8ac("patch-retry-backoff.sh script<br/><small>n8n-stack/scripts/patch-retry-backoff.sh</small>")
+        containers_n8n_stack_scripts_patch_retry_backoff_8f972a6c("scripts/patch-retry-backoff.sh")
+    end
+    subgraph other_services_n8n_sparky_patch_gemini4_langchai_584e621f["services/n8n-sparky/patch-gemini4-langchain.sh"]
+        services_n8n_sparky_patch_gemini4_langchain_1297aa67("n8n-sparky/patch-gemini4-langchain.sh")
+        services_n8n_sparky_patch_gemini4_langchain_sh_e_a532741a("patch-gemini4-langchain.sh script<br/><small>services/n8n-sparky/patch-gemini4-langchain.sh</small>")
+    end
+    subgraph other_services_n8n_sparky_patch_n8n_memory_orpha_c28af2f0["services/n8n-sparky/patch-n8n-memory-orphans.sh"]
+        services_n8n_sparky_patch_n8n_memory_orphans_a28150f4("n8n-sparky/patch-n8n-memory-orphans.sh")
+        services_n8n_sparky_patch_n8n_memory_orphans_sh_8e82bc30("patch-n8n-memory-orphans.sh script<br/><small>services/n8n-sparky/patch-n8n-memory-orphans.sh</small>")
+    end
+    subgraph other_services_n8n_sparky_patch_retry_backoff_sh_03cd2e09["services/n8n-sparky/patch-retry-backoff.sh"]
+        services_n8n_sparky_patch_retry_backoff_92ff2894("n8n-sparky/patch-retry-backoff.sh")
+        services_n8n_sparky_patch_retry_backoff_sh_entry_d5894a91("patch-retry-backoff.sh script<br/><small>services/n8n-sparky/patch-retry-backoff.sh</small>")
+    end
+    containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 -->|calls| containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26
+    %% Omitted for readability: 5 nodes, 0 edges
+    class containers_n8n_stack_scripts_postgres_maintenanc_ffa26200 function;
+    class containers_n8n_stack_scripts_postgres_maintenanc_9b3b7d26 function;
+    class containers_n8n_stack_scripts_postgres_maintenanc_47501f84 function;
+    class containers_n8n_stack_scripts_postgres_maintenanc_49b775ae function;
+    class containers_n8n_stack_scripts_deploy_bridge_e8bc9332 function;
+    class containers_n8n_stack_scripts_deploy_bridge_sh_en_69b20388 function;
+    class containers_n8n_stack_scripts_patch_gemini4_langc_de0c86d3 function;
+    class containers_n8n_stack_scripts_patch_gemini4_langc_8a1032d7 function;
+    class containers_n8n_stack_scripts_patch_n8n_memory_or_67fa0263 function;
+    class containers_n8n_stack_scripts_patch_n8n_memory_or_97b3296c function;
+    class containers_n8n_stack_scripts_patch_retry_backoff_d020f8ac function;
+    class containers_n8n_stack_scripts_patch_retry_backoff_8f972a6c function;
+    class services_n8n_sparky_patch_gemini4_langchain_1297aa67 function;
+    class services_n8n_sparky_patch_gemini4_langchain_sh_e_a532741a function;
+    class services_n8n_sparky_patch_n8n_memory_orphans_a28150f4 function;
+    class services_n8n_sparky_patch_n8n_memory_orphans_sh_8e82bc30 function;
+    class services_n8n_sparky_patch_retry_backoff_92ff2894 function;
+    class services_n8n_sparky_patch_retry_backoff_sh_entry_d5894a91 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
 <tr>
-  <td>6</td>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
   <td><code>postgres-maintenance.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3191,7 +3062,7 @@ flowchart LR
   <td>postgres-maintenance.sh node in n8n-stack/scripts/postgres-maintenance.sh.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>2</td>
   <td><code>run_sql()</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>postgres-maintenance.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
@@ -3199,7 +3070,7 @@ flowchart LR
   <td>run_sql() node in n8n-stack/scripts/postgres-maintenance.sh.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>3</td>
   <td><code>run_sql_query()</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3207,7 +3078,7 @@ flowchart LR
   <td>run_sql_query() node in n8n-stack/scripts/postgres-maintenance.sh.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>4</td>
   <td><code>postgres-maintenance.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/postgres-maintenance.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3215,7 +3086,7 @@ flowchart LR
   <td>postgres-maintenance.sh script node in n8n-stack/scripts/postgres-maintenance.sh.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>5</td>
   <td><code>sparky-self-email-filter-event-requirements.md</code><br><small style="color:var(--muted)">docs/brainstorms/sparky-self-email-filter-event-requirements.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3223,7 +3094,7 @@ flowchart LR
   <td>Documentation node describing sparky-self-email-filter-event-requirements.md.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>6</td>
   <td><code>1. Goal &amp; Architecture Summary</code><br><small style="color:var(--muted)">docs/brainstorms/sparky-self-email-filter-event-requirements.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3231,7 +3102,7 @@ flowchart LR
   <td>Documentation node describing 1. Goal &amp; Architecture Summary.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>7</td>
   <td><code>Requirements Anchor: `[Sparky-AI]` Event-Driven Email Handoff to Gemini App</code><br><small style="color:var(--muted)">docs/brainstorms/sparky-self-email-filter-event-requirements.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3239,7 +3110,7 @@ flowchart LR
   <td>Documentation node describing Requirements Anchor: `[Sparky-AI]` Event-Driven Email Handoff to Gemini App.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>8</td>
   <td><code>scripts/patch-gemini4-langchain.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-gemini4-langchain.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3247,7 +3118,7 @@ flowchart LR
   <td>scripts/patch-gemini4-langchain.sh node in n8n-stack/scripts/patch-gemini4-langchain.sh.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>9</td>
   <td><code>patch-gemini4-langchain.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-gemini4-langchain.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3255,7 +3126,7 @@ flowchart LR
   <td>patch-gemini4-langchain.sh script node in n8n-stack/scripts/patch-gemini4-langchain.sh.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>10</td>
   <td><code>scripts/patch-n8n-memory-orphans.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-n8n-memory-orphans.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3263,7 +3134,7 @@ flowchart LR
   <td>scripts/patch-n8n-memory-orphans.sh node in n8n-stack/scripts/patch-n8n-memory-orphans.sh.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>11</td>
   <td><code>patch-n8n-memory-orphans.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-n8n-memory-orphans.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3271,7 +3142,7 @@ flowchart LR
   <td>patch-n8n-memory-orphans.sh script node in n8n-stack/scripts/patch-n8n-memory-orphans.sh.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>12</td>
   <td><code>deploy-bridge.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/deploy-bridge.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3279,7 +3150,7 @@ flowchart LR
   <td>deploy-bridge.sh node in n8n-stack/scripts/deploy-bridge.sh.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>13</td>
   <td><code>deploy-bridge.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/deploy-bridge.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3287,7 +3158,7 @@ flowchart LR
   <td>deploy-bridge.sh script node in n8n-stack/scripts/deploy-bridge.sh.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>14</td>
   <td><code>eval-history.md</code><br><small style="color:var(--muted)">docs/eval-history.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3295,7 +3166,7 @@ flowchart LR
   <td>Documentation node describing eval-history.md.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>15</td>
   <td><code>Sparky Agent Evaluation History (`DEF-07`)</code><br><small style="color:var(--muted)">docs/eval-history.md</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -3303,7 +3174,7 @@ flowchart LR
   <td>Documentation node describing Sparky Agent Evaluation History (`DEF-07`).</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>16</td>
   <td><code>n8n-sparky/patch-gemini4-langchain.sh</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-gemini4-langchain.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3311,7 +3182,7 @@ flowchart LR
   <td>n8n-sparky/patch-gemini4-langchain.sh node in services/n8n-sparky/patch-gemini4-langchain.sh.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>17</td>
   <td><code>patch-gemini4-langchain.sh script</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-gemini4-langchain.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3319,7 +3190,7 @@ flowchart LR
   <td>patch-gemini4-langchain.sh script node in services/n8n-sparky/patch-gemini4-langchain.sh.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>18</td>
   <td><code>n8n-sparky/patch-n8n-memory-orphans.sh</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-n8n-memory-orphans.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3327,7 +3198,7 @@ flowchart LR
   <td>n8n-sparky/patch-n8n-memory-orphans.sh node in services/n8n-sparky/patch-n8n-memory-orphans.sh.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>19</td>
   <td><code>patch-n8n-memory-orphans.sh script</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-n8n-memory-orphans.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3335,7 +3206,7 @@ flowchart LR
   <td>patch-n8n-memory-orphans.sh script node in services/n8n-sparky/patch-n8n-memory-orphans.sh.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>20</td>
   <td><code>scripts/patch-retry-backoff.sh</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-retry-backoff.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3343,7 +3214,7 @@ flowchart LR
   <td>scripts/patch-retry-backoff.sh node in n8n-stack/scripts/patch-retry-backoff.sh.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>21</td>
   <td><code>patch-retry-backoff.sh script</code><br><small style="color:var(--muted)">n8n-stack/scripts/patch-retry-backoff.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3351,7 +3222,7 @@ flowchart LR
   <td>patch-retry-backoff.sh script node in n8n-stack/scripts/patch-retry-backoff.sh.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>22</td>
   <td><code>n8n-sparky/patch-retry-backoff.sh</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-retry-backoff.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3359,7 +3230,7 @@ flowchart LR
   <td>n8n-sparky/patch-retry-backoff.sh node in services/n8n-sparky/patch-retry-backoff.sh.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>23</td>
   <td><code>patch-retry-backoff.sh script</code><br><small style="color:var(--muted)">services/n8n-sparky/patch-retry-backoff.sh</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -3373,19 +3244,19 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>containers/n8n-stack/README.md</code></td><td>5 nodes</td></tr>
-<tr><td><code>n8n-stack/scripts/postgres-maintenance.sh</code></td><td>4 nodes</td></tr>
+      <tr><td><code>n8n-stack/scripts/postgres-maintenance.sh</code></td><td>4 nodes</td></tr>
 <tr><td><code>docs/brainstorms/sparky-self-email-filter-event-requirements.md</code></td><td>3 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/deploy-bridge.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/patch-gemini4-langchain.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/patch-n8n-memory-orphans.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/patch-retry-backoff.sh</code></td><td>2 nodes</td></tr>
 <tr><td><code>docs/eval-history.md</code></td><td>2 nodes</td></tr>
+<tr><td><code>services/n8n-sparky/patch-gemini4-langchain.sh</code></td><td>2 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x15, defines x2, calls x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x11, defines x2, calls x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -3397,16 +3268,16 @@ flowchart LR
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><td>Nodes</td><td>1389</td></tr>
-      <tr><td>Edges</td><td>2736</td></tr>
+      <tr><td>Edges</td><td>2738</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>82</td></tr>
+      <tr><td>Communities</td><td>81</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>2428</td></tr>
+      <tr><td>EXTRACTED</td><td>2430</td></tr>
       <tr><td>INFERRED</td><td>308</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -3415,7 +3286,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-19 12:23 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-19 12:32 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

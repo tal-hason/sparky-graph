@@ -1,4 +1,4 @@
-# Graph Report - sparky-backup  (2026-11-19)
+# Graph Report - sparky-backup  (2026-11-20)
 
 ## Corpus Check
 - 106 files · ~238,984 words
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `18b580a2`
+- Built from commit: `378c2f2f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,7 +30,7 @@
 - correction-learner.js
 - Sentinel Actor Model & Conversational Handshake Architecture
 - The Four Cynefin Domains in Sparky
-- handleWhatsappTtsRoute
+- ref_fs
 - reaction-commands.js
 - kg-store.js
 - sparky-mcp/package.json
@@ -72,7 +72,7 @@
 - config.js
 - TestEvaluationHarnessWorkflow
 - TaskDaemon
-- ref_fs
+- handleWhatsappTtsRoute
 - Sparky-Plex: Autonomous Executive Assistant & Infrastructure
 - TestEvaluationSafetyGuard
 - vertex-search-bridge/package.json
@@ -217,9 +217,9 @@ Nodes (9): 1. Executive Summary, 2. Dual-Channel XML Sensory Pipeline, 3. Active
 Cohesion: 0.22
 Nodes (8): 1. Clear / Simple Domain (Known Knowns), 2. Complicated Domain (Known Unknowns), 3. Complex Domain (Unknown Unknowns), 4. Chaotic Domain (Unknowables / Crises), 5. Aporia / Confusion, Architectural Overview, Cynefin + OODA Loop Cognitive Framework, The Four Cynefin Domains in Sparky
 
-### Community 14 - "handleWhatsappTtsRoute"
-Cohesion: 0.33
-Nodes (9): normalizeReactionEmoji(), handleAgyMissionRoute(), handleReactionExecuteRoute(), handleWhatsappTtsRoute(), parsePersonaFromNote(), parseStrictJsonBody(), resolvePersonaConfig(), sendJsonResponse() (+1 more)
+### Community 14 - "ref_fs"
+Cohesion: 0.22
+Nodes (6): assert, FIXTURE_PATH, fs, { generateDeterministicLoopId }, path, test
 
 ### Community 15 - "reaction-commands.js"
 Cohesion: 0.07
@@ -353,9 +353,9 @@ Nodes (8): compactSessionChatHistory(), compactToolObservationContent(), createM
 Cohesion: 0.16
 Nodes (3): read_heartbeat_meta(), sd_notify(), TaskDaemon
 
-### Community 56 - "ref_fs"
-Cohesion: 0.22
-Nodes (6): assert, FIXTURE_PATH, fs, { generateDeterministicLoopId }, path, test
+### Community 56 - "handleWhatsappTtsRoute"
+Cohesion: 0.33
+Nodes (9): normalizeReactionEmoji(), handleAgyMissionRoute(), handleReactionExecuteRoute(), handleWhatsappTtsRoute(), parsePersonaFromNote(), parseStrictJsonBody(), resolvePersonaConfig(), sendJsonResponse() (+1 more)
 
 ### Community 57 - "Sparky-Plex: Autonomous Executive Assistant & Infrastructure"
 Cohesion: 0.25

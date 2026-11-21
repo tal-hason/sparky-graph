@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 2600 nodes, 5150 edges, 156 communities. Commit: 7b151b6</p>
+<p class="subtitle">Generated from graphify knowledge graph: 2696 nodes, 5366 edges, 151 communities. Commit: 16565cb</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -73,10 +73,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#serve-api">Serving API</a>
     <a href="#security-global">Security &amp; Global Graph</a>
     <a href="#tests-fixtures">Tests &amp; Fixtures</a>
-    <a href="#services-sparky-mcp">Services Sparky Mcp</a>
     <a href="#daemon-services-agy">Daemon Services Agy</a>
     <a href="#sparky-mcp-services">Sparky Mcp Services</a>
     <a href="#services-sparky-agy">Services Sparky Agy</a>
+    <a href="#runtime-services-sparky">Runtime Services Sparky</a>
     <a href="#session-services-sparky">Session Services Sparky</a>
     <a href="#other">Other</a>
 </div>
@@ -90,46 +90,46 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 flowchart LR
     EXTRACT_PIPELINE_5F350230("Extraction Pipeline<br/><small>14 nodes</small>")
     class EXTRACT_PIPELINE_5F350230 module;
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>96 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>92 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
     ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>11 nodes</small>")
     class ANALYSIS_CLUSTERING_C79796DA module;
     OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>4 nodes</small>")
     class OUTPUTS_DOCS_ED82387C module;
-    CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>74 nodes</small>")
+    CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>72 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
-    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>148 nodes</small>")
+    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>127 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>1091 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>1105 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>887 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>997 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
-    SERVICES_SPARKY_MCP_D7A382D7("Services Sparky Mcp<br/><small>28 nodes</small>")
-    class SERVICES_SPARKY_MCP_D7A382D7 module;
     DAEMON_SERVICES_AGY_CD07B619("Daemon Services Agy<br/><small>26 nodes</small>")
     class DAEMON_SERVICES_AGY_CD07B619 module;
     SPARKY_MCP_SERVICES_DD0DD404("Sparky Mcp Services<br/><small>25 nodes</small>")
     class SPARKY_MCP_SERVICES_DD0DD404 module;
     SERVICES_SPARKY_AGY_38DC0FBE("Services Sparky Agy<br/><small>17 nodes</small>")
     class SERVICES_SPARKY_AGY_38DC0FBE module;
+    RUNTIME_SERVICES_SPARKY_99E9671F("Runtime Services Sparky<br/><small>17 nodes</small>")
+    class RUNTIME_SERVICES_SPARKY_99E9671F module;
     SESSION_SERVICES_SPARKY_1F4EC723("Session Services Sparky<br/><small>17 nodes</small>")
     class SESSION_SERVICES_SPARKY_1F4EC723 module;
-    OTHER_D0941E68("Other<br/><small>159 nodes</small>")
+    OTHER_D0941E68("Other<br/><small>169 nodes</small>")
     class OTHER_D0941E68 module;
-    TESTS_FIXTURES_B84B1DCC -->|imports x115| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|imports x70| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x92| SERVE_API_35EC8E86
+    SERVE_API_35EC8E86 -->|imports x85| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x11| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x10| CLI_SKILLS_9964CBB8
     INGEST_CACHE_UPDATE_FF457338 -->|calls x9| SPARKY_MCP_SERVICES_DD0DD404
-    INGEST_CACHE_UPDATE_FF457338 -->|imports x9| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|imports x9| CLI_SKILLS_9964CBB8
-    TESTS_FIXTURES_B84B1DCC -->|imports x9| CLI_SKILLS_9964CBB8
-    SERVE_API_35EC8E86 -->|imports x8| ANALYSIS_CLUSTERING_C79796DA
+    RUNTIME_SERVICES_SPARKY_99E9671F -->|calls x8| OTHER_D0941E68
     TESTS_FIXTURES_B84B1DCC -->|contains x7| DAEMON_SERVICES_AGY_CD07B619
+    OTHER_D0941E68 -->|imports x7| CLI_SKILLS_9964CBB8
     TESTS_FIXTURES_B84B1DCC -->|imports x7| BUILD_GRAPH_321CBB04
-    TESTS_FIXTURES_B84B1DCC -->|indirect call x7| INGEST_CACHE_UPDATE_FF457338
-    BUILD_GRAPH_321CBB04 -->|imports x6| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x6| OTHER_D0941E68
+    SERVE_API_35EC8E86 -->|imports x7| ANALYSIS_CLUSTERING_C79796DA
+    TESTS_FIXTURES_B84B1DCC -->|imports x7| OTHER_D0941E68
+    OTHER_D0941E68 -->|imports x7| TESTS_FIXTURES_B84B1DCC
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -146,24 +146,24 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Extraction Pipeline</td><td>14</td><td><code>35</code></td></tr><tr><td>Graph Build</td><td>96</td><td><code>7, 56, 59, 100, 129, 17, 138, 52, 6, 110</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>71</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>74</td><td><code>2, 70, 104, 112, 121, 106, 133, 107, 108, 124, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>148</td><td><code>43, 18, 36, 126, 28, 22</code></td></tr><tr><td>Serving API</td><td>1091</td><td><code>0, 15, 3, 16, 29, 48, 140, 10, 4, 42, 8, 83, 92, 45, 86, 27, 64, 80, 88, 11, 51, 162, 139, 39, 53, 55, 75, 94, 122, 116, 89, 5, 97, 125, 114, 118, 160, 82, 99, 128, 131, 141, 113, 115, 135, 137, 144, 146, 62, 148, 151</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>887</td><td><code>98, 30, 46, 9, 50, 91, 145, 117, 44, 63, 109, 84, 1, 78, 37, 60, 147, 38, 85, 41, 26, 40, 54, 153, 25, 102, 103, 95, 96, 123, 61, 87, 127, 134, 142, 93, 130, 105, 136, 149, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>28</td><td><code>90</code></td></tr><tr><td>Daemon Services Agy</td><td>26</td><td><code>66</code></td></tr><tr><td>Sparky Mcp Services</td><td>25</td><td><code>47</code></td></tr><tr><td>Services Sparky Agy</td><td>17</td><td><code>14</code></td></tr><tr><td>Session Services Sparky</td><td>17</td><td><code>58</code></td></tr><tr><td>Other</td><td>159</td><td><code>81, 119, 79, 120, 156, 12, 101, 13, 19, 23, 57, 33, 132, 154, 20, 21, 111, 143, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Extraction Pipeline</td><td>14</td><td><code>35</code></td></tr><tr><td>Graph Build</td><td>92</td><td><code>7, 56, 75, 100, 129, 17, 138, 52, 6, 110</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>11</td><td><code>71</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>72</td><td><code>2, 70, 104, 112, 121, 106, 133, 107, 108, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>127</td><td><code>43, 18, 126, 28, 22</code></td></tr><tr><td>Serving API</td><td>1105</td><td><code>0, 27, 3, 16, 29, 59, 11, 5, 147, 15, 48, 140, 4, 42, 8, 116, 83, 86, 88, 51, 55, 80, 92, 39, 64, 113, 45, 53, 122, 162, 10, 89, 97, 118, 125, 139, 115, 128, 135, 157, 114, 130, 62, 148, 136</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>997</td><td><code>36, 94, 30, 98, 9, 50, 109, 145, 46, 91, 44, 1, 63, 84, 78, 37, 60, 103, 38, 85, 41, 26, 40, 54, 25, 102, 117, 95, 96, 123, 142, 61, 87, 93, 127, 134, 152, 82, 105, 99, 124, 131, 34</code></td></tr><tr><td>Daemon Services Agy</td><td>26</td><td><code>66</code></td></tr><tr><td>Sparky Mcp Services</td><td>25</td><td><code>47</code></td></tr><tr><td>Services Sparky Agy</td><td>17</td><td><code>14</code></td></tr><tr><td>Runtime Services Sparky</td><td>17</td><td><code>159</code></td></tr><tr><td>Session Services Sparky</td><td>17</td><td><code>58</code></td></tr><tr><td>Other</td><td>169</td><td><code>81, 119, 120, 156, 79, 12, 90, 101, 13, 19, 57, 23, 33, 132, 154, 20, 21, 111, 143, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">Extraction Pipeline -&gt; Tests &amp; Fixtures -&gt; Serving API -&gt; CLI &amp; Skill Installers -&gt; Services Sparky Mcp -&gt; Sparky Mcp Services -&gt; Graph Build</div>
+    <div class="arrow-chain">Extraction Pipeline -&gt; Tests &amp; Fixtures -&gt; Serving API -&gt; CLI &amp; Skill Installers -&gt; Other -&gt; Services Sparky Agy -&gt; Session Services Sparky</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>2600 nodes · 5150 edges · 156 communities (136 shown, 20 thin omitted)</li>
-      <li>Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 635 edges (avg confidence: 0.85)</li>
+      <li>2696 nodes · 5366 edges · 151 communities (132 shown, 19 thin omitted)</li>
+      <li>Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 659 edges (avg confidence: 0.85)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `server` - 131 edges</li>
       <li>2. `redactSecretsInError()` - 61 edges</li>
-      <li>3. `sqlStr()` - 29 edges</li>
+      <li>3. `createCdpSession()` - 32 edges</li>
     </ul>
   </div>
 </div>
@@ -365,21 +365,21 @@ flowchart LR
 
 <!-- ====== 3. Graph Build ====== -->
 <h2 id="build-graph">3. Graph Build</h2>
-<p>Graph Build groups implementation around packagejson, services, sparky, mcp, mostly in architecture/SEMANTIC_VECTOR_MEMORY.md, services/vertex-search-bridge/package.json, scripts/run-acp-eval.py. This section covers 96 nodes and 102 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Graph Build groups implementation around packagejson, services, mcp, sparky, mostly in architecture/SEMANTIC_VECTOR_MEMORY.md, scripts/run-acp-eval.py, services/browser-mcp/package.json. This section covers 92 nodes and 98 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Graph Build (96 nodes, 102 edges)
+    %% Section: Graph Build (92 nodes, 98 edges)
     subgraph build_graph_scripts_run_acp_eval_py_c8e65191["scripts/run-acp-eval.py"]
         scripts_run_acp_eval_651a0c8d("run-acp-eval.py")
         scripts_run_acp_eval_evaluate_case_6523636e("evaluate_case()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_main_247f69ca("main()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_compute_runtime_fingerprint_c94eb93c("compute runtime fingerprint()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_parse_judge_score_914f5f50("parse_judge_score()<br/><small>scripts/run-acp-eval.py</small>")
+        scripts_run_acp_eval_score_tools_used_0710b12c("score_tools_used()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_http_post_json_865ef910("http_post_json()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_build_eval_system_context_89da0a50("build_eval_system_context()<br/><small>scripts/run-acp-eval.py</small>")
-        scripts_run_acp_eval_score_tools_used_0710b12c("score_tools_used()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_normalize_tool_name_f7445323("normalize_tool_name()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_load_bridge_token_21d3ee6f("load_bridge_token()<br/><small>scripts/run-acp-eval.py</small>")
     end
@@ -391,9 +391,9 @@ flowchart LR
         urllib_request_9b0f82b7("urllib_request")
         concurrent_futures_ef473f28("concurrent_futures")
     end
-    subgraph build_graph_services_vertex_search_bridge_packag_762f8a70["services/vertex-search-bridge/package.json"]
-        services_vertex_search_bridge_package_1faf6d56("vertex-search-bridge/package.json")
-        ref_pg_848e5969("pg<br/><small>services/vertex-search-bridge/package.json</small>")
+    subgraph build_graph_scripts_build_sparky_agy_sh_439a4ec7["scripts/build-sparky-agy.sh"]
+        scripts_build_sparky_agy_76c5d314("build-sparky-agy.sh")
+        scripts_build_sparky_agy_sh_entry_3ec77222("build-sparky-agy.sh script<br/><small>scripts/build-sparky-agy.sh</small>")
     end
     scripts_run_acp_eval_compute_runtime_fingerprint_c94eb93c -->|calls| hashlib_7616ac97
     scripts_run_acp_eval_evaluate_case_6523636e -->|calls| scripts_run_acp_eval_http_post_json_865ef910
@@ -416,16 +416,15 @@ flowchart LR
     scripts_run_acp_eval_651a0c8d -->|imports| urllib_request_9b0f82b7
     scripts_run_acp_eval_651a0c8d -->|imports| argparse_e750ee7c
     scripts_run_acp_eval_651a0c8d -->|imports| concurrent_futures_ef473f28
-    services_vertex_search_bridge_package_1faf6d56 -->|imports| ref_pg_848e5969
-    %% Omitted for readability: 78 nodes, 0 edges
+    %% Omitted for readability: 74 nodes, 0 edges
     class scripts_run_acp_eval_651a0c8d module;
     class scripts_run_acp_eval_evaluate_case_6523636e function;
     class scripts_run_acp_eval_main_247f69ca function;
     class scripts_run_acp_eval_compute_runtime_fingerprint_c94eb93c function;
     class scripts_run_acp_eval_parse_judge_score_914f5f50 function;
+    class scripts_run_acp_eval_score_tools_used_0710b12c function;
     class scripts_run_acp_eval_http_post_json_865ef910 function;
     class scripts_run_acp_eval_build_eval_system_context_89da0a50 function;
-    class scripts_run_acp_eval_score_tools_used_0710b12c function;
     class scripts_run_acp_eval_normalize_tool_name_f7445323 function;
     class scripts_run_acp_eval_load_bridge_token_21d3ee6f function;
     class hashlib_7616ac97 function;
@@ -434,8 +433,8 @@ flowchart LR
     class urllib_error_e9e7d2ca function;
     class urllib_request_9b0f82b7 function;
     class concurrent_futures_ef473f28 function;
-    class services_vertex_search_bridge_package_1faf6d56 function;
-    class ref_pg_848e5969 function;
+    class scripts_build_sparky_agy_76c5d314 function;
+    class scripts_build_sparky_agy_sh_entry_3ec77222 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -705,8 +704,8 @@ flowchart LR
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>architecture/SEMANTIC_VECTOR_MEMORY.md</code></td><td>19 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/package.json</code></td><td>15 nodes</td></tr>
 <tr><td><code>scripts/run-acp-eval.py</code></td><td>11 nodes</td></tr>
+<tr><td><code>services/browser-mcp/package.json</code></td><td>11 nodes</td></tr>
 <tr><td><code>services/sparky-agy/package.json</code></td><td>10 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/package.json</code></td><td>10 nodes</td></tr>
 <tr><td><code>services/sparky-mcp/package.json</code></td><td>8 nodes</td></tr>
@@ -716,7 +715,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x75, calls x15, imports x7, defines x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x72, calls x15, imports x6, defines x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -975,12 +974,12 @@ flowchart LR
 
 <!-- ====== 6. CLI & Skill Installers ====== -->
 <h2 id="cli-skills">6. CLI &amp; Skill Installers</h2>
-<p>CLI &amp; Skill Installers groups implementation around sparky, skillmd, services, skills, mostly in sparky-mcp/hooks/sparky-hook.js, services/sparky-agy/hook-utils.js, gemini-skills/sparky-brain-sync/SKILL.md. This section covers 74 nodes and 70 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>CLI &amp; Skill Installers groups implementation around sparky, skillmd, services, skills, mostly in sparky-mcp/hooks/sparky-hook.js, services/sparky-agy/hook-utils.js, gemini-skills/sparky-brain-sync/SKILL.md. This section covers 72 nodes and 70 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: CLI &amp; Skill Installers (74 nodes, 70 edges)
+    %% Section: CLI &amp; Skill Installers (72 nodes, 70 edges)
     subgraph cli_skills_sparky_mcp_hooks_sparky_hook_js_19bd6e55["sparky-mcp/hooks/sparky-hook.js"]
         services_sparky_mcp_hooks_sparky_hook_runhook_fba76bb1("runHook()<br/><small>sparky-mcp/hooks/sparky-hook.js</small>")
         services_sparky_mcp_hooks_sparky_hook_026b2729("sparky-hook.js")
@@ -990,19 +989,19 @@ flowchart LR
         services_sparky_mcp_hooks_sparky_hook_sanitizeli_cfcc5b32("sanitizeLine()<br/><small>sparky-mcp/hooks/sparky-hook.js</small>")
         services_sparky_mcp_hooks_sparky_hook_issafehear_6c16421a("isSafeHeartbeatPath()<br/><small>sparky-mcp/hooks/sparky-hook.js</small>")
     end
+    subgraph cli_skills_External_generated_0c226fa1["External / generated"]
+        ref_fs_8204e0dd("ref_fs")
+        ref_node_https_8b2705a0("ref_node_https")
+        ref_node_readline_59ebf7a5("ref_node_readline")
+    end
     subgraph cli_skills_scripts_run_agent_eval_sh_35542c42["scripts/run-agent-eval.sh"]
         scripts_run_agent_eval_home_7db39555("HOME<br/><small>scripts/run-agent-eval.sh</small>")
         scripts_run_agent_eval_path_f69ada10("PATH<br/><small>scripts/run-agent-eval.sh</small>")
         scripts_run_agent_eval_5353f42f("run-agent-eval.sh")
-        scripts_run_agent_eval_sh_entry_d0d874d1("run-agent-eval.sh script<br/><small>scripts/run-agent-eval.sh</small>")
-    end
-    subgraph cli_skills_External_generated_0c226fa1["External / generated"]
-        ref_fs_8204e0dd("ref_fs")
-        ref_node_readline_59ebf7a5("ref_node_readline")
     end
     subgraph cli_skills_services_sparky_agy_hook_utils_js_cc5c32fb["services/sparky-agy/hook-utils.js"]
         services_sparky_agy_hook_utils_bc67a955("hook-utils.js")
-        services_sparky_agy_hook_utils_fs_1a8a4235("fs<br/><small>services/sparky-agy/hook-utils.js</small>")
+        services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6("redactSecretsInError()<br/><small>services/sparky-agy/hook-utils.js</small>")
     end
     subgraph cli_skills_services_sparky_mcp_bridge_js_5b7abc33["services/sparky-mcp/bridge.js"]
         services_sparky_mcp_bridge_6b2350b0("bridge.js")
@@ -1019,9 +1018,11 @@ flowchart LR
     services_sparky_mcp_hooks_sparky_hook_026b2729 -->|imports| services_sparky_mcp_bridge_bridgerequest_af48c30d
     services_sparky_mcp_hooks_sparky_hook_026b2729 -->|imports| ref_fs_8204e0dd
     services_sparky_mcp_hooks_sparky_hook_026b2729 -->|imports| services_sparky_mcp_bridge_6b2350b0
+    services_sparky_agy_hook_utils_bc67a955 -->|imports| ref_node_https_8b2705a0
+    services_sparky_agy_stdio_rpc_client_fa65b5c6 -->|imports| services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6
     services_sparky_agy_stdio_rpc_client_fa65b5c6 -->|imports| ref_node_readline_59ebf7a5
     services_sparky_agy_stdio_rpc_client_fa65b5c6 -->|imports| services_sparky_agy_hook_utils_bc67a955
-    %% Omitted for readability: 56 nodes, 0 edges
+    %% Omitted for readability: 54 nodes, 0 edges
     class services_sparky_mcp_hooks_sparky_hook_runhook_fba76bb1 ui;
     class services_sparky_mcp_hooks_sparky_hook_026b2729 ui;
     class services_sparky_mcp_hooks_sparky_hook_touchheart_d0319098 function;
@@ -1029,14 +1030,14 @@ flowchart LR
     class services_sparky_mcp_hooks_sparky_hook_shouldinje_2f4b824b function;
     class services_sparky_mcp_hooks_sparky_hook_sanitizeli_cfcc5b32 function;
     class services_sparky_mcp_hooks_sparky_hook_issafehear_6c16421a function;
+    class ref_fs_8204e0dd function;
+    class ref_node_https_8b2705a0 function;
+    class ref_node_readline_59ebf7a5 function;
     class scripts_run_agent_eval_home_7db39555 klass;
     class scripts_run_agent_eval_path_f69ada10 klass;
     class scripts_run_agent_eval_5353f42f function;
-    class scripts_run_agent_eval_sh_entry_d0d874d1 function;
-    class ref_fs_8204e0dd function;
-    class ref_node_readline_59ebf7a5 function;
     class services_sparky_agy_hook_utils_bc67a955 ui;
-    class services_sparky_agy_hook_utils_fs_1a8a4235 function;
+    class services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6 function;
     class services_sparky_mcp_bridge_6b2350b0 module;
     class services_sparky_mcp_bridge_bridgerequest_af48c30d function;
     class services_sparky_agy_stdio_rpc_client_fa65b5c6 entry;
@@ -1199,6 +1200,14 @@ flowchart LR
 </tr>
 <tr>
   <td>18</td>
+  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>ensureStarted()</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small><br>+2 more</td>
+  <td>No direct outbound edge</td>
+  <td>redactSecretsInError() node in services/sparky-agy/hook-utils.js.</td>
+</tr>
+<tr>
+  <td>19</td>
   <td><code>requireSharedModule()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
@@ -1206,7 +1215,7 @@ flowchart LR
   <td>requireSharedModule() node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>20</td>
   <td><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>stdio-rpc-client.js</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
@@ -1214,7 +1223,7 @@ flowchart LR
   <td>hook-utils.js node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>21</td>
   <td><code>fs</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1222,7 +1231,7 @@ flowchart LR
   <td>fs node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>22</td>
   <td><code>http</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1230,7 +1239,7 @@ flowchart LR
   <td>http node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>23</td>
   <td><code>https</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1238,7 +1247,7 @@ flowchart LR
   <td>https node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>24</td>
   <td><code>path</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1246,7 +1255,7 @@ flowchart LR
   <td>path node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>25</td>
   <td><code>stdio-rpc-client.js</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
   <td><span class="tag tag-cmd">Entry</span></td>
   <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
@@ -1254,7 +1263,7 @@ flowchart LR
   <td>stdio-rpc-client.js node in services/sparky-agy/stdio-rpc-client.js.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>26</td>
   <td><code>readline</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1262,7 +1271,7 @@ flowchart LR
   <td>readline node in services/sparky-agy/stdio-rpc-client.js.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>27</td>
   <td><code>{ redactSecretsInError }</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1270,7 +1279,7 @@ flowchart LR
   <td>{ redactSecretsInError } node in services/sparky-agy/stdio-rpc-client.js.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>28</td>
   <td><code>{ spawn }</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1278,28 +1287,20 @@ flowchart LR
   <td>{ spawn } node in services/sparky-agy/stdio-rpc-client.js.</td>
 </tr>
 <tr>
-  <td>28</td>
-  <td><code>ref_node_readline</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/family-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/workspace-mcp/index.js</small><br><code>mcp-stdio-driver.js</code><br><small style="color:var(--muted)">test/drivers/mcp-stdio-driver.js</small><br>+1 more</td>
-  <td>No direct outbound edge</td>
-  <td>ref_node_readline node in project.</td>
-</tr>
-<tr>
   <td>29</td>
-  <td><code>sparky-brain-sync/SKILL.md</code><br><small style="color:var(--muted)">gemini-skills/sparky-brain-sync/SKILL.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>ref_node_https</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>acp-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/acp-client.js</small><br><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br>+1 more</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing sparky-brain-sync/SKILL.md.</td>
+  <td>ref_node_https node in project.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>Safety Invariants</code><br><small style="color:var(--muted)">gemini-skills/sparky-brain-sync/SKILL.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
+  <td><code>ref_node_readline</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/workspace-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/family-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/browser-mcp/index.js</small><br>+2 more</td>
   <td>No direct outbound edge</td>
-  <td>Documentation node describing Safety Invariants.</td>
+  <td>ref_node_readline node in project.</td>
 </tr>
 </table>
 
@@ -1309,30 +1310,30 @@ flowchart LR
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>sparky-mcp/hooks/sparky-hook.js</code></td><td>11 nodes</td></tr>
-<tr><td><code>services/sparky-agy/hook-utils.js</code></td><td>8 nodes</td></tr>
+<tr><td><code>services/sparky-agy/hook-utils.js</code></td><td>9 nodes</td></tr>
 <tr><td><code>gemini-skills/sparky-brain-sync/SKILL.md</code></td><td>6 nodes</td></tr>
 <tr><td><code>gemini-skills/sparky-research-handoff/SKILL.md</code></td><td>6 nodes</td></tr>
 <tr><td><code>gemini-skills/sparky-travel-and-prep/SKILL.md</code></td><td>6 nodes</td></tr>
 <tr><td><code>gemini-skills/sparky-dispatch-agy/SKILL.md</code></td><td>5 nodes</td></tr>
 <tr><td><code>tal-skills/commitments-and-scheduling/SKILL.md</code></td><td>5 nodes</td></tr>
-<tr><td><code>docs/brainstorms/sparky-dynamic-model-routing-requirements.md</code></td><td>4 nodes</td></tr>
+<tr><td><code>scripts/run-agent-eval.sh</code></td><td>4 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x52, calls x6, imports x5, indirect call x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x49, calls x6, imports x6, indirect call x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 7. Ingestion & Updates ====== -->
 <h2 id="ingest-cache-update">7. Ingestion &amp; Updates</h2>
-<p>Ingestion &amp; Updates groups implementation around services, mcp, workspace, toolsjs, mostly in services/sparky-mcp/http-server.js, services/workspace-mcp/index.js, services/vertex-search-bridge/event-ingest.js. This section covers 148 nodes and 256 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Ingestion &amp; Updates groups implementation around services, mcp, workspace, toolsjs, mostly in services/sparky-mcp/http-server.js, services/workspace-mcp/index.js, services/workspace-mcp/gmail-tools.js. This section covers 127 nodes and 224 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Ingestion &amp; Updates (148 nodes, 256 edges)
+    %% Section: Ingestion &amp; Updates (127 nodes, 224 edges)
     subgraph ingest_cache_update_services_sparky_mcp_http_ser_31578284["services/sparky-mcp/http-server.js"]
         services_sparky_mcp_http_server_createmcphttpser_97c954bb("createMcpHttpServer()<br/><small>services/sparky-mcp/http-server.js</small>")
         services_sparky_mcp_http_server_safetokenequal_7eeb6f35("safeTokenEqual()<br/><small>services/sparky-mcp/http-server.js</small>")
@@ -1354,9 +1355,9 @@ flowchart LR
         services_workspace_mcp_index_fe0539f8("index.js")
         services_workspace_mcp_index_handletoolcall_2c16b567("handleToolCall()<br/><small>services/workspace-mcp/index.js</small>")
     end
-    services_vertex_search_bridge_event_ingest_creat_0ac0d01e("ingestEvent()<br/><small>services/vertex-search-bridge/event-ingest.js</small>")
     services_workspace_mcp_drive_tools_620f0a9f("drive-tools.js")
     services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a("executeGmailTool()<br/><small>services/workspace-mcp/gmail-tools.js</small>")
+    services_workspace_mcp_sheets_docs_slides_execut_5087632f("executeSheetsDocsSlidesTool()<br/><small>services/workspace-mcp/sheets-docs-slides.js</small>")
     services_shared_google_oauth_client_creategoogle_0281bce5 -->|calls| services_shared_google_oauth_client_creategoogle_bbfc9bdd
     services_shared_google_oauth_client_creategoogle_4683c551 -->|calls| services_shared_google_oauth_client_creategoogle_53233698
     services_shared_google_oauth_client_creategoogle_53233698 -->|calls| services_shared_google_oauth_client_defaultoauth_d0696575
@@ -1370,9 +1371,11 @@ flowchart LR
     services_sparky_mcp_http_server_createmcphttpser_97c954bb -->|calls| services_sparky_mcp_http_server_signstatelesspay_07ce7454
     services_sparky_mcp_http_server_verifystatelessp_b075cd79 -->|calls| services_sparky_mcp_http_server_safetokenequal_7eeb6f35
     services_workspace_mcp_index_handletoolcall_2c16b567 -->|calls| services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a
+    services_workspace_mcp_index_handletoolcall_2c16b567 -->|calls| services_workspace_mcp_sheets_docs_slides_execut_5087632f
+    services_workspace_mcp_index_fe0539f8 -->|imports| services_workspace_mcp_sheets_docs_slides_execut_5087632f
     services_workspace_mcp_index_fe0539f8 -->|imports| services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a
     services_workspace_mcp_index_fe0539f8 -->|imports| services_workspace_mcp_drive_tools_620f0a9f
-    %% Omitted for readability: 130 nodes, 0 edges
+    %% Omitted for readability: 109 nodes, 0 edges
     class services_sparky_mcp_http_server_createmcphttpser_97c954bb function;
     class services_sparky_mcp_http_server_safetokenequal_7eeb6f35 function;
     class services_sparky_mcp_http_server_verifystatelessp_b075cd79 function;
@@ -1388,9 +1391,9 @@ flowchart LR
     class services_shared_google_oauth_client_redactoauths_a2d4acea function;
     class services_workspace_mcp_index_fe0539f8 module;
     class services_workspace_mcp_index_handletoolcall_2c16b567 function;
-    class services_vertex_search_bridge_event_ingest_creat_0ac0d01e function;
     class services_workspace_mcp_drive_tools_620f0a9f module;
     class services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a function;
+    class services_workspace_mcp_sheets_docs_slides_execut_5087632f function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1661,29 +1664,29 @@ flowchart LR
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>services/sparky-mcp/http-server.js</code></td><td>26 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/index.js</code></td><td>23 nodes</td></tr>
-<tr><td><code>services/vertex-search-bridge/event-ingest.js</code></td><td>21 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/gmail-tools.js</code></td><td>13 nodes</td></tr>
 <tr><td><code>services/shared/google-oauth-client.js</code></td><td>10 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/sheets-docs-slides.js</code></td><td>10 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/google-oauth-client.js</code></td><td>8 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/google-rest.js</code></td><td>7 nodes</td></tr>
+<tr><td><code>services/workspace-mcp/tasks-tools.js</code></td><td>7 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x87, calls x86, indirect call x35, imports x26. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x74, contains x72, indirect call x30, imports x26. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 8. Serving API ====== -->
 <h2 id="serve-api">8. Serving API</h2>
-<p>Serving API groups implementation around vertex, bridge, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/model-router.js, services/vertex-search-bridge/kg-store.js. This section covers 1091 nodes and 2624 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around vertex, bridge, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/model-router.js, services/vertex-search-bridge/kg-store.js. This section covers 1105 nodes and 2636 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (1091 nodes, 2624 edges)
+    %% Section: Serving API (1105 nodes, 2636 edges)
     subgraph serve_api_services_vertex_search_bridge_incident_2fb67d53["services/vertex-search-bridge/incident-store.js"]
         services_vertex_search_bridge_incident_store_com_40fbb047("computeSignature()<br/><small>services/vertex-search-bridge/incident-store.js</small>")
         services_vertex_search_bridge_incident_store_nor_916ccc26("normalizeErrorKey()<br/><small>services/vertex-search-bridge/incident-store.js</small>")
@@ -1696,18 +1699,18 @@ flowchart LR
     subgraph serve_api_services_vertex_search_bridge_server_j_96187428["services/vertex-search-bridge/server.js"]
         services_vertex_search_bridge_server_3ccdc721("server.js")
         services_vertex_search_bridge_server_server_c3284e62("server<br/><small>services/vertex-search-bridge/server.js</small>")
-        services_vertex_search_bridge_server_buildsessio_a136528f("buildSessionPreamble()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_ispassivesh_5aac1318("isPassiveShipmentFollowupLoop()<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_isdateonlya_34548a1a("isDateOnlyAutoShipmentLoop()<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_querypostgr_2572da55("queryPostgresScript()<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_sendwhatsap_23fbc757("sendWhatsAppReaction()<br/><small>services/vertex-search-bridge/server.js</small>")
     end
-    subgraph serve_api_vertex_search_bridge_scripts_probe_inc_5a5334d6["vertex-search-bridge/scripts/probe-incident-signatures.js"]
-        services_vertex_search_bridge_scripts_probe_inci_8945a59a("main()<br/><small>vertex-search-bridge/scripts/probe-incident-signatures.js</small>")
-        services_vertex_search_bridge_scripts_probe_inci_38e3abad("runSqlJson()<br/><small>vertex-search-bridge/scripts/probe-incident-signatures.js</small>")
-        services_vertex_search_bridge_scripts_probe_inci_a3eccc4b("parseAlertText()<br/><small>vertex-search-bridge/scripts/probe-incident-signatures.js</small>")
-    end
     services_vertex_search_bridge_family_concierge_s_1a11e004("family-concierge-store.js")
+    services_vertex_search_bridge_loop_keys_classify_e0849161("classifyShipmentLifecycle()<br/><small>services/vertex-search-bridge/loop-keys.js</small>")
     services_vertex_search_bridge_reaction_commands_909fb857("reaction-commands.js")
+    services_vertex_search_bridge_test_family_concie_7c97477c("family-concierge-store.test.js")
     services_vertex_search_bridge_test_vertex_fallba_15a57aee("vertex-fallback.test.js")
+    services_vertex_search_bridge_server_ispassivesh_5aac1318 -->|calls| services_vertex_search_bridge_server_isdateonlya_34548a1a
+    services_vertex_search_bridge_server_ispassivesh_5aac1318 -->|calls| services_vertex_search_bridge_loop_keys_classify_e0849161
     services_vertex_search_bridge_server_querypostgr_2572da55 -->|calls| services_vertex_search_bridge_server_querypostgr_2572da55
     services_vertex_search_bridge_server_sendwhatsap_23fbc757 -->|calls| services_vertex_search_bridge_server_sendwhatsap_23fbc757
     services_vertex_search_bridge_incident_store_com_40fbb047 -->|calls| services_vertex_search_bridge_incident_store_nor_916ccc26
@@ -1721,18 +1724,16 @@ flowchart LR
     services_vertex_search_bridge_incident_store_red_63b49dcc -->|calls| services_vertex_search_bridge_incident_store_red_b744778c
     services_vertex_search_bridge_incident_store_red_63b49dcc -->|calls| services_vertex_search_bridge_incident_store_nor_916ccc26
     services_vertex_search_bridge_incident_store_red_63b49dcc -->|calls| services_vertex_search_bridge_incident_store_com_40fbb047
-    services_vertex_search_bridge_scripts_probe_inci_8945a59a -->|calls| services_vertex_search_bridge_scripts_probe_inci_38e3abad
-    services_vertex_search_bridge_scripts_probe_inci_8945a59a -->|calls| services_vertex_search_bridge_scripts_probe_inci_a3eccc4b
-    services_vertex_search_bridge_scripts_probe_inci_8945a59a -->|calls| services_vertex_search_bridge_incident_store_red_b744778c
-    services_vertex_search_bridge_scripts_probe_inci_8945a59a -->|calls| services_vertex_search_bridge_incident_store_nor_916ccc26
-    services_vertex_search_bridge_scripts_probe_inci_8945a59a -->|calls| services_vertex_search_bridge_incident_store_com_40fbb047
-    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_buildsessio_a136528f
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_ispassivesh_5aac1318
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_incident_store_red_b744778c
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_sendwhatsap_23fbc757
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_loop_keys_classify_e0849161
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_incident_store_com_40fbb047
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_incident_store_nor_916ccc26
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_incident_store_red_b744778c
-    %% Omitted for readability: 1073 nodes, 3 edges
+    services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_family_concierge_s_1a11e004
+    services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_reaction_commands_909fb857
+    %% Omitted for readability: 1087 nodes, 3 edges
     class services_vertex_search_bridge_incident_store_com_40fbb047 function;
     class services_vertex_search_bridge_incident_store_nor_916ccc26 function;
     class services_vertex_search_bridge_incident_store_cre_6da51c7b function;
@@ -1742,14 +1743,14 @@ flowchart LR
     class services_vertex_search_bridge_incident_store_red_63b49dcc function;
     class services_vertex_search_bridge_server_3ccdc721 module;
     class services_vertex_search_bridge_server_server_c3284e62 function;
-    class services_vertex_search_bridge_server_buildsessio_a136528f function;
+    class services_vertex_search_bridge_server_ispassivesh_5aac1318 function;
+    class services_vertex_search_bridge_server_isdateonlya_34548a1a function;
     class services_vertex_search_bridge_server_querypostgr_2572da55 function;
     class services_vertex_search_bridge_server_sendwhatsap_23fbc757 function;
-    class services_vertex_search_bridge_scripts_probe_inci_8945a59a function;
-    class services_vertex_search_bridge_scripts_probe_inci_38e3abad function;
-    class services_vertex_search_bridge_scripts_probe_inci_a3eccc4b function;
     class services_vertex_search_bridge_family_concierge_s_1a11e004 ui;
+    class services_vertex_search_bridge_loop_keys_classify_e0849161 function;
     class services_vertex_search_bridge_reaction_commands_909fb857 entry;
+    class services_vertex_search_bridge_test_family_concie_7c97477c test;
     class services_vertex_search_bridge_test_vertex_fallba_15a57aee test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -1782,6 +1783,22 @@ flowchart LR
 </tr>
 <tr>
   <td>2</td>
+  <td><code>isDateOnlyAutoShipmentLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>isPassiveShipmentFollowupLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>isDateOnlyAutoShipmentLoop() node in services/vertex-search-bridge/server.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>isPassiveShipmentFollowupLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>checkAndDispatchDueReminders()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><code>classifyShipmentLifecycle()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/loop-keys.js</small><br><code>isDateOnlyAutoShipmentLoop()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td>isPassiveShipmentFollowupLoop() node in services/vertex-search-bridge/server.js.</td>
+</tr>
+<tr>
+  <td>4</td>
   <td><code>queryPostgresScript()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>queryPostgresScript()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
@@ -1789,7 +1806,7 @@ flowchart LR
   <td>queryPostgresScript() node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>3</td>
+  <td>5</td>
   <td><code>readJsonRequestBody()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1797,7 +1814,7 @@ flowchart LR
   <td>readJsonRequestBody() node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>4</td>
+  <td>6</td>
   <td><code>sendWhatsAppReaction()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>reactionActivity</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>sendWhatsAppReaction()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br><code>server</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small><br>+1 more</td>
@@ -1805,7 +1822,7 @@ flowchart LR
   <td>sendWhatsAppReaction() node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>5</td>
+  <td>7</td>
   <td><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -1813,7 +1830,7 @@ flowchart LR
   <td>server.js node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>8</td>
   <td><code>acpRoutes</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td>External entry / no inbound edge</td>
@@ -1821,7 +1838,7 @@ flowchart LR
   <td>acpRoutes node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>9</td>
   <td><code>{
   ALLOWED_WORKSPACES,
   ALLOWED_AGY_MODELS,
@@ -1841,7 +1858,7 @@ flowchart LR
 } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>10</td>
   <td><code>backgroundPostTurnPromises</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1849,7 +1866,7 @@ flowchart LR
   <td>backgroundPostTurnPromises node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>11</td>
   <td><code>BRIDGE_API_TOKEN</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td>External entry / no inbound edge</td>
@@ -1857,7 +1874,7 @@ flowchart LR
   <td>BRIDGE_API_TOKEN node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>12</td>
   <td><code>BRIDGE_STARTED_AT</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -1865,7 +1882,7 @@ flowchart LR
   <td>BRIDGE_STARTED_AT node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>13</td>
   <td><code>chatMirrorStore</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -1873,7 +1890,7 @@ flowchart LR
   <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>14</td>
   <td><code>circuitBreakers</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1881,7 +1898,7 @@ flowchart LR
   <td>circuitBreakers node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>15</td>
   <td><code>{
   classifyDecisionChoice,
   inferDecisionSource,
@@ -1903,7 +1920,7 @@ flowchart LR
 } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>16</td>
   <td><code>{
   COGNITIVE_TIERS,
   CALLER_DEFAULT_ROUTES,
@@ -1925,7 +1942,7 @@ flowchart LR
 } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>17</td>
   <td><code>{
   computeRecencyBoost,
   rankMemoriesWithDecay,
@@ -1949,7 +1966,7 @@ flowchart LR
 } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>18</td>
   <td><code>config</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1957,7 +1974,7 @@ flowchart LR
   <td>Reads, resolves, or persists project configuration.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>19</td>
   <td><code>{
   containsSecretOrPassword,
   redactAllSecrets,
@@ -1972,7 +1989,7 @@ flowchart LR
   <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
 </tr>
 <tr>
-  <td>18</td>
+  <td>20</td>
   <td><code>correctionLearner</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1980,7 +1997,7 @@ flowchart LR
   <td>correctionLearner node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>21</td>
   <td><code>{ createAcpClient }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-cmd">Entry</span></td>
   <td>External entry / no inbound edge</td>
@@ -1988,7 +2005,7 @@ flowchart LR
   <td>{ createAcpClient } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>22</td>
   <td><code>{ createAcpRoutesHandler }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td>External entry / no inbound edge</td>
@@ -1996,7 +2013,7 @@ flowchart LR
   <td>{ createAcpRoutesHandler } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>23</td>
   <td><code>{ createAnalyzeDocumentHandler }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -2004,7 +2021,7 @@ flowchart LR
   <td>Orchestrates analysis and returns structured documentation data.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>24</td>
   <td><code>{ createChatMirrorStore, formatSleepCycleMessage }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
@@ -2012,7 +2029,7 @@ flowchart LR
   <td>Supports retrieval-augmented Q&amp;A or streaming chat.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>25</td>
   <td><code>{ createDb }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -2020,7 +2037,7 @@ flowchart LR
   <td>{ createDb } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>26</td>
   <td><code>{ createDecisionRoutesHandler }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td>External entry / no inbound edge</td>
@@ -2028,7 +2045,7 @@ flowchart LR
   <td>{ createDecisionRoutesHandler } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>27</td>
   <td><code>{ createEventIngestHandler }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -2036,7 +2053,7 @@ flowchart LR
   <td>Turns a local path or remote repository into analysis context.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>28</td>
   <td><code>{
   createFamilyConciergeStore,
   projectTalSchedule,
@@ -2056,7 +2073,7 @@ flowchart LR
 } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>29</td>
   <td><code>{ createFamilyRoutesHandler }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td>External entry / no inbound edge</td>
@@ -2064,36 +2081,12 @@ flowchart LR
   <td>{ createFamilyRoutesHandler } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>30</td>
   <td><code>{ createGoogleOAuthClient }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-cmd">Entry</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>{ createGoogleOAuthClient } node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>{ createHandoffStore, formatHandoffsXml }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-hook">UI</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ createHandoffStore, formatHandoffsXml } node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>{
-  createHostAdapters,
-  fetchBufferFromUrl: hostFetchBufferFromUrl,
-  resolveSafeMediaFilePath,
-}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  createHostAdapters,
-  fetchBufferFromUrl: hostFetchBufferFromUrl,
-  resolveSafeMediaFilePath,
-} node in services/vertex-search-bridge/server.js.</td>
 </tr>
 </table>
 
@@ -2102,7 +2095,7 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>208 nodes</td></tr>
+      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>207 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/model-router.js</code></td><td>43 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/kg-store.js</code></td><td>38 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/host-adapters.js</code></td><td>35 nodes</td></tr>
@@ -2114,7 +2107,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x1132, contains x644, indirect call x401, imports x303. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x1135, contains x656, indirect call x390, imports x310. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -2198,12 +2191,12 @@ flowchart LR
 
 <!-- ====== 10. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">10. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, vertex, search, mostly in services/sparky-whisper/test_whisper.py, vertex-search-bridge/test/server-endpoints.test.js, n8n-stack/scripts/test-n8n-patches.js. This section covers 887 nodes and 1319 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around test, services, vertex, search, mostly in services/sparky-whisper/test_whisper.py, vertex-search-bridge/test/server-endpoints.test.js, services/browser-mcp/cdp-session.js. This section covers 997 nodes and 1579 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (887 nodes, 1319 edges)
+    %% Section: Tests &amp; Fixtures (997 nodes, 1579 edges)
     subgraph tests_fixtures_vertex_search_bridge_test_reactio_0810e822["vertex-search-bridge/test/reaction-commands.test.js"]
         services_vertex_search_bridge_test_reaction_comm_da1a84a3("AgyDriver<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
         services_vertex_search_bridge_test_reaction_comm_ff69d7a4("constructor()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
@@ -2212,18 +2205,16 @@ flowchart LR
         services_vertex_search_bridge_test_reaction_comm_2bc9cb26("BridgeCommandDriver<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
         services_vertex_search_bridge_test_reaction_comm_d1ab6a57("constructor()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
         services_vertex_search_bridge_test_reaction_comm_3940be11("buildService()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
+        services_vertex_search_bridge_test_reaction_comm_922d1262("TtsDriver<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
+        services_vertex_search_bridge_test_reaction_comm_8c342b16("constructor()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
+        services_vertex_search_bridge_test_reaction_comm_96295464("withMockFetch()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
+        services_vertex_search_bridge_test_reaction_comm_518ba3ea("createTokenProvider()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
     end
-    subgraph tests_fixtures_tests_test_agent_evaluation_py_f3d133d4["tests/test_agent_evaluation.py"]
-        tests_test_agent_evaluation_testacppluginsafetyg_550a203d("TestAcpPluginSafetyGuard<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testacppluginsafetyg_fcf5af61("_first_existing()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testacppluginsafetyg_c21857a9("test_tal_whatsapp_plugin_agents_md_guardrails()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testacppluginsafetyg_b96b4642("test_family_plugin_agents_md_guardrails()<br/><small>tests/test_agent_evaluation.py</small>")
-        tests_test_agent_evaluation_testacppluginsafetyg_2731968a("test_run_acp_eval_py_contract_and_scoring()<br/><small>tests/test_agent_evaluation.py</small>")
-    end
+    services_browser_mcp_test_browser_mcp_test_76415332("browser-mcp.test.js")
     services_agy_daemon_test_daemon_testdaemon_c1a640de("TestDaemon<br/><small>services/agy-daemon/test_daemon.py</small>")
     services_sparky_whisper_test_whisper_b53b2977("test_whisper.py")
+    tests_test_agent_evaluation_testacppluginsafetyg_550a203d("TestAcpPluginSafetyGuard<br/><small>tests/test_agent_evaluation.py</small>")
     services_vertex_search_bridge_test_acp_client_te_b5e3668e("acp-client.test.js")
-    services_vertex_search_bridge_test_family_concie_7c97477c("family-concierge-store.test.js")
     services_vertex_search_bridge_test_phase2_remedi_a0b31790("phase2-remediation.test.js")
     services_vertex_search_bridge_test_phase3_remedi_b8ea7d4b("phase3-remediation.test.js")
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_ff69d7a4
@@ -2231,13 +2222,10 @@ flowchart LR
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_1f6ac6d7
     services_vertex_search_bridge_test_reaction_comm_2bc9cb26 -->|method| services_vertex_search_bridge_test_reaction_comm_d1ab6a57
     services_vertex_search_bridge_test_reaction_comm_2bc9cb26 -->|method| services_vertex_search_bridge_test_reaction_comm_3940be11
-    tests_test_agent_evaluation_testacppluginsafetyg_550a203d -->|method| tests_test_agent_evaluation_testacppluginsafetyg_fcf5af61
-    tests_test_agent_evaluation_testacppluginsafetyg_550a203d -->|method| tests_test_agent_evaluation_testacppluginsafetyg_c21857a9
-    tests_test_agent_evaluation_testacppluginsafetyg_550a203d -->|method| tests_test_agent_evaluation_testacppluginsafetyg_b96b4642
-    tests_test_agent_evaluation_testacppluginsafetyg_550a203d -->|method| tests_test_agent_evaluation_testacppluginsafetyg_2731968a
-    tests_test_agent_evaluation_testacppluginsafetyg_b96b4642 -->|calls| tests_test_agent_evaluation_testacppluginsafetyg_fcf5af61
-    tests_test_agent_evaluation_testacppluginsafetyg_c21857a9 -->|calls| tests_test_agent_evaluation_testacppluginsafetyg_fcf5af61
-    %% Omitted for readability: 869 nodes, 0 edges
+    services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_8c342b16
+    services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_96295464
+    services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_518ba3ea
+    %% Omitted for readability: 979 nodes, 0 edges
     class services_vertex_search_bridge_test_reaction_comm_da1a84a3 test;
     class services_vertex_search_bridge_test_reaction_comm_ff69d7a4 test;
     class services_vertex_search_bridge_test_reaction_comm_a03f6eff test;
@@ -2245,15 +2233,15 @@ flowchart LR
     class services_vertex_search_bridge_test_reaction_comm_2bc9cb26 test;
     class services_vertex_search_bridge_test_reaction_comm_d1ab6a57 test;
     class services_vertex_search_bridge_test_reaction_comm_3940be11 test;
-    class tests_test_agent_evaluation_testacppluginsafetyg_550a203d test;
-    class tests_test_agent_evaluation_testacppluginsafetyg_fcf5af61 test;
-    class tests_test_agent_evaluation_testacppluginsafetyg_c21857a9 test;
-    class tests_test_agent_evaluation_testacppluginsafetyg_b96b4642 test;
-    class tests_test_agent_evaluation_testacppluginsafetyg_2731968a test;
+    class services_vertex_search_bridge_test_reaction_comm_922d1262 test;
+    class services_vertex_search_bridge_test_reaction_comm_8c342b16 test;
+    class services_vertex_search_bridge_test_reaction_comm_96295464 test;
+    class services_vertex_search_bridge_test_reaction_comm_518ba3ea test;
+    class services_browser_mcp_test_browser_mcp_test_76415332 test;
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
     class services_sparky_whisper_test_whisper_b53b2977 test;
+    class tests_test_agent_evaluation_testacppluginsafetyg_550a203d test;
     class services_vertex_search_bridge_test_acp_client_te_b5e3668e test;
-    class services_vertex_search_bridge_test_family_concie_7c97477c test;
     class services_vertex_search_bridge_test_phase2_remedi_a0b31790 test;
     class services_vertex_search_bridge_test_phase3_remedi_b8ea7d4b test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
@@ -2279,243 +2267,243 @@ flowchart LR
 </tr>
 <tr>
   <td>1</td>
-  <td><code>loadPoolMod()</code><br><small style="color:var(--muted)">vertex-search-bridge/test/acp-lockdown.test.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>resolveAcpSessionPoolPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>loadPoolMod() node in vertex-search-bridge/test/acp-lockdown.test.js.</td>
+  <td><code>buildWsUrl()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>resolveCdpTarget()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>buildWsUrl() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>2</td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>acp-hook-driver.js</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>acp-lockdown.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/acp-lockdown.test.js</small><br><code>acp-tool-only-egress.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/acp-tool-only-egress.test.js</small><br>+5 more</td>
-  <td><code>close()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>createTempTranscript()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>runPreToolHook()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br>+5 more</td>
-  <td>createAcpHookDriver() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>clampIdleTtl()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>resolveCdpTarget()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>clampIdleTtl() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>3</td>
-  <td><code>close()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>close()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><code>close()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>close() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>browser-mcp.test.js</code><br><small style="color:var(--muted)">browser-mcp/test/browser-mcp.test.js</small><br><code>cdp-session.js</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>createBrowserMcpHandler()</code><br><small style="color:var(--muted)">services/browser-mcp/index.js</small><br>+1 more</td>
+  <td><code>clampIdleTtl()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>click()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>close()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+11 more</td>
+  <td>createCdpSession() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>4</td>
-  <td><code>createTempTranscript()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>createTempTranscript() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>applyViewport()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>ensureSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>initTabSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>applyViewport() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>5</td>
-  <td><code>execHook()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>runPreToolHook()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>runStopHook()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>execHook() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>click()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-cmd">Entry</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>getElementCenter()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>resolveElement()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+1 more</td>
+  <td>click() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>6</td>
-  <td><code>runPreToolHook()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><code>execHook()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>runPreToolHook() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>close()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>close()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>ensureSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+1 more</td>
+  <td><code>close()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>close() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>7</td>
-  <td><code>runStopHook()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><code>execHook()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>runStopHook() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>createTabState()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>initTabSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>createTabState() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>8</td>
-  <td><code>setDelayMs()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>setDelayMs() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>ensureSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>navigate()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>applyViewport()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>close()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>handleEvent()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+6 more</td>
+  <td>ensureSession() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>9</td>
-  <td><code>setForceStatus()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>setForceStatus() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>evalJs()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>redactSecrets()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>evalJs() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>10</td>
-  <td><code>setTurnContext()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>setTurnContext() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>click()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>evalJs()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>getConsoleLogs()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+7 more</td>
+  <td><code>resetIdleTimer()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>getActiveTabOrThrow() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>11</td>
-  <td><code>start()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>start() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>getConsoleLogs()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>getConsoleLogs() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>12</td>
-  <td><code>resolveAcpSessionPoolPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>acp-hook-driver.js</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>acp-lockdown.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/acp-lockdown.test.js</small><br><code>attemptForbiddenHostAction()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br>+3 more</td>
-  <td><code>resolveFirstExisting()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>resolveAcpSessionPoolPath() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>getElementCenter()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>click()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>getElementCenter() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>13</td>
-  <td><code>resolveFamilyPreToolHookPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>acp-hook-driver.js</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>acp-lockdown.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/acp-lockdown.test.js</small><br><code>attemptForbiddenHostAction()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br>+1 more</td>
-  <td><code>resolveFirstExisting()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>resolveFamilyPreToolHookPath() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>getNetworkLog()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>getNetworkLog() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>14</td>
-  <td><code>resolveFirstExisting()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>resolveAcpSessionPoolPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>resolveFamilyPreToolHookPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>resolveTalPreToolHookPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br>+1 more</td>
-  <td>No direct outbound edge</td>
-  <td>resolveFirstExisting() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>handleEvent()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>ensureSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>handleFetchPaused()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>pushBounded()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>redactSecrets()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+1 more</td>
+  <td>handleEvent() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>15</td>
-  <td><code>resolveTalPreToolHookPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>acp-hook-driver.js</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>acp-lockdown.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/acp-lockdown.test.js</small><br><code>attemptForbiddenHostAction()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br>+3 more</td>
-  <td><code>resolveFirstExisting()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>resolveTalPreToolHookPath() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>handleFetchPaused()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleEvent()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>pushBounded()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sanitizeNetworkUrl()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+1 more</td>
+  <td>handleFetchPaused() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>16</td>
-  <td><code>resolveTalStopHookPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>acp-hook-driver.js</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>acp-lockdown.test.js</code><br><small style="color:var(--muted)">vertex-search-bridge/test/acp-lockdown.test.js</small><br><code>exerciseUnifiedActorStreamAndToolOnlyEg...</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br>+1 more</td>
-  <td><code>resolveFirstExisting()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>resolveTalStopHookPath() node in test/drivers/acp-hook-driver.js.</td>
+  <td><code>initTabSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>ensureSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>applyViewport()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>createTabState()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>initTabSession() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>17</td>
-  <td><code>attemptForbiddenHostAction()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br><code>resolveAcpSessionPoolPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br>+2 more</td>
-  <td>attemptForbiddenHostAction() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>navigate()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>ensureSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>validateNavigationUrl()</code><br><small style="color:var(--muted)">services/browser-mcp/url-guard.js</small><br>+1 more</td>
+  <td>navigate() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>18</td>
-  <td><code>converseAfterRuntimeRestart()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>createMockAcpFaultDriver()</code><br><small style="color:var(--muted)">test/drivers/mock-acp-fault-driver.js</small><br><code>createPostgresMemoryDriver()</code><br><small style="color:var(--muted)">test/drivers/postgres-memory-driver.js</small><br><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br>+1 more</td>
-  <td>converseAfterRuntimeRestart() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>pressKey()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>type()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>pressKey() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>19</td>
-  <td><code>exerciseAllWorkspaceOperations()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>createGoogleRestMockDriver()</code><br><small style="color:var(--muted)">test/drivers/google-rest-mock-driver.js</small><br><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br><code>resolveFirstExisting()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td>exerciseAllWorkspaceOperations() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>pruneOldScreenshots()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>screenshot()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>pruneOldScreenshots() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>20</td>
-  <td><code>exerciseUnifiedActorStreamAndToolOnlyEgress()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>createMockAcpFaultDriver()</code><br><small style="color:var(--muted)">test/drivers/mock-acp-fault-driver.js</small><br><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br>+1 more</td>
-  <td>exerciseUnifiedActorStreamAndToolOnlyEgress() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>rejectAllPending()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>ensureSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>rejectAllPending() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>ingestEmailEventIsolated()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>createAcpHookDriver()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small><br><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br><code>resolveTalPreToolHookPath()</code><br><small style="color:var(--muted)">test/drivers/acp-hook-driver.js</small></td>
-  <td>Turns a local path or remote repository into analysis context.</td>
+  <td><code>resetIdleTimer()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>ensureSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>close()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>resetIdleTimer() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>22</td>
-  <td><code>mirrorTurnRunRepairAndConsolidate()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>createPostgresMemoryDriver()</code><br><small style="color:var(--muted)">test/drivers/postgres-memory-driver.js</small><br><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td>mirrorTurnRunRepairAndConsolidate() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>resolveElement()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>click()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>selectOption()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>type()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>resolveElement() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>23</td>
-  <td><code>probeSsrfPerimeter()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>probeSsrfPerimeter() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>screenshot()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>pruneOldScreenshots()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>screenshot() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>24</td>
-  <td><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>attemptForbiddenHostAction()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br><code>converseAfterRuntimeRestart()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br><code>exerciseAllWorkspaceOperations()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br>+8 more</td>
-  <td>No direct outbound edge</td>
-  <td>requireOrFail() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>selectOption()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>resolveElement()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>selectOption() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>25</td>
-  <td><code>resolveFirstExisting()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>exerciseAllWorkspaceOperations()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small><br><code>sendConcurrentFamilyTurns()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
+  <td><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>applyViewport()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>click()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>close()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+13 more</td>
   <td>No direct outbound edge</td>
-  <td>resolveFirstExisting() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td>sendRaw() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>26</td>
-  <td><code>runBenchmarkSuiteConcurrent()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>runBenchmarkSuiteConcurrent() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>takeSnapshot()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>takeSnapshot() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>sendConcurrentFamilyTurns()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>createMcpStdioDriver()</code><br><small style="color:var(--muted)">test/drivers/mcp-stdio-driver.js</small><br><code>resolveFirstExisting()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td>sendConcurrentFamilyTurns() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>visit()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>visit()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>visit()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>visit() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>simulateQuotaExhaustionDuringTurn()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>createMockAcpFaultDriver()</code><br><small style="color:var(--muted)">test/drivers/mock-acp-fault-driver.js</small><br><code>createPostgresMemoryDriver()</code><br><small style="color:var(--muted)">test/drivers/postgres-memory-driver.js</small><br><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td>simulateQuotaExhaustionDuringTurn() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>type()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>pressKey()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>resolveElement()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br>+1 more</td>
+  <td>type() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>tickSentinelsAcrossRestartsAndFaults()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td>tickSentinelsAcrossRestartsAndFaults() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>waitFor()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createCdpSession()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><code>getActiveTabOrThrow()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>sendRaw()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>waitForTabCondition()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>waitFor() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>transcribeBilingualVoiceMemo()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><span class="tag tag-func">Test</span></td>
-  <td><code>sparky-runtime-dsl.js</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td><code>requireOrFail()</code><br><small style="color:var(--muted)">test/dsl/sparky-runtime-dsl.js</small></td>
-  <td>transcribeBilingualVoiceMemo() node in test/dsl/sparky-runtime-dsl.js.</td>
+  <td><code>waitForTabCondition()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>navigate()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small><br><code>waitFor()</code><br><small style="color:var(--muted)">services/browser-mcp/cdp-session.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>waitForTabCondition() node in services/browser-mcp/cdp-session.js.</td>
 </tr>
 </table>
 
@@ -2526,363 +2514,23 @@ flowchart LR
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>services/sparky-whisper/test_whisper.py</code></td><td>81 nodes</td></tr>
 <tr><td><code>vertex-search-bridge/test/server-endpoints.test.js</code></td><td>47 nodes</td></tr>
+<tr><td><code>services/browser-mcp/cdp-session.js</code></td><td>43 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/test-n8n-patches.js</code></td><td>31 nodes</td></tr>
 <tr><td><code>services/n8n-sparky/test-n8n-patches.js</code></td><td>31 nodes</td></tr>
 <tr><td><code>vertex-search-bridge/test/reaction-commands.test.js</code></td><td>30 nodes</td></tr>
 <tr><td><code>tests/test_graphify_integration.py</code></td><td>30 nodes</td></tr>
 <tr><td><code>test/dsl/sparky-runtime-dsl.js</code></td><td>26 nodes</td></tr>
-<tr><td><code>vertex-search-bridge/test/acp-client.test.js</code></td><td>23 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x597, imports x232, calls x212, indirect call x102. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x669, calls x319, imports x261, indirect call x137. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 11. Services Sparky Mcp ====== -->
-<h2 id="services-sparky-mcp">11. Services Sparky Mcp</h2>
-<p>Services Sparky Mcp groups implementation around services, sparky, mcp, runtime, mostly in sparky-mcp/lib/runtime-tools.js, sparky-mcp/lib/turn-ctx-client.js, sparky-mcp/lib/runtime-tool-schemas.js. This section covers 28 nodes and 44 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Services Sparky Mcp (28 nodes, 44 edges)
-    subgraph services_sparky_mcp_sparky_mcp_lib_turn_ctx_clie_9bedff8b["sparky-mcp/lib/turn-ctx-client.js"]
-        services_sparky_mcp_lib_turn_ctx_client_triggerg_0f6c12bc("triggerGatewayRecycle()<br/><small>sparky-mcp/lib/turn-ctx-client.js</small>")
-        services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6("getTurnContext()<br/><small>sparky-mcp/lib/turn-ctx-client.js</small>")
-        services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025("postTurnEgress()<br/><small>sparky-mcp/lib/turn-ctx-client.js</small>")
-        services_sparky_mcp_lib_turn_ctx_client_6fce5179("turn-ctx-client.js")
-        services_sparky_mcp_lib_turn_ctx_client_nodehttp_b1691456("nodeHttpFetch()<br/><small>sparky-mcp/lib/turn-ctx-client.js</small>")
-        services_sparky_mcp_lib_turn_ctx_client_resolvet_70b3acbc("resolveTurnCtxEndpoint()<br/><small>sparky-mcp/lib/turn-ctx-client.js</small>")
-    end
-    subgraph services_sparky_mcp_sparky_mcp_lib_runtime_tools_e4969d76["sparky-mcp/lib/runtime-tools.js"]
-        services_sparky_mcp_lib_runtime_tools_a90330d1("runtime-tools.js")
-        services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6("handleRuntimeToolCall()<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
-        services_sparky_mcp_lib_runtime_tools_assertnoge_93700efb("assertNoGeminiMediaPlaceholder()<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
-        services_sparky_mcp_lib_runtime_tools_isgeminiac_1fba86f8("isGeminiActor()<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
-        services_sparky_mcp_lib_runtime_tools_isevalmode_6bf72262("isEvalMode()<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
-    end
-    subgraph services_sparky_mcp_sparky_mcp_lib_runtime_tool_149ccb40["sparky-mcp/lib/runtime-tool-schemas.js"]
-        services_sparky_mcp_lib_runtime_tool_schemas_run_409d0715("RUNTIME_AND_REMOTE_TOOLS<br/><small>sparky-mcp/lib/runtime-tool-schemas.js</small>")
-        services_sparky_mcp_lib_runtime_tool_schemas_run_9179eba4("RUNTIME_ONLY_NAMES<br/><small>sparky-mcp/lib/runtime-tool-schemas.js</small>")
-        services_sparky_mcp_lib_runtime_tool_schemas_f34878f2("runtime-tool-schemas.js")
-        services_sparky_mcp_lib_runtime_tool_schemas_ro_321f53ed("ro()<br/><small>sparky-mcp/lib/runtime-tool-schemas.js</small>")
-    end
-    subgraph services_sparky_mcp_External_generated_e0998750["External / generated"]
-        services_sparky_mcp_lib_constants_tal_recipient_312fa9ae("constants tal recipient")
-        ref_node_https_8b2705a0("ref_node_https")
-    end
-    services_sparky_mcp_bridge_getbridgetoken_b26d79d0("getBridgeToken()<br/><small>services/sparky-mcp/bridge.js</small>")
-    services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 -->|calls| services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6
-    services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 -->|calls| services_sparky_mcp_lib_runtime_tools_assertnoge_93700efb
-    services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 -->|calls| services_sparky_mcp_lib_runtime_tools_isgeminiac_1fba86f8
-    services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 -->|calls| services_sparky_mcp_lib_runtime_tools_isevalmode_6bf72262
-    services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 -->|calls| services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025
-    services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6 -->|calls| services_sparky_mcp_lib_turn_ctx_client_nodehttp_b1691456
-    services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6 -->|calls| services_sparky_mcp_lib_turn_ctx_client_resolvet_70b3acbc
-    services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6 -->|calls| services_sparky_mcp_bridge_getbridgetoken_b26d79d0
-    services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025 -->|calls| services_sparky_mcp_lib_turn_ctx_client_resolvet_70b3acbc
-    services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025 -->|calls| services_sparky_mcp_bridge_getbridgetoken_b26d79d0
-    services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025 -->|calls| services_sparky_mcp_lib_turn_ctx_client_nodehttp_b1691456
-    services_sparky_mcp_lib_turn_ctx_client_triggerg_0f6c12bc -->|calls| services_sparky_mcp_bridge_getbridgetoken_b26d79d0
-    services_sparky_mcp_lib_turn_ctx_client_triggerg_0f6c12bc -->|calls| services_sparky_mcp_lib_turn_ctx_client_nodehttp_b1691456
-    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_constants_tal_recipient_312fa9ae
-    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6
-    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025
-    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_runtime_tool_schemas_run_409d0715
-    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_runtime_tool_schemas_run_9179eba4
-    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_turn_ctx_client_6fce5179
-    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_runtime_tool_schemas_f34878f2
-    services_sparky_mcp_lib_turn_ctx_client_6fce5179 -->|imports| services_sparky_mcp_bridge_getbridgetoken_b26d79d0
-    services_sparky_mcp_lib_turn_ctx_client_6fce5179 -->|imports| ref_node_https_8b2705a0
-    %% Omitted for readability: 10 nodes, 0 edges
-    class services_sparky_mcp_lib_turn_ctx_client_triggerg_0f6c12bc function;
-    class services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6 function;
-    class services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025 function;
-    class services_sparky_mcp_lib_turn_ctx_client_6fce5179 entry;
-    class services_sparky_mcp_lib_turn_ctx_client_nodehttp_b1691456 function;
-    class services_sparky_mcp_lib_turn_ctx_client_resolvet_70b3acbc api;
-    class services_sparky_mcp_lib_runtime_tools_a90330d1 module;
-    class services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 function;
-    class services_sparky_mcp_lib_runtime_tools_assertnoge_93700efb async;
-    class services_sparky_mcp_lib_runtime_tools_isgeminiac_1fba86f8 function;
-    class services_sparky_mcp_lib_runtime_tools_isevalmode_6bf72262 function;
-    class services_sparky_mcp_lib_runtime_tool_schemas_run_409d0715 klass;
-    class services_sparky_mcp_lib_runtime_tool_schemas_run_9179eba4 klass;
-    class services_sparky_mcp_lib_runtime_tool_schemas_f34878f2 module;
-    class services_sparky_mcp_lib_runtime_tool_schemas_ro_321f53ed function;
-    class services_sparky_mcp_lib_constants_tal_recipient_312fa9ae function;
-    class ref_node_https_8b2705a0 function;
-    class services_sparky_mcp_bridge_getbridgetoken_b26d79d0 function;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>getBridgeToken()</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>bridge.js</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>bridgeRequest()</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br>+3 more</td>
-  <td>No direct outbound edge</td>
-  <td>getBridgeToken() node in services/sparky-mcp/bridge.js.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>ro()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>ro() node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>rw()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>rw() node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>assertNoGeminiMediaPlaceholder()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-async">Async</span></td>
-  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>assertNoGeminiMediaPlaceholder() node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><code>assertNoGeminiMediaPlaceholder()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br>+5 more</td>
-  <td>handleRuntimeToolCall() node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>isEvalMode()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>isEvalMode() node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>isGeminiActor()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>isGeminiActor() node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>turn-ctx-client.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><code>getBridgeToken()</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>nodeHttpFetch()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br><code>resolveTurnCtxEndpoint()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td>getTurnContext() node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>nodeHttpFetch()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br><code>postTurnEgress()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br><code>triggerGatewayRecycle()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br>+1 more</td>
-  <td>No direct outbound edge</td>
-  <td>nodeHttpFetch() node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>postTurnEgress()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>turn-ctx-client.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><code>getBridgeToken()</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>nodeHttpFetch()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br><code>resolveTurnCtxEndpoint()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td>postTurnEgress() node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>resolveTurnCtxEndpoint()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-endpoint">API</span></td>
-  <td><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br><code>postTurnEgress()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>resolveTurnCtxEndpoint() node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>triggerGatewayRecycle()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>plugin-manager.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>turn-ctx-client.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><code>getBridgeToken()</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>nodeHttpFetch()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td>triggerGatewayRecycle() node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>runtime-tool-schemas.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>runtime-tool-schemas.js node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
-</tr>
-<tr>
-  <td>14</td>
-  <td><code>RUNTIME_AND_REMOTE_TOOLS</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>RUNTIME_AND_REMOTE_TOOLS node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>RUNTIME_ONLY_NAMES</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>RUNTIME_ONLY_NAMES node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
-</tr>
-<tr>
-  <td>16</td>
-  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><code>constants tal recipient</code><br><code>constants.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br>+10 more</td>
-  <td>runtime-tools.js node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>17</td>
-  <td><code>ALLOWED_INGEST_SOURCES</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Turns a local path or remote repository into analysis context.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>{ getTurnContext, postTurnEgress }</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ getTurnContext, postTurnEgress } node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>19</td>
-  <td><code>{ handleManageSparkyPlugin }</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ handleManageSparkyPlugin } node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>INTERACTIVE_FORWARD_KEYS</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>INTERACTIVE_FORWARD_KEYS node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>21</td>
-  <td><code>{ RUNTIME_AND_REMOTE_TOOLS, RUNTIME_ONLY_NAMES }</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ RUNTIME_AND_REMOTE_TOOLS, RUNTIME_ONLY_NAMES } node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>{ TAL_RECIPIENT, validateOptionalAgyModel, redactSecretsInError }</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ TAL_RECIPIENT, validateOptionalAgyModel, redactSecretsInError } node in sparky-mcp/lib/runtime-tools.js.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>turn-ctx-client.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-cmd">Entry</span></td>
-  <td><code>plugin-manager.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><code>bridge.js</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>getBridgeToken()</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br>+5 more</td>
-  <td>turn-ctx-client.js node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>{ getBridgeToken }</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ getBridgeToken } node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>http</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>http node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>26</td>
-  <td><code>https</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>https node in sparky-mcp/lib/turn-ctx-client.js.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>ref_node_https</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/acp-client.js</small><br><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br>+1 more</td>
-  <td>No direct outbound edge</td>
-  <td>ref_node_https node in project.</td>
-</tr>
-<tr>
-  <td>28</td>
-  <td><code>services_sparky_mcp_lib_constants_tal_recipient</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>services_sparky_mcp_lib_constants_tal_recipient node in project.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>sparky-mcp/lib/runtime-tools.js</code></td><td>11 nodes</td></tr>
-<tr><td><code>sparky-mcp/lib/turn-ctx-client.js</code></td><td>9 nodes</td></tr>
-<tr><td><code>sparky-mcp/lib/runtime-tool-schemas.js</code></td><td>5 nodes</td></tr>
-<tr><td><code>services/sparky-mcp/bridge.js</code></td><td>1 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x17, calls x13, imports x6, indirect call x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 12. Daemon Services Agy ====== -->
-<h2 id="daemon-services-agy">12. Daemon Services Agy</h2>
+<!-- ====== 11. Daemon Services Agy ====== -->
+<h2 id="daemon-services-agy">11. Daemon Services Agy</h2>
 <p>Daemon Services Agy groups implementation around daemon, services, agy, daemonpy, mostly in services/agy-daemon/daemon.py. This section covers 26 nodes and 53 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3196,8 +2844,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 13. Sparky Mcp Services ====== -->
-<h2 id="sparky-mcp-services">13. Sparky Mcp Services</h2>
+<!-- ====== 12. Sparky Mcp Services ====== -->
+<h2 id="sparky-mcp-services">12. Sparky Mcp Services</h2>
 <p>Sparky Mcp Services groups implementation around sparky, mcp, services, indexjs, mostly in services/sparky-mcp/index.js, sparky-mcp/lib/constants.js, services/sparky-mcp/http-server.js. This section covers 25 nodes and 38 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3524,8 +3172,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 14. Services Sparky Agy ====== -->
-<h2 id="services-sparky-agy">14. Services Sparky Agy</h2>
+<!-- ====== 13. Services Sparky Agy ====== -->
+<h2 id="services-sparky-agy">13. Services Sparky Agy</h2>
 <p>Services Sparky Agy groups implementation around services, sparky, agy, session, mostly in services/sparky-agy/acp-session-pool.js, services/sparky-agy/hook-utils.js, services/sparky-agy/session-helpers.js. This section covers 17 nodes and 29 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3759,6 +3407,234 @@ flowchart LR
 </div>
 <hr>
 
+<!-- ====== 14. Runtime Services Sparky ====== -->
+<h2 id="runtime-services-sparky">14. Runtime Services Sparky</h2>
+<p>Runtime Services Sparky groups implementation around runtime, services, sparky, mcp, mostly in sparky-mcp/lib/runtime-tools.js, sparky-mcp/lib/runtime-tool-schemas.js. This section covers 17 nodes and 21 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Runtime Services Sparky (17 nodes, 21 edges)
+    subgraph runtime_services_sparky_sparky_mcp_lib_runtime_t_aee56144["sparky-mcp/lib/runtime-tools.js"]
+        services_sparky_mcp_lib_runtime_tools_a90330d1("runtime-tools.js")
+        services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6("handleRuntimeToolCall()<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_assertnoge_93700efb("assertNoGeminiMediaPlaceholder()<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_isgeminiac_1fba86f8("isGeminiActor()<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_isevalmode_6bf72262("isEvalMode()<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_allowed_in_7f89f8cb("ALLOWED_INGEST_SOURCES<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_interactiv_97852cfc("INTERACTIVE_FORWARD_KEYS<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_runtime_an_27714f80("RUNTIME_AND_REMOTE_TOOLS, RUNTIME_ONL...<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_tal_recipi_5713cf67("TAL_RECIPIENT, validateOptionalAgyMod...<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_getturncon_880ec804("getTurnContext, postTurnEgress<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+        services_sparky_mcp_lib_runtime_tools_handlemana_3d038840("handleManageSparkyPlugin<br/><small>sparky-mcp/lib/runtime-tools.js</small>")
+    end
+    subgraph runtime_services_sparky_sparky_mcp_lib_runtime_t_d59afe7d["sparky-mcp/lib/runtime-tool-schemas.js"]
+        services_sparky_mcp_lib_runtime_tool_schemas_run_409d0715("RUNTIME_AND_REMOTE_TOOLS<br/><small>sparky-mcp/lib/runtime-tool-schemas.js</small>")
+        services_sparky_mcp_lib_runtime_tool_schemas_run_9179eba4("RUNTIME_ONLY_NAMES<br/><small>sparky-mcp/lib/runtime-tool-schemas.js</small>")
+        services_sparky_mcp_lib_runtime_tool_schemas_f34878f2("runtime-tool-schemas.js")
+        services_sparky_mcp_lib_runtime_tool_schemas_ro_321f53ed("ro()<br/><small>sparky-mcp/lib/runtime-tool-schemas.js</small>")
+        services_sparky_mcp_lib_runtime_tool_schemas_rw_57ba2fc2("rw()<br/><small>sparky-mcp/lib/runtime-tool-schemas.js</small>")
+    end
+    services_sparky_mcp_lib_constants_tal_recipient_312fa9ae("constants tal recipient")
+    services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 -->|calls| services_sparky_mcp_lib_runtime_tools_assertnoge_93700efb
+    services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 -->|calls| services_sparky_mcp_lib_runtime_tools_isgeminiac_1fba86f8
+    services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 -->|calls| services_sparky_mcp_lib_runtime_tools_isevalmode_6bf72262
+    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_constants_tal_recipient_312fa9ae
+    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_runtime_tool_schemas_run_409d0715
+    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_runtime_tool_schemas_run_9179eba4
+    services_sparky_mcp_lib_runtime_tools_a90330d1 -->|imports| services_sparky_mcp_lib_runtime_tool_schemas_f34878f2
+    class services_sparky_mcp_lib_runtime_tools_a90330d1 module;
+    class services_sparky_mcp_lib_runtime_tools_handlerunt_68bfb2a6 function;
+    class services_sparky_mcp_lib_runtime_tools_assertnoge_93700efb async;
+    class services_sparky_mcp_lib_runtime_tools_isgeminiac_1fba86f8 function;
+    class services_sparky_mcp_lib_runtime_tools_isevalmode_6bf72262 function;
+    class services_sparky_mcp_lib_runtime_tools_allowed_in_7f89f8cb klass;
+    class services_sparky_mcp_lib_runtime_tools_interactiv_97852cfc klass;
+    class services_sparky_mcp_lib_runtime_tools_runtime_an_27714f80 function;
+    class services_sparky_mcp_lib_runtime_tools_tal_recipi_5713cf67 function;
+    class services_sparky_mcp_lib_runtime_tools_getturncon_880ec804 function;
+    class services_sparky_mcp_lib_runtime_tools_handlemana_3d038840 function;
+    class services_sparky_mcp_lib_runtime_tool_schemas_run_409d0715 klass;
+    class services_sparky_mcp_lib_runtime_tool_schemas_run_9179eba4 klass;
+    class services_sparky_mcp_lib_runtime_tool_schemas_f34878f2 module;
+    class services_sparky_mcp_lib_runtime_tool_schemas_ro_321f53ed function;
+    class services_sparky_mcp_lib_runtime_tool_schemas_rw_57ba2fc2 function;
+    class services_sparky_mcp_lib_constants_tal_recipient_312fa9ae function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>ro()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ro() node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>rw()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>rw() node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>assertNoGeminiMediaPlaceholder()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-async">Async</span></td>
+  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>assertNoGeminiMediaPlaceholder() node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><code>assertNoGeminiMediaPlaceholder()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br>+5 more</td>
+  <td>handleRuntimeToolCall() node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>isEvalMode()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>isEvalMode() node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>isGeminiActor()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>isGeminiActor() node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>runtime-tool-schemas.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>runtime-tool-schemas.js node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>RUNTIME_AND_REMOTE_TOOLS</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>RUNTIME_AND_REMOTE_TOOLS node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>RUNTIME_ONLY_NAMES</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tool-schemas.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>RUNTIME_ONLY_NAMES node in sparky-mcp/lib/runtime-tool-schemas.js.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><code>constants tal recipient</code><br><code>constants.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br>+10 more</td>
+  <td>runtime-tools.js node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>ALLOWED_INGEST_SOURCES</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Turns a local path or remote repository into analysis context.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>{ getTurnContext, postTurnEgress }</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ getTurnContext, postTurnEgress } node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>{ handleManageSparkyPlugin }</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ handleManageSparkyPlugin } node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>INTERACTIVE_FORWARD_KEYS</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>INTERACTIVE_FORWARD_KEYS node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>{ RUNTIME_AND_REMOTE_TOOLS, RUNTIME_ONLY_NAMES }</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ RUNTIME_AND_REMOTE_TOOLS, RUNTIME_ONLY_NAMES } node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>{ TAL_RECIPIENT, validateOptionalAgyModel, redactSecretsInError }</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ TAL_RECIPIENT, validateOptionalAgyModel, redactSecretsInError } node in sparky-mcp/lib/runtime-tools.js.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>services_sparky_mcp_lib_constants_tal_recipient</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>services_sparky_mcp_lib_constants_tal_recipient node in project.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>sparky-mcp/lib/runtime-tools.js</code></td><td>11 nodes</td></tr>
+<tr><td><code>sparky-mcp/lib/runtime-tool-schemas.js</code></td><td>5 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x13, calls x3, imports x3, imports x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
 <!-- ====== 15. Session Services Sparky ====== -->
 <h2 id="session-services-sparky">15. Session Services Sparky</h2>
 <p>Session Services Sparky groups implementation around session, services, sparky, agy, mostly in services/sparky-agy/acp-session-pool.js, services/sparky-agy/session-helpers.js. This section covers 17 nodes and 27 internal edges; the diagram shows only representative relationships to stay readable.</p>
@@ -3860,7 +3736,7 @@ flowchart LR
   <td>3</td>
   <td><code>buildMcpServers()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
+  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td>No direct outbound edge</td>
   <td>buildMcpServers() node in services/sparky-agy/session-helpers.js.</td>
 </tr>
@@ -4002,7 +3878,7 @@ flowchart LR
   <td>17</td>
   <td><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
-  <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
+  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><code>buildMcpServers()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small><br><code>isQuotaError()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small><br><code>isSessionNotFoundError()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small><br>+5 more</td>
   <td>session-helpers.js node in services/sparky-agy/session-helpers.js.</td>
 </tr>
@@ -4026,18 +3902,18 @@ flowchart LR
 
 <!-- ====== 16. Other ====== -->
 <h2 id="other">16. Other</h2>
-<p>Other groups implementation around sparky, services, n8n, scripts, mostly in services/sparky-agy/tool-policy.js, services/family-mcp/index.js, services/sparky-agy/acp-gateway.js. This section covers 159 nodes and 179 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Other groups implementation around sparky, services, n8n, scripts, mostly in services/sparky-agy/tool-policy.js, services/family-mcp/index.js, sparky-mcp/lib/plugin-manager.js. This section covers 169 nodes and 197 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Other (159 nodes, 179 edges)
+    %% Section: Other (169 nodes, 197 edges)
     subgraph other_services_sparky_agy_stdio_rpc_client_js_757271ea["services/sparky-agy/stdio-rpc-client.js"]
-        services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d("ensureStarted()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
         services_sparky_agy_stdio_rpc_client_createstdio_eacc739b("cleanup()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
         services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07("close()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
         services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e("ensureInitialized()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
         services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217("rawRequest()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+        services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d("ensureStarted()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
         services_sparky_agy_stdio_rpc_client_createstdio_9aa05264("safeWriteLine()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
         services_sparky_agy_stdio_rpc_client_createstdio_964cc199("sendCancel()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
         services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4("request()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
@@ -4048,16 +3924,17 @@ flowchart LR
         services_family_mcp_index_getimmutablefamilysend_e9f3bda5("getImmutableFamilySender()<br/><small>services/family-mcp/index.js</small>")
         services_family_mcp_index_handletoolcall_6aba1ac3("handleToolCall()<br/><small>services/family-mcp/index.js</small>")
     end
+    subgraph other_sparky_mcp_lib_turn_ctx_client_js_874d44f3["sparky-mcp/lib/turn-ctx-client.js"]
+        services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6("getTurnContext()<br/><small>sparky-mcp/lib/turn-ctx-client.js</small>")
+        services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025("postTurnEgress()<br/><small>sparky-mcp/lib/turn-ctx-client.js</small>")
+    end
     containers_n8n_stack_scripts_sparky_watchdog_sh_6f08f035("sparky-watchdog.sh script<br/><small>n8n-stack/scripts/sparky-watchdog.sh</small>")
-    scripts_backup_sh_entry_941779f4("backup.sh script<br/><small>scripts/backup.sh</small>")
     services_sparky_agy_acp_gateway_createacpgateway_4b8e928f("createAcpGatewayServer()<br/><small>services/sparky-agy/acp-gateway.js</small>")
-    services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6("redactSecretsInError()<br/><small>services/sparky-agy/hook-utils.js</small>")
     services_sparky_agy_tool_policy_istoolallowedfor_4fb9329c("isToolAllowedForProfile()<br/><small>services/sparky-agy/tool-policy.js</small>")
     services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f("handleManageSparkyPlugin()<br/><small>sparky-mcp/lib/plugin-manager.js</small>")
     services_sparky_agy_stdio_rpc_client_createstdio_eacc739b -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07
     services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217
     services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_9aa05264
-    services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d -->|calls| services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6
     services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_eacc739b
     services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d
     services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_964cc199
@@ -4068,13 +3945,12 @@ flowchart LR
     services_family_mcp_index_callfamilybridge_2258b51a -->|calls| services_family_mcp_index_readfamilybridgetoken_ab8e47cb
     services_family_mcp_index_callfamilybridge_2258b51a -->|calls| services_family_mcp_index_getimmutablefamilysend_e9f3bda5
     services_family_mcp_index_handletoolcall_6aba1ac3 -->|calls| services_family_mcp_index_callfamilybridge_2258b51a
-    services_sparky_agy_acp_gateway_createacpgateway_4b8e928f -->|calls| services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6
-    %% Omitted for readability: 141 nodes, 0 edges
-    class services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d function;
+    %% Omitted for readability: 151 nodes, 0 edges
     class services_sparky_agy_stdio_rpc_client_createstdio_eacc739b function;
     class services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07 function;
     class services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e function;
     class services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 function;
+    class services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d function;
     class services_sparky_agy_stdio_rpc_client_createstdio_9aa05264 function;
     class services_sparky_agy_stdio_rpc_client_createstdio_964cc199 function;
     class services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4 function;
@@ -4082,10 +3958,10 @@ flowchart LR
     class services_family_mcp_index_readfamilybridgetoken_ab8e47cb function;
     class services_family_mcp_index_getimmutablefamilysend_e9f3bda5 function;
     class services_family_mcp_index_handletoolcall_6aba1ac3 function;
+    class services_sparky_mcp_lib_turn_ctx_client_getturnc_58f802b6 function;
+    class services_sparky_mcp_lib_turn_ctx_client_postturn_e1b40025 function;
     class containers_n8n_stack_scripts_sparky_watchdog_sh_6f08f035 function;
-    class scripts_backup_sh_entry_941779f4 function;
     class services_sparky_agy_acp_gateway_createacpgateway_4b8e928f function;
-    class services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6 function;
     class services_sparky_agy_tool_policy_istoolallowedfor_4fb9329c function;
     class services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
@@ -4137,7 +4013,7 @@ flowchart LR
   <td>4</td>
   <td><code>isToolAllowedForProfile()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>handlePermissionRequest()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>tool-policy.js</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
+  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>handlePermissionRequest()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br>+1 more</td>
   <td><code>collectToolArgObjects()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>hasDisallowedGeminiMediaFields()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>parseCanonicalToolName()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
   <td>isToolAllowedForProfile() node in services/sparky-agy/tool-policy.js.</td>
 </tr>
@@ -4311,43 +4187,43 @@ flowchart LR
 </tr>
 <tr>
   <td>26</td>
-  <td><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
-  <td><code>createCachedTokenReader()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>readJsonBody()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br>+2 more</td>
-  <td>createAcpGatewayServer() node in services/sparky-agy/acp-gateway.js.</td>
+  <td><code>assertNotSymlinkIfExists()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-async">Async</span></td>
+  <td><code>assertSafeSkillPaths()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>writeFileAtomicNoFollow()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>assertNotSymlinkIfExists() node in sparky-mcp/lib/plugin-manager.js.</td>
 </tr>
 <tr>
   <td>27</td>
-  <td><code>createCachedTokenReader()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>Caches analysis results or computes cache keys.</td>
+  <td><code>assertSafeSkillPaths()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-async">Async</span></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><code>assertNotSymlinkIfExists()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td>assertSafeSkillPaths() node in sparky-mcp/lib/plugin-manager.js.</td>
 </tr>
 <tr>
   <td>28</td>
-  <td><code>readJsonBody()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><code>assertValidSlug()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-async">Async</span></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>plugin-manager.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
   <td>No direct outbound edge</td>
-  <td>readJsonBody() node in services/sparky-agy/acp-gateway.js.</td>
+  <td>assertValidSlug() node in sparky-mcp/lib/plugin-manager.js.</td>
 </tr>
 <tr>
   <td>29</td>
-  <td><code>safeTokenEqual()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>safeTokenEqual() node in services/sparky-agy/acp-gateway.js.</td>
+  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>plugin-manager.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><code>assertNotSymlinkIfExists()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>assertSafeSkillPaths()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>assertValidSlug()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br>+4 more</td>
+  <td>handleManageSparkyPlugin() node in sparky-mcp/lib/plugin-manager.js.</td>
 </tr>
 <tr>
   <td>30</td>
-  <td><code>sendJson()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><code>readFileNoFollow()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
   <td>No direct outbound edge</td>
-  <td>sendJson() node in services/sparky-agy/acp-gateway.js.</td>
+  <td>readFileNoFollow() node in sparky-mcp/lib/plugin-manager.js.</td>
 </tr>
 </table>
 
@@ -4368,7 +4244,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x100, calls x48, defines x18, indirect call x12. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x105, calls x55, defines x18, indirect call x16. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -4379,18 +4255,18 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>2600</td></tr>
-      <tr><td>Edges</td><td>5150</td></tr>
+      <tr><td>Nodes</td><td>2696</td></tr>
+      <tr><td>Edges</td><td>5366</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>156</td></tr>
+      <tr><td>Communities</td><td>151</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>4515</td></tr>
-      <tr><td>INFERRED</td><td>635</td></tr>
+      <tr><td>EXTRACTED</td><td>4707</td></tr>
+      <tr><td>INFERRED</td><td>659</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
   </div>
@@ -4398,7 +4274,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-21 18:27 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-21 20:29 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

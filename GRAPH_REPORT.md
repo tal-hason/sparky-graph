@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c1eca26f`
+- Built from commit: `a9f5dddb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -62,7 +62,7 @@
 - phase2c-ops.test.js
 - daemon.py
 - family-relay.js
-- reactionCommandService
+- readStreamUtf8
 - index.js
 - buildSessionPreamble
 - patch-n8n-memory-orphans.sh
@@ -71,7 +71,7 @@
 - publish-graph.sh
 - config.js
 - TestEvaluationHarnessWorkflow
-- TaskDaemon
+- loop-keys.js
 - run-acp-eval.py
 - family-concierge-store.js
 - TestEvaluationSafetyGuard
@@ -82,11 +82,11 @@
 - createPostgresMemoryDriver
 - probe-db-parity.js
 - run-agent-eval.sh
-- loop-keys.js
+- TaskDaemon
 - sync-services-to-repo.sh
 - n8n-stack/scripts/deploy-bridge.sh
 - eval-history.md
-- loop-store.js
+- agy-mission-client.js
 - ref_path
 - Requirements Anchor: `[Sparky-AI]` Event-Driven Email Handoff to Gemini App
 - n8n-sparky/patch-gemini4-langchain.sh
@@ -95,29 +95,29 @@
 - scripts/patch-retry-backoff.sh
 - n8n-sparky/patch-retry-backoff.sh
 - Requirements Anchor: Sparky-AI Dynamic Main Agent Model & Effort Routing
-- agy-mission-client.js
+- createKgStore
 - Requirements Anchor: Sparky-AI Native Antigravity (`agy acp`) Runtime & `n8n` Retirement (`sparky-agy-native-runtime`)
-- loop-store.integration.test.js
+- kg-store.test.js
 - createMockAcpFaultDriver
 - vertex-fallback.test.js
 - triage-helpers.js
 - test_workspace_mutations.js
 - callVertexWithCascade
-- createKgStore
+- TestDaemon
 - TestReactionCommandDeckWorkflows
 - createFamilyConciergeStore
-- family-morning.js
+- family-concierge-store.js
 - TestFamilyConciergeWorkflows
 - sqlStr
-- kg-store.test.js
-- TestDaemon
+- migrate-loop-keys.js
+- isTestPayload
 - run
 - run
 - quiet-hours.test.js
 - createAcpHookDriver
-- isTestPayload
-- sparky-agy/package.json
 - loop-keys.fixture.test.js
+- sparky-agy/package.json
+- loop-store.integration.test.js
 - tts-adapter.js
 - db.js
 - handleFamilyRoute
@@ -352,7 +352,7 @@ Nodes (5): extract_stream_json_result(), read_heartbeat_meta(), resolve_task_mod
 Cohesion: 0.15
 Nodes (26): classifyFamilyInboundText(), createFamilyRelayService(), configureFamilyMember(), handleFamilyInbound(), loadCtx(), loadFamilyLoops(), processFamilyInbound(), recordChatHistory() (+18 more)
 
-### Community 46 - "reactionCommandService"
+### Community 46 - "readStreamUtf8"
 Cohesion: 0.27
 Nodes (11): readStreamUtf8(), callGoogleRoutesApi(), callOsrmFallback(), callVertexApiWithRetry(), computeCommute(), fetchMetaMedia(), getAccessToken(), getMetaToken (+3 more)
 
@@ -379,6 +379,10 @@ Nodes (3): HOME, PATH, publish-graph.sh script
 ### Community 53 - "config.js"
 Cohesion: 0.12
 Nodes (11): ALLOWED_FAMILY_POST_ROUTES, compactSessionChatHistory(), compactToolObservationContent(), createMetaTokenReader(), crypto, defaultConfig, evaluateBridgeAuth(), fs (+3 more)
+
+### Community 55 - "loop-keys.js"
+Cohesion: 0.19
+Nodes (19): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), crypto, effectiveDue(), extractLoopEntityKey(), extractShipmentIdentifiers(), formatDueBucket() (+11 more)
 
 ### Community 56 - "run-acp-eval.py"
 Cohesion: 0.21
@@ -416,13 +420,9 @@ Nodes (6): resolveConfig(), assert, config, { createDb }, main(), QUERIES
 Cohesion: 0.50
 Nodes (3): HOME, PATH, run-agent-eval.sh script
 
-### Community 66 - "loop-keys.js"
-Cohesion: 0.19
-Nodes (19): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), crypto, effectiveDue(), extractLoopEntityKey(), extractShipmentIdentifiers(), formatDueBucket() (+11 more)
-
-### Community 70 - "loop-store.js"
-Cohesion: 0.25
-Nodes (9): encodeCanonicalLoopId(), generateDeterministicLoopId(), { execFile }, HISTORICAL_CLOSE_IDS, { INVOICE_RE, generateDeterministicLoopId }, loadAllRows(), queryPostgresWithStdin(), runMigration() (+1 more)
+### Community 70 - "agy-mission-client.js"
+Cohesion: 0.18
+Nodes (15): ALLOWED_AGY_MODEL_SET, ALLOWED_AGY_MODELS, ALLOWED_WORKSPACES, buildAgyTaskPayload(), buildFencedMissionPrompt(), dispatchAgyMissionToDrive(), fetchAgyAccessToken(), fs (+7 more)
 
 ### Community 71 - "ref_path"
 Cohesion: 0.21
@@ -432,17 +432,17 @@ Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrat
 Cohesion: 0.50
 Nodes (3): 1. User Intent & Selected Architecture, 2. Verified Architectural Invariants & Test Alignment, Requirements Anchor: Sparky-AI Dynamic Main Agent Model & Effort Routing
 
-### Community 79 - "agy-mission-client.js"
-Cohesion: 0.18
-Nodes (15): ALLOWED_AGY_MODEL_SET, ALLOWED_AGY_MODELS, ALLOWED_WORKSPACES, buildAgyTaskPayload(), buildFencedMissionPrompt(), dispatchAgyMissionToDrive(), fetchAgyAccessToken(), fs (+7 more)
+### Community 79 - "createKgStore"
+Cohesion: 0.25
+Nodes (14): atomicWriteFile(), bareTableName(), createKgStore(), ensureKgTables(), ingestExtractedKnowledgeGraph(), queryKgSubgraphForVector(), queryKnowledgeGraph(), reseedKnowledgeGraph() (+6 more)
 
 ### Community 80 - "Requirements Anchor: Sparky-AI Native Antigravity (`agy acp`) Runtime & `n8n` Retirement (`sparky-agy-native-runtime`)"
 Cohesion: 0.17
 Nodes (11): 1. Executive Summary & Core Architectural Decision, 2. Empirical Ground Truth Verified on Host (2026-11-20), 3. Target Architecture Topology, 4. Core Component Design & Invariants, 5. Phased Rollout Plan (Strangler Fig), A. `sparky-agy` Warm Container & ACP Gateway, B. Direct Family Privacy & Bidirectional Stream Bridge, C. SQL Turn Mirroring, Compaction Capture & Sentinel Isolation (+3 more)
 
-### Community 81 - "loop-store.integration.test.js"
-Cohesion: 0.32
-Nodes (7): assert, { createLoopStore }, { execFile }, queryPostgresJson(), queryPostgresWithStdin(), store, test
+### Community 81 - "kg-store.test.js"
+Cohesion: 0.18
+Nodes (11): assert, { execFile }, fs, kgModule, makeSyntheticVector(), path, queryPostgresJson(), queryPostgresWithStdin() (+3 more)
 
 ### Community 82 - "createMockAcpFaultDriver"
 Cohesion: 0.14
@@ -480,15 +480,11 @@ Nodes (18): APPEND_WF_PATH, cleanupRegistry, CREATE_DOC_WF_PATH, CREATE_SHEET_WF
 Cohesion: 0.17
 Nodes (16): 6. Bounded Complex Probes Required at Session 2 Bootstrap, E. WhatsApp Ingress, Audio, Google Workspace MCP & Sentinels, analyzeImageBuffer(), callGeminiJson(), callVertexWithCascade(), generateEmbedding(), insertSemanticMemory(), kgStore (+8 more)
 
-### Community 87 - "createKgStore"
-Cohesion: 0.25
-Nodes (14): atomicWriteFile(), bareTableName(), createKgStore(), ensureKgTables(), ingestExtractedKnowledgeGraph(), queryKgSubgraphForVector(), queryKnowledgeGraph(), reseedKnowledgeGraph() (+6 more)
-
 ### Community 89 - "createFamilyConciergeStore"
 Cohesion: 0.42
 Nodes (13): createFamilyConciergeStore(), completeRelayFromAgent(), flushMessagesForTal(), getCachedSchedule(), loadOpenRelayLoops(), manageMessageForTal(), manageMessageForTalUnlocked(), recordChatHistory() (+5 more)
 
-### Community 90 - "family-morning.js"
+### Community 90 - "family-concierge-store.js"
 Cohesion: 0.09
 Nodes (37): {
   ADMIN_PHONE,
@@ -511,9 +507,13 @@ Nodes (37): {
 Cohesion: 0.13
 Nodes (34): updateLoopMetadata(), createFamilyOutboxStore(), ackBatch(), claimDueBatches(), deferBatch(), ensureSchema(), inspectBatchState(), loadQueuedBatch() (+26 more)
 
-### Community 93 - "kg-store.test.js"
-Cohesion: 0.18
-Nodes (11): assert, { execFile }, fs, kgModule, makeSyntheticVector(), path, queryPostgresJson(), queryPostgresWithStdin() (+3 more)
+### Community 93 - "migrate-loop-keys.js"
+Cohesion: 0.25
+Nodes (9): encodeCanonicalLoopId(), generateDeterministicLoopId(), { execFile }, HISTORICAL_CLOSE_IDS, { INVOICE_RE, generateDeterministicLoopId }, loadAllRows(), queryPostgresWithStdin(), runMigration() (+1 more)
+
+### Community 94 - "isTestPayload"
+Cohesion: 0.47
+Nodes (9): createWhatsAppEgress(), sendWhatsAppDirect(), sendWhatsAppReengageTemplate(), sendWhatsAppTemplate(), isTestPayload(), normalizeDirectArgs(), quietHours, sanitizeTemplateParam() (+1 more)
 
 ### Community 95 - "run"
 Cohesion: 0.17
@@ -539,17 +539,17 @@ Nodes (8): BYPASS_SOURCES, computeQuietHoursVerdict(), getLocalHour(), hourForma
 Cohesion: 0.24
 Nodes (5): createAcpHookDriver(), close(), execHook(), runPreToolHook(), runStopHook()
 
-### Community 99 - "isTestPayload"
-Cohesion: 0.47
-Nodes (9): createWhatsAppEgress(), sendWhatsAppDirect(), sendWhatsAppReengageTemplate(), sendWhatsAppTemplate(), isTestPayload(), normalizeDirectArgs(), quietHours, sanitizeTemplateParam() (+1 more)
+### Community 99 - "loop-keys.fixture.test.js"
+Cohesion: 0.25
+Nodes (6): assert, FIXTURE_PATH, fs, { generateDeterministicLoopId }, path, test
 
 ### Community 100 - "sparky-agy/package.json"
 Cohesion: 0.25
 Nodes (7): description, engines, node, main, name, private, version
 
-### Community 101 - "loop-keys.fixture.test.js"
-Cohesion: 0.25
-Nodes (6): assert, FIXTURE_PATH, fs, { generateDeterministicLoopId }, path, test
+### Community 101 - "loop-store.integration.test.js"
+Cohesion: 0.32
+Nodes (7): assert, { createLoopStore }, { execFile }, queryPostgresJson(), queryPostgresWithStdin(), store, test
 
 ### Community 102 - "tts-adapter.js"
 Cohesion: 0.36
@@ -594,10 +594,10 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.027531645569620254 - nodes in this community are weakly interconnected._
 - **Why does `createDb()` connect `createDb` to `probe-db-parity.js`, `server.js`, `db.js`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **Should `reaction-commands.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.07956989247311828 - nodes in this community are weakly interconnected._
-- **Why does `redactSecretsInError()` connect `redactSecretsInError` to `server.js`, `server`, `tts-adapter.js`, `handleFamilyRoute`, `family-relay.js`, `agy-mission-client.js`, `buildSessionPreamble`, `vertex-fallback.test.js`, `queryPostgresJson`, `callVertexWithCascade`, `createFamilyConciergeStore`, `family-morning.js`, `sqlStr`?**
+- **Why does `redactSecretsInError()` connect `redactSecretsInError` to `server.js`, `server`, `agy-mission-client.js`, `tts-adapter.js`, `handleFamilyRoute`, `family-relay.js`, `buildSessionPreamble`, `vertex-fallback.test.js`, `queryPostgresJson`, `callVertexWithCascade`, `createFamilyConciergeStore`, `family-concierge-store.js`, `sqlStr`?**
   _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Should `model-router.js` be split into smaller, more focused modules?**
   _Cohesion score 0.07017543859649122 - nodes in this community are weakly interconnected._

@@ -1,7 +1,7 @@
 # Graph Report - sparky-backup  (2026-11-21)
 
 ## Corpus Check
-- 138 files · ~288,852 words
+- 138 files · ~289,132 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 13 file(s) not represented in the graph (top: (none) 6, .service 5, .example 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b71c8e96`
+- Built from commit: `fa808cd4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -52,14 +52,14 @@
 - restore.sh
 - test_agent_telemetry.sh
 - nudge-telemetry.js
-- redactSecretsInError
+- incident-store.js
 - sparky-runtime-dsl.js
 - createDb
 - host-adapters.test.js
 - n8n-sparky/test-n8n-patches.js
 - lifecycle.test.js
 - acp-client.js
-- phase2c-ops.test.js
+- createFamilyOutboxStore
 - daemon.py
 - family-relay.js
 - readStreamUtf8
@@ -104,13 +104,13 @@
 - test_workspace_mutations.js
 - callVertexWithCascade
 - TestDaemon
-- TestReactionCommandDeckWorkflows
+- family-outbox-store.js
 - createFamilyConciergeStore
 - family-concierge-store.js
 - TestFamilyConciergeWorkflows
 - sqlStr
 - acp-gateway-and-pool.test.js
-- createFamilyOutboxStore
+- Sparky-Plex: Autonomous Executive Assistant & Infrastructure
 - run
 - run
 - quiet-hours.test.js
@@ -128,8 +128,8 @@
 - classifyShipmentLifecycle
 - build-sparky-agy.sh
 - seed-acp-tokens.sh
-- family-outbox-store.js
-- Sparky-Plex: Autonomous Executive Assistant & Infrastructure
+- phase2c-ops.test.js
+- TestReactionCommandDeckWorkflows
 - makeWorld
 - createAcpRoutesHandler
 
@@ -299,7 +299,7 @@ Nodes (5): HOME, PATH, restore.sh script, sync_published_versions_sql(), verify_
 Cohesion: 0.16
 Nodes (21): classifyDecisionChoice(), computeSenderAdjustment(), createNudgeTelemetryStore(), getEffectivenessReport(), getSenderFeedback(), extractSenderKey(), formatTriageFeedbackXml(), inferDecisionSource() (+13 more)
 
-### Community 36 - "redactSecretsInError"
+### Community 36 - "incident-store.js"
 Cohesion: 0.10
 Nodes (27): computeSignature(), createIncidentStore(), draftLessonsFromCandidates(), recordCandidate(), crypto, normalizeErrorKey(), redactAndNormalizeError(), sqlStr() (+19 more)
 
@@ -333,9 +333,9 @@ Nodes (9): assert, CONFIG_PATH, { execFileSync }, fs, os, path, SERVER_PATH, tes
 Cohesion: 0.12
 Nodes (21): createAcpClient(), fetchRehydrateHistory(), runTurn(), crypto, formatOutreachDeltaXml(), http, https, inferDefaultActor() (+13 more)
 
-### Community 43 - "phase2c-ops.test.js"
-Cohesion: 0.29
-Nodes (7): assert, { execFileSync }, fs, path, PATHS, readOrSkip(), test
+### Community 43 - "createFamilyOutboxStore"
+Cohesion: 0.49
+Nodes (10): createFamilyOutboxStore(), ackBatch(), claimDueBatches(), deferBatch(), ensureSchema(), inspectBatchState(), loadQueuedBatch(), mergeFlushingIntoQueued() (+2 more)
 
 ### Community 44 - "daemon.py"
 Cohesion: 0.09
@@ -477,6 +477,10 @@ Nodes (18): APPEND_WF_PATH, cleanupRegistry, CREATE_DOC_WF_PATH, CREATE_SHEET_WF
 Cohesion: 0.17
 Nodes (16): 6. Bounded Complex Probes Required at Session 2 Bootstrap, E. WhatsApp Ingress, Audio, Google Workspace MCP & Sentinels, analyzeImageBuffer(), callGeminiJson(), callVertexWithCascade(), generateEmbedding(), insertSemanticMemory(), kgStore (+8 more)
 
+### Community 88 - "family-outbox-store.js"
+Cohesion: 0.31
+Nodes (8): evaluateDueBatch(), { parseIsoMs }, { redactSecretsInError }, { sqlStr, sqlJsonb, sqlJsonbArray, sqlTimestamptz }, { stripCalendarEventForFamily, projectTalSchedule }, projectTalSchedule(), stripCalendarEventForFamily(), parseIsoMs()
+
 ### Community 89 - "createFamilyConciergeStore"
 Cohesion: 0.38
 Nodes (14): createFamilyConciergeStore(), completeRelayFromAgent(), flushMessagesForTal(), getCachedSchedule(), loadOpenRelayLoops(), manageMessageForTal(), manageMessageForTalUnlocked(), recordChatHistory() (+6 more)
@@ -512,9 +516,9 @@ Nodes (19): updateLoopMetadata(), upsertQueuedBatch(), {
 Cohesion: 0.20
 Nodes (9): assert, { createAcpGatewayServer }, { createAcpSessionPool }, { createStdioAcpRpcClient }, fs, os, path, { resolveProfileForTurn, collectToolArgObjects } (+1 more)
 
-### Community 94 - "createFamilyOutboxStore"
-Cohesion: 0.49
-Nodes (10): createFamilyOutboxStore(), ackBatch(), claimDueBatches(), deferBatch(), ensureSchema(), inspectBatchState(), loadQueuedBatch(), mergeFlushingIntoQueued() (+2 more)
+### Community 94 - "Sparky-Plex: Autonomous Executive Assistant & Infrastructure"
+Cohesion: 0.25
+Nodes (7): Automated Backup, 🔄 Automated Backup & Disaster Recovery, Full Disaster Recovery, 📁 Repository Structure, 🔒 Security & Privacy Notice, Sparky-Plex: Autonomous Executive Assistant & Infrastructure, 🏛️ System Architecture
 
 ### Community 95 - "run"
 Cohesion: 0.17
@@ -580,13 +584,9 @@ Nodes (3): Family Relay Privacy & Delivery Protocol, Inbound Family Updates, Out
 Cohesion: 0.38
 Nodes (7): classifyShipmentLifecycle(), computeDefaultShipmentFollowUp(), advanceInTransitLoopOnKeepTracking(), isDateOnlyAutoShipmentLoop(), isFamilyLoop(), isPassiveShipmentFollowupLoop(), resolveDecision()
 
-### Community 112 - "family-outbox-store.js"
-Cohesion: 0.31
-Nodes (8): evaluateDueBatch(), { parseIsoMs }, { redactSecretsInError }, { sqlStr, sqlJsonb, sqlJsonbArray, sqlTimestamptz }, { stripCalendarEventForFamily, projectTalSchedule }, projectTalSchedule(), stripCalendarEventForFamily(), parseIsoMs()
-
-### Community 113 - "Sparky-Plex: Autonomous Executive Assistant & Infrastructure"
-Cohesion: 0.25
-Nodes (7): Automated Backup, 🔄 Automated Backup & Disaster Recovery, Full Disaster Recovery, 📁 Repository Structure, 🔒 Security & Privacy Notice, Sparky-Plex: Autonomous Executive Assistant & Infrastructure, 🏛️ System Architecture
+### Community 112 - "phase2c-ops.test.js"
+Cohesion: 0.29
+Nodes (7): assert, { execFileSync }, fs, path, PATHS, readOrSkip(), test
 
 ### Community 114 - "makeWorld"
 Cohesion: 0.60

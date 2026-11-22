@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `76e70525`
+- Built from commit: `b2a39bda`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -102,7 +102,7 @@
 - vertex-fallback.test.js
 - phase3-remediation.test.js
 - test_workspace_mutations.js
-- createModelRouter
+- loop-keys.js
 - TestDaemon
 - host-adapters.js
 - createFamilyConciergeStore
@@ -115,7 +115,7 @@
 - run
 - quiet-hours.test.js
 - sparky-runtime-dsl.js
-- atomicWriteJson
+- createModelRouter
 - sparky-agy/package.json
 - createStdioAcpRpcClient
 - sentinel-scheduler.test.js
@@ -129,7 +129,7 @@
 - build-sparky-agy.sh
 - seed-acp-tokens.sh
 - Sparky Research & Handoff Workflow
-- loop-keys.js
+- decision-helpers.js
 - googleRestRequest
 - acp-routes.js
 - whatsapp-egress.js
@@ -153,10 +153,10 @@
 - whisper-transcribe.test.js
 - handleSentinelError
 - createDb
-- decision-helpers.js
+- createModelCircuitBreaker
 - family-mcp/package.json
 - whatsapp-ingress.js
-- createModelCircuitBreaker
+- atomicWriteJson
 - family-relay.js
 - host-adapters.test.js
 - Gemini App Scheduled Email Monitor Prompt (`@Sparky`)
@@ -547,9 +547,9 @@ Nodes (21): assert, { buildMetaWebhookPayload }, { createAcpRoutesHandler }, { c
 Cohesion: 0.10
 Nodes (17): APPEND_WF_PATH, cleanupRegistry, CREATE_DOC_WF_PATH, CREATE_SHEET_WF_PATH, CREATE_SLIDES_WF_PATH, { execSync, execFileSync }, EXPECTED_HEADERS, formatOutput() (+9 more)
 
-### Community 86 - "createModelRouter"
-Cohesion: 0.22
-Nodes (16): 1. Locked Architecture & 4-Model Periodic Roster (Bootstrap + `/grill-me` Convergence), A2. Full-Ecosystem Scope (Locked Across All 8 Branches), A3. Generalized Heavy-Model Circuit Breaker & Guardrails, createModelRouter(), completeRoute(), finalize(), getHealthStatus(), hasActiveCarbonLease() (+8 more)
+### Community 86 - "loop-keys.js"
+Cohesion: 0.18
+Nodes (21): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey(), extractShipmentIdentifiers() (+13 more)
 
 ### Community 88 - "host-adapters.js"
 Cohesion: 0.12
@@ -609,9 +609,9 @@ Nodes (43): assert, {
   resolveAcpSessionPoolPath,
 }, DENIED_BUILTINS, dsl, EXPECTED_FAMILY, EXPECTED_GEMINI_UNTRUSTED, EXPECTED_SENTINEL_AGYDAEMON, EXPECTED_TAL_EVAL (+35 more)
 
-### Community 99 - "atomicWriteJson"
-Cohesion: 0.20
-Nodes (10): atomicWriteJson(), loadBriefedMeetings(), loadProcessedDropzoneFiles(), loopStore, markBriefedMeeting(), markProcessedDropzoneFile(), readDropzoneProcessedState(), saveDecisions() (+2 more)
+### Community 99 - "createModelRouter"
+Cohesion: 0.22
+Nodes (16): 1. Locked Architecture & 4-Model Periodic Roster (Bootstrap + `/grill-me` Convergence), A2. Full-Ecosystem Scope (Locked Across All 8 Branches), A3. Generalized Heavy-Model Circuit Breaker & Guardrails, createModelRouter(), completeRoute(), finalize(), getHealthStatus(), hasActiveCarbonLease() (+8 more)
 
 ### Community 100 - "sparky-agy/package.json"
 Cohesion: 0.20
@@ -653,9 +653,13 @@ Nodes (19): fs, readline, { spawn }, assert, CONFIG_PATH, { execFileSync }, fs, 
 Cohesion: 0.33
 Nodes (5): Sparky Research & Handoff Workflow, Step 1 — Ground Context in `@Sparky` First, Step 2 — Execute Focused Research, Step 3 — Deliver Clean Output in Gemini Chat, Step 4 — Sync Conclusion Back to `@Sparky`
 
-### Community 113 - "loop-keys.js"
-Cohesion: 0.18
-Nodes (21): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey(), extractShipmentIdentifiers() (+13 more)
+### Community 113 - "decision-helpers.js"
+Cohesion: 0.19
+Nodes (9): extractInteractiveOptions(), FAMILY_NON_DECISION_SOURCES, INTERACTIVE_SENTINEL_SOURCES, NON_DECISION_SOURCES, SOURCE_ALIAS_GROUPS, assert, decisionHelpersDsl, {
+  NON_DECISION_SOURCES,
+  INTERACTIVE_SENTINEL_SOURCES,
+  extractInteractiveOptions,
+} (+1 more)
 
 ### Community 114 - "googleRestRequest"
 Cohesion: 0.28
@@ -755,13 +759,9 @@ Nodes (8): createSentinelErrorBoundary(), evictExpiredCooldowns(), handleSentine
 Cohesion: 0.07
 Nodes (35): pg, resolveConfig(), createDb(), bindPsqlParams(), ensureAcpSchema(), formatPsqlLiteral(), getOrInitPgPool(), parseJsonTextOrFallback() (+27 more)
 
-### Community 137 - "decision-helpers.js"
-Cohesion: 0.19
-Nodes (9): extractInteractiveOptions(), FAMILY_NON_DECISION_SOURCES, INTERACTIVE_SENTINEL_SOURCES, NON_DECISION_SOURCES, SOURCE_ALIAS_GROUPS, assert, decisionHelpersDsl, {
-  NON_DECISION_SOURCES,
-  INTERACTIVE_SENTINEL_SOURCES,
-  extractInteractiveOptions,
-} (+1 more)
+### Community 137 - "createModelCircuitBreaker"
+Cohesion: 0.31
+Nodes (13): createModelCircuitBreaker(), applyDegradationGuard(), getStatus(), isUnavailable(), recordFailure(), recordSuccess(), reset(), shouldDegrade() (+5 more)
 
 ### Community 138 - "family-mcp/package.json"
 Cohesion: 0.33
@@ -771,9 +771,9 @@ Nodes (5): description, main, name, private, version
 Cohesion: 0.15
 Nodes (21): buildIsraelTodayBounds(), createWhatsAppIngressHandler(), fetchTodayCalendarForFamily(), handleFamilyTurn(), handleWebhookRequest(), processSingleMessage(), processWebhookPayload(), recordMetricRow() (+13 more)
 
-### Community 140 - "createModelCircuitBreaker"
-Cohesion: 0.31
-Nodes (13): createModelCircuitBreaker(), applyDegradationGuard(), getStatus(), isUnavailable(), recordFailure(), recordSuccess(), reset(), shouldDegrade() (+5 more)
+### Community 140 - "atomicWriteJson"
+Cohesion: 0.20
+Nodes (10): atomicWriteJson(), loadBriefedMeetings(), loadProcessedDropzoneFiles(), loopStore, markBriefedMeeting(), markProcessedDropzoneFile(), readDropzoneProcessedState(), saveDecisions() (+2 more)
 
 ### Community 141 - "family-relay.js"
 Cohesion: 0.11
@@ -871,7 +871,7 @@ Nodes (6): executeTasksTool(), { googleRestRequest, clampLimit }, normalizeTaskD
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `3. Platform Architecture & Refactoring (Epic E5)` connect `memory-hygiene.js` to `createHostAdapters`?**
-  _High betweenness centrality (0.153) - this node is a cross-community bridge._
+  _High betweenness centrality (0.146) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `redactSecretsInError()` (e.g. with `handleAcpOrSearchRoute()` and `incident-store.js`) actually correct?**
   _`redactSecretsInError()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `PATH`, `PATH`, `HOME` to the rest of the system?**
@@ -879,7 +879,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.02247191011235955 - nodes in this community are weakly interconnected._
 - **Why does `_StubUploadFile` connect `TestSparkyWhisperService` to `memory-hygiene.js`, `_StubFastAPI`?**
-  _High betweenness centrality (0.152) - this node is a cross-community bridge._
+  _High betweenness centrality (0.145) - this node is a cross-community bridge._
 - **Should `reaction-commands.test.js` be split into smaller, more focused modules?**
   _Cohesion score 0.07956989247311828 - nodes in this community are weakly interconnected._
 - **Should `model-router.js` be split into smaller, more focused modules?**

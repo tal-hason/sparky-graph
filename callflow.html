@@ -60,11 +60,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 2723 nodes, 5423 edges, 161 communities. Commit: b2a39bd</p>
+<p class="subtitle">Generated from graphify knowledge graph: 2802 nodes, 5571 edges, 171 communities. Commit: b028866</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
-    <a href="#extract-pipeline">Extraction Pipeline</a>
     <a href="#build-graph">Graph Build</a>
     <a href="#analysis-clustering">Analysis &amp; Clustering</a>
     <a href="#outputs-docs">Outputs &amp; Docs</a>
@@ -78,6 +77,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#workspace-mcp-services">Workspace Mcp Services</a>
     <a href="#sparky-mcp-services">Sparky Mcp Services</a>
     <a href="#services-sparky-agy">Services Sparky Agy</a>
+    <a href="#session-services-sparky">Session Services Sparky</a>
     <a href="#other">Other</a>
 </div>
 
@@ -88,23 +88,21 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    EXTRACT_PIPELINE_5F350230("Extraction Pipeline<br/><small>15 nodes</small>")
-    class EXTRACT_PIPELINE_5F350230 module;
-    BUILD_GRAPH_321CBB04("Graph Build<br/><small>75 nodes</small>")
+    BUILD_GRAPH_321CBB04("Graph Build<br/><small>119 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
-    ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>42 nodes</small>")
+    ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>23 nodes</small>")
     class ANALYSIS_CLUSTERING_C79796DA module;
     OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>4 nodes</small>")
     class OUTPUTS_DOCS_ED82387C module;
-    CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>72 nodes</small>")
+    CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>69 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
-    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>101 nodes</small>")
+    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>118 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>1127 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>1110 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>966 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>1059 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
     SERVICES_SPARKY_MCP_D7A382D7("Services Sparky Mcp<br/><small>27 nodes</small>")
     class SERVICES_SPARKY_MCP_D7A382D7 module;
@@ -114,22 +112,24 @@ flowchart LR
     class WORKSPACE_MCP_SERVICES_84EBF786 module;
     SPARKY_MCP_SERVICES_DD0DD404("Sparky Mcp Services<br/><small>25 nodes</small>")
     class SPARKY_MCP_SERVICES_DD0DD404 module;
-    SERVICES_SPARKY_AGY_38DC0FBE("Services Sparky Agy<br/><small>17 nodes</small>")
+    SERVICES_SPARKY_AGY_38DC0FBE("Services Sparky Agy<br/><small>18 nodes</small>")
     class SERVICES_SPARKY_AGY_38DC0FBE module;
-    OTHER_D0941E68("Other<br/><small>198 nodes</small>")
+    SESSION_SERVICES_SPARKY_1F4EC723("Session Services Sparky<br/><small>16 nodes</small>")
+    class SESSION_SERVICES_SPARKY_1F4EC723 module;
+    OTHER_D0941E68("Other<br/><small>160 nodes</small>")
     class OTHER_D0941E68 module;
-    TESTS_FIXTURES_B84B1DCC -->|imports x97| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|imports x63| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x19| ANALYSIS_CLUSTERING_C79796DA
-    WORKSPACE_MCP_SERVICES_84EBF786 -->|imports x15| INGEST_CACHE_UPDATE_FF457338
-    TESTS_FIXTURES_B84B1DCC -->|imports x11| CLI_SKILLS_9964CBB8
+    TESTS_FIXTURES_B84B1DCC -->|imports x123| SERVE_API_35EC8E86
+    SERVE_API_35EC8E86 -->|imports x77| TESTS_FIXTURES_B84B1DCC
+    WORKSPACE_MCP_SERVICES_84EBF786 -->|imports x14| INGEST_CACHE_UPDATE_FF457338
+    TESTS_FIXTURES_B84B1DCC -->|imports x12| BUILD_GRAPH_321CBB04
+    TESTS_FIXTURES_B84B1DCC -->|imports x12| CLI_SKILLS_9964CBB8
+    TESTS_FIXTURES_B84B1DCC -->|indirect call x10| INGEST_CACHE_UPDATE_FF457338
     OTHER_D0941E68 -->|calls x10| INGEST_CACHE_UPDATE_FF457338
     SERVE_API_35EC8E86 -->|imports x10| CLI_SKILLS_9964CBB8
-    TESTS_FIXTURES_B84B1DCC -->|imports x10| OTHER_D0941E68
     INGEST_CACHE_UPDATE_FF457338 -->|calls x9| SPARKY_MCP_SERVICES_DD0DD404
     WORKSPACE_MCP_SERVICES_84EBF786 -->|imports x8| OTHER_D0941E68
-    TESTS_FIXTURES_B84B1DCC -->|contains x7| DAEMON_SERVICES_AGY_CD07B619
-    OTHER_D0941E68 -->|imports x7| CLI_SKILLS_9964CBB8
+    SESSION_SERVICES_SPARKY_1F4EC723 -->|imports x8| TESTS_FIXTURES_B84B1DCC
+    CLI_SKILLS_9964CBB8 -->|imports x8| TESTS_FIXTURES_B84B1DCC
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -146,614 +146,60 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Extraction Pipeline</td><td>15</td><td><code>35</code></td></tr><tr><td>Graph Build</td><td>75</td><td><code>7, 75, 100, 129, 17, 138, 52, 6, 110</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>42</td><td><code>56, 71</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>72</td><td><code>2, 70, 104, 112, 121, 106, 133, 107, 108, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>101</td><td><code>18, 55, 114, 126, 161, 28, 22</code></td></tr><tr><td>Serving API</td><td>1127</td><td><code>0, 147, 16, 29, 136, 11, 48, 130, 15, 42, 4, 10, 141, 8, 116, 27, 83, 139, 3, 64, 86, 162, 59, 88, 92, 122, 53, 80, 51, 61, 99, 118, 45, 89, 97, 113, 124, 137, 5, 125, 128, 135, 140, 115, 144, 151, 157, 62, 148</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>966</td><td><code>36, 30, 98, 9, 91, 145, 1, 63, 39, 46, 84, 78, 109, 131, 60, 103, 38, 50, 117, 85, 150, 41, 44, 127, 26, 40, 54, 37, 94, 102, 25, 95, 96, 123, 142, 87, 93, 134, 105, 146, 82, 149, 152, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>27</td><td><code>90</code></td></tr><tr><td>Daemon Services Agy</td><td>26</td><td><code>66</code></td></tr><tr><td>Workspace Mcp Services</td><td>25</td><td><code>43</code></td></tr><tr><td>Sparky Mcp Services</td><td>25</td><td><code>47</code></td></tr><tr><td>Services Sparky Agy</td><td>17</td><td><code>14</code></td></tr><tr><td>Other</td><td>198</td><td><code>58, 81, 119, 120, 156, 79, 12, 160, 101, 13, 19, 57, 165, 23, 33, 132, 153, 154, 20, 21, 111, 143, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Graph Build</td><td>119</td><td><code>56, 7, 136, 75, 100, 129, 144, 17, 138, 52, 6, 110</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>23</td><td><code>94, 71</code></td></tr><tr><td>Outputs &amp; Docs</td><td>4</td><td><code>24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>69</td><td><code>2, 70, 104, 112, 121, 106, 133, 107, 108, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>118</td><td><code>18, 55, 78, 114, 126, 161, 28, 22</code></td></tr><tr><td>Serving API</td><td>1110</td><td><code>0, 16, 29, 147, 42, 92, 140, 83, 48, 130, 4, 15, 45, 8, 116, 27, 51, 139, 3, 64, 86, 59, 53, 80, 11, 88, 124, 61, 10, 37, 99, 89, 162, 122, 137, 97, 103, 125, 113, 118, 150, 115, 128, 135, 141, 164, 157, 166, 62, 148, 168, 169, 170</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>1059</td><td><code>36, 98, 41, 30, 131, 50, 109, 46, 145, 1, 63, 9, 5, 84, 35, 91, 117, 60, 149, 38, 81, 85, 44, 26, 40, 54, 102, 25, 93, 95, 96, 123, 142, 39, 87, 119, 127, 134, 151, 155, 158, 105, 146, 159, 82, 163, 152, 34</code></td></tr><tr><td>Services Sparky Mcp</td><td>27</td><td><code>90</code></td></tr><tr><td>Daemon Services Agy</td><td>26</td><td><code>66</code></td></tr><tr><td>Workspace Mcp Services</td><td>25</td><td><code>43</code></td></tr><tr><td>Sparky Mcp Services</td><td>25</td><td><code>47</code></td></tr><tr><td>Services Sparky Agy</td><td>18</td><td><code>14</code></td></tr><tr><td>Session Services Sparky</td><td>16</td><td><code>58</code></td></tr><tr><td>Other</td><td>160</td><td><code>120, 156, 79, 12, 160, 101, 13, 19, 57, 165, 23, 33, 132, 153, 154, 20, 167, 21, 111, 143, 72, 31, 49, 68, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Core Flow</h4>
-    <div class="arrow-chain">Graph Build -&gt; Extraction Pipeline -&gt; Tests &amp; Fixtures -&gt; Serving API -&gt; CLI &amp; Skill Installers -&gt; Services Sparky Mcp -&gt; Sparky Mcp Services</div>
+    <div class="arrow-chain">Outputs &amp; Docs -&gt; Graph Build -&gt; Tests &amp; Fixtures -&gt; Serving API -&gt; CLI &amp; Skill Installers -&gt; Services Sparky Mcp -&gt; Sparky Mcp Services</div>
   </div>
 </div>
 <div class="grid">
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>2723 nodes · 5423 edges · 161 communities (142 shown, 19 thin omitted)</li>
-      <li>Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 663 edges (avg confidence: 0.85)</li>
+      <li>2802 nodes · 5571 edges · 171 communities (147 shown, 24 thin omitted)</li>
+      <li>Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 690 edges (avg confidence: 0.85)</li>
       <li>Token cost: 0 input · 0 output</li>
-      <li>1. `server` - 131 edges</li>
+      <li>1. `server` - 133 edges</li>
       <li>2. `redactSecretsInError()` - 62 edges</li>
       <li>3. `createCdpSession()` - 32 edges</li>
     </ul>
   </div>
 </div>
 <hr>
-<!-- ====== 2. Extraction Pipeline ====== -->
-<h2 id="extract-pipeline">2. Extraction Pipeline</h2>
-<p>Extraction Pipeline groups implementation around extract, n8n, oauthjs, scripts, mostly in scripts/extract-n8n-oauth.js. This section covers 15 nodes and 23 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 2. Graph Build ====== -->
+<h2 id="build-graph">2. Graph Build</h2>
+<p>Graph Build groups implementation around packagejson, services, mcp, sparky, mostly in architecture/SEMANTIC_VECTOR_MEMORY.md, services/vertex-search-bridge/package.json, scripts/run-acp-eval.py. This section covers 119 nodes and 124 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Extraction Pipeline (15 nodes, 23 edges)
-    subgraph extract_pipeline_scripts_extract_n8n_oauth_js_ceedcd6b["scripts/extract-n8n-oauth.js"]
-        scripts_extract_n8n_oauth_main_ef3084d9("main()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_50fdc885("extract-n8n-oauth.js")
-        scripts_extract_n8n_oauth_decryptn8ncredential_989c8611("decryptN8nCredential()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_upsertdotenvatomic_a946eda8("upsertDotEnvAtomic()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_writesecretjsonatomic_0b267bf5("writeSecretJsonAtomic()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_evpbytestokeymd5_ee737a9b("evpBytesToKeyMd5()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_parsedotenvvalue_168e2eac("parseDotEnvValue()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_queryn8ncredentials_65a77995("queryN8nCredentials()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_inspectworkflowverifyf_c181f5f0("inspectWorkflowVerifyFallback()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_assertnotsymlinkfile_9a8650a7("assertNotSymlinkFile()<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_crypto_79954eb9("crypto<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_fs_74b9afee("fs<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_path_2e529c26("path<br/><small>scripts/extract-n8n-oauth.js</small>")
-        scripts_extract_n8n_oauth_execfilesync_a95d59cc("execFileSync<br/><small>scripts/extract-n8n-oauth.js</small>")
-    end
-    ref_node_crypto_6ccf7818("ref_node_crypto")
-    scripts_extract_n8n_oauth_decryptn8ncredential_989c8611 -->|calls| scripts_extract_n8n_oauth_evpbytestokeymd5_ee737a9b
-    scripts_extract_n8n_oauth_main_ef3084d9 -->|calls| scripts_extract_n8n_oauth_parsedotenvvalue_168e2eac
-    scripts_extract_n8n_oauth_main_ef3084d9 -->|calls| scripts_extract_n8n_oauth_queryn8ncredentials_65a77995
-    scripts_extract_n8n_oauth_main_ef3084d9 -->|calls| scripts_extract_n8n_oauth_decryptn8ncredential_989c8611
-    scripts_extract_n8n_oauth_main_ef3084d9 -->|calls| scripts_extract_n8n_oauth_writesecretjsonatomic_0b267bf5
-    scripts_extract_n8n_oauth_main_ef3084d9 -->|calls| scripts_extract_n8n_oauth_inspectworkflowverifyf_c181f5f0
-    scripts_extract_n8n_oauth_main_ef3084d9 -->|calls| scripts_extract_n8n_oauth_upsertdotenvatomic_a946eda8
-    scripts_extract_n8n_oauth_upsertdotenvatomic_a946eda8 -->|calls| scripts_extract_n8n_oauth_assertnotsymlinkfile_9a8650a7
-    scripts_extract_n8n_oauth_writesecretjsonatomic_0b267bf5 -->|calls| scripts_extract_n8n_oauth_assertnotsymlinkfile_9a8650a7
-    scripts_extract_n8n_oauth_50fdc885 -->|imports| ref_node_crypto_6ccf7818
-    class scripts_extract_n8n_oauth_main_ef3084d9 function;
-    class scripts_extract_n8n_oauth_50fdc885 module;
-    class scripts_extract_n8n_oauth_decryptn8ncredential_989c8611 function;
-    class scripts_extract_n8n_oauth_upsertdotenvatomic_a946eda8 function;
-    class scripts_extract_n8n_oauth_writesecretjsonatomic_0b267bf5 function;
-    class scripts_extract_n8n_oauth_evpbytestokeymd5_ee737a9b function;
-    class scripts_extract_n8n_oauth_parsedotenvvalue_168e2eac function;
-    class scripts_extract_n8n_oauth_queryn8ncredentials_65a77995 function;
-    class scripts_extract_n8n_oauth_inspectworkflowverifyf_c181f5f0 function;
-    class scripts_extract_n8n_oauth_assertnotsymlinkfile_9a8650a7 async;
-    class scripts_extract_n8n_oauth_crypto_79954eb9 function;
-    class scripts_extract_n8n_oauth_fs_74b9afee function;
-    class scripts_extract_n8n_oauth_path_2e529c26 function;
-    class scripts_extract_n8n_oauth_execfilesync_a95d59cc function;
-    class ref_node_crypto_6ccf7818 function;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>assertNotSymlinkFile()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-async">Async</span></td>
-  <td><code>upsertDotEnvAtomic()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>writeSecretJsonAtomic()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>assertNotSymlinkFile() node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>decryptN8nCredential()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>main()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><code>evpBytesToKeyMd5()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td>decryptN8nCredential() node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>evpBytesToKeyMd5()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>decryptN8nCredential()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>inspectWorkflowVerifyFallback()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>main()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>inspectWorkflowVerifyFallback() node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><code>decryptN8nCredential()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>inspectWorkflowVerifyFallback()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>parseDotEnvValue()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br>+3 more</td>
-  <td>main() node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>parseDotEnvValue()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>main()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>parseDotEnvValue() node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>queryN8nCredentials()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>main()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>queryN8nCredentials() node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>upsertDotEnvAtomic()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>main()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><code>assertNotSymlinkFile()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td>upsertDotEnvAtomic() node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>writeSecretJsonAtomic()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>main()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><code>assertNotSymlinkFile()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td>writeSecretJsonAtomic() node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>extract-n8n-oauth.js</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>decryptN8nCredential()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>evpBytesToKeyMd5()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br><code>inspectWorkflowVerifyFallback()</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small><br>+9 more</td>
-  <td>extract-n8n-oauth.js node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>crypto</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>crypto node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>{ execFileSync }</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ execFileSync } node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>fs</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>fs node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>14</td>
-  <td><code>path</code><br><small style="color:var(--muted)">scripts/extract-n8n-oauth.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>path node in scripts/extract-n8n-oauth.js.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>ref_node_crypto</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/acp-client.js</small><br><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>browser-mcp.test.js</code><br><small style="color:var(--muted)">browser-mcp/test/browser-mcp.test.js</small><br>+7 more</td>
-  <td>No direct outbound edge</td>
-  <td>ref_node_crypto node in project.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>scripts/extract-n8n-oauth.js</code></td><td>14 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x9, indirect call x8, contains x5, imports x1. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 3. Graph Build ====== -->
-<h2 id="build-graph">3. Graph Build</h2>
-<p>Graph Build groups implementation around packagejson, services, mcp, sparky, mostly in architecture/SEMANTIC_VECTOR_MEMORY.md, services/browser-mcp/package.json, services/sparky-agy/package.json. This section covers 75 nodes and 66 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Graph Build (75 nodes, 66 edges)
-    subgraph build_graph_services_sparky_agy_package_json_8aa80545["services/sparky-agy/package.json"]
-        services_sparky_agy_package_7dd225ee("sparky-agy/package.json")
-        services_sparky_agy_package_name_c05b75b5("name<br/><small>services/sparky-agy/package.json</small>")
-        services_sparky_agy_package_version_e942e96b("version<br/><small>services/sparky-agy/package.json</small>")
-        services_sparky_agy_package_description_9feb429d("description<br/><small>services/sparky-agy/package.json</small>")
-        services_sparky_agy_package_private_74ba0720("private<br/><small>services/sparky-agy/package.json</small>")
-        services_sparky_agy_package_engines_21f6ffc6("engines<br/><small>services/sparky-agy/package.json</small>")
-        services_sparky_agy_package_scripts_2d3eb195("scripts<br/><small>services/sparky-agy/package.json</small>")
-        services_sparky_agy_package_engines_node_7a9df41b("node<br/><small>services/sparky-agy/package.json</small>")
-    end
-    subgraph build_graph_scripts_publish_graph_sh_84522207["scripts/publish-graph.sh"]
-        scripts_publish_graph_9c22330c("publish-graph.sh")
-        scripts_publish_graph_path_bcd411cd("PATH<br/><small>scripts/publish-graph.sh</small>")
-        scripts_publish_graph_home_425f09d1("HOME<br/><small>scripts/publish-graph.sh</small>")
-    end
-    subgraph build_graph_scripts_build_sparky_agy_sh_439a4ec7["scripts/build-sparky-agy.sh"]
-        scripts_build_sparky_agy_76c5d314("build-sparky-agy.sh")
-        scripts_build_sparky_agy_cleanup_d4f85fc6("cleanup()<br/><small>scripts/build-sparky-agy.sh</small>")
-    end
-    architecture_semantic_vector_memory_semantic_vec_4832e0f7("Semantic Vector Memory &amp; Cortex Sleep C...<br/><small>architecture/SEMANTIC_VECTOR_MEMORY.md</small>")
-    services_browser_mcp_package_28b6682a("browser-mcp/package.json")
-    services_family_mcp_package_324c5603("family-mcp/package.json")
-    services_sparky_mcp_package_fc1b6c20("sparky-mcp/package.json")
-    services_workspace_mcp_package_6556232e("workspace-mcp/package.json")
-    scripts_build_sparky_agy_76c5d314 -->|defines| scripts_build_sparky_agy_cleanup_d4f85fc6
-    scripts_publish_graph_9c22330c -->|defines| scripts_publish_graph_path_bcd411cd
-    scripts_publish_graph_9c22330c -->|defines| scripts_publish_graph_home_425f09d1
-    services_sparky_agy_package_7dd225ee -->|contains| services_sparky_agy_package_name_c05b75b5
-    services_sparky_agy_package_7dd225ee -->|contains| services_sparky_agy_package_version_e942e96b
-    services_sparky_agy_package_7dd225ee -->|contains| services_sparky_agy_package_description_9feb429d
-    services_sparky_agy_package_7dd225ee -->|contains| services_sparky_agy_package_private_74ba0720
-    services_sparky_agy_package_7dd225ee -->|contains| services_sparky_agy_package_engines_21f6ffc6
-    services_sparky_agy_package_7dd225ee -->|contains| services_sparky_agy_package_scripts_2d3eb195
-    services_sparky_agy_package_engines_21f6ffc6 -->|contains| services_sparky_agy_package_engines_node_7a9df41b
-    %% Omitted for readability: 57 nodes, 0 edges
-    class services_sparky_agy_package_7dd225ee function;
-    class services_sparky_agy_package_name_c05b75b5 function;
-    class services_sparky_agy_package_version_e942e96b function;
-    class services_sparky_agy_package_description_9feb429d function;
-    class services_sparky_agy_package_private_74ba0720 function;
-    class services_sparky_agy_package_engines_21f6ffc6 function;
-    class services_sparky_agy_package_scripts_2d3eb195 function;
-    class services_sparky_agy_package_engines_node_7a9df41b function;
-    class scripts_publish_graph_9c22330c function;
-    class scripts_publish_graph_path_bcd411cd klass;
-    class scripts_publish_graph_home_425f09d1 klass;
-    class scripts_build_sparky_agy_76c5d314 function;
-    class scripts_build_sparky_agy_cleanup_d4f85fc6 function;
-    class architecture_semantic_vector_memory_semantic_vec_4832e0f7 concept;
-    class services_browser_mcp_package_28b6682a function;
-    class services_family_mcp_package_324c5603 function;
-    class services_sparky_mcp_package_fc1b6c20 function;
-    class services_workspace_mcp_package_6556232e function;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>SEMANTIC_VECTOR_MEMORY.md</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing SEMANTIC_VECTOR_MEMORY.md.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>1. Architectural Blueprint &amp; Cognitive Model</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 1. Architectural Blueprint &amp; Cognitive Model.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>2. Infrastructure &amp; Storage (`pgvector`)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 2. Infrastructure &amp; Storage (`pgvector`).</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>3. Multilingual Embedding Pipeline</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 3. Multilingual Embedding Pipeline.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>4. Bridge Microservice Endpoints ([`server.js`](file:///root/vertex-search-bridge/server.js))</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 4. Bridge Microservice Endpoints ([`server.js`](file:///root/vertex-search-bridge/server.js)).</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>5. Main Agent Integration (`search_memory` FunctionCall)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 5. Main Agent Integration (`search_memory` FunctionCall).</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>6. Nightly Cortex Sleep Consolidation (`POST /cortex/sleep-cycle`)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 6. Nightly Cortex Sleep Consolidation (`POST /cortex/sleep-cycle`).</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>7.1 PostgreSQL Relational + Vector Graph Schema</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 7.1 PostgreSQL Relational + Vector Graph Schema.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>7.2 Nightly Single-Pass Extraction &amp; Backfill</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 7.2 Nightly Single-Pass Extraction &amp; Backfill.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>7.3 Shared Hive-Mind Query Endpoints</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 7.3 Shared Hive-Mind Query Endpoints.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>7. Hybrid Personal &amp; Episodic Knowledge Graph (`kg-store.js` + `/root/sparky-memory-graph/`)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 7. Hybrid Personal &amp; Episodic Knowledge Graph (`kg-store.js` + `/root/sparky-memory-graph/`).</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>8. Disaster Recovery &amp; Backups</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing 8. Disaster Recovery &amp; Backups.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>Container Deployment</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Container Deployment.</td>
-</tr>
-<tr>
-  <td>14</td>
-  <td><code>Execution Pipeline:</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Execution Pipeline:.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>`GET /memories/search`</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing `GET /memories/search`.</td>
-</tr>
-<tr>
-  <td>16</td>
-  <td><code>`POST /memories/save` (and `GET /memories/save`)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing `POST /memories/save` (and `GET /memories/save`).</td>
-</tr>
-<tr>
-  <td>17</td>
-  <td><code>Schema &amp; Indexing</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Schema &amp; Indexing.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>Semantic Vector Memory &amp; Cortex Sleep Consolidation Architecture</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Semantic Vector Memory &amp; Cortex Sleep Consolidation Architecture.</td>
-</tr>
-<tr>
-  <td>19</td>
-  <td><code>Workflow Node Configuration</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Documentation node describing Workflow Node Configuration.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>browser-mcp/package.json</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>browser-mcp/package.json node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>21</td>
-  <td><code>description</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>description node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>engines</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>engines node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>node</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>node node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>main</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>main node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>name</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>name node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>26</td>
-  <td><code>private</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>private node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>scripts</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>scripts node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>28</td>
-  <td><code>start</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>start node in services/browser-mcp/package.json.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>test</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Verifies imports, entry points, or version behavior.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>version</code><br><small style="color:var(--muted)">services/browser-mcp/package.json</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>version node in services/browser-mcp/package.json.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>architecture/SEMANTIC_VECTOR_MEMORY.md</code></td><td>19 nodes</td></tr>
-<tr><td><code>services/browser-mcp/package.json</code></td><td>11 nodes</td></tr>
-<tr><td><code>services/sparky-agy/package.json</code></td><td>10 nodes</td></tr>
-<tr><td><code>services/workspace-mcp/package.json</code></td><td>10 nodes</td></tr>
-<tr><td><code>services/sparky-mcp/package.json</code></td><td>8 nodes</td></tr>
-<tr><td><code>services/family-mcp/package.json</code></td><td>6 nodes</td></tr>
-<tr><td><code>docs/brainstorms/sparky-nightly-knowledge-graph-requirements.md</code></td><td>4 nodes</td></tr>
-<tr><td><code>scripts/publish-graph.sh</code></td><td>4 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x63, defines x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
-<!-- ====== 4. Analysis & Clustering ====== -->
-<h2 id="analysis-clustering">4. Analysis &amp; Clustering</h2>
-<p>Analysis &amp; Clustering groups implementation around scripts, bridge, acp, run, mostly in scripts/run-acp-eval.py, scripts/migrate-workflow-bridge-urls.js, vertex-search-bridge/scripts/graphify-cluster.py. This section covers 42 nodes and 67 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Analysis &amp; Clustering (42 nodes, 67 edges)
-    subgraph analysis_clustering_scripts_run_acp_eval_py_3392262f["scripts/run-acp-eval.py"]
+    %% Section: Graph Build (119 nodes, 124 edges)
+    subgraph build_graph_scripts_run_acp_eval_py_c8e65191["scripts/run-acp-eval.py"]
         scripts_run_acp_eval_651a0c8d("run-acp-eval.py")
         scripts_run_acp_eval_evaluate_case_6523636e("evaluate_case()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_main_247f69ca("main()<br/><small>scripts/run-acp-eval.py</small>")
+        scripts_run_acp_eval_parse_judge_score_914f5f50("parse_judge_score()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_compute_runtime_fingerprint_c94eb93c("compute runtime fingerprint()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_http_post_json_865ef910("http_post_json()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_build_eval_system_context_89da0a50("build_eval_system_context()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_score_tools_used_0710b12c("score_tools_used()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_normalize_tool_name_f7445323("normalize_tool_name()<br/><small>scripts/run-acp-eval.py</small>")
-        scripts_run_acp_eval_parse_judge_score_914f5f50("parse_judge_score()<br/><small>scripts/run-acp-eval.py</small>")
         scripts_run_acp_eval_load_bridge_token_21d3ee6f("load_bridge_token()<br/><small>scripts/run-acp-eval.py</small>")
     end
-    subgraph analysis_clustering_External_generated_9ee0240b["External / generated"]
+    subgraph build_graph_External_generated_653891f5["External / generated"]
         hashlib_7616ac97("hashlib")
         json_05d97e6e("json")
         argparse_e750ee7c("argparse")
         re_c387c982("re")
+        datetime_89ffad08("datetime")
+        urllib_error_e9e7d2ca("urllib_error")
     end
-    subgraph analysis_clustering_vertex_search_bridge_scripts_fe7b77cd["vertex-search-bridge/scripts/graphify-cluster.py"]
-        services_vertex_search_bridge_scripts_graphify_c_c5703e54("graphify-cluster.py")
-        services_vertex_search_bridge_scripts_graphify_c_eeb5c876("main()<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
-        services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a("atomic_write_text()<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
+    subgraph build_graph_services_vertex_search_bridge_packag_762f8a70["services/vertex-search-bridge/package.json"]
+        services_vertex_search_bridge_package_1faf6d56("vertex-search-bridge/package.json")
+        ref_pg_848e5969("pg<br/><small>services/vertex-search-bridge/package.json</small>")
     end
-    scripts_migrate_workflow_bridge_urls_main_83f7f511("main()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
     scripts_run_acp_eval_compute_runtime_fingerprint_c94eb93c -->|calls| hashlib_7616ac97
     scripts_run_acp_eval_evaluate_case_6523636e -->|calls| scripts_run_acp_eval_http_post_json_865ef910
     scripts_run_acp_eval_evaluate_case_6523636e -->|calls| scripts_run_acp_eval_build_eval_system_context_89da0a50
@@ -770,32 +216,32 @@ flowchart LR
     scripts_run_acp_eval_parse_judge_score_914f5f50 -->|calls| re_c387c982
     scripts_run_acp_eval_parse_judge_score_914f5f50 -->|calls| json_05d97e6e
     scripts_run_acp_eval_score_tools_used_0710b12c -->|calls| scripts_run_acp_eval_normalize_tool_name_f7445323
-    services_vertex_search_bridge_scripts_graphify_c_eeb5c876 -->|calls| json_05d97e6e
-    services_vertex_search_bridge_scripts_graphify_c_eeb5c876 -->|calls| services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a
+    services_vertex_search_bridge_package_1faf6d56 -->|imports| ref_pg_848e5969
+    scripts_run_acp_eval_651a0c8d -->|imports| datetime_89ffad08
     scripts_run_acp_eval_651a0c8d -->|imports| hashlib_7616ac97
     scripts_run_acp_eval_651a0c8d -->|imports| json_05d97e6e
     scripts_run_acp_eval_651a0c8d -->|imports| re_c387c982
+    scripts_run_acp_eval_651a0c8d -->|imports| urllib_error_e9e7d2ca
     scripts_run_acp_eval_651a0c8d -->|imports| argparse_e750ee7c
-    services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| json_05d97e6e
-    %% Omitted for readability: 24 nodes, 0 edges
+    %% Omitted for readability: 101 nodes, 0 edges
     class scripts_run_acp_eval_651a0c8d module;
     class scripts_run_acp_eval_evaluate_case_6523636e function;
     class scripts_run_acp_eval_main_247f69ca function;
+    class scripts_run_acp_eval_parse_judge_score_914f5f50 function;
     class scripts_run_acp_eval_compute_runtime_fingerprint_c94eb93c function;
     class scripts_run_acp_eval_http_post_json_865ef910 function;
     class scripts_run_acp_eval_build_eval_system_context_89da0a50 function;
     class scripts_run_acp_eval_score_tools_used_0710b12c function;
     class scripts_run_acp_eval_normalize_tool_name_f7445323 function;
-    class scripts_run_acp_eval_parse_judge_score_914f5f50 function;
     class scripts_run_acp_eval_load_bridge_token_21d3ee6f function;
     class hashlib_7616ac97 function;
     class json_05d97e6e function;
     class argparse_e750ee7c function;
     class re_c387c982 function;
-    class services_vertex_search_bridge_scripts_graphify_c_c5703e54 module;
-    class services_vertex_search_bridge_scripts_graphify_c_eeb5c876 function;
-    class services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a function;
-    class scripts_migrate_workflow_bridge_urls_main_83f7f511 function;
+    class datetime_89ffad08 function;
+    class urllib_error_e9e7d2ca function;
+    class services_vertex_search_bridge_package_1faf6d56 function;
+    class ref_pg_848e5969 function;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -891,38 +337,6 @@ flowchart LR
 </tr>
 <tr>
   <td>10</td>
-  <td><code>atomic_write_text()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>main()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td><code>os</code><br><code>tempfile</code></td>
-  <td>atomic_write_text() node in vertex-search-bridge/scripts/graphify-cluster.py.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>main()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>atomic_write_text()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>json</code><br><code>strip_diacritics()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td>main() node in vertex-search-bridge/scripts/graphify-cluster.py.</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>strip_diacritics()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>main()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td><code>unicodedata</code></td>
-  <td>strip_diacritics() node in vertex-search-bridge/scripts/graphify-cluster.py.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>Path</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Path node in project.</td>
-</tr>
-<tr>
-  <td>14</td>
   <td><code>run-acp-eval.py</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
@@ -930,15 +344,7 @@ flowchart LR
   <td>Module file in scripts/run-acp-eval.py.</td>
 </tr>
 <tr>
-  <td>15</td>
-  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td>External entry / no inbound edge</td>
-  <td><code>datetime</code><br><code>graphify_analyze</code><br><code>graphify_build</code><br>+7 more</td>
-  <td>Module file in vertex-search-bridge/scripts/graphify-cluster.py.</td>
-</tr>
-<tr>
-  <td>16</td>
+  <td>11</td>
   <td><code>@ai-rules: ACP-native golden dataset evaluation runner for Sparky-AI. 1. Calls…</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small></td>
   <td><span class="tag tag-func">Concept</span></td>
   <td>External entry / no inbound edge</td>
@@ -946,15 +352,7 @@ flowchart LR
   <td>Design note for @ai-rules: ACP-native golden dataset evaluation runner for Sparky-AI. 1. Calls….</td>
 </tr>
 <tr>
-  <td>17</td>
-  <td><code>Deterministic Leiden community clustering &amp; GRAPH_REPORT.md generator for…</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td><span class="tag tag-func">Concept</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>Design note for Deterministic Leiden community clustering &amp; GRAPH_REPORT.md generator for….</td>
-</tr>
-<tr>
-  <td>18</td>
+  <td>12</td>
   <td><code>argparse</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>main()</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small><br><code>run-acp-eval.py</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small></td>
@@ -962,7 +360,7 @@ flowchart LR
   <td>argparse node in project.</td>
 </tr>
 <tr>
-  <td>19</td>
+  <td>13</td>
   <td><code>concurrent_futures</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>run-acp-eval.py</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small></td>
@@ -970,7 +368,7 @@ flowchart LR
   <td>concurrent_futures node in project.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>14</td>
   <td><code>datetime</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>run-acp-eval.py</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small></td>
@@ -978,31 +376,7 @@ flowchart LR
   <td>datetime node in project.</td>
 </tr>
 <tr>
-  <td>21</td>
-  <td><code>graphify_analyze</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>Orchestrates analysis and returns structured documentation data.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>graphify_build</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>Builds dependency relationships and graph data.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>graphify_report</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>Builds dependency relationships and graph data.</td>
-</tr>
-<tr>
-  <td>24</td>
+  <td>15</td>
   <td><code>hashlib</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>compute runtime fingerprint()</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small><br><code>run-acp-eval.py</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small></td>
@@ -1010,7 +384,7 @@ flowchart LR
   <td>Caches analysis results or computes cache keys.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>16</td>
   <td><code>json</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>_invoke_endpoint()</code><br><small style="color:var(--muted)">services/sparky-whisper/test_whisper.py</small><br><code>daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>evaluate_case()</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small><br>+12 more</td>
@@ -1018,15 +392,7 @@ flowchart LR
   <td>json node in project.</td>
 </tr>
 <tr>
-  <td>26</td>
-  <td><code>pathlib</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>pathlib node in project.</td>
-</tr>
-<tr>
-  <td>27</td>
+  <td>17</td>
   <td><code>re</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/daemon.py</small><br><code>parse_judge_score()</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small><br><code>run-acp-eval.py</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small><br>+3 more</td>
@@ -1034,28 +400,108 @@ flowchart LR
   <td>re node in project.</td>
 </tr>
 <tr>
-  <td>28</td>
-  <td><code>tempfile</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>atomic_write_text()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>test_daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/test_daemon.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>tempfile node in project.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>unicodedata</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>strip_diacritics()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
-  <td>No direct outbound edge</td>
-  <td>unicodedata node in project.</td>
-</tr>
-<tr>
-  <td>30</td>
+  <td>18</td>
   <td><code>urllib_error</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>run-acp-eval.py</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small></td>
   <td>No direct outbound edge</td>
   <td>urllib_error node in project.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>urllib_request</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>run-acp-eval.py</code><br><small style="color:var(--muted)">scripts/run-acp-eval.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>urllib_request node in project.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>SEMANTIC_VECTOR_MEMORY.md</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing SEMANTIC_VECTOR_MEMORY.md.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>1. Architectural Blueprint &amp; Cognitive Model</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 1. Architectural Blueprint &amp; Cognitive Model.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>2. Infrastructure &amp; Storage (`pgvector`)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 2. Infrastructure &amp; Storage (`pgvector`).</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>3. Multilingual Embedding Pipeline</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 3. Multilingual Embedding Pipeline.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>4. Bridge Microservice Endpoints ([`server.js`](file:///root/vertex-search-bridge/server.js))</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 4. Bridge Microservice Endpoints ([`server.js`](file:///root/vertex-search-bridge/server.js)).</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>5. Main Agent Integration (`search_memory` FunctionCall)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 5. Main Agent Integration (`search_memory` FunctionCall).</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><code>6. Nightly Cortex Sleep Consolidation (`POST /cortex/sleep-cycle`)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 6. Nightly Cortex Sleep Consolidation (`POST /cortex/sleep-cycle`).</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>7.1 PostgreSQL Relational + Vector Graph Schema</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 7.1 PostgreSQL Relational + Vector Graph Schema.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>7.2 Nightly Single-Pass Extraction &amp; Backfill</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 7.2 Nightly Single-Pass Extraction &amp; Backfill.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>7.3 Shared Hive-Mind Query Endpoints</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 7.3 Shared Hive-Mind Query Endpoints.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>7. Hybrid Personal &amp; Episodic Knowledge Graph (`kg-store.js` + `/root/sparky-memory-graph/`)</code><br><small style="color:var(--muted)">architecture/SEMANTIC_VECTOR_MEMORY.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing 7. Hybrid Personal &amp; Episodic Knowledge Graph (`kg-store.js` + `/root/sparky-memory-graph/`).</td>
 </tr>
 </table>
 
@@ -1064,20 +510,314 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>scripts/run-acp-eval.py</code></td><td>11 nodes</td></tr>
-<tr><td><code>scripts/migrate-workflow-bridge-urls.js</code></td><td>10 nodes</td></tr>
+      <tr><td><code>architecture/SEMANTIC_VECTOR_MEMORY.md</code></td><td>19 nodes</td></tr>
+<tr><td><code>services/vertex-search-bridge/package.json</code></td><td>15 nodes</td></tr>
+<tr><td><code>scripts/run-acp-eval.py</code></td><td>11 nodes</td></tr>
+<tr><td><code>services/browser-mcp/package.json</code></td><td>11 nodes</td></tr>
+<tr><td><code>services/cortex-sleep-mcp/package.json</code></td><td>10 nodes</td></tr>
+<tr><td><code>services/sparky-agy/package.json</code></td><td>10 nodes</td></tr>
+<tr><td><code>services/workspace-mcp/package.json</code></td><td>10 nodes</td></tr>
+<tr><td><code>services/sparky-mcp/package.json</code></td><td>8 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x94, calls x16, imports x9, defines x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 3. Analysis & Clustering ====== -->
+<h2 id="analysis-clustering">3. Analysis &amp; Clustering</h2>
+<p>Analysis &amp; Clustering groups implementation around bridge, scripts, migrate, workflow, mostly in scripts/migrate-workflow-bridge-urls.js, vertex-search-bridge/scripts/graphify-cluster.py. This section covers 23 nodes and 29 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Analysis &amp; Clustering (23 nodes, 29 edges)
+    subgraph analysis_clustering_External_generated_9ee0240b["External / generated"]
+        tempfile_30fe567d("tempfile")
+        unicodedata_61e641af("unicodedata")
+        ref_path_6ea4f7de("ref_path")
+        pathlib_4471f74a("pathlib")
+        graphify_analyze_069ca401("graphify_analyze")
+        graphify_build_2208b562("graphify_build")
+        graphify_report_11456f5f("graphify_report")
+        path_3150ecd5("Path")
+    end
+    subgraph analysis_clustering_scripts_migrate_workflow_bri_34022461["scripts/migrate-workflow-bridge-urls.js"]
+        scripts_migrate_workflow_bridge_urls_main_83f7f511("main()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migratenode_97ae93de("migrateNodes()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_ba8c4b1f("migrate-workflow-bridge-urls.js")
+        scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1("runPsql()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e("migrateJsCode()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23("migrateUrlParam()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+    end
+    subgraph analysis_clustering_vertex_search_bridge_scripts_fe7b77cd["vertex-search-bridge/scripts/graphify-cluster.py"]
+        services_vertex_search_bridge_scripts_graphify_c_c5703e54("graphify-cluster.py")
+        services_vertex_search_bridge_scripts_graphify_c_eeb5c876("main()<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
+        services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a("atomic_write_text()<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
+        services_vertex_search_bridge_scripts_graphify_c_699b1e17("strip_diacritics()<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
+    end
+    scripts_migrate_workflow_bridge_urls_main_83f7f511 -->|calls| scripts_migrate_workflow_bridge_urls_migratenode_97ae93de
+    scripts_migrate_workflow_bridge_urls_main_83f7f511 -->|calls| scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1
+    scripts_migrate_workflow_bridge_urls_migratenode_97ae93de -->|calls| scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e
+    scripts_migrate_workflow_bridge_urls_migratenode_97ae93de -->|calls| scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23
+    services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a -->|calls| tempfile_30fe567d
+    services_vertex_search_bridge_scripts_graphify_c_eeb5c876 -->|calls| services_vertex_search_bridge_scripts_graphify_c_699b1e17
+    services_vertex_search_bridge_scripts_graphify_c_eeb5c876 -->|calls| services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a
+    services_vertex_search_bridge_scripts_graphify_c_699b1e17 -->|calls| unicodedata_61e641af
+    scripts_migrate_workflow_bridge_urls_ba8c4b1f -->|imports| ref_path_6ea4f7de
+    services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| tempfile_30fe567d
+    services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| unicodedata_61e641af
+    services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| pathlib_4471f74a
+    services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| graphify_analyze_069ca401
+    services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| graphify_build_2208b562
+    services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| graphify_report_11456f5f
+    %% Omitted for readability: 5 nodes, 0 edges
+    class tempfile_30fe567d function;
+    class unicodedata_61e641af function;
+    class ref_path_6ea4f7de function;
+    class pathlib_4471f74a function;
+    class graphify_analyze_069ca401 function;
+    class graphify_build_2208b562 function;
+    class graphify_report_11456f5f function;
+    class path_3150ecd5 klass;
+    class scripts_migrate_workflow_bridge_urls_main_83f7f511 function;
+    class scripts_migrate_workflow_bridge_urls_migratenode_97ae93de function;
+    class scripts_migrate_workflow_bridge_urls_ba8c4b1f module;
+    class scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1 function;
+    class scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e function;
+    class scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23 function;
+    class services_vertex_search_bridge_scripts_graphify_c_c5703e54 module;
+    class services_vertex_search_bridge_scripts_graphify_c_eeb5c876 function;
+    class services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a function;
+    class services_vertex_search_bridge_scripts_graphify_c_699b1e17 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>atomic_write_text()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td><code>os</code><br><code>tempfile</code></td>
+  <td>atomic_write_text() node in vertex-search-bridge/scripts/graphify-cluster.py.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>main()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>atomic_write_text()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>json</code><br><code>strip_diacritics()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td>main() node in vertex-search-bridge/scripts/graphify-cluster.py.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>strip_diacritics()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td><code>unicodedata</code></td>
+  <td>strip_diacritics() node in vertex-search-bridge/scripts/graphify-cluster.py.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>Path</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Path node in project.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>datetime</code><br><code>graphify_analyze</code><br><code>graphify_build</code><br>+7 more</td>
+  <td>Module file in vertex-search-bridge/scripts/graphify-cluster.py.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>Deterministic Leiden community clustering &amp; GRAPH_REPORT.md generator for…</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Design note for Deterministic Leiden community clustering &amp; GRAPH_REPORT.md generator for….</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>graphify_analyze</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Orchestrates analysis and returns structured documentation data.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>graphify_build</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Builds dependency relationships and graph data.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>graphify_report</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>Builds dependency relationships and graph data.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>pathlib</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>pathlib node in project.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>tempfile</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>atomic_write_text()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>test_daemon.py</code><br><small style="color:var(--muted)">services/agy-daemon/test_daemon.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>tempfile node in project.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>unicodedata</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>graphify-cluster.py</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small><br><code>strip_diacritics()</code><br><small style="color:var(--muted)">vertex-search-bridge/scripts/graphify-cluster.py</small></td>
+  <td>No direct outbound edge</td>
+  <td>unicodedata node in project.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small><br><code>runPsql()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>main() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>migrateJsCode()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>migrateJsCode() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><code>migrateJsCode()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small><br><code>migrateUrlParam()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>migrateNodes() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>migrateUrlParam()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>migrateUrlParam() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>runPsql()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>runPsql() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>migrate-workflow-bridge-urls.js</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>ref_child_process</code><br><code>ref_fs</code><br><code>ref_path</code></td>
+  <td>migrate-workflow-bridge-urls.js node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>{ execFileSync }</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ execFileSync } node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>fs</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>fs node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>path</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>path node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>WORKFLOWS_DIR</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>WORKFLOWS_DIR node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>ref_path</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br>+13 more</td>
+  <td>No direct outbound edge</td>
+  <td>ref_path node in project.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>scripts/migrate-workflow-bridge-urls.js</code></td><td>10 nodes</td></tr>
 <tr><td><code>vertex-search-bridge/scripts/graphify-cluster.py</code></td><td>5 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x25, contains x21, imports x11, imports x6. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x12, calls x8, imports x5, imports x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 5. Outputs & Docs ====== -->
-<h2 id="outputs-docs">5. Outputs &amp; Docs</h2>
+<!-- ====== 4. Outputs & Docs ====== -->
+<h2 id="outputs-docs">4. Outputs &amp; Docs</h2>
 <p>Outputs &amp; Docs groups implementation around render, local, htmlsh, scripts, mostly in scripts/render-local-kg-html.sh. This section covers 4 nodes and 3 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -1165,14 +905,14 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 6. CLI & Skill Installers ====== -->
-<h2 id="cli-skills">6. CLI &amp; Skill Installers</h2>
-<p>CLI &amp; Skill Installers groups implementation around sparky, skillmd, services, skills, mostly in sparky-mcp/hooks/sparky-hook.js, services/sparky-agy/hook-utils.js, gemini-skills/sparky-brain-sync/SKILL.md. This section covers 72 nodes and 70 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 5. CLI & Skill Installers ====== -->
+<h2 id="cli-skills">5. CLI &amp; Skill Installers</h2>
+<p>CLI &amp; Skill Installers groups implementation around sparky, skillmd, services, skills, mostly in sparky-mcp/hooks/sparky-hook.js, services/sparky-agy/hook-utils.js, gemini-skills/sparky-brain-sync/SKILL.md. This section covers 69 nodes and 66 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: CLI &amp; Skill Installers (72 nodes, 70 edges)
+    %% Section: CLI &amp; Skill Installers (69 nodes, 66 edges)
     subgraph cli_skills_sparky_mcp_hooks_sparky_hook_js_19bd6e55["sparky-mcp/hooks/sparky-hook.js"]
         services_sparky_mcp_hooks_sparky_hook_runhook_fba76bb1("runHook()<br/><small>sparky-mcp/hooks/sparky-hook.js</small>")
         services_sparky_mcp_hooks_sparky_hook_026b2729("sparky-hook.js")
@@ -1182,19 +922,19 @@ flowchart LR
         services_sparky_mcp_hooks_sparky_hook_sanitizeli_cfcc5b32("sanitizeLine()<br/><small>sparky-mcp/hooks/sparky-hook.js</small>")
         services_sparky_mcp_hooks_sparky_hook_issafehear_6c16421a("isSafeHeartbeatPath()<br/><small>sparky-mcp/hooks/sparky-hook.js</small>")
     end
-    subgraph cli_skills_External_generated_0c226fa1["External / generated"]
-        ref_fs_8204e0dd("ref_fs")
-        ref_node_https_8b2705a0("ref_node_https")
-        ref_node_readline_59ebf7a5("ref_node_readline")
-    end
     subgraph cli_skills_scripts_run_agent_eval_sh_35542c42["scripts/run-agent-eval.sh"]
         scripts_run_agent_eval_home_7db39555("HOME<br/><small>scripts/run-agent-eval.sh</small>")
         scripts_run_agent_eval_path_f69ada10("PATH<br/><small>scripts/run-agent-eval.sh</small>")
         scripts_run_agent_eval_5353f42f("run-agent-eval.sh")
+        scripts_run_agent_eval_sh_entry_d0d874d1("run-agent-eval.sh script<br/><small>scripts/run-agent-eval.sh</small>")
+    end
+    subgraph cli_skills_External_generated_0c226fa1["External / generated"]
+        ref_fs_8204e0dd("ref_fs")
+        ref_node_https_8b2705a0("ref_node_https")
     end
     subgraph cli_skills_services_sparky_agy_hook_utils_js_cc5c32fb["services/sparky-agy/hook-utils.js"]
         services_sparky_agy_hook_utils_bc67a955("hook-utils.js")
-        services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6("redactSecretsInError()<br/><small>services/sparky-agy/hook-utils.js</small>")
+        services_sparky_agy_hook_utils_fs_1a8a4235("fs<br/><small>services/sparky-agy/hook-utils.js</small>")
     end
     subgraph cli_skills_services_sparky_mcp_bridge_js_5b7abc33["services/sparky-mcp/bridge.js"]
         services_sparky_mcp_bridge_6b2350b0("bridge.js")
@@ -1212,10 +952,8 @@ flowchart LR
     services_sparky_mcp_hooks_sparky_hook_026b2729 -->|imports| ref_fs_8204e0dd
     services_sparky_mcp_hooks_sparky_hook_026b2729 -->|imports| services_sparky_mcp_bridge_6b2350b0
     services_sparky_agy_hook_utils_bc67a955 -->|imports| ref_node_https_8b2705a0
-    services_sparky_agy_stdio_rpc_client_fa65b5c6 -->|imports| services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6
-    services_sparky_agy_stdio_rpc_client_fa65b5c6 -->|imports| ref_node_readline_59ebf7a5
     services_sparky_agy_stdio_rpc_client_fa65b5c6 -->|imports| services_sparky_agy_hook_utils_bc67a955
-    %% Omitted for readability: 54 nodes, 0 edges
+    %% Omitted for readability: 51 nodes, 0 edges
     class services_sparky_mcp_hooks_sparky_hook_runhook_fba76bb1 ui;
     class services_sparky_mcp_hooks_sparky_hook_026b2729 ui;
     class services_sparky_mcp_hooks_sparky_hook_touchheart_d0319098 function;
@@ -1223,14 +961,14 @@ flowchart LR
     class services_sparky_mcp_hooks_sparky_hook_shouldinje_2f4b824b function;
     class services_sparky_mcp_hooks_sparky_hook_sanitizeli_cfcc5b32 function;
     class services_sparky_mcp_hooks_sparky_hook_issafehear_6c16421a function;
-    class ref_fs_8204e0dd function;
-    class ref_node_https_8b2705a0 function;
-    class ref_node_readline_59ebf7a5 function;
     class scripts_run_agent_eval_home_7db39555 klass;
     class scripts_run_agent_eval_path_f69ada10 klass;
     class scripts_run_agent_eval_5353f42f function;
+    class scripts_run_agent_eval_sh_entry_d0d874d1 function;
+    class ref_fs_8204e0dd function;
+    class ref_node_https_8b2705a0 function;
     class services_sparky_agy_hook_utils_bc67a955 ui;
-    class services_sparky_agy_hook_utils_redactsecretsiner_b69d85e6 function;
+    class services_sparky_agy_hook_utils_fs_1a8a4235 function;
     class services_sparky_mcp_bridge_6b2350b0 module;
     class services_sparky_mcp_bridge_bridgerequest_af48c30d function;
     class services_sparky_agy_stdio_rpc_client_fa65b5c6 entry;
@@ -1313,11 +1051,11 @@ flowchart LR
 </tr>
 <tr>
   <td>8</td>
-  <td><code>bridge.js</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small></td>
+  <td><code>sparky-mcp/bridge.js</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>mcp.test.js</code><br><small style="color:var(--muted)">sparky-mcp/test/mcp.test.js</small><br>+2 more</td>
   <td><code>bridgeRequest()</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>getBridgeToken()</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br><code>ref_fs</code></td>
-  <td>bridge.js node in services/sparky-mcp/bridge.js.</td>
+  <td>sparky-mcp/bridge.js node in services/sparky-mcp/bridge.js.</td>
 </tr>
 <tr>
   <td>9</td>
@@ -1379,28 +1117,12 @@ flowchart LR
   <td>16</td>
   <td><code>nodeHttpFetch()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
+  <td><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br><code>sleep-runner.js</code><br><small style="color:var(--muted)">services/sparky-agy/sleep-runner.js</small></td>
   <td>No direct outbound edge</td>
   <td>nodeHttpFetch() node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
   <td>17</td>
-  <td><code>readGatewayToken()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>readGatewayToken() node in services/sparky-agy/hook-utils.js.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>ensureStarted()</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small><br>+2 more</td>
-  <td>No direct outbound edge</td>
-  <td>redactSecretsInError() node in services/sparky-agy/hook-utils.js.</td>
-</tr>
-<tr>
-  <td>19</td>
   <td><code>requireSharedModule()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
@@ -1408,15 +1130,15 @@ flowchart LR
   <td>requireSharedModule() node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>20</td>
+  <td>18</td>
   <td><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-hook">UI</span></td>
-  <td><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>stdio-rpc-client.js</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
+  <td><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>sleep-runner.js</code><br><small style="color:var(--muted)">services/sparky-agy/sleep-runner.js</small><br>+1 more</td>
   <td><code>isTruthyFlag()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br><code>nodeHttpFetch()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br><code>readGatewayToken()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br>+6 more</td>
   <td>hook-utils.js node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>21</td>
+  <td>19</td>
   <td><code>fs</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1424,7 +1146,7 @@ flowchart LR
   <td>fs node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>22</td>
+  <td>20</td>
   <td><code>http</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1432,7 +1154,7 @@ flowchart LR
   <td>http node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>23</td>
+  <td>21</td>
   <td><code>https</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1440,7 +1162,7 @@ flowchart LR
   <td>https node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>22</td>
   <td><code>path</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1448,15 +1170,15 @@ flowchart LR
   <td>path node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>23</td>
   <td><code>stdio-rpc-client.js</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
   <td><span class="tag tag-cmd">Entry</span></td>
-  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
+  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>sleep-runner.js</code><br><small style="color:var(--muted)">services/sparky-agy/sleep-runner.js</small></td>
   <td><code>createStdioAcpRpcClient()</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small><br><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br>+2 more</td>
   <td>stdio-rpc-client.js node in services/sparky-agy/stdio-rpc-client.js.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>24</td>
   <td><code>readline</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1464,7 +1186,7 @@ flowchart LR
   <td>readline node in services/sparky-agy/stdio-rpc-client.js.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>25</td>
   <td><code>{ redactSecretsInError }</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1472,7 +1194,7 @@ flowchart LR
   <td>{ redactSecretsInError } node in services/sparky-agy/stdio-rpc-client.js.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>26</td>
   <td><code>{ spawn }</code><br><small style="color:var(--muted)">services/sparky-agy/stdio-rpc-client.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -1480,7 +1202,7 @@ flowchart LR
   <td>{ spawn } node in services/sparky-agy/stdio-rpc-client.js.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>27</td>
   <td><code>ref_node_https</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>acp-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/acp-client.js</small><br><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br><code>host-adapters.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/host-adapters.js</small><br>+1 more</td>
@@ -1488,12 +1210,28 @@ flowchart LR
   <td>ref_node_https node in project.</td>
 </tr>
 <tr>
-  <td>30</td>
-  <td><code>ref_node_readline</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/workspace-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/family-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/browser-mcp/index.js</small><br>+2 more</td>
+  <td>28</td>
+  <td><code>sparky-brain-sync/SKILL.md</code><br><small style="color:var(--muted)">gemini-skills/sparky-brain-sync/SKILL.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>ref_node_readline node in project.</td>
+  <td>Documentation node describing sparky-brain-sync/SKILL.md.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>Safety Invariants</code><br><small style="color:var(--muted)">gemini-skills/sparky-brain-sync/SKILL.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Safety Invariants.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>Sparky Brain Sync Workflow</code><br><small style="color:var(--muted)">gemini-skills/sparky-brain-sync/SKILL.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Sparky Brain Sync Workflow.</td>
 </tr>
 </table>
 
@@ -1503,7 +1241,7 @@ flowchart LR
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>sparky-mcp/hooks/sparky-hook.js</code></td><td>11 nodes</td></tr>
-<tr><td><code>services/sparky-agy/hook-utils.js</code></td><td>9 nodes</td></tr>
+<tr><td><code>services/sparky-agy/hook-utils.js</code></td><td>7 nodes</td></tr>
 <tr><td><code>gemini-skills/sparky-brain-sync/SKILL.md</code></td><td>6 nodes</td></tr>
 <tr><td><code>gemini-skills/sparky-research-handoff/SKILL.md</code></td><td>6 nodes</td></tr>
 <tr><td><code>gemini-skills/sparky-travel-and-prep/SKILL.md</code></td><td>6 nodes</td></tr>
@@ -1514,19 +1252,19 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x49, calls x6, imports x6, indirect call x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x49, calls x6, imports x5, indirect call x3. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 7. Ingestion & Updates ====== -->
-<h2 id="ingest-cache-update">7. Ingestion &amp; Updates</h2>
-<p>Ingestion &amp; Updates groups implementation around services, mcp, workspace, toolsjs, mostly in services/sparky-mcp/http-server.js, services/workspace-mcp/gmail-tools.js, services/shared/google-oauth-client.js. This section covers 101 nodes and 172 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 6. Ingestion & Updates ====== -->
+<h2 id="ingest-cache-update">6. Ingestion &amp; Updates</h2>
+<p>Ingestion &amp; Updates groups implementation around services, mcp, workspace, toolsjs, mostly in services/sparky-mcp/http-server.js, services/workspace-mcp/gmail-tools.js, services/shared/google-oauth-client.js. This section covers 118 nodes and 191 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Ingestion &amp; Updates (101 nodes, 172 edges)
+    %% Section: Ingestion &amp; Updates (118 nodes, 191 edges)
     subgraph ingest_cache_update_services_workspace_mcp_googl_1d307a9c["services/workspace-mcp/google-rest.js"]
         services_workspace_mcp_google_rest_googlerestreq_2e79de8c("googleRestRequest()<br/><small>services/workspace-mcp/google-rest.js</small>")
         services_workspace_mcp_google_rest_clamplimit_c58faac2("clampLimit()<br/><small>services/workspace-mcp/google-rest.js</small>")
@@ -1552,9 +1290,9 @@ flowchart LR
     subgraph ingest_cache_update_services_workspace_mcp_gmail_a2c7f46d["services/workspace-mcp/gmail-tools.js"]
         services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a("executeGmailTool()<br/><small>services/workspace-mcp/gmail-tools.js</small>")
         services_workspace_mcp_gmail_tools_htmltoplainte_3b72188b("htmlToPlainTextWithAssets()<br/><small>services/workspace-mcp/gmail-tools.js</small>")
-        services_workspace_mcp_gmail_tools_extractemailb_60274cd0("extractEmailBody()<br/><small>services/workspace-mcp/gmail-tools.js</small>")
     end
     services_sparky_mcp_http_server_createmcphttpser_97c954bb("createMcpHttpServer()<br/><small>services/sparky-mcp/http-server.js</small>")
+    services_sparky_whisper_app_ca37803c("app.py")
     services_workspace_mcp_calendar_tools_calendarre_456d14b7 -->|calls| services_workspace_mcp_google_rest_googlerestreq_2e79de8c
     services_workspace_mcp_calendar_tools_executecal_9f90ff21 -->|calls| services_workspace_mcp_google_rest_clamplimit_c58faac2
     services_workspace_mcp_calendar_tools_executecal_9f90ff21 -->|calls| services_workspace_mcp_calendar_tools_calendarre_456d14b7
@@ -1568,14 +1306,12 @@ flowchart LR
     services_workspace_mcp_google_rest_uploaddrivemu_c52d5da6 -->|calls| services_workspace_mcp_google_rest_googlerestreq_2e79de8c
     services_shared_google_oauth_client_creategoogle_0281bce5 -->|calls| services_shared_google_oauth_client_creategoogle_bbfc9bdd
     services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a -->|calls| services_workspace_mcp_google_rest_clamplimit_c58faac2
-    services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a -->|calls| services_workspace_mcp_gmail_tools_extractemailb_60274cd0
-    services_workspace_mcp_gmail_tools_extractemailb_60274cd0 -->|calls| services_workspace_mcp_gmail_tools_htmltoplainte_3b72188b
     services_workspace_mcp_drive_tools_620f0a9f -->|imports| services_workspace_mcp_google_rest_builddrivemul_4049ff80
     services_workspace_mcp_drive_tools_620f0a9f -->|imports| services_workspace_mcp_google_rest_clamplimit_c58faac2
     services_workspace_mcp_drive_tools_620f0a9f -->|imports| services_workspace_mcp_google_rest_googlerestreq_2e79de8c
     services_workspace_mcp_drive_tools_620f0a9f -->|imports| services_workspace_mcp_google_rest_streamrespons_935a7af0
     services_workspace_mcp_drive_tools_620f0a9f -->|imports| services_workspace_mcp_google_rest_uploaddrivemu_c52d5da6
-    %% Omitted for readability: 83 nodes, 0 edges
+    %% Omitted for readability: 100 nodes, 0 edges
     class services_workspace_mcp_google_rest_googlerestreq_2e79de8c function;
     class services_workspace_mcp_google_rest_clamplimit_c58faac2 function;
     class services_workspace_mcp_google_rest_uploaddrivemu_c52d5da6 function;
@@ -1592,8 +1328,8 @@ flowchart LR
     class services_workspace_mcp_drive_tools_isutf8textdri_98ad0f5f function;
     class services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a function;
     class services_workspace_mcp_gmail_tools_htmltoplainte_3b72188b async;
-    class services_workspace_mcp_gmail_tools_extractemailb_60274cd0 function;
     class services_sparky_mcp_http_server_createmcphttpser_97c954bb function;
+    class services_sparky_whisper_app_ca37803c module;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -1865,28 +1601,28 @@ flowchart LR
       <tr><td><code>services/sparky-mcp/http-server.js</code></td><td>26 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/gmail-tools.js</code></td><td>26 nodes</td></tr>
 <tr><td><code>services/shared/google-oauth-client.js</code></td><td>10 nodes</td></tr>
-<tr><td><code>services/workspace-mcp/google-oauth-client.js</code></td><td>10 nodes</td></tr>
+<tr><td><code>services/sparky-whisper/app.py</code></td><td>8 nodes</td></tr>
+<tr><td><code>services/workspace-mcp/google-oauth-client.js</code></td><td>8 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/google-rest.js</code></td><td>7 nodes</td></tr>
 <tr><td><code>services/agy-daemon/update.sh</code></td><td>6 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/calendar-tools.js</code></td><td>6 nodes</td></tr>
-<tr><td><code>n8n-stack/scripts/update-n8n.sh</code></td><td>5 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x67, contains x52, indirect call x28, imports x10. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x69, contains x56, indirect call x29, imports x14. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 8. Serving API ====== -->
-<h2 id="serve-api">8. Serving API</h2>
-<p>Serving API groups implementation around vertex, bridge, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/model-router.js, services/vertex-search-bridge/kg-store.js. This section covers 1127 nodes and 2701 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 7. Serving API ====== -->
+<h2 id="serve-api">7. Serving API</h2>
+<p>Serving API groups implementation around vertex, bridge, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/model-router.js, services/vertex-search-bridge/kg-store.js. This section covers 1110 nodes and 2663 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (1127 nodes, 2701 edges)
+    %% Section: Serving API (1110 nodes, 2663 edges)
     subgraph serve_api_services_vertex_search_bridge_incident_2fb67d53["services/vertex-search-bridge/incident-store.js"]
         services_vertex_search_bridge_incident_store_com_40fbb047("computeSignature()<br/><small>services/vertex-search-bridge/incident-store.js</small>")
         services_vertex_search_bridge_incident_store_nor_916ccc26("normalizeErrorKey()<br/><small>services/vertex-search-bridge/incident-store.js</small>")
@@ -1899,6 +1635,7 @@ flowchart LR
     subgraph serve_api_services_vertex_search_bridge_server_j_96187428["services/vertex-search-bridge/server.js"]
         services_vertex_search_bridge_server_3ccdc721("server.js")
         services_vertex_search_bridge_server_server_c3284e62("server<br/><small>services/vertex-search-bridge/server.js</small>")
+        services_vertex_search_bridge_server_buildsessio_a136528f("buildSessionPreamble()<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_querypostgr_2572da55("queryPostgresScript()<br/><small>services/vertex-search-bridge/server.js</small>")
         services_vertex_search_bridge_server_sendwhatsap_23fbc757("sendWhatsAppReaction()<br/><small>services/vertex-search-bridge/server.js</small>")
     end
@@ -1909,7 +1646,6 @@ flowchart LR
     end
     services_vertex_search_bridge_family_concierge_s_1a11e004("family-concierge-store.js")
     services_vertex_search_bridge_reaction_commands_909fb857("reaction-commands.js")
-    services_vertex_search_bridge_test_family_concie_7c97477c("family-concierge-store.test.js")
     services_vertex_search_bridge_test_vertex_fallba_15a57aee("vertex-fallback.test.js")
     services_vertex_search_bridge_server_querypostgr_2572da55 -->|calls| services_vertex_search_bridge_server_querypostgr_2572da55
     services_vertex_search_bridge_server_sendwhatsap_23fbc757 -->|calls| services_vertex_search_bridge_server_sendwhatsap_23fbc757
@@ -1929,13 +1665,13 @@ flowchart LR
     services_vertex_search_bridge_scripts_probe_inci_8945a59a -->|calls| services_vertex_search_bridge_incident_store_red_b744778c
     services_vertex_search_bridge_scripts_probe_inci_8945a59a -->|calls| services_vertex_search_bridge_incident_store_nor_916ccc26
     services_vertex_search_bridge_scripts_probe_inci_8945a59a -->|calls| services_vertex_search_bridge_incident_store_com_40fbb047
-    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_incident_store_red_b744778c
+    services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_buildsessio_a136528f
     services_vertex_search_bridge_server_server_c3284e62 -->|calls| services_vertex_search_bridge_server_sendwhatsap_23fbc757
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_incident_store_com_40fbb047
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_incident_store_nor_916ccc26
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_incident_store_red_b744778c
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_family_concierge_s_1a11e004
-    %% Omitted for readability: 1109 nodes, 3 edges
+    %% Omitted for readability: 1092 nodes, 2 edges
     class services_vertex_search_bridge_incident_store_com_40fbb047 function;
     class services_vertex_search_bridge_incident_store_nor_916ccc26 function;
     class services_vertex_search_bridge_incident_store_cre_6da51c7b function;
@@ -1945,6 +1681,7 @@ flowchart LR
     class services_vertex_search_bridge_incident_store_red_63b49dcc function;
     class services_vertex_search_bridge_server_3ccdc721 module;
     class services_vertex_search_bridge_server_server_c3284e62 function;
+    class services_vertex_search_bridge_server_buildsessio_a136528f function;
     class services_vertex_search_bridge_server_querypostgr_2572da55 function;
     class services_vertex_search_bridge_server_sendwhatsap_23fbc757 function;
     class services_vertex_search_bridge_scripts_probe_inci_8945a59a function;
@@ -1952,7 +1689,6 @@ flowchart LR
     class services_vertex_search_bridge_scripts_probe_inci_a3eccc4b function;
     class services_vertex_search_bridge_family_concierge_s_1a11e004 ui;
     class services_vertex_search_bridge_reaction_commands_909fb857 entry;
-    class services_vertex_search_bridge_test_family_concie_7c97477c test;
     class services_vertex_search_bridge_test_vertex_fallba_15a57aee test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -2012,7 +1748,7 @@ flowchart LR
   <td><code>server.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td>External entry / no inbound edge</td>
-  <td><code>acp-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/acp-client.js</small><br><code>acp-routes.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/acp-routes.js</small><br><code>adaptVertexPayloadForModel()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/vertex-fallback.js</small><br>+182 more</td>
+  <td><code>acp-client.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/acp-client.js</small><br><code>acp-routes.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/acp-routes.js</small><br><code>adaptVertexPayloadForModel()</code><br><small style="color:var(--muted)">services/vertex-search-bridge/vertex-fallback.js</small><br>+186 more</td>
   <td>server.js node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
@@ -2216,6 +1952,22 @@ flowchart LR
 </tr>
 <tr>
   <td>23</td>
+  <td><code>{
+  createCortexSleepService,
+  formatIsraelIsoDate,
+  validateSleepExtractionPayload,
+}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{
+  createCortexSleepService,
+  formatIsraelIsoDate,
+  validateSleepExtractionPayload,
+} node in services/vertex-search-bridge/server.js.</td>
+</tr>
+<tr>
+  <td>24</td>
   <td><code>{ createDb }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -2223,7 +1975,7 @@ flowchart LR
   <td>{ createDb } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>24</td>
+  <td>25</td>
   <td><code>{ createDecisionRoutesHandler }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td>External entry / no inbound edge</td>
@@ -2231,7 +1983,7 @@ flowchart LR
   <td>{ createDecisionRoutesHandler } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>25</td>
+  <td>26</td>
   <td><code>{ createEventIngestHandler }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -2239,7 +1991,7 @@ flowchart LR
   <td>Turns a local path or remote repository into analysis context.</td>
 </tr>
 <tr>
-  <td>26</td>
+  <td>27</td>
   <td><code>{
   createFamilyConciergeStore,
   projectTalSchedule,
@@ -2259,7 +2011,7 @@ flowchart LR
 } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>27</td>
+  <td>28</td>
   <td><code>{ createFamilyRoutesHandler }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-endpoint">API</span></td>
   <td>External entry / no inbound edge</td>
@@ -2267,7 +2019,7 @@ flowchart LR
   <td>{ createFamilyRoutesHandler } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>28</td>
+  <td>29</td>
   <td><code>{ createGoogleOAuthClient }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-cmd">Entry</span></td>
   <td>External entry / no inbound edge</td>
@@ -2275,28 +2027,12 @@ flowchart LR
   <td>{ createGoogleOAuthClient } node in services/vertex-search-bridge/server.js.</td>
 </tr>
 <tr>
-  <td>29</td>
+  <td>30</td>
   <td><code>{ createHandoffStore, formatHandoffsXml }</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
   <td>{ createHandoffStore, formatHandoffsXml } node in services/vertex-search-bridge/server.js.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>{
-  createHostAdapters,
-  fetchBufferFromUrl: hostFetchBufferFromUrl,
-  resolveSafeMediaFilePath,
-}</code><br><small style="color:var(--muted)">services/vertex-search-bridge/server.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  createHostAdapters,
-  fetchBufferFromUrl: hostFetchBufferFromUrl,
-  resolveSafeMediaFilePath,
-} node in services/vertex-search-bridge/server.js.</td>
 </tr>
 </table>
 
@@ -2305,7 +2041,7 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>208 nodes</td></tr>
+      <tr><td><code>services/vertex-search-bridge/server.js</code></td><td>209 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/model-router.js</code></td><td>43 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/kg-store.js</code></td><td>39 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/host-adapters.js</code></td><td>35 nodes</td></tr>
@@ -2317,13 +2053,13 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x1148, contains x667, indirect call x399, imports x324. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x1150, contains x645, indirect call x421, imports x299. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 9. Security & Global Graph ====== -->
-<h2 id="security-global">9. Security &amp; Global Graph</h2>
+<!-- ====== 8. Security & Global Graph ====== -->
+<h2 id="security-global">8. Security &amp; Global Graph</h2>
 <p>Security &amp; Global Graph groups implementation around sync, services, reposh, scripts, mostly in scripts/sync-services-to-repo.sh. This section covers 3 nodes and 3 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -2399,14 +2135,14 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 10. Tests & Fixtures ====== -->
-<h2 id="tests-fixtures">10. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, vertex, search, mostly in services/sparky-whisper/test_whisper.py, vertex-search-bridge/test/server-endpoints.test.js, services/browser-mcp/cdp-session.js. This section covers 966 nodes and 1515 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 9. Tests & Fixtures ====== -->
+<h2 id="tests-fixtures">9. Tests &amp; Fixtures</h2>
+<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in services/sparky-whisper/test_whisper.py, vertex-search-bridge/test/server-endpoints.test.js, services/browser-mcp/cdp-session.js. This section covers 1059 nodes and 1673 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (966 nodes, 1515 edges)
+    %% Section: Tests &amp; Fixtures (1059 nodes, 1673 edges)
     subgraph tests_fixtures_vertex_search_bridge_test_reactio_0810e822["vertex-search-bridge/test/reaction-commands.test.js"]
         services_vertex_search_bridge_test_reaction_comm_da1a84a3("AgyDriver<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
         services_vertex_search_bridge_test_reaction_comm_ff69d7a4("constructor()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
@@ -2421,11 +2157,11 @@ flowchart LR
         services_vertex_search_bridge_test_reaction_comm_518ba3ea("createTokenProvider()<br/><small>vertex-search-bridge/test/reaction-commands.test.js</small>")
     end
     services_browser_mcp_test_browser_mcp_test_76415332("browser-mcp.test.js")
+    services_cortex_sleep_mcp_test_sleep_mcp_test_21f3594d("sleep-mcp.test.js")
     services_agy_daemon_test_daemon_testdaemon_c1a640de("TestDaemon<br/><small>services/agy-daemon/test_daemon.py</small>")
-    services_sparky_whisper_test_whisper_b53b2977("test_whisper.py")
-    services_vertex_search_bridge_test_dsl_sparky_ru_c24b06f8("sparky-runtime-dsl.js")
     tests_test_agent_evaluation_testacppluginsafetyg_550a203d("TestAcpPluginSafetyGuard<br/><small>tests/test_agent_evaluation.py</small>")
-    services_vertex_search_bridge_test_acp_client_te_b5e3668e("acp-client.test.js")
+    services_vertex_search_bridge_test_family_concie_7c97477c("family-concierge-store.test.js")
+    services_vertex_search_bridge_test_phase2_remedi_a0b31790("phase2-remediation.test.js")
     services_vertex_search_bridge_test_phase3_remedi_b8ea7d4b("phase3-remediation.test.js")
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_ff69d7a4
     services_vertex_search_bridge_test_reaction_comm_da1a84a3 -->|method| services_vertex_search_bridge_test_reaction_comm_a03f6eff
@@ -2435,9 +2171,7 @@ flowchart LR
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_8c342b16
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_96295464
     services_vertex_search_bridge_test_reaction_comm_922d1262 -->|method| services_vertex_search_bridge_test_reaction_comm_518ba3ea
-    services_vertex_search_bridge_test_acp_client_te_b5e3668e -->|imports| services_vertex_search_bridge_test_dsl_sparky_ru_c24b06f8
-    services_vertex_search_bridge_test_phase3_remedi_b8ea7d4b -->|imports| services_vertex_search_bridge_test_dsl_sparky_ru_c24b06f8
-    %% Omitted for readability: 948 nodes, 0 edges
+    %% Omitted for readability: 1041 nodes, 0 edges
     class services_vertex_search_bridge_test_reaction_comm_da1a84a3 test;
     class services_vertex_search_bridge_test_reaction_comm_ff69d7a4 test;
     class services_vertex_search_bridge_test_reaction_comm_a03f6eff test;
@@ -2450,11 +2184,11 @@ flowchart LR
     class services_vertex_search_bridge_test_reaction_comm_96295464 test;
     class services_vertex_search_bridge_test_reaction_comm_518ba3ea test;
     class services_browser_mcp_test_browser_mcp_test_76415332 test;
+    class services_cortex_sleep_mcp_test_sleep_mcp_test_21f3594d test;
     class services_agy_daemon_test_daemon_testdaemon_c1a640de test;
-    class services_sparky_whisper_test_whisper_b53b2977 test;
-    class services_vertex_search_bridge_test_dsl_sparky_ru_c24b06f8 test;
     class tests_test_agent_evaluation_testacppluginsafetyg_550a203d test;
-    class services_vertex_search_bridge_test_acp_client_te_b5e3668e test;
+    class services_vertex_search_bridge_test_family_concie_7c97477c test;
+    class services_vertex_search_bridge_test_phase2_remedi_a0b31790 test;
     class services_vertex_search_bridge_test_phase3_remedi_b8ea7d4b test;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -2724,7 +2458,7 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/sparky-whisper/test_whisper.py</code></td><td>81 nodes</td></tr>
+      <tr><td><code>services/sparky-whisper/test_whisper.py</code></td><td>80 nodes</td></tr>
 <tr><td><code>vertex-search-bridge/test/server-endpoints.test.js</code></td><td>47 nodes</td></tr>
 <tr><td><code>services/browser-mcp/cdp-session.js</code></td><td>43 nodes</td></tr>
 <tr><td><code>n8n-stack/scripts/test-n8n-patches.js</code></td><td>31 nodes</td></tr>
@@ -2736,13 +2470,13 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x653, calls x313, imports x237, indirect call x133. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x720, calls x337, imports x278, indirect call x143. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 11. Services Sparky Mcp ====== -->
-<h2 id="services-sparky-mcp">11. Services Sparky Mcp</h2>
+<!-- ====== 10. Services Sparky Mcp ====== -->
+<h2 id="services-sparky-mcp">10. Services Sparky Mcp</h2>
 <p>Services Sparky Mcp groups implementation around services, sparky, mcp, runtime, mostly in sparky-mcp/lib/runtime-tools.js, sparky-mcp/lib/turn-ctx-client.js, sparky-mcp/lib/runtime-tool-schemas.js. This section covers 27 nodes and 43 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3070,8 +2804,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 12. Daemon Services Agy ====== -->
-<h2 id="daemon-services-agy">12. Daemon Services Agy</h2>
+<!-- ====== 11. Daemon Services Agy ====== -->
+<h2 id="daemon-services-agy">11. Daemon Services Agy</h2>
 <p>Daemon Services Agy groups implementation around daemon, services, agy, daemonpy, mostly in services/agy-daemon/daemon.py. This section covers 26 nodes and 53 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3385,8 +3119,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 13. Workspace Mcp Services ====== -->
-<h2 id="workspace-mcp-services">13. Workspace Mcp Services</h2>
+<!-- ====== 12. Workspace Mcp Services ====== -->
+<h2 id="workspace-mcp-services">12. Workspace Mcp Services</h2>
 <p>Workspace Mcp Services groups implementation around workspace, mcp, services, indexjs, mostly in services/workspace-mcp/index.js, services/workspace-mcp/drive-tools.js, services/workspace-mcp/gmail-tools.js. This section covers 25 nodes and 29 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3678,8 +3412,8 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 14. Sparky Mcp Services ====== -->
-<h2 id="sparky-mcp-services">14. Sparky Mcp Services</h2>
+<!-- ====== 13. Sparky Mcp Services ====== -->
+<h2 id="sparky-mcp-services">13. Sparky Mcp Services</h2>
 <p>Sparky Mcp Services groups implementation around sparky, mcp, services, indexjs, mostly in services/sparky-mcp/index.js, sparky-mcp/lib/constants.js, services/sparky-mcp/http-server.js. This section covers 25 nodes and 38 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -4006,14 +3740,14 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 15. Services Sparky Agy ====== -->
-<h2 id="services-sparky-agy">15. Services Sparky Agy</h2>
-<p>Services Sparky Agy groups implementation around services, sparky, agy, session, mostly in services/sparky-agy/acp-session-pool.js, services/sparky-agy/hook-utils.js, services/sparky-agy/session-helpers.js. This section covers 17 nodes and 29 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 14. Services Sparky Agy ====== -->
+<h2 id="services-sparky-agy">14. Services Sparky Agy</h2>
+<p>Services Sparky Agy groups implementation around services, sparky, agy, session, mostly in services/sparky-agy/acp-session-pool.js, services/sparky-agy/hook-utils.js, services/sparky-agy/session-helpers.js. This section covers 18 nodes and 31 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Services Sparky Agy (17 nodes, 29 edges)
+    %% Section: Services Sparky Agy (18 nodes, 31 edges)
     subgraph services_sparky_agy_services_sparky_agy_acp_sess_e1e9388b["services/sparky-agy/acp-session-pool.js"]
         services_sparky_agy_acp_session_pool_createacpse_31825024("executeTurn()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
         services_sparky_agy_acp_session_pool_createacpse_1e16eec7("runSingleAttempt()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
@@ -4028,6 +3762,7 @@ flowchart LR
         services_sparky_agy_acp_session_pool_createacpse_dbbb2d13("unregisterActiveTurn()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
         services_sparky_agy_acp_session_pool_createacpse_17350dab("createAcpSessionPool()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
         services_sparky_agy_acp_session_pool_createacpse_ca5de632("handleNotification()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
+        services_sparky_agy_acp_session_pool_createacpse_7a54e4ff("handlePermissionRequest()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
         services_sparky_agy_acp_session_pool_createacpse_9379c9d8("recordTurnEgress()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
     end
     services_sparky_agy_hook_utils_istruthyflag_ab237b82("isTruthyFlag()<br/><small>services/sparky-agy/hook-utils.js</small>")
@@ -4060,6 +3795,7 @@ flowchart LR
     class services_sparky_agy_acp_session_pool_createacpse_dbbb2d13 function;
     class services_sparky_agy_acp_session_pool_createacpse_17350dab function;
     class services_sparky_agy_acp_session_pool_createacpse_ca5de632 function;
+    class services_sparky_agy_acp_session_pool_createacpse_7a54e4ff function;
     class services_sparky_agy_acp_session_pool_createacpse_9379c9d8 function;
     class services_sparky_agy_hook_utils_istruthyflag_ab237b82 function;
     class services_sparky_agy_session_helpers_recordsessio_439b3386 function;
@@ -4143,6 +3879,14 @@ flowchart LR
 </tr>
 <tr>
   <td>8</td>
+  <td><code>handlePermissionRequest()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createAcpSessionPool()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>getRpc()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
+  <td><code>collectToolArgObjects()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>isToolAllowedForProfile()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
+  <td>handlePermissionRequest() node in services/sparky-agy/acp-session-pool.js.</td>
+</tr>
+<tr>
+  <td>9</td>
   <td><code>maybeRecycleIdle()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>requestRecycle()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>runTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
@@ -4150,7 +3894,7 @@ flowchart LR
   <td>maybeRecycleIdle() node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>10</td>
   <td><code>recordTurnEgress()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createAcpSessionPool()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
@@ -4158,7 +3902,7 @@ flowchart LR
   <td>recordTurnEgress() node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>11</td>
   <td><code>registerActiveTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>runSingleAttempt()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
@@ -4166,7 +3910,7 @@ flowchart LR
   <td>registerActiveTurn() node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>12</td>
   <td><code>requestRecycle()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createAcpSessionPool()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
@@ -4174,7 +3918,7 @@ flowchart LR
   <td>requestRecycle() node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>13</td>
   <td><code>runSingleAttempt()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>executeTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
@@ -4182,7 +3926,7 @@ flowchart LR
   <td>runSingleAttempt() node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>14</td>
   <td><code>runTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>createAcpSessionPool()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
@@ -4190,7 +3934,7 @@ flowchart LR
   <td>runTurn() node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>15</td>
   <td><code>unregisterActiveTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>runSingleAttempt()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
@@ -4198,7 +3942,7 @@ flowchart LR
   <td>unregisterActiveTurn() node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>16</td>
   <td><code>isTruthyFlag()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>executeTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>hook-utils.js</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small></td>
@@ -4206,7 +3950,7 @@ flowchart LR
   <td>isTruthyFlag() node in services/sparky-agy/hook-utils.js.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>17</td>
   <td><code>recordSessionUpdate()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>runSingleAttempt()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
@@ -4214,7 +3958,7 @@ flowchart LR
   <td>recordSessionUpdate() node in services/sparky-agy/session-helpers.js.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>18</td>
   <td><code>resolveProfileForTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>executeTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br>+1 more</td>
@@ -4228,7 +3972,7 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/sparky-agy/acp-session-pool.js</code></td><td>14 nodes</td></tr>
+      <tr><td><code>services/sparky-agy/acp-session-pool.js</code></td><td>15 nodes</td></tr>
 <tr><td><code>services/sparky-agy/hook-utils.js</code></td><td>1 nodes</td></tr>
 <tr><td><code>services/sparky-agy/session-helpers.js</code></td><td>1 nodes</td></tr>
 <tr><td><code>services/sparky-agy/tool-policy.js</code></td><td>1 nodes</td></tr>
@@ -4236,75 +3980,68 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x14, contains x10, indirect call x5. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x14, contains x10, indirect call x7. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
-<!-- ====== 16. Other ====== -->
-<h2 id="other">16. Other</h2>
-<p>Other groups implementation around sparky, services, agy, docs, mostly in services/sparky-agy/tool-policy.js, services/family-mcp/index.js, sparky-mcp/lib/plugin-manager.js. This section covers 198 nodes and 238 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<!-- ====== 15. Session Services Sparky ====== -->
+<h2 id="session-services-sparky">15. Session Services Sparky</h2>
+<p>Session Services Sparky groups implementation around session, services, sparky, agy, mostly in services/sparky-agy/acp-session-pool.js, services/sparky-agy/session-helpers.js. This section covers 16 nodes and 25 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Other (198 nodes, 238 edges)
-    subgraph other_services_sparky_agy_stdio_rpc_client_js_757271ea["services/sparky-agy/stdio-rpc-client.js"]
-        services_sparky_agy_stdio_rpc_client_createstdio_eacc739b("cleanup()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
-        services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07("close()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
-        services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e("ensureInitialized()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
-        services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217("rawRequest()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
-        services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d("ensureStarted()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
-        services_sparky_agy_stdio_rpc_client_createstdio_9aa05264("safeWriteLine()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
-        services_sparky_agy_stdio_rpc_client_createstdio_964cc199("sendCancel()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
-        services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4("request()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
-    end
-    subgraph other_services_family_mcp_index_js_11e914fd["services/family-mcp/index.js"]
-        services_family_mcp_index_callfamilybridge_2258b51a("callFamilyBridge()<br/><small>services/family-mcp/index.js</small>")
-        services_family_mcp_index_readfamilybridgetoken_ab8e47cb("readFamilyBridgeToken()<br/><small>services/family-mcp/index.js</small>")
-        services_family_mcp_index_getimmutablefamilysend_e9f3bda5("getImmutableFamilySender()<br/><small>services/family-mcp/index.js</small>")
-        services_family_mcp_index_handletoolcall_6aba1ac3("handleToolCall()<br/><small>services/family-mcp/index.js</small>")
-    end
-    subgraph other_services_sparky_agy_acp_session_pool_js_c83595d1["services/sparky-agy/acp-session-pool.js"]
+    %% Section: Session Services Sparky (16 nodes, 25 edges)
+    subgraph session_services_sparky_services_sparky_agy_acp_8605343e["services/sparky-agy/acp-session-pool.js"]
         services_sparky_agy_acp_session_pool_40bfd5cd("acp-session-pool.js")
         services_sparky_agy_acp_session_pool_createacpse_f282a77b("ensureSession()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
+        services_sparky_agy_acp_session_pool_createacpse_a393cb31("loadBoundedRehydration()<br/><small>services/sparky-agy/acp-session-pool.js</small>")
+        services_sparky_agy_acp_session_pool_step_down_c_7b215e27("STEP_DOWN_CHAIN<br/><small>services/sparky-agy/acp-session-pool.js</small>")
+        services_sparky_agy_acp_session_pool_fs_1f3ebea1("fs<br/><small>services/sparky-agy/acp-session-pool.js</small>")
+        services_sparky_agy_acp_session_pool_profile_too_750ad360("PROFILE_TOOL_SETS, parseCanonicalTool...<br/><small>services/sparky-agy/acp-session-pool.js</small>")
+        services_sparky_agy_acp_session_pool_createstdio_ca5bfacb("createStdioAcpRpcClient<br/><small>services/sparky-agy/acp-session-pool.js</small>")
+        services_sparky_agy_acp_session_pool_istruthyfla_4aecad32("isTruthyFlag<br/><small>services/sparky-agy/acp-session-pool.js</small>")
+        services_sparky_agy_acp_session_pool_setboundedm_8572dd51("setBoundedMap, buildMcpServers: build...<br/><small>services/sparky-agy/acp-session-pool.js</small>")
     end
-    containers_n8n_stack_scripts_sparky_watchdog_sh_6f08f035("sparky-watchdog.sh script<br/><small>n8n-stack/scripts/sparky-watchdog.sh</small>")
-    services_sparky_agy_acp_gateway_createacpgateway_4b8e928f("createAcpGatewayServer()<br/><small>services/sparky-agy/acp-gateway.js</small>")
-    services_workspace_mcp_sheets_docs_slides_execut_5087632f("executeSheetsDocsSlidesTool()<br/><small>services/workspace-mcp/sheets-docs-slides.js</small>")
-    services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f("handleManageSparkyPlugin()<br/><small>sparky-mcp/lib/plugin-manager.js</small>")
-    services_sparky_agy_stdio_rpc_client_createstdio_eacc739b -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07
-    services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217
-    services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_9aa05264
-    services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_eacc739b
-    services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d
-    services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_964cc199
-    services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_9aa05264
-    services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e
-    services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217
-    services_sparky_agy_stdio_rpc_client_createstdio_964cc199 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_9aa05264
-    services_family_mcp_index_callfamilybridge_2258b51a -->|calls| services_family_mcp_index_readfamilybridgetoken_ab8e47cb
-    services_family_mcp_index_callfamilybridge_2258b51a -->|calls| services_family_mcp_index_getimmutablefamilysend_e9f3bda5
-    services_family_mcp_index_handletoolcall_6aba1ac3 -->|calls| services_family_mcp_index_callfamilybridge_2258b51a
-    %% Omitted for readability: 180 nodes, 0 edges
-    class services_sparky_agy_stdio_rpc_client_createstdio_eacc739b function;
-    class services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07 function;
-    class services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e function;
-    class services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 function;
-    class services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d function;
-    class services_sparky_agy_stdio_rpc_client_createstdio_9aa05264 function;
-    class services_sparky_agy_stdio_rpc_client_createstdio_964cc199 function;
-    class services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4 function;
-    class services_family_mcp_index_callfamilybridge_2258b51a function;
-    class services_family_mcp_index_readfamilybridgetoken_ab8e47cb function;
-    class services_family_mcp_index_getimmutablefamilysend_e9f3bda5 function;
-    class services_family_mcp_index_handletoolcall_6aba1ac3 function;
+    subgraph session_services_sparky_services_sparky_agy_sess_ab4ff876["services/sparky-agy/session-helpers.js"]
+        services_sparky_agy_session_helpers_lookupstored_1a64b847("lookupStoredSession()<br/><small>services/sparky-agy/session-helpers.js</small>")
+        services_sparky_agy_session_helpers_setboundedma_a16df4cf("setBoundedMap()<br/><small>services/sparky-agy/session-helpers.js</small>")
+        services_sparky_agy_session_helpers_persistsessi_d6c5a158("persistSession()<br/><small>services/sparky-agy/session-helpers.js</small>")
+        services_sparky_agy_session_helpers_issessionnot_55dab0c5("isSessionNotFoundError()<br/><small>services/sparky-agy/session-helpers.js</small>")
+        services_sparky_agy_session_helpers_buildmcpserv_8cb5a80c("buildMcpServers()<br/><small>services/sparky-agy/session-helpers.js</small>")
+        services_sparky_agy_session_helpers_loadboundedr_13e996a1("loadBoundedRehydration()<br/><small>services/sparky-agy/session-helpers.js</small>")
+        services_sparky_agy_session_helpers_21318a55("session-helpers.js")
+    end
+    services_sparky_agy_acp_session_pool_createacpse_f282a77b -->|calls| services_sparky_agy_session_helpers_lookupstored_1a64b847
+    services_sparky_agy_acp_session_pool_createacpse_f282a77b -->|calls| services_sparky_agy_session_helpers_setboundedma_a16df4cf
+    services_sparky_agy_acp_session_pool_createacpse_f282a77b -->|calls| services_sparky_agy_session_helpers_persistsessi_d6c5a158
+    services_sparky_agy_acp_session_pool_createacpse_f282a77b -->|calls| services_sparky_agy_session_helpers_issessionnot_55dab0c5
+    services_sparky_agy_acp_session_pool_createacpse_f282a77b -->|calls| services_sparky_agy_acp_session_pool_createacpse_a393cb31
+    services_sparky_agy_session_helpers_persistsessi_d6c5a158 -->|calls| services_sparky_agy_session_helpers_setboundedma_a16df4cf
+    services_sparky_agy_acp_session_pool_40bfd5cd -->|imports| services_sparky_agy_session_helpers_buildmcpserv_8cb5a80c
+    services_sparky_agy_acp_session_pool_40bfd5cd -->|imports| services_sparky_agy_session_helpers_issessionnot_55dab0c5
+    services_sparky_agy_acp_session_pool_40bfd5cd -->|imports| services_sparky_agy_session_helpers_loadboundedr_13e996a1
+    services_sparky_agy_acp_session_pool_40bfd5cd -->|imports| services_sparky_agy_session_helpers_lookupstored_1a64b847
+    services_sparky_agy_acp_session_pool_40bfd5cd -->|imports| services_sparky_agy_session_helpers_persistsessi_d6c5a158
+    services_sparky_agy_acp_session_pool_40bfd5cd -->|imports| services_sparky_agy_session_helpers_setboundedma_a16df4cf
+    services_sparky_agy_acp_session_pool_40bfd5cd -->|imports| services_sparky_agy_session_helpers_21318a55
     class services_sparky_agy_acp_session_pool_40bfd5cd module;
     class services_sparky_agy_acp_session_pool_createacpse_f282a77b function;
-    class containers_n8n_stack_scripts_sparky_watchdog_sh_6f08f035 function;
-    class services_sparky_agy_acp_gateway_createacpgateway_4b8e928f function;
-    class services_workspace_mcp_sheets_docs_slides_execut_5087632f function;
-    class services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f function;
+    class services_sparky_agy_acp_session_pool_createacpse_a393cb31 function;
+    class services_sparky_agy_acp_session_pool_step_down_c_7b215e27 klass;
+    class services_sparky_agy_acp_session_pool_fs_1f3ebea1 function;
+    class services_sparky_agy_acp_session_pool_profile_too_750ad360 function;
+    class services_sparky_agy_acp_session_pool_createstdio_ca5bfacb entry;
+    class services_sparky_agy_acp_session_pool_istruthyfla_4aecad32 function;
+    class services_sparky_agy_acp_session_pool_setboundedm_8572dd51 async;
+    class services_sparky_agy_session_helpers_lookupstored_1a64b847 ui;
+    class services_sparky_agy_session_helpers_setboundedma_a16df4cf function;
+    class services_sparky_agy_session_helpers_persistsessi_d6c5a158 function;
+    class services_sparky_agy_session_helpers_issessionnot_55dab0c5 async;
+    class services_sparky_agy_session_helpers_buildmcpserv_8cb5a80c function;
+    class services_sparky_agy_session_helpers_loadboundedr_13e996a1 function;
+    class services_sparky_agy_session_helpers_21318a55 module;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -4352,14 +4089,6 @@ flowchart LR
 </tr>
 <tr>
   <td>4</td>
-  <td><code>isQuotaError()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>executeTurn()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>isQuotaError() node in services/sparky-agy/session-helpers.js.</td>
-</tr>
-<tr>
-  <td>5</td>
   <td><code>isSessionNotFoundError()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-async">Async</span></td>
   <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>ensureSession()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
@@ -4367,7 +4096,7 @@ flowchart LR
   <td>isSessionNotFoundError() node in services/sparky-agy/session-helpers.js.</td>
 </tr>
 <tr>
-  <td>6</td>
+  <td>5</td>
   <td><code>loadBoundedRehydration()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
@@ -4375,7 +4104,7 @@ flowchart LR
   <td>loadBoundedRehydration() node in services/sparky-agy/session-helpers.js.</td>
 </tr>
 <tr>
-  <td>7</td>
+  <td>6</td>
   <td><code>lookupStoredSession()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-hook">UI</span></td>
   <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>ensureSession()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
@@ -4383,7 +4112,7 @@ flowchart LR
   <td>lookupStoredSession() node in services/sparky-agy/session-helpers.js.</td>
 </tr>
 <tr>
-  <td>8</td>
+  <td>7</td>
   <td><code>persistSession()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>ensureSession()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
@@ -4391,7 +4120,7 @@ flowchart LR
   <td>persistSession() node in services/sparky-agy/session-helpers.js.</td>
 </tr>
 <tr>
-  <td>9</td>
+  <td>8</td>
   <td><code>setBoundedMap()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>ensureSession()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>persistSession()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small><br>+1 more</td>
@@ -4399,7 +4128,7 @@ flowchart LR
   <td>setBoundedMap() node in services/sparky-agy/session-helpers.js.</td>
 </tr>
 <tr>
-  <td>10</td>
+  <td>9</td>
   <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
   <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
@@ -4407,7 +4136,7 @@ flowchart LR
   <td>acp-session-pool.js node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>11</td>
+  <td>10</td>
   <td><code>{ createStdioAcpRpcClient }</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-cmd">Entry</span></td>
   <td>External entry / no inbound edge</td>
@@ -4415,7 +4144,7 @@ flowchart LR
   <td>Verifies imports, entry points, or version behavior.</td>
 </tr>
 <tr>
-  <td>12</td>
+  <td>11</td>
   <td><code>fs</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -4423,7 +4152,7 @@ flowchart LR
   <td>fs node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>13</td>
+  <td>12</td>
   <td><code>{ isTruthyFlag }</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
   <td>External entry / no inbound edge</td>
@@ -4431,7 +4160,7 @@ flowchart LR
   <td>{ isTruthyFlag } node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>14</td>
+  <td>13</td>
   <td><code>{
   PROFILE_TOOL_SETS,
   parseCanonicalToolName,
@@ -4451,7 +4180,7 @@ flowchart LR
 } node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>15</td>
+  <td>14</td>
   <td><code>{
   setBoundedMap,
   buildMcpServers: buildMcpServersHelper,
@@ -4477,7 +4206,7 @@ flowchart LR
 } node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>16</td>
+  <td>15</td>
   <td><code>STEP_DOWN_CHAIN</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
@@ -4485,116 +4214,12 @@ flowchart LR
   <td>STEP_DOWN_CHAIN node in services/sparky-agy/acp-session-pool.js.</td>
 </tr>
 <tr>
-  <td>17</td>
+  <td>16</td>
   <td><code>session-helpers.js</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
-  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
+  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>sleep-runner.js</code><br><small style="color:var(--muted)">services/sparky-agy/sleep-runner.js</small></td>
   <td><code>buildMcpServers()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small><br><code>isQuotaError()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small><br><code>isSessionNotFoundError()</code><br><small style="color:var(--muted)">services/sparky-agy/session-helpers.js</small><br>+5 more</td>
   <td>session-helpers.js node in services/sparky-agy/session-helpers.js.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>handlePermissionRequest()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>createAcpSessionPool()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>getRpc()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
-  <td><code>collectToolArgObjects()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>isToolAllowedForProfile()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td>handlePermissionRequest() node in services/sparky-agy/acp-session-pool.js.</td>
-</tr>
-<tr>
-  <td>19</td>
-  <td><code>collectToolArgObjects()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>handlePermissionRequest()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br>+2 more</td>
-  <td><code>parseSingleArgValue()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td>collectToolArgObjects() node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>hasDisallowedGeminiMediaFields()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>isToolAllowedForProfile()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>hasDisallowedGeminiMediaFields() node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>21</td>
-  <td><code>isToolAllowedForProfile()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>handlePermissionRequest()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br>+1 more</td>
-  <td><code>collectToolArgObjects()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>hasDisallowedGeminiMediaFields()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>parseCanonicalToolName()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td>isToolAllowedForProfile() node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>parseCanonicalToolName()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>isToolAllowedForProfile()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>tool-policy.js</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>parseCanonicalToolName() node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>parseSingleArgValue()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>collectToolArgObjects()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>parseSingleArgValue() node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>tool-policy.js</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
-  <td><code>collectToolArgObjects()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>isToolAllowedForProfile()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br><code>parseCanonicalToolName()</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small><br>+1 more</td>
-  <td>tool-policy.js node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>25</td>
-  <td><code>FAMILY_TOOLS</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>FAMILY_TOOLS node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>26</td>
-  <td><code>GEMINI_UNTRUSTED_TOOLS</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>GEMINI_UNTRUSTED_TOOLS node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>27</td>
-  <td><code>PROFILE_TOOL_SETS</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>PROFILE_TOOL_SETS node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>28</td>
-  <td><code>SENTINEL_AGYDAEMON_TOOLS</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>SENTINEL_AGYDAEMON_TOOLS node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>29</td>
-  <td><code>TAL_EVAL_TOOLS</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>TAL_EVAL_TOOLS node in services/sparky-agy/tool-policy.js.</td>
-</tr>
-<tr>
-  <td>30</td>
-  <td><code>TAL_LIVE_TOOLS</code><br><small style="color:var(--muted)">services/sparky-agy/tool-policy.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>TAL_LIVE_TOOLS node in services/sparky-agy/tool-policy.js.</td>
 </tr>
 </table>
 
@@ -4603,19 +4228,363 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/family-mcp/index.js</code></td><td>12 nodes</td></tr>
-<tr><td><code>services/sparky-agy/tool-policy.js</code></td><td>12 nodes</td></tr>
-<tr><td><code>docs/gemini-tasks-prompts.md</code></td><td>11 nodes</td></tr>
-<tr><td><code>services/sparky-agy/acp-gateway.js</code></td><td>11 nodes</td></tr>
-<tr><td><code>sparky-mcp/lib/plugin-manager.js</code></td><td>11 nodes</td></tr>
-<tr><td><code>architecture/SENTINEL_ACTOR_MODEL.md</code></td><td>10 nodes</td></tr>
-<tr><td><code>services/sparky-agy/acp-session-pool.js</code></td><td>10 nodes</td></tr>
-<tr><td><code>services/workspace-mcp/sheets-docs-slides.js</code></td><td>10 nodes</td></tr>
+      <tr><td><code>services/sparky-agy/acp-session-pool.js</code></td><td>9 nodes</td></tr>
+<tr><td><code>services/sparky-agy/session-helpers.js</code></td><td>7 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x123, calls x60, indirect call x22, defines x18. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x6, imports x6, contains x6, indirect call x6. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 16. Other ====== -->
+<h2 id="other">16. Other</h2>
+<p>Other groups implementation around sparky, services, n8n, docs, mostly in sparky-mcp/lib/plugin-manager.js, docs/gemini-tasks-prompts.md, services/sparky-agy/acp-gateway.js. This section covers 160 nodes and 174 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Other (160 nodes, 174 edges)
+    subgraph other_services_sparky_agy_stdio_rpc_client_js_757271ea["services/sparky-agy/stdio-rpc-client.js"]
+        services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4("request()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+        services_sparky_agy_stdio_rpc_client_createstdio_eacc739b("cleanup()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+        services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07("close()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+        services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e("ensureInitialized()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+        services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217("rawRequest()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+        services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d("ensureStarted()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+        services_sparky_agy_stdio_rpc_client_createstdio_9aa05264("safeWriteLine()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+        services_sparky_agy_stdio_rpc_client_createstdio_964cc199("sendCancel()<br/><small>services/sparky-agy/stdio-rpc-client.js</small>")
+    end
+    subgraph other_sparky_mcp_lib_plugin_manager_js_c52d2359["sparky-mcp/lib/plugin-manager.js"]
+        services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f("handleManageSparkyPlugin()<br/><small>sparky-mcp/lib/plugin-manager.js</small>")
+        services_sparky_mcp_lib_plugin_manager_assertsaf_82fc11e2("assertSafeSkillPaths()<br/><small>sparky-mcp/lib/plugin-manager.js</small>")
+        services_sparky_mcp_lib_plugin_manager_assertnot_a32fcadc("assertNotSymlinkIfExists()<br/><small>sparky-mcp/lib/plugin-manager.js</small>")
+        services_sparky_mcp_lib_plugin_manager_resolvesk_6b0af09b("resolveSkillsDir()<br/><small>sparky-mcp/lib/plugin-manager.js</small>")
+        services_sparky_mcp_lib_plugin_manager_assertval_90df1349("assertValidSlug()<br/><small>sparky-mcp/lib/plugin-manager.js</small>")
+        services_sparky_mcp_lib_plugin_manager_readfilen_909c5220("readFileNoFollow()<br/><small>sparky-mcp/lib/plugin-manager.js</small>")
+    end
+    containers_n8n_stack_scripts_sparky_watchdog_sh_6f08f035("sparky-watchdog.sh script<br/><small>n8n-stack/scripts/sparky-watchdog.sh</small>")
+    scripts_backup_sh_entry_941779f4("backup.sh script<br/><small>scripts/backup.sh</small>")
+    services_sparky_agy_acp_gateway_createacpgateway_4b8e928f("createAcpGatewayServer()<br/><small>services/sparky-agy/acp-gateway.js</small>")
+    services_workspace_mcp_sheets_docs_slides_execut_5087632f("executeSheetsDocsSlidesTool()<br/><small>services/workspace-mcp/sheets-docs-slides.js</small>")
+    services_sparky_agy_stdio_rpc_client_createstdio_eacc739b -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07
+    services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217
+    services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_9aa05264
+    services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_eacc739b
+    services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d
+    services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_964cc199
+    services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_9aa05264
+    services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e
+    services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217
+    services_sparky_agy_stdio_rpc_client_createstdio_964cc199 -->|calls| services_sparky_agy_stdio_rpc_client_createstdio_9aa05264
+    services_sparky_mcp_lib_plugin_manager_assertsaf_82fc11e2 -->|calls| services_sparky_mcp_lib_plugin_manager_assertnot_a32fcadc
+    services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f -->|calls| services_sparky_mcp_lib_plugin_manager_resolvesk_6b0af09b
+    services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f -->|calls| services_sparky_mcp_lib_plugin_manager_assertnot_a32fcadc
+    services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f -->|calls| services_sparky_mcp_lib_plugin_manager_assertval_90df1349
+    services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f -->|calls| services_sparky_mcp_lib_plugin_manager_assertsaf_82fc11e2
+    services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f -->|calls| services_sparky_mcp_lib_plugin_manager_readfilen_909c5220
+    %% Omitted for readability: 142 nodes, 0 edges
+    class services_sparky_agy_stdio_rpc_client_createstdio_fbb32ad4 function;
+    class services_sparky_agy_stdio_rpc_client_createstdio_eacc739b function;
+    class services_sparky_agy_stdio_rpc_client_createstdio_bd89fb07 function;
+    class services_sparky_agy_stdio_rpc_client_createstdio_5ed1946e function;
+    class services_sparky_agy_stdio_rpc_client_createstdio_c7ba0217 function;
+    class services_sparky_agy_stdio_rpc_client_createstdio_8ccada6d function;
+    class services_sparky_agy_stdio_rpc_client_createstdio_9aa05264 function;
+    class services_sparky_agy_stdio_rpc_client_createstdio_964cc199 function;
+    class services_sparky_mcp_lib_plugin_manager_handleman_a91e2b6f function;
+    class services_sparky_mcp_lib_plugin_manager_assertsaf_82fc11e2 async;
+    class services_sparky_mcp_lib_plugin_manager_assertnot_a32fcadc async;
+    class services_sparky_mcp_lib_plugin_manager_resolvesk_6b0af09b function;
+    class services_sparky_mcp_lib_plugin_manager_assertval_90df1349 async;
+    class services_sparky_mcp_lib_plugin_manager_readfilen_909c5220 function;
+    class containers_n8n_stack_scripts_sparky_watchdog_sh_6f08f035 function;
+    class scripts_backup_sh_entry_941779f4 function;
+    class services_sparky_agy_acp_gateway_createacpgateway_4b8e928f function;
+    class services_workspace_mcp_sheets_docs_slides_execut_5087632f function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>assertNotSymlinkIfExists()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-async">Async</span></td>
+  <td><code>assertSafeSkillPaths()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>writeFileAtomicNoFollow()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>assertNotSymlinkIfExists() node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>assertSafeSkillPaths()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-async">Async</span></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><code>assertNotSymlinkIfExists()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td>assertSafeSkillPaths() node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>assertValidSlug()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-async">Async</span></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>plugin-manager.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>assertValidSlug() node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>plugin-manager.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><code>assertNotSymlinkIfExists()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>assertSafeSkillPaths()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>assertValidSlug()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br>+4 more</td>
+  <td>handleManageSparkyPlugin() node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>readFileNoFollow()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>readFileNoFollow() node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>resolveSkillsDir()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>resolveSkillsDir() node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>writeFileAtomicNoFollow()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><code>assertNotSymlinkIfExists()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td>writeFileAtomicNoFollow() node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>plugin-manager.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><code>assertValidSlug()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>handleManageSparkyPlugin()</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small><br><code>ref_node_fs</code><br>+3 more</td>
+  <td>plugin-manager.js node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>fs</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>fs node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>path</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>path node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>{ triggerGatewayRecycle }</code><br><small style="color:var(--muted)">sparky-mcp/lib/plugin-manager.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ triggerGatewayRecycle } node in sparky-mcp/lib/plugin-manager.js.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>gemini-tasks-prompts.md</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing gemini-tasks-prompts.md.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>Sparky-AI — Gemini Tasks Prompts Reference (Copy &amp; Paste)</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Sparky-AI — Gemini Tasks Prompts Reference (Copy &amp; Paste).</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>Task 1 — Real-Time Incoming Email Triage</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task 1 — Real-Time Incoming Email Triage.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>Task 2 — Daily VIP &amp; Ghosting Follow-Up Radar</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task 2 — Daily VIP &amp; Ghosting Follow-Up Radar.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>Task 3 — Daily Morning Brief (Flight Plan)</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task 3 — Daily Morning Brief (Flight Plan).</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>Task 4 — Daily End-of-Day Brief</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task 4 — Daily End-of-Day Brief.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>Task 5 (Optional) — Morning Non-Urgent Email Digest</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task 5 (Optional) — Morning Non-Urgent Email Digest.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>Task 6 — Sunday Week-Ahead Lookahead</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task 6 — Sunday Week-Ahead Lookahead.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>Task 7 — Monthly Subscription, Invoice &amp; Price-Hike Audit</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task 7 — Monthly Subscription, Invoice &amp; Price-Hike Audit.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>Task 8 — Weekly Domain, EV &amp; AI/Dev Watch</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task 8 — Weekly Domain, EV &amp; AI/Dev Watch.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>Task Overview &amp; Triggers</code><br><small style="color:var(--muted)">docs/gemini-tasks-prompts.md</small></td>
+  <td><span class="tag tag-func">Concept</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>Documentation node describing Task Overview &amp; Triggers.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small><br><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><code>createCachedTokenReader()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>readJsonBody()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">services/sparky-agy/hook-utils.js</small><br>+2 more</td>
+  <td>createAcpGatewayServer() node in services/sparky-agy/acp-gateway.js.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>createCachedTokenReader()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>Caches analysis results or computes cache keys.</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>readJsonBody()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>readJsonBody() node in services/sparky-agy/acp-gateway.js.</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><code>safeTokenEqual()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>safeTokenEqual() node in services/sparky-agy/acp-gateway.js.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>sendJson()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>sendJson() node in services/sparky-agy/acp-gateway.js.</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><code>acp-gateway.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>acp-gateway-and-pool.test.js</code><br><small style="color:var(--muted)">sparky-agy/test/acp-gateway-and-pool.test.js</small></td>
+  <td><code>acp-session-pool.js</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br><code>createAcpGatewayServer()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small><br><code>createAcpSessionPool()</code><br><small style="color:var(--muted)">services/sparky-agy/acp-session-pool.js</small><br>+6 more</td>
+  <td>acp-gateway.js node in services/sparky-agy/acp-gateway.js.</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><code>{ createAcpSessionPool }</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ createAcpSessionPool } node in services/sparky-agy/acp-gateway.js.</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><code>crypto</code><br><small style="color:var(--muted)">services/sparky-agy/acp-gateway.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>crypto node in services/sparky-agy/acp-gateway.js.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>docs/gemini-tasks-prompts.md</code></td><td>11 nodes</td></tr>
+<tr><td><code>services/sparky-agy/acp-gateway.js</code></td><td>11 nodes</td></tr>
+<tr><td><code>sparky-mcp/lib/plugin-manager.js</code></td><td>11 nodes</td></tr>
+<tr><td><code>architecture/SENTINEL_ACTOR_MODEL.md</code></td><td>10 nodes</td></tr>
+<tr><td><code>services/workspace-mcp/sheets-docs-slides.js</code></td><td>10 nodes</td></tr>
+<tr><td><code>architecture/OODA_CYNEFIN_FRAMEWORK.md</code></td><td>9 nodes</td></tr>
+<tr><td><code>services/sparky-agy/stdio-rpc-client.js</code></td><td>9 nodes</td></tr>
+<tr><td><code>README.md</code></td><td>8 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x101, calls x43, defines x20, indirect call x10. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -4626,18 +4595,18 @@ flowchart LR
   <div class="card">
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>Nodes</td><td>2723</td></tr>
-      <tr><td>Edges</td><td>5423</td></tr>
+      <tr><td>Nodes</td><td>2802</td></tr>
+      <tr><td>Edges</td><td>5571</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>161</td></tr>
+      <tr><td>Communities</td><td>171</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>4760</td></tr>
-      <tr><td>INFERRED</td><td>663</td></tr>
+      <tr><td>EXTRACTED</td><td>4881</td></tr>
+      <tr><td>INFERRED</td><td>690</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
   </div>
@@ -4645,7 +4614,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-22 01:01 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-22 07:48 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

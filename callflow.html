@@ -60,7 +60,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
 <div class="container">
 
 <h1>sparky-backup — Complete Call Flow &amp; Architecture Documentation</h1>
-<p class="subtitle">Generated from graphify knowledge graph: 3173 nodes, 6496 edges, 192 communities. Commit: 061f18f</p>
+<p class="subtitle">Generated from graphify knowledge graph: 3173 nodes, 6499 edges, 191 communities. Commit: 38af320</p>
 
 <div class="nav">
     <a href="#overview">Architecture Overview</a>
@@ -75,8 +75,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
     <a href="#tests-fixtures">Tests &amp; Fixtures</a>
     <a href="#runtime-services-sparky">Runtime Services Sparky</a>
     <a href="#services-browser-mcp">Services Browser Mcp</a>
-    <a href="#workspace-mcp-services">Workspace Mcp Services</a>
     <a href="#sparky-mcp-services">Sparky Mcp Services</a>
+    <a href="#workspace-mcp-services">Workspace Mcp Services</a>
     <a href="#services-sparky-agy">Services Sparky Agy</a>
     <a href="#other">Other</a>
 </div>
@@ -92,43 +92,43 @@ flowchart LR
     class EXTRACT_PIPELINE_5F350230 module;
     BUILD_GRAPH_321CBB04("Graph Build<br/><small>118 nodes</small>")
     class BUILD_GRAPH_321CBB04 module;
-    ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>13 nodes</small>")
+    ANALYSIS_CLUSTERING_C79796DA("Analysis &amp; Clustering<br/><small>24 nodes</small>")
     class ANALYSIS_CLUSTERING_C79796DA module;
     OUTPUTS_DOCS_ED82387C("Outputs &amp; Docs<br/><small>17 nodes</small>")
     class OUTPUTS_DOCS_ED82387C module;
     CLI_SKILLS_9964CBB8("CLI &amp; Skill Installers<br/><small>70 nodes</small>")
     class CLI_SKILLS_9964CBB8 module;
-    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>244 nodes</small>")
+    INGEST_CACHE_UPDATE_FF457338("Ingestion &amp; Updates<br/><small>242 nodes</small>")
     class INGEST_CACHE_UPDATE_FF457338 module;
-    SERVE_API_35EC8E86("Serving API<br/><small>1213 nodes</small>")
+    SERVE_API_35EC8E86("Serving API<br/><small>1212 nodes</small>")
     class SERVE_API_35EC8E86 module;
     SECURITY_GLOBAL_5B9C6A04("Security &amp; Global Graph<br/><small>3 nodes</small>")
     class SECURITY_GLOBAL_5B9C6A04 module;
-    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>1129 nodes</small>")
+    TESTS_FIXTURES_B84B1DCC("Tests &amp; Fixtures<br/><small>1119 nodes</small>")
     class TESTS_FIXTURES_B84B1DCC module;
     RUNTIME_SERVICES_SPARKY_99E9671F("Runtime Services Sparky<br/><small>32 nodes</small>")
     class RUNTIME_SERVICES_SPARKY_99E9671F module;
     SERVICES_BROWSER_MCP_3BF4D081("Services Browser Mcp<br/><small>27 nodes</small>")
     class SERVICES_BROWSER_MCP_3BF4D081 module;
+    SPARKY_MCP_SERVICES_DD0DD404("Sparky Mcp Services<br/><small>27 nodes</small>")
+    class SPARKY_MCP_SERVICES_DD0DD404 module;
     WORKSPACE_MCP_SERVICES_84EBF786("Workspace Mcp Services<br/><small>24 nodes</small>")
     class WORKSPACE_MCP_SERVICES_84EBF786 module;
-    SPARKY_MCP_SERVICES_DD0DD404("Sparky Mcp Services<br/><small>24 nodes</small>")
-    class SPARKY_MCP_SERVICES_DD0DD404 module;
     SERVICES_SPARKY_AGY_38DC0FBE("Services Sparky Agy<br/><small>20 nodes</small>")
     class SERVICES_SPARKY_AGY_38DC0FBE module;
-    OTHER_D0941E68("Other<br/><small>224 nodes</small>")
+    OTHER_D0941E68("Other<br/><small>223 nodes</small>")
     class OTHER_D0941E68 module;
-    TESTS_FIXTURES_B84B1DCC -->|imports x148| SERVE_API_35EC8E86
-    SERVE_API_35EC8E86 -->|imports x76| TESTS_FIXTURES_B84B1DCC
+    TESTS_FIXTURES_B84B1DCC -->|imports x154| SERVE_API_35EC8E86
+    SERVE_API_35EC8E86 -->|imports x69| TESTS_FIXTURES_B84B1DCC
     SERVE_API_35EC8E86 -->|calls x48| INGEST_CACHE_UPDATE_FF457338
-    TESTS_FIXTURES_B84B1DCC -->|imports x35| INGEST_CACHE_UPDATE_FF457338
+    TESTS_FIXTURES_B84B1DCC -->|imports x34| INGEST_CACHE_UPDATE_FF457338
     INGEST_CACHE_UPDATE_FF457338 -->|calls x33| SERVE_API_35EC8E86
     OTHER_D0941E68 -->|imports x18| TESTS_FIXTURES_B84B1DCC
-    TESTS_FIXTURES_B84B1DCC -->|imports x18| CLI_SKILLS_9964CBB8
-    TESTS_FIXTURES_B84B1DCC -->|imports x17| OTHER_D0941E68
+    TESTS_FIXTURES_B84B1DCC -->|imports x16| OTHER_D0941E68
     WORKSPACE_MCP_SERVICES_84EBF786 -->|imports x16| INGEST_CACHE_UPDATE_FF457338
+    TESTS_FIXTURES_B84B1DCC -->|imports x16| CLI_SKILLS_9964CBB8
     OTHER_D0941E68 -->|imports x15| INGEST_CACHE_UPDATE_FF457338
-    SERVE_API_35EC8E86 -->|imports x13| CLI_SKILLS_9964CBB8
+    SERVE_API_35EC8E86 -->|imports x14| CLI_SKILLS_9964CBB8
     TESTS_FIXTURES_B84B1DCC -->|imports x12| BUILD_GRAPH_321CBB04
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
@@ -146,7 +146,7 @@ flowchart LR
     <h4>Architecture Layers</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>Layer</th><th>Nodes</th><th>Communities</th></tr>
-      <tr><td>Extraction Pipeline</td><td>15</td><td><code>86</code></td></tr><tr><td>Graph Build</td><td>118</td><td><code>7, 56, 136, 75, 100, 129, 144, 17, 138, 52, 6, 110</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>13</td><td><code>98</code></td></tr><tr><td>Outputs &amp; Docs</td><td>17</td><td><code>148, 24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>70</td><td><code>2, 159, 104, 112, 121, 106, 133, 107, 108, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>244</td><td><code>4, 128, 18, 55, 93, 78, 119, 114, 126, 161, 28, 22</code></td></tr><tr><td>Serving API</td><td>1213</td><td><code>0, 151, 11, 141, 16, 53, 135, 15, 51, 150, 45, 37, 27, 54, 8, 83, 116, 130, 64, 80, 122, 59, 10, 158, 42, 169, 171, 29, 146, 153, 142, 125, 147, 88, 89, 94, 82, 97, 103, 81, 109, 113, 173, 177, 115, 178, 182, 174, 185, 157, 188, 62, 170, 123, 124</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>1129</td><td><code>61, 30, 145, 3, 50, 9, 63, 44, 99, 5, 84, 1, 35, 46, 90, 91, 131, 149, 41, 38, 58, 85, 152, 155, 163, 25, 26, 60, 71, 40, 70, 39, 175, 87, 92, 95, 96, 48, 117, 172, 127, 134, 176, 181, 186, 102, 168, 183, 197, 105, 179, 118, 164, 187, 184, 189, 137, 190, 34</code></td></tr><tr><td>Runtime Services Sparky</td><td>32</td><td><code>162</code></td></tr><tr><td>Services Browser Mcp</td><td>27</td><td><code>36</code></td></tr><tr><td>Workspace Mcp Services</td><td>24</td><td><code>43</code></td></tr><tr><td>Sparky Mcp Services</td><td>24</td><td><code>47</code></td></tr><tr><td>Services Sparky Agy</td><td>20</td><td><code>14</code></td></tr><tr><td>Other</td><td>224</td><td><code>139, 66, 79, 180, 120, 140, 156, 19, 12, 160, 101, 13, 165, 23, 57, 166, 33, 111, 132, 154, 20, 167, 21, 143, 68, 72, 31, 49, 69, 73, 74, 76, 77</code></td></tr>
+      <tr><td>Extraction Pipeline</td><td>15</td><td><code>86</code></td></tr><tr><td>Graph Build</td><td>118</td><td><code>7, 56, 136, 75, 100, 129, 144, 17, 138, 52, 6, 110</code></td></tr><tr><td>Analysis &amp; Clustering</td><td>24</td><td><code>98, 71</code></td></tr><tr><td>Outputs &amp; Docs</td><td>17</td><td><code>148, 24</code></td></tr><tr><td>CLI &amp; Skill Installers</td><td>70</td><td><code>2, 159, 104, 112, 121, 106, 133, 107, 108, 65, 32</code></td></tr><tr><td>Ingestion &amp; Updates</td><td>242</td><td><code>4, 128, 18, 55, 93, 78, 119, 114, 126, 161, 28, 22</code></td></tr><tr><td>Serving API</td><td>1212</td><td><code>0, 15, 151, 11, 141, 16, 53, 135, 51, 150, 45, 37, 27, 54, 8, 83, 116, 130, 64, 80, 122, 10, 158, 42, 169, 171, 29, 146, 153, 142, 125, 147, 88, 89, 94, 82, 97, 103, 81, 109, 113, 173, 115, 178, 182, 185, 157, 188, 62, 170, 123, 124</code></td></tr><tr><td>Security &amp; Global Graph</td><td>3</td><td><code>67</code></td></tr><tr><td>Tests &amp; Fixtures</td><td>1119</td><td><code>61, 30, 3, 50, 9, 145, 63, 44, 99, 5, 84, 1, 35, 46, 90, 91, 131, 149, 41, 38, 58, 85, 152, 155, 163, 25, 26, 60, 168, 40, 70, 39, 175, 87, 92, 95, 96, 48, 117, 172, 59, 127, 134, 176, 181, 186, 102, 183, 197, 105, 179, 118, 164, 187, 184, 189, 137, 174, 190, 34</code></td></tr><tr><td>Runtime Services Sparky</td><td>32</td><td><code>162</code></td></tr><tr><td>Services Browser Mcp</td><td>27</td><td><code>36</code></td></tr><tr><td>Sparky Mcp Services</td><td>27</td><td><code>47</code></td></tr><tr><td>Workspace Mcp Services</td><td>24</td><td><code>43</code></td></tr><tr><td>Services Sparky Agy</td><td>20</td><td><code>14</code></td></tr><tr><td>Other</td><td>223</td><td><code>139, 66, 79, 180, 120, 156, 19, 12, 140, 160, 101, 13, 165, 23, 57, 166, 33, 111, 132, 154, 20, 167, 21, 143, 68, 72, 31, 49, 69, 73, 74, 76, 77</code></td></tr>
     </table>
   </div>
   <div class="card">
@@ -158,7 +158,7 @@ flowchart LR
   <div class="card">
     <h4>Graph Report Highlights</h4>
     <ul>
-      <li>3173 nodes · 6496 edges · 192 communities (161 shown, 31 thin omitted)</li>
+      <li>3173 nodes · 6499 edges · 191 communities (159 shown, 32 thin omitted)</li>
       <li>Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 798 edges (avg confidence: 0.85)</li>
       <li>Token cost: 0 input · 0 output</li>
       <li>1. `server` - 140 edges</li>
@@ -735,33 +735,45 @@ flowchart LR
 
 <!-- ====== 4. Analysis & Clustering ====== -->
 <h2 id="analysis-clustering">4. Analysis &amp; Clustering</h2>
-<p>Analysis &amp; Clustering groups implementation around graphify, clusterpy, services, vertex, mostly in vertex-search-bridge/scripts/graphify-cluster.py. This section covers 13 nodes and 16 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Analysis &amp; Clustering groups implementation around bridge, scripts, migrate, workflow, mostly in scripts/migrate-workflow-bridge-urls.js, vertex-search-bridge/scripts/graphify-cluster.py. This section covers 24 nodes and 30 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Analysis &amp; Clustering (13 nodes, 16 edges)
+    %% Section: Analysis &amp; Clustering (24 nodes, 30 edges)
     subgraph analysis_clustering_External_generated_9ee0240b["External / generated"]
         tempfile_30fe567d("tempfile")
         unicodedata_61e641af("unicodedata")
+        ref_path_6ea4f7de("ref_path")
         datetime_89ffad08("datetime")
         pathlib_4471f74a("pathlib")
         graphify_analyze_069ca401("graphify_analyze")
         graphify_build_2208b562("graphify_build")
         graphify_report_11456f5f("graphify_report")
-        path_3150ecd5("Path")
+    end
+    subgraph analysis_clustering_scripts_migrate_workflow_bri_34022461["scripts/migrate-workflow-bridge-urls.js"]
+        scripts_migrate_workflow_bridge_urls_main_83f7f511("main()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migratenode_97ae93de("migrateNodes()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_ba8c4b1f("migrate-workflow-bridge-urls.js")
+        scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1("runPsql()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e("migrateJsCode()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
+        scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23("migrateUrlParam()<br/><small>scripts/migrate-workflow-bridge-urls.js</small>")
     end
     subgraph analysis_clustering_vertex_search_bridge_scripts_fe7b77cd["vertex-search-bridge/scripts/graphify-cluster.py"]
         services_vertex_search_bridge_scripts_graphify_c_c5703e54("graphify-cluster.py")
         services_vertex_search_bridge_scripts_graphify_c_eeb5c876("main()<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
         services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a("atomic_write_text()<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
         services_vertex_search_bridge_scripts_graphify_c_699b1e17("strip_diacritics()<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
-        services_vertex_search_bridge_scripts_graphify_c_aa6819c6("Deterministic Leiden community clusteri...<br/><small>vertex-search-bridge/scripts/graphify-cluster.py</small>")
     end
+    scripts_migrate_workflow_bridge_urls_main_83f7f511 -->|calls| scripts_migrate_workflow_bridge_urls_migratenode_97ae93de
+    scripts_migrate_workflow_bridge_urls_main_83f7f511 -->|calls| scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1
+    scripts_migrate_workflow_bridge_urls_migratenode_97ae93de -->|calls| scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e
+    scripts_migrate_workflow_bridge_urls_migratenode_97ae93de -->|calls| scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23
     services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a -->|calls| tempfile_30fe567d
     services_vertex_search_bridge_scripts_graphify_c_eeb5c876 -->|calls| services_vertex_search_bridge_scripts_graphify_c_699b1e17
     services_vertex_search_bridge_scripts_graphify_c_eeb5c876 -->|calls| services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a
     services_vertex_search_bridge_scripts_graphify_c_699b1e17 -->|calls| unicodedata_61e641af
+    scripts_migrate_workflow_bridge_urls_ba8c4b1f -->|imports| ref_path_6ea4f7de
     services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| tempfile_30fe567d
     services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| unicodedata_61e641af
     services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| datetime_89ffad08
@@ -769,19 +781,25 @@ flowchart LR
     services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| graphify_analyze_069ca401
     services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| graphify_build_2208b562
     services_vertex_search_bridge_scripts_graphify_c_c5703e54 -->|imports| graphify_report_11456f5f
+    %% Omitted for readability: 6 nodes, 0 edges
     class tempfile_30fe567d function;
     class unicodedata_61e641af function;
+    class ref_path_6ea4f7de function;
     class datetime_89ffad08 function;
     class pathlib_4471f74a function;
     class graphify_analyze_069ca401 function;
     class graphify_build_2208b562 function;
     class graphify_report_11456f5f function;
-    class path_3150ecd5 klass;
+    class scripts_migrate_workflow_bridge_urls_main_83f7f511 function;
+    class scripts_migrate_workflow_bridge_urls_migratenode_97ae93de function;
+    class scripts_migrate_workflow_bridge_urls_ba8c4b1f module;
+    class scripts_migrate_workflow_bridge_urls_runpsql_b6e149b1 function;
+    class scripts_migrate_workflow_bridge_urls_migratejsco_75304f7e function;
+    class scripts_migrate_workflow_bridge_urls_migrateurlp_6be2ae23 function;
     class services_vertex_search_bridge_scripts_graphify_c_c5703e54 module;
     class services_vertex_search_bridge_scripts_graphify_c_eeb5c876 function;
     class services_vertex_search_bridge_scripts_graphify_c_a4bc9f1a function;
     class services_vertex_search_bridge_scripts_graphify_c_699b1e17 function;
-    class services_vertex_search_bridge_scripts_graphify_c_aa6819c6 concept;
     classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
     classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
     classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
@@ -907,6 +925,94 @@ flowchart LR
   <td>No direct outbound edge</td>
   <td>unicodedata node in project.</td>
 </tr>
+<tr>
+  <td>14</td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small><br><code>runPsql()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>main() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>migrateJsCode()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>migrateJsCode() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><code>migrateJsCode()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small><br><code>migrateUrlParam()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>migrateNodes() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>migrateUrlParam()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>migrateNodes()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>migrateUrlParam() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>runPsql()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>main()</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>runPsql() node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>migrate-workflow-bridge-urls.js</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td>External entry / no inbound edge</td>
+  <td><code>ref_child_process</code><br><code>ref_fs</code><br><code>ref_path</code></td>
+  <td>migrate-workflow-bridge-urls.js node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>{ execFileSync }</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ execFileSync } node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>fs</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>fs node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>path</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>path node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>WORKFLOWS_DIR</code><br><small style="color:var(--muted)">scripts/migrate-workflow-bridge-urls.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>WORKFLOWS_DIR node in scripts/migrate-workflow-bridge-urls.js.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>ref_path</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>cdp-browser-renderer.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/cdp-browser-renderer.js</small><br><code>family-relay.js</code><br><small style="color:var(--muted)">services/vertex-search-bridge/family-relay.js</small><br><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br>+14 more</td>
+  <td>No direct outbound edge</td>
+  <td>ref_path node in project.</td>
+</tr>
 </table>
 
 <div class="grid">
@@ -914,12 +1020,13 @@ flowchart LR
     <h4>Key Files</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>vertex-search-bridge/scripts/graphify-cluster.py</code></td><td>5 nodes</td></tr>
+      <tr><td><code>scripts/migrate-workflow-bridge-urls.js</code></td><td>10 nodes</td></tr>
+<tr><td><code>vertex-search-bridge/scripts/graphify-cluster.py</code></td><td>5 nodes</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: imports x5, calls x4, contains x3, imports x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x12, calls x8, imports x6, imports x2. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -1473,7 +1580,7 @@ flowchart LR
   <td>28</td>
   <td><code>ref_node_readline</code><br><small style="color:var(--muted)"></small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/family-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/browser-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/cortex-sleep-mcp/index.js</small><br>+3 more</td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/cortex-sleep-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/workspace-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/browser-mcp/index.js</small><br>+3 more</td>
   <td>No direct outbound edge</td>
   <td>ref_node_readline node in project.</td>
 </tr>
@@ -1519,12 +1626,12 @@ flowchart LR
 
 <!-- ====== 7. Ingestion & Updates ====== -->
 <h2 id="ingest-cache-update">7. Ingestion &amp; Updates</h2>
-<p>Ingestion &amp; Updates groups implementation around services, mcp, url, sparky, mostly in services/vertex-search-bridge/url-watcher.js, services/sparky-agy/tool-policy.js, services/sparky-mcp/http-server.js. This section covers 244 nodes and 440 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Ingestion &amp; Updates groups implementation around services, mcp, url, vertex, mostly in services/vertex-search-bridge/url-watcher.js, services/sparky-agy/tool-policy.js, services/sparky-mcp/http-server.js. This section covers 242 nodes and 435 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Ingestion &amp; Updates (244 nodes, 440 edges)
+    %% Section: Ingestion &amp; Updates (242 nodes, 435 edges)
     subgraph ingest_cache_update_services_workspace_mcp_googl_1d307a9c["services/workspace-mcp/google-rest.js"]
         services_workspace_mcp_google_rest_googlerestreq_2e79de8c("googleRestRequest()<br/><small>services/workspace-mcp/google-rest.js</small>")
         services_workspace_mcp_google_rest_clamplimit_c58faac2("clampLimit()<br/><small>services/workspace-mcp/google-rest.js</small>")
@@ -1566,7 +1673,7 @@ flowchart LR
     services_workspace_mcp_google_rest_uploaddrivemu_c52d5da6 -->|calls| services_workspace_mcp_google_rest_googlerestreq_2e79de8c
     services_browser_mcp_url_guard_assertpublicdnsre_252dd31a -->|calls| services_browser_mcp_url_guard_normalizehost_b5388388
     services_workspace_mcp_gmail_tools_executegmailt_9c24ab3a -->|calls| services_workspace_mcp_google_rest_clamplimit_c58faac2
-    %% Omitted for readability: 226 nodes, 0 edges
+    %% Omitted for readability: 224 nodes, 0 edges
     class services_workspace_mcp_google_rest_googlerestreq_2e79de8c function;
     class services_workspace_mcp_google_rest_clamplimit_c58faac2 function;
     class services_workspace_mcp_google_rest_uploaddrivemu_c52d5da6 function;
@@ -1855,7 +1962,7 @@ flowchart LR
       <tr><th>File</th><th>Coverage</th></tr>
       <tr><td><code>services/vertex-search-bridge/url-watcher.js</code></td><td>36 nodes</td></tr>
 <tr><td><code>services/sparky-agy/tool-policy.js</code></td><td>28 nodes</td></tr>
-<tr><td><code>services/sparky-mcp/http-server.js</code></td><td>27 nodes</td></tr>
+<tr><td><code>services/sparky-mcp/http-server.js</code></td><td>26 nodes</td></tr>
 <tr><td><code>services/workspace-mcp/gmail-tools.js</code></td><td>26 nodes</td></tr>
 <tr><td><code>services/vertex-search-bridge/event-ingest.js</code></td><td>22 nodes</td></tr>
 <tr><td><code>services/browser-mcp/url-guard.js</code></td><td>17 nodes</td></tr>
@@ -1865,19 +1972,19 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x184, contains x127, indirect call x73, imports x29. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x181, contains x127, indirect call x72, imports x28. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
 
 <!-- ====== 8. Serving API ====== -->
 <h2 id="serve-api">8. Serving API</h2>
-<p>Serving API groups implementation around vertex, bridge, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/model-router.js, services/vertex-search-bridge/kg-store.js. This section covers 1213 nodes and 2926 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Serving API groups implementation around vertex, bridge, search, services, mostly in services/vertex-search-bridge/server.js, services/vertex-search-bridge/model-router.js, services/vertex-search-bridge/kg-store.js. This section covers 1212 nodes and 2916 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Serving API (1213 nodes, 2926 edges)
+    %% Section: Serving API (1212 nodes, 2916 edges)
     subgraph serve_api_services_vertex_search_bridge_incident_2fb67d53["services/vertex-search-bridge/incident-store.js"]
         services_vertex_search_bridge_incident_store_com_40fbb047("computeSignature()<br/><small>services/vertex-search-bridge/incident-store.js</small>")
         services_vertex_search_bridge_incident_store_nor_916ccc26("normalizeErrorKey()<br/><small>services/vertex-search-bridge/incident-store.js</small>")
@@ -1926,7 +2033,7 @@ flowchart LR
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_incident_store_red_b744778c
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_family_concierge_s_1a11e004
     services_vertex_search_bridge_server_3ccdc721 -->|imports| services_vertex_search_bridge_acp_client_48787f24
-    %% Omitted for readability: 1195 nodes, 3 edges
+    %% Omitted for readability: 1194 nodes, 3 edges
     class services_vertex_search_bridge_incident_store_com_40fbb047 function;
     class services_vertex_search_bridge_incident_store_nor_916ccc26 function;
     class services_vertex_search_bridge_incident_store_cre_6da51c7b function;
@@ -2296,7 +2403,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: calls x1238, contains x687, indirect call x462, imports x375. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: calls x1232, contains x688, indirect call x461, imports x372. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -2380,12 +2487,12 @@ flowchart LR
 
 <!-- ====== 10. Tests & Fixtures ====== -->
 <h2 id="tests-fixtures">10. Tests &amp; Fixtures</h2>
-<p>Tests &amp; Fixtures groups implementation around test, services, bridge, vertex, mostly in vertex-search-bridge/test/url-watcher.test.js, services/sparky-whisper/test_whisper.py, vertex-search-bridge/test/server-endpoints.test.js. This section covers 1129 nodes and 1722 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Tests &amp; Fixtures groups implementation around test, services, vertex, search, mostly in vertex-search-bridge/test/url-watcher.test.js, services/sparky-whisper/test_whisper.py, vertex-search-bridge/test/server-endpoints.test.js. This section covers 1119 nodes and 1704 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Tests &amp; Fixtures (1129 nodes, 1722 edges)
+    %% Section: Tests &amp; Fixtures (1119 nodes, 1704 edges)
     subgraph tests_fixtures_vertex_search_bridge_test_phase2_04d00bb0["vertex-search-bridge/test/phase2-remediation.test.js"]
         services_vertex_search_bridge_test_phase2_remedi_c181b0b0("MockCdpWebSocket<br/><small>vertex-search-bridge/test/phase2-remediation.test.js</small>")
         services_vertex_search_bridge_test_phase2_remedi_da999e67("constructor()<br/><small>vertex-search-bridge/test/phase2-remediation.test.js</small>")
@@ -2423,7 +2530,7 @@ flowchart LR
     services_vertex_search_bridge_test_phase2_remedi_eed1a61f -->|calls| services_vertex_search_bridge_test_phase2_remedi_fe8df2e4
     services_vertex_search_bridge_test_phase2_remedi_fe8df2e4 -->|calls| services_vertex_search_bridge_test_phase2_remedi_d129223e
     services_vertex_search_bridge_test_host_adapters_487b806a -->|calls| services_vertex_search_bridge_test_host_adapters_92e2d219
-    %% Omitted for readability: 1111 nodes, 0 edges
+    %% Omitted for readability: 1101 nodes, 0 edges
     class services_vertex_search_bridge_test_phase2_remedi_c181b0b0 test;
     class services_vertex_search_bridge_test_phase2_remedi_da999e67 test;
     class services_vertex_search_bridge_test_phase2_remedi_8d43cedb test;
@@ -2722,7 +2829,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x741, calls x319, imports x283, indirect call x125. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x731, calls x318, imports x274, indirect call x126. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -2881,7 +2988,7 @@ flowchart LR
   <td>8</td>
   <td><code>isAllowedRestrictedSourceRuntime()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>assertRestrictedSource()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small><br><code>runtime-policy.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
+  <td><code>assertRestrictedSource()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small><br><code>mcp.test.js</code><br><small style="color:var(--muted)">sparky-mcp/test/mcp.test.js</small><br><code>runtime-policy.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
   <td><code>hasNonEmptyValue()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
   <td>isAllowedRestrictedSourceRuntime() node in sparky-mcp/lib/runtime-policy.js.</td>
 </tr>
@@ -2921,7 +3028,7 @@ flowchart LR
   <td>13</td>
   <td><code>isTalLiveActor()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
   <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>runtime-policy.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br><code>mcp.test.js</code><br><small style="color:var(--muted)">sparky-mcp/test/mcp.test.js</small><br><code>runtime-policy.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small><br>+1 more</td>
   <td><code>isEvalMode()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small><br><code>resolveRestrictedProfile()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
   <td>isTalLiveActor() node in sparky-mcp/lib/runtime-policy.js.</td>
 </tr>
@@ -2977,17 +3084,17 @@ flowchart LR
   <td>20</td>
   <td><code>runtime-policy.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
   <td><span class="tag tag-class">Module</span></td>
-  <td><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><code>mcp.test.js</code><br><small style="color:var(--muted)">sparky-mcp/test/mcp.test.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
   <td><code>assertNoGeminiMediaPlaceholder()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small><br><code>assertRestrictedResourceBinding()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small><br><code>assertRestrictedSource()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small><br>+15 more</td>
   <td>runtime-policy.js node in sparky-mcp/lib/runtime-policy.js.</td>
 </tr>
 <tr>
   <td>21</td>
-  <td><code>GEMINI_CONTEXT_MATCH_SOURCES</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
+  <td><code>GEMINI_CONTEXT_SOURCE_ALIASES</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-policy.js</small></td>
   <td><span class="tag tag-class">Class</span></td>
   <td>External entry / no inbound edge</td>
   <td>No direct outbound edge</td>
-  <td>GEMINI_CONTEXT_MATCH_SOURCES node in sparky-mcp/lib/runtime-policy.js.</td>
+  <td>GEMINI_CONTEXT_SOURCE_ALIASES node in sparky-mcp/lib/runtime-policy.js.</td>
 </tr>
 <tr>
   <td>22</td>
@@ -3434,8 +3541,355 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 13. Workspace Mcp Services ====== -->
-<h2 id="workspace-mcp-services">13. Workspace Mcp Services</h2>
+<!-- ====== 13. Sparky Mcp Services ====== -->
+<h2 id="sparky-mcp-services">13. Sparky Mcp Services</h2>
+<p>Sparky Mcp Services groups implementation around sparky, mcp, services, indexjs, mostly in services/sparky-mcp/index.js, sparky-mcp/lib/constants.js, services/sparky-mcp/http-server.js. This section covers 27 nodes and 40 internal edges; the diagram shows only representative relationships to stay readable.</p>
+
+<div class="mermaid">
+%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
+flowchart LR
+    %% Section: Sparky Mcp Services (27 nodes, 40 edges)
+    subgraph sparky_mcp_services_services_sparky_mcp_index_js_2b8f70dc["services/sparky-mcp/index.js"]
+        services_sparky_mcp_index_511be458("index.js")
+        services_sparky_mcp_index_startstdioserver_56db3482("startStdioServer()<br/><small>services/sparky-mcp/index.js</small>")
+        services_sparky_mcp_index_handletoolcall_54a742c6("handleToolCall()<br/><small>services/sparky-mcp/index.js</small>")
+        services_sparky_mcp_index_dispatchagymissiontodr_dff01f19("dispatchAgyMissionToDrive()<br/><small>services/sparky-mcp/index.js</small>")
+        services_sparky_mcp_index_gettoolsforprofile_b7c2c0f5("getToolsForProfile()<br/><small>services/sparky-mcp/index.js</small>")
+        services_sparky_mcp_index_readheartbeatmeta_32622827("readHeartbeatMeta()<br/><small>services/sparky-mcp/index.js</small>")
+        services_sparky_mcp_index_sendjsonrpc_32934bf8("sendJsonRpc()<br/><small>services/sparky-mcp/index.js</small>")
+        services_sparky_mcp_index_host_tool_allowlist_d6797ec8("HOST_TOOL_ALLOWLIST<br/><small>services/sparky-mcp/index.js</small>")
+        services_sparky_mcp_index_remote_tool_allowlist_7a8ebde8("REMOTE_TOOL_ALLOWLIST<br/><small>services/sparky-mcp/index.js</small>")
+    end
+    subgraph sparky_mcp_services_External_generated_1fe1bbe9["External / generated"]
+        services_sparky_mcp_lib_constants_tal_recipient_312fa9ae("constants tal recipient")
+        services_sparky_mcp_lib_runtime_tools_runtime_an_d10a6327("and remote tools")
+        services_sparky_mcp_lib_runtime_tools_runtime_on_15fa2ae7("runtime only names")
+        ref_readline_1868c431("ref_readline")
+    end
+    subgraph sparky_mcp_services_sparky_mcp_lib_constants_js_cca50e2c["sparky-mcp/lib/constants.js"]
+        services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9("redactSecretsInError()<br/><small>sparky-mcp/lib/constants.js</small>")
+        services_sparky_mcp_lib_constants_validateoption_728e7bb3("validateOptionalAgyModel()<br/><small>sparky-mcp/lib/constants.js</small>")
+        services_sparky_mcp_lib_constants_allowed_agy_mo_5e6632b9("ALLOWED_AGY_MODELS<br/><small>sparky-mcp/lib/constants.js</small>")
+        services_sparky_mcp_lib_constants_1f1acb86("constants.js")
+    end
+    services_sparky_mcp_http_server_processjsonrpcme_6fa480c9("processJsonRpcMessage()<br/><small>services/sparky-mcp/http-server.js</small>")
+    services_sparky_mcp_http_server_processjsonrpcme_6fa480c9 -->|calls| services_sparky_mcp_index_gettoolsforprofile_b7c2c0f5
+    services_sparky_mcp_http_server_processjsonrpcme_6fa480c9 -->|calls| services_sparky_mcp_index_handletoolcall_54a742c6
+    services_sparky_mcp_http_server_processjsonrpcme_6fa480c9 -->|calls| services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9
+    services_sparky_mcp_index_dispatchagymissiontodr_dff01f19 -->|calls| services_sparky_mcp_lib_constants_validateoption_728e7bb3
+    services_sparky_mcp_index_dispatchagymissiontodr_dff01f19 -->|calls| services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9
+    services_sparky_mcp_index_handletoolcall_54a742c6 -->|calls| services_sparky_mcp_lib_constants_validateoption_728e7bb3
+    services_sparky_mcp_index_handletoolcall_54a742c6 -->|calls| services_sparky_mcp_index_dispatchagymissiontodr_dff01f19
+    services_sparky_mcp_index_handletoolcall_54a742c6 -->|calls| services_sparky_mcp_index_readheartbeatmeta_32622827
+    services_sparky_mcp_index_startstdioserver_56db3482 -->|calls| services_sparky_mcp_index_sendjsonrpc_32934bf8
+    services_sparky_mcp_index_startstdioserver_56db3482 -->|calls| services_sparky_mcp_index_gettoolsforprofile_b7c2c0f5
+    services_sparky_mcp_index_startstdioserver_56db3482 -->|calls| services_sparky_mcp_index_handletoolcall_54a742c6
+    services_sparky_mcp_index_startstdioserver_56db3482 -->|calls| services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9
+    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_allowed_agy_mo_5e6632b9
+    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9
+    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_tal_recipient_312fa9ae
+    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_validateoption_728e7bb3
+    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_runtime_tools_runtime_an_d10a6327
+    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_runtime_tools_runtime_on_15fa2ae7
+    services_sparky_mcp_index_511be458 -->|imports| ref_readline_1868c431
+    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_1f1acb86
+    %% Omitted for readability: 9 nodes, 0 edges
+    class services_sparky_mcp_index_511be458 module;
+    class services_sparky_mcp_index_startstdioserver_56db3482 function;
+    class services_sparky_mcp_index_handletoolcall_54a742c6 function;
+    class services_sparky_mcp_index_dispatchagymissiontodr_dff01f19 function;
+    class services_sparky_mcp_index_gettoolsforprofile_b7c2c0f5 function;
+    class services_sparky_mcp_index_readheartbeatmeta_32622827 function;
+    class services_sparky_mcp_index_sendjsonrpc_32934bf8 function;
+    class services_sparky_mcp_index_host_tool_allowlist_d6797ec8 klass;
+    class services_sparky_mcp_index_remote_tool_allowlist_7a8ebde8 klass;
+    class services_sparky_mcp_lib_constants_tal_recipient_312fa9ae function;
+    class services_sparky_mcp_lib_runtime_tools_runtime_an_d10a6327 function;
+    class services_sparky_mcp_lib_runtime_tools_runtime_on_15fa2ae7 function;
+    class ref_readline_1868c431 function;
+    class services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9 function;
+    class services_sparky_mcp_lib_constants_validateoption_728e7bb3 function;
+    class services_sparky_mcp_lib_constants_allowed_agy_mo_5e6632b9 klass;
+    class services_sparky_mcp_lib_constants_1f1acb86 module;
+    class services_sparky_mcp_http_server_processjsonrpcme_6fa480c9 function;
+    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
+    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
+    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
+    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
+    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
+    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
+    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
+    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
+    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
+</div>
+
+<h3>Call Details</h3>
+<table class="call-table">
+<tr>
+  <th style="width:5%">#</th>
+  <th style="width:28%">Node</th>
+  <th style="width:10%">Type</th>
+  <th style="width:17%">Caller</th>
+  <th style="width:20%">Callees</th>
+  <th style="width:20%">Description</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td><code>processJsonRpcMessage()</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createMcpHttpServer()</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>mcp.test.js</code><br><small style="color:var(--muted)">sparky-mcp/test/mcp.test.js</small></td>
+  <td><code>getToolsForProfile()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
+  <td>processJsonRpcMessage() node in services/sparky-mcp/http-server.js.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>validateOptionalAgyModel()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
+  <td>dispatchAgyMissionToDrive() node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><code>getToolsForProfile()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>createMcpHttpServer()</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br>+2 more</td>
+  <td>No direct outbound edge</td>
+  <td>getToolsForProfile() node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>mcp.test.js</code><br><small style="color:var(--muted)">sparky-mcp/test/mcp.test.js</small><br>+2 more</td>
+  <td><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>getTurnContext()</code><br><small style="color:var(--muted)">sparky-mcp/lib/turn-ctx-client.js</small><br><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br>+3 more</td>
+  <td>handleToolCall() node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><code>readHeartbeatMeta()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>readHeartbeatMeta() node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><code>sendJsonRpc()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>startStdioServer()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>sendJsonRpc() node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><code>startStdioServer()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><code>getToolsForProfile()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br>+1 more</td>
+  <td>startStdioServer() node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>constants.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>createMcpHttpServer()</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br>+6 more</td>
+  <td>No direct outbound edge</td>
+  <td>redactSecretsInError() node in sparky-mcp/lib/constants.js.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><code>validateOptionalAgyModel()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>constants.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br>+3 more</td>
+  <td>No direct outbound edge</td>
+  <td>validateOptionalAgyModel() node in sparky-mcp/lib/constants.js.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><code>sparky-mcp/index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>mcp.test.js</code><br><small style="color:var(--muted)">sparky-mcp/test/mcp.test.js</small></td>
+  <td><code>ALLOWED_AGY_MODELS</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>and remote tools</code><br><code>bridge.js</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br>+18 more</td>
+  <td>sparky-mcp/index.js node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><code>{ bridgeRequest }</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ bridgeRequest } node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><code>fs</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>fs node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><code>{ getTurnContext, postTurnEgress }</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{ getTurnContext, postTurnEgress } node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><code>HOST_TOOL_ALLOWLIST</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>HOST_TOOL_ALLOWLIST node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><code>readline</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>readline node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><code>REMOTE_TOOL_ALLOWLIST</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>REMOTE_TOOL_ALLOWLIST node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><code>{
+  RUNTIME_AND_REMOTE_TOOLS,
+  RUNTIME_ONLY_NAMES,
+  handleRuntimeToolCall,
+  isTalLiveActor,
+}</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{
+  RUNTIME_AND_REMOTE_TOOLS,
+  RUNTIME_ONLY_NAMES,
+  handleRuntimeToolCall,
+  isTalLiveActor,
+} node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><code>RUNTIME_TOOL_ALLOWLIST</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>RUNTIME_TOOL_ALLOWLIST node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><code>{
+  TAL_RECIPIENT,
+  ALLOWED_AGY_MODELS,
+  validateOptionalAgyModel,
+  redactSecretsInError,
+}</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>{
+  TAL_RECIPIENT,
+  ALLOWED_AGY_MODELS,
+  validateOptionalAgyModel,
+  redactSecretsInError,
+} node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><code>TOOLS</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>TOOLS node in services/sparky-mcp/index.js.</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><code>constants.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
+  <td><span class="tag tag-class">Module</span></td>
+  <td><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>validateOptionalAgyModel()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
+  <td>constants.js node in sparky-mcp/lib/constants.js.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><code>ALLOWED_AGY_MODEL_SET</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td>External entry / no inbound edge</td>
+  <td>No direct outbound edge</td>
+  <td>ALLOWED_AGY_MODEL_SET node in sparky-mcp/lib/constants.js.</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><code>ALLOWED_AGY_MODELS</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
+  <td><span class="tag tag-class">Class</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>ALLOWED_AGY_MODELS node in sparky-mcp/lib/constants.js.</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><code>ref_readline</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>ref_readline node in project.</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><code>services_sparky_mcp_lib_constants_tal_recipient</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>services_sparky_mcp_lib_constants_tal_recipient node in project.</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><code>services_sparky_mcp_lib_runtime_tools_runtime_and_remote_tools</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>services_sparky_mcp_lib_runtime_tools_runtime_and_remote_tools node in project.</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><code>services_sparky_mcp_lib_runtime_tools_runtime_only_names</code><br><small style="color:var(--muted)"></small></td>
+  <td><span class="tag tag-func">Function</span></td>
+  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
+  <td>No direct outbound edge</td>
+  <td>services_sparky_mcp_lib_runtime_tools_runtime_only_names node in project.</td>
+</tr>
+</table>
+
+<div class="grid">
+  <div class="card">
+    <h4>Key Files</h4>
+    <table style="width:100%;font-size:0.85rem;">
+      <tr><th>File</th><th>Coverage</th></tr>
+      <tr><td><code>services/sparky-mcp/index.js</code></td><td>17 nodes</td></tr>
+<tr><td><code>sparky-mcp/lib/constants.js</code></td><td>5 nodes</td></tr>
+<tr><td><code>services/sparky-mcp/http-server.js</code></td><td>1 nodes</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Design Notes</h4>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x14, calls x12, imports x6, indirect call x6. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+  </div>
+</div>
+<hr>
+
+<!-- ====== 14. Workspace Mcp Services ====== -->
+<h2 id="workspace-mcp-services">14. Workspace Mcp Services</h2>
 <p>Workspace Mcp Services groups implementation around workspace, mcp, services, indexjs, mostly in services/workspace-mcp/index.js, services/workspace-mcp/gmail-tools.js. This section covers 24 nodes and 28 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
@@ -3717,320 +4171,6 @@ flowchart LR
 </div>
 <hr>
 
-<!-- ====== 14. Sparky Mcp Services ====== -->
-<h2 id="sparky-mcp-services">14. Sparky Mcp Services</h2>
-<p>Sparky Mcp Services groups implementation around sparky, mcp, services, indexjs, mostly in services/sparky-mcp/index.js, sparky-mcp/lib/constants.js. This section covers 24 nodes and 30 internal edges; the diagram shows only representative relationships to stay readable.</p>
-
-<div class="mermaid">
-%%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
-flowchart LR
-    %% Section: Sparky Mcp Services (24 nodes, 30 edges)
-    subgraph sparky_mcp_services_services_sparky_mcp_index_js_2b8f70dc["services/sparky-mcp/index.js"]
-        services_sparky_mcp_index_511be458("index.js")
-        services_sparky_mcp_index_dispatchagymissiontodr_dff01f19("dispatchAgyMissionToDrive()<br/><small>services/sparky-mcp/index.js</small>")
-        services_sparky_mcp_index_startstdioserver_56db3482("startStdioServer()<br/><small>services/sparky-mcp/index.js</small>")
-        services_sparky_mcp_index_sendjsonrpc_32934bf8("sendJsonRpc()<br/><small>services/sparky-mcp/index.js</small>")
-        services_sparky_mcp_index_host_tool_allowlist_d6797ec8("HOST_TOOL_ALLOWLIST<br/><small>services/sparky-mcp/index.js</small>")
-        services_sparky_mcp_index_remote_tool_allowlist_7a8ebde8("REMOTE_TOOL_ALLOWLIST<br/><small>services/sparky-mcp/index.js</small>")
-        services_sparky_mcp_index_runtime_tool_allowlist_83cd5d4b("RUNTIME_TOOL_ALLOWLIST<br/><small>services/sparky-mcp/index.js</small>")
-        services_sparky_mcp_index_tools_70c0b215("TOOLS<br/><small>services/sparky-mcp/index.js</small>")
-        services_sparky_mcp_index_fs_1f36ce77("fs<br/><small>services/sparky-mcp/index.js</small>")
-        services_sparky_mcp_index_readheartbeatmeta_32622827("readHeartbeatMeta()<br/><small>services/sparky-mcp/index.js</small>")
-    end
-    subgraph sparky_mcp_services_External_generated_1fe1bbe9["External / generated"]
-        services_sparky_mcp_lib_constants_tal_recipient_312fa9ae("constants tal recipient")
-        services_sparky_mcp_lib_runtime_tools_runtime_an_d10a6327("and remote tools")
-        services_sparky_mcp_lib_runtime_tools_runtime_on_15fa2ae7("runtime only names")
-        ref_readline_1868c431("ref_readline")
-    end
-    subgraph sparky_mcp_services_sparky_mcp_lib_constants_js_cca50e2c["sparky-mcp/lib/constants.js"]
-        services_sparky_mcp_lib_constants_validateoption_728e7bb3("validateOptionalAgyModel()<br/><small>sparky-mcp/lib/constants.js</small>")
-        services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9("redactSecretsInError()<br/><small>sparky-mcp/lib/constants.js</small>")
-        services_sparky_mcp_lib_constants_allowed_agy_mo_5e6632b9("ALLOWED_AGY_MODELS<br/><small>sparky-mcp/lib/constants.js</small>")
-        services_sparky_mcp_lib_constants_1f1acb86("constants.js")
-    end
-    services_sparky_mcp_index_dispatchagymissiontodr_dff01f19 -->|calls| services_sparky_mcp_lib_constants_validateoption_728e7bb3
-    services_sparky_mcp_index_dispatchagymissiontodr_dff01f19 -->|calls| services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9
-    services_sparky_mcp_index_startstdioserver_56db3482 -->|calls| services_sparky_mcp_index_sendjsonrpc_32934bf8
-    services_sparky_mcp_index_startstdioserver_56db3482 -->|calls| services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9
-    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_allowed_agy_mo_5e6632b9
-    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9
-    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_tal_recipient_312fa9ae
-    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_validateoption_728e7bb3
-    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_runtime_tools_runtime_an_d10a6327
-    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_runtime_tools_runtime_on_15fa2ae7
-    services_sparky_mcp_index_511be458 -->|imports| ref_readline_1868c431
-    services_sparky_mcp_index_511be458 -->|imports| services_sparky_mcp_lib_constants_1f1acb86
-    %% Omitted for readability: 6 nodes, 0 edges
-    class services_sparky_mcp_index_511be458 module;
-    class services_sparky_mcp_index_dispatchagymissiontodr_dff01f19 function;
-    class services_sparky_mcp_index_startstdioserver_56db3482 function;
-    class services_sparky_mcp_index_sendjsonrpc_32934bf8 function;
-    class services_sparky_mcp_index_host_tool_allowlist_d6797ec8 klass;
-    class services_sparky_mcp_index_remote_tool_allowlist_7a8ebde8 klass;
-    class services_sparky_mcp_index_runtime_tool_allowlist_83cd5d4b klass;
-    class services_sparky_mcp_index_tools_70c0b215 klass;
-    class services_sparky_mcp_index_fs_1f36ce77 function;
-    class services_sparky_mcp_index_readheartbeatmeta_32622827 function;
-    class services_sparky_mcp_lib_constants_tal_recipient_312fa9ae function;
-    class services_sparky_mcp_lib_runtime_tools_runtime_an_d10a6327 function;
-    class services_sparky_mcp_lib_runtime_tools_runtime_on_15fa2ae7 function;
-    class ref_readline_1868c431 function;
-    class services_sparky_mcp_lib_constants_validateoption_728e7bb3 function;
-    class services_sparky_mcp_lib_constants_redactsecretsi_2e50cda9 function;
-    class services_sparky_mcp_lib_constants_allowed_agy_mo_5e6632b9 klass;
-    class services_sparky_mcp_lib_constants_1f1acb86 module;
-    classDef entry fill:#422006,stroke:#fbbf24,color:#fde68a,stroke-width:1px;
-    classDef api fill:#450a0a,stroke:#f87171,color:#fee2e2,stroke-width:1px;
-    classDef async fill:#2e1065,stroke:#a78bfa,color:#ede9fe,stroke-width:1px;
-    classDef klass fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:1px;
-    classDef ui fill:#831843,stroke:#f472b6,color:#fce7f3,stroke-width:1px;
-    classDef module fill:#172554,stroke:#60a5fa,color:#dbeafe,stroke-width:1px;
-    classDef test fill:#3f3f46,stroke:#a1a1aa,color:#f4f4f5,stroke-width:1px;
-    classDef concept fill:#292524,stroke:#a8a29e,color:#fafaf9,stroke-dasharray:4 3;
-    classDef function fill:#0f172a,stroke:#38bdf8,color:#e0f2fe,stroke-width:1px;
-</div>
-
-<h3>Call Details</h3>
-<table class="call-table">
-<tr>
-  <th style="width:5%">#</th>
-  <th style="width:28%">Node</th>
-  <th style="width:10%">Type</th>
-  <th style="width:17%">Caller</th>
-  <th style="width:20%">Callees</th>
-  <th style="width:20%">Description</th>
-</tr>
-<tr>
-  <td>1</td>
-  <td><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>validateOptionalAgyModel()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
-  <td>dispatchAgyMissionToDrive() node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>2</td>
-  <td><code>readHeartbeatMeta()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>readHeartbeatMeta() node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>3</td>
-  <td><code>sendJsonRpc()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>startStdioServer()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>sendJsonRpc() node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td><code>startStdioServer()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><code>getToolsForProfile()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>handleToolCall()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br>+1 more</td>
-  <td>startStdioServer() node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>5</td>
-  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>constants.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>createMcpHttpServer()</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br>+6 more</td>
-  <td>No direct outbound edge</td>
-  <td>redactSecretsInError() node in sparky-mcp/lib/constants.js.</td>
-</tr>
-<tr>
-  <td>6</td>
-  <td><code>validateOptionalAgyModel()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>constants.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>dispatchAgyMissionToDrive()</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>handleRuntimeToolCall()</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small><br>+3 more</td>
-  <td>No direct outbound edge</td>
-  <td>validateOptionalAgyModel() node in sparky-mcp/lib/constants.js.</td>
-</tr>
-<tr>
-  <td>7</td>
-  <td><code>sparky-mcp/index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>mcp.test.js</code><br><small style="color:var(--muted)">sparky-mcp/test/mcp.test.js</small></td>
-  <td><code>ALLOWED_AGY_MODELS</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>and remote tools</code><br><code>bridge.js</code><br><small style="color:var(--muted)">services/sparky-mcp/bridge.js</small><br>+18 more</td>
-  <td>sparky-mcp/index.js node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td><code>{ bridgeRequest }</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ bridgeRequest } node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>9</td>
-  <td><code>fs</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>fs node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>10</td>
-  <td><code>{ getTurnContext, postTurnEgress }</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{ getTurnContext, postTurnEgress } node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>11</td>
-  <td><code>HOST_TOOL_ALLOWLIST</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>HOST_TOOL_ALLOWLIST node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>12</td>
-  <td><code>readline</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>readline node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>13</td>
-  <td><code>REMOTE_TOOL_ALLOWLIST</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>REMOTE_TOOL_ALLOWLIST node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>14</td>
-  <td><code>{
-  RUNTIME_AND_REMOTE_TOOLS,
-  RUNTIME_ONLY_NAMES,
-  handleRuntimeToolCall,
-  isTalLiveActor,
-}</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  RUNTIME_AND_REMOTE_TOOLS,
-  RUNTIME_ONLY_NAMES,
-  handleRuntimeToolCall,
-  isTalLiveActor,
-} node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>15</td>
-  <td><code>RUNTIME_TOOL_ALLOWLIST</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>RUNTIME_TOOL_ALLOWLIST node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>16</td>
-  <td><code>{
-  TAL_RECIPIENT,
-  ALLOWED_AGY_MODELS,
-  validateOptionalAgyModel,
-  redactSecretsInError,
-}</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>{
-  TAL_RECIPIENT,
-  ALLOWED_AGY_MODELS,
-  validateOptionalAgyModel,
-  redactSecretsInError,
-} node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>17</td>
-  <td><code>TOOLS</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>TOOLS node in services/sparky-mcp/index.js.</td>
-</tr>
-<tr>
-  <td>18</td>
-  <td><code>constants.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
-  <td><span class="tag tag-class">Module</span></td>
-  <td><code>http-server.js</code><br><small style="color:var(--muted)">services/sparky-mcp/http-server.js</small><br><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td><code>redactSecretsInError()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small><br><code>validateOptionalAgyModel()</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
-  <td>constants.js node in sparky-mcp/lib/constants.js.</td>
-</tr>
-<tr>
-  <td>19</td>
-  <td><code>ALLOWED_AGY_MODEL_SET</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td>External entry / no inbound edge</td>
-  <td>No direct outbound edge</td>
-  <td>ALLOWED_AGY_MODEL_SET node in sparky-mcp/lib/constants.js.</td>
-</tr>
-<tr>
-  <td>20</td>
-  <td><code>ALLOWED_AGY_MODELS</code><br><small style="color:var(--muted)">sparky-mcp/lib/constants.js</small></td>
-  <td><span class="tag tag-class">Class</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>ALLOWED_AGY_MODELS node in sparky-mcp/lib/constants.js.</td>
-</tr>
-<tr>
-  <td>21</td>
-  <td><code>ref_readline</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>ref_readline node in project.</td>
-</tr>
-<tr>
-  <td>22</td>
-  <td><code>services_sparky_mcp_lib_constants_tal_recipient</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small><br><code>runtime-tools.js</code><br><small style="color:var(--muted)">sparky-mcp/lib/runtime-tools.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>services_sparky_mcp_lib_constants_tal_recipient node in project.</td>
-</tr>
-<tr>
-  <td>23</td>
-  <td><code>services_sparky_mcp_lib_runtime_tools_runtime_and_remote_tools</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>services_sparky_mcp_lib_runtime_tools_runtime_and_remote_tools node in project.</td>
-</tr>
-<tr>
-  <td>24</td>
-  <td><code>services_sparky_mcp_lib_runtime_tools_runtime_only_names</code><br><small style="color:var(--muted)"></small></td>
-  <td><span class="tag tag-func">Function</span></td>
-  <td><code>index.js</code><br><small style="color:var(--muted)">services/sparky-mcp/index.js</small></td>
-  <td>No direct outbound edge</td>
-  <td>services_sparky_mcp_lib_runtime_tools_runtime_only_names node in project.</td>
-</tr>
-</table>
-
-<div class="grid">
-  <div class="card">
-    <h4>Key Files</h4>
-    <table style="width:100%;font-size:0.85rem;">
-      <tr><th>File</th><th>Coverage</th></tr>
-      <tr><td><code>services/sparky-mcp/index.js</code></td><td>15 nodes</td></tr>
-<tr><td><code>sparky-mcp/lib/constants.js</code></td><td>5 nodes</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x14, imports x6, calls x4, indirect call x4. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
-  </div>
-</div>
-<hr>
-
 <!-- ====== 15. Services Sparky Agy ====== -->
 <h2 id="services-sparky-agy">15. Services Sparky Agy</h2>
 <p>Services Sparky Agy groups implementation around services, sparky, agy, session, mostly in services/sparky-agy/acp-session-pool.js, services/sparky-agy/session-helpers.js, services/sparky-agy/hook-utils.js. This section covers 20 nodes and 37 internal edges; the diagram shows only representative relationships to stay readable.</p>
@@ -4303,12 +4443,12 @@ flowchart LR
 
 <!-- ====== 16. Other ====== -->
 <h2 id="other">16. Other</h2>
-<p>Other groups implementation around services, sparky, mcp, scripts, mostly in services/browser-mcp/cdp-session.js, services/agy-daemon/daemon.py, services/sparky-agy/acp-gateway.js. This section covers 224 nodes and 291 internal edges; the diagram shows only representative relationships to stay readable.</p>
+<p>Other groups implementation around services, sparky, mcp, scripts, mostly in services/browser-mcp/cdp-session.js, services/agy-daemon/daemon.py, services/sparky-agy/acp-gateway.js. This section covers 223 nodes and 289 internal edges; the diagram shows only representative relationships to stay readable.</p>
 
 <div class="mermaid">
 %%{init: {"theme": "dark", "themeVariables": {"fontSize": "15.0px", "fontFamily": "Segoe UI, system-ui, sans-serif", "primaryColor": "#1e293b", "primaryTextColor": "#e2e8f0", "primaryBorderColor": "#38bdf8", "secondaryColor": "#0f172a", "tertiaryColor": "#334155", "lineColor": "#64748b", "textColor": "#e2e8f0"}, "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 48, "rankSpacing": 64, "padding": 14, "diagramPadding": 10, "useMaxWidth": true}}}%%
 flowchart LR
-    %% Section: Other (224 nodes, 291 edges)
+    %% Section: Other (223 nodes, 289 edges)
     subgraph other_services_agy_daemon_daemon_py_5b14403e["services/agy-daemon/daemon.py"]
         services_agy_daemon_daemon_taskdaemon_ea787a57("TaskDaemon<br/><small>services/agy-daemon/daemon.py</small>")
         services_agy_daemon_daemon_taskdaemon_run_2190cef7("run()<br/><small>services/agy-daemon/daemon.py</small>")
@@ -4353,7 +4493,7 @@ flowchart LR
     services_agy_daemon_daemon_taskdaemon_post_bridg_9d92c9f4 -->|calls| services_agy_daemon_daemon_taskdaemon_get_bridge_1393b785
     services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f -->|calls| services_agy_daemon_daemon_taskdaemon_list_proce_5cb64f48
     services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f -->|calls| services_agy_daemon_daemon_taskdaemon_get_access_c107cc9d
-    %% Omitted for readability: 206 nodes, 13 edges
+    %% Omitted for readability: 205 nodes, 13 edges
     class services_agy_daemon_daemon_taskdaemon_ea787a57 klass;
     class services_agy_daemon_daemon_taskdaemon_run_2190cef7 function;
     class services_agy_daemon_daemon_taskdaemon_recover_in_ddf1575f function;
@@ -4652,7 +4792,7 @@ flowchart LR
   </div>
   <div class="card">
     <h4>Design Notes</h4>
-    <p>This section comes from graphify community clustering. Relationship summary: contains x123, calls x101, defines x30, indirect call x19. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
+    <p>This section comes from graphify community clustering. Relationship summary: contains x123, calls x99, defines x30, indirect call x19. The diagram prioritizes high-confidence calls or usage relationships; the table keeps the broader node inventory.</p>
   </div>
 </div>
 <hr>
@@ -4664,16 +4804,16 @@ flowchart LR
     <h4>Graph</h4>
     <table style="width:100%;font-size:0.85rem;">
       <tr><td>Nodes</td><td>3173</td></tr>
-      <tr><td>Edges</td><td>6496</td></tr>
+      <tr><td>Edges</td><td>6499</td></tr>
       <tr><td>Hyperedges</td><td>0</td></tr>
-      <tr><td>Communities</td><td>192</td></tr>
+      <tr><td>Communities</td><td>191</td></tr>
       <tr><td>Documented Sections</td><td>15</td></tr>
     </table>
   </div>
   <div class="card">
     <h4>Edge Confidence</h4>
     <table style="width:100%;font-size:0.85rem;">
-      <tr><td>EXTRACTED</td><td>5698</td></tr>
+      <tr><td>EXTRACTED</td><td>5701</td></tr>
       <tr><td>INFERRED</td><td>798</td></tr>
       <tr><td>AMBIGUOUS</td><td>0</td></tr>
     </table>
@@ -4682,7 +4822,7 @@ flowchart LR
 
 <div style="text-align:center; padding:40px 0; color: var(--muted); font-size:0.9rem;">
   <p>sparky-backup — Architecture Documentation</p>
-  <p>Generated: 2026-11-25 01:01 UTC · graphify callflow-html</p>
+  <p>Generated: 2026-11-25 06:23 UTC · graphify callflow-html</p>
 </div>
 
 </div><!-- .container -->

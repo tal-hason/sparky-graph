@@ -1,17 +1,17 @@
 # Graph Report - sparky-backup  (2026-11-25)
 
 ## Corpus Check
-- 219 files · ~480,755 words
+- 219 files · ~482,314 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 15 file(s) not represented in the graph (top: (none) 8, .service 5, .example 1)
 
 ## Summary
-- 3173 nodes · 6496 edges · 192 communities (161 shown, 31 thin omitted)
+- 3173 nodes · 6499 edges · 191 communities (159 shown, 32 thin omitted)
 - Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 798 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `061f18f4`
+- Built from commit: `38af320d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -75,7 +75,7 @@
 - run-acp-eval.py
 - Sparky-Plex: Autonomous Executive Assistant & Infrastructure
 - host-adapters.test.js
-- loop-keys.js
+- runPsql
 - phase2-remediation.test.js
 - sparky-runtime-dsl.js
 - Runbook: Containerized Vertex Search Bridge & Sub-Minute Systemd Rollback (`DEF-10`)
@@ -190,10 +190,9 @@
 - handleWhatsappTtsRoute
 - TestDaemon
 - holdQuietHoursAndLink
-- computeDefaultShipmentFollowUp
+- ref_node_vm
 - sentinel-scheduler.test.js
 - MockCdpWebSocket
-- migrate-loop-keys.js
 - sentinel-jobs.js
 - Cr3InspectWs
 - family-mcp/index.js
@@ -234,7 +233,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (192 total, 31 thin omitted)
+## Communities (191 total, 32 thin omitted)
 
 ### Community 0 - "server.js"
 Cohesion: 0.02
@@ -303,12 +302,8 @@ Cohesion: 0.19
 Nodes (19): createAcpSessionPool(), buildMcpServers(), clearWarmState(), currentAuth(), ensureSession(), executeTurn(), getRpc(), handleNotification() (+11 more)
 
 ### Community 15 - "reaction-commands.js"
-Cohesion: 0.12
-Nodes (29): computeDefaultShipmentFollowUp(), getJerusalemDateTimeParts(), { buildAgyTaskPayload }, buildReactionLoopTitle(), buildResult(), {
-  classifyShipmentLifecycle,
-  computeDefaultShipmentFollowUp,
-  getJerusalemDateTimeParts,
-}, computeSnoozeTarget(), createReactionCommandService() (+21 more)
+Cohesion: 0.05
+Nodes (63): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), computeDefaultShipmentFollowUp(), crypto, effectiveDue(), encodeCanonicalLoopId(), extractLoopEntityKey() (+55 more)
 
 ### Community 16 - "kg-store.js"
 Cohesion: 0.09
@@ -319,8 +314,8 @@ Cohesion: 0.22
 Nodes (8): description, main, name, private, scripts, test, test:live, version
 
 ### Community 18 - "http-server.js"
-Cohesion: 0.10
-Nodes (26): RFC-8414, RFC-9728, ALLOWED_REDIRECT_HOSTS, { bridgeRequest }, createMcpHttpServer(), crypto, DEFAULT_PUBLIC_ORIGIN, escHtml() (+18 more)
+Cohesion: 0.11
+Nodes (24): RFC-8414, RFC-9728, ALLOWED_REDIRECT_HOSTS, { bridgeRequest }, createMcpHttpServer(), crypto, DEFAULT_PUBLIC_ORIGIN, escHtml() (+16 more)
 
 ### Community 19 - "sparky-watchdog.sh"
 Cohesion: 0.40
@@ -435,7 +430,7 @@ Nodes (14): createGoogleRestMockDriver(), close(), dispatchRequest(), start(), h
 
 ### Community 47 - "index.js"
 Cohesion: 0.11
-Nodes (18): { bridgeRequest }, dispatchAgyMissionToDrive(), fs, { getTurnContext, postTurnEgress }, HOST_TOOL_ALLOWLIST, readHeartbeatMeta(), readline, REMOTE_TOOL_ALLOWLIST (+10 more)
+Nodes (21): processJsonRpcMessage(), { bridgeRequest }, dispatchAgyMissionToDrive(), fs, getToolsForProfile(), { getTurnContext, postTurnEgress }, handleToolCall(), HOST_TOOL_ALLOWLIST (+13 more)
 
 ### Community 48 - "phase35-parity.test.js"
 Cohesion: 0.17
@@ -477,9 +472,9 @@ Nodes (6): Automated Backup, 🔄 Automated Backup & Disaster Recovery, Full Dis
 Cohesion: 0.12
 Nodes (10): assert, CapCheckWs, fs, HOST_ADAPTERS_PATH, http, net, path, ShotWs (+2 more)
 
-### Community 59 - "loop-keys.js"
-Cohesion: 0.19
-Nodes (19): buildCanonicalLoopKey(), classifyLoopsByDue(), classifyShipmentLifecycle(), crypto, effectiveDue(), extractLoopEntityKey(), extractShipmentIdentifiers(), formatDueBucket() (+11 more)
+### Community 59 - "runPsql"
+Cohesion: 0.20
+Nodes (11): assertBalancedSentinelXml(), assertHostileEscaped(), cleanupReactionDeckTestRows(), cleanupTestSentinelState(), execPsqlStrict(), restoreLivePendingAndCleanTests(), runPsql(), saveAndSupersedeLivePending() (+3 more)
 
 ### Community 60 - "phase2-remediation.test.js"
 Cohesion: 0.11
@@ -516,8 +511,8 @@ Cohesion: 0.11
 Nodes (15): ALL_27_TOOLS, assert, { createGoogleRestMockDriver }, { createMcpStdioDriver }, EXPECTED_CALENDAR_TOOLS, EXPECTED_DRIVE_WORKSPACE_TOOLS, EXPECTED_GMAIL_TOOLS, EXPECTED_MUTATING_TOOLS (+7 more)
 
 ### Community 71 - "migrate-workflow-bridge-urls.js"
-Cohesion: 0.13
-Nodes (15): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrateUrlParam(), path, runPsql() (+7 more)
+Cohesion: 0.25
+Nodes (9): { execFileSync }, fs, main(), migrateJsCode(), migrateNodes(), migrateUrlParam(), path, runPsql() (+1 more)
 
 ### Community 75 - "browser-mcp/package.json"
 Cohesion: 0.18
@@ -772,7 +767,7 @@ Nodes (4): _StubFastAPI, decorator(), decorator(), _StubRoute
 
 ### Community 128 - "tool-policy.js"
 Cohesion: 0.12
-Nodes (29): handlePermissionRequest(), loadBoundedRehydration(), assertPinnedIdsMatchTurnCtx(), collectToolArgObjects(), FAMILY_TOOLS, GEMINI_CONTEXT_MATCH_SOURCES, GEMINI_UNTRUSTED_TOOLS, hasAnyForbiddenKey() (+21 more)
+Nodes (29): handlePermissionRequest(), loadBoundedRehydration(), assertPinnedIdsMatchTurnCtx(), collectToolArgObjects(), FAMILY_TOOLS, GEMINI_CONTEXT_SOURCE_ALIASES, GEMINI_UNTRUSTED_TOOLS, hasAnyForbiddenKey() (+21 more)
 
 ### Community 129 - "workspace-mcp/package.json"
 Cohesion: 0.20
@@ -832,8 +827,8 @@ Cohesion: 0.18
 Nodes (15): buildWsUrl(), clampIdleTtl(), CONTENT_AX_ROLES, handleEvent(), handleFetchPaused(), crypto, fs, INTERACTIVE_AX_ROLES (+7 more)
 
 ### Community 140 - "turn-ctx-client.js"
-Cohesion: 0.35
-Nodes (10): getBridgeToken(), handleToolCall(), { getBridgeToken }, getTurnContext(), http, https, nodeHttpFetch(), postTurnEgress() (+2 more)
+Cohesion: 0.38
+Nodes (9): getBridgeToken(), { getBridgeToken }, getTurnContext(), http, https, nodeHttpFetch(), postTurnEgress(), resolveTurnCtxEndpoint() (+1 more)
 
 ### Community 141 - "server"
 Cohesion: 0.07
@@ -848,8 +843,8 @@ Cohesion: 0.20
 Nodes (9): description, engines, node, main, name, private, scripts, test (+1 more)
 
 ### Community 145 - "server-endpoints.test.js"
-Cohesion: 0.07
-Nodes (35): assert, assertBalancedSentinelXml(), assertHostileEscaped(), callBridge(), checkActiveDecision(), checkCommute(), checkDue(), checkReminders() (+27 more)
+Cohesion: 0.09
+Nodes (23): assert, callBridge(), checkActiveDecision(), checkCommute(), checkDue(), checkReminders(), commitTriagedLoop(), dispatchDefault() (+15 more)
 
 ### Community 146 - "cdp-browser-renderer.js"
 Cohesion: 0.17
@@ -881,7 +876,7 @@ Cohesion: 0.10
 Nodes (13): { ADMIN_PHONE, sanitizeFamilyText }, assert, { getLocalHourMinuteIl }, makeWorld(), parseItemsArray(), parseJsonbParam(), queryPostgresJson(), queryPostgresWithStdin() (+5 more)
 
 ### Community 150 - "loop-store.js"
-Cohesion: 0.13
+Cohesion: 0.12
 Nodes (26): createFamilyOutboxStore(), ackBatch(), claimDueBatches(), deferBatch(), ensureSchema(), inspectBatchState(), loadQueuedBatch(), mergeFlushingIntoQueued() (+18 more)
 
 ### Community 151 - "model-router.js"
@@ -893,7 +888,7 @@ Cohesion: 0.16
 Nodes (15): createHeartbeatStore(), flushSentinel(), listHeartbeats(), recordHeartbeat(), evaluateStaleness(), lookupEntry(), SENTINEL_REGISTRY, sqlStr() (+7 more)
 
 ### Community 153 - "loop-store.js"
-Cohesion: 0.29
+Cohesion: 0.31
 Nodes (17): createLoopStore(), attachWatcherAtomic(), completeOpenLoopById(), countActiveWatchers(), extractValidCrossEntityTokens(), getLoopById(), markLoopNotified(), rescheduleOpenLoopById() (+9 more)
 
 ### Community 154 - "Gemini Scheduled Briefings — Morning & End-of-Day Prompts"
@@ -930,7 +925,7 @@ Nodes (10): clampInt(), createGoogleOAuthClient(), getAccessToken(), getOAuthMet
 
 ### Community 162 - "runtime-tools.js"
 Cohesion: 0.15
-Nodes (29): assertNoGeminiMediaPlaceholder(), assertRestrictedResourceBinding(), assertRestrictedSource(), assertSentinelBoundLoopId(), GEMINI_CONTEXT_MATCH_SOURCES, hasForbiddenWaField(), hasNonEmptyValue(), hasPluginOrSkillTerm() (+21 more)
+Nodes (29): assertNoGeminiMediaPlaceholder(), assertRestrictedResourceBinding(), assertRestrictedSource(), assertSentinelBoundLoopId(), GEMINI_CONTEXT_SOURCE_ALIASES, hasForbiddenWaField(), hasNonEmptyValue(), hasPluginOrSkillTerm() (+21 more)
 
 ### Community 163 - "ssrf-perimeter.test.js"
 Cohesion: 0.10
@@ -945,8 +940,8 @@ Cohesion: 0.53
 Nodes (5): PATH, read_env_key(), sync-podman-secrets.sh script, upsert_podman_secret_from_file(), write_secret_file_if_missing()
 
 ### Community 168 - "ref_child_process"
-Cohesion: 0.28
-Nodes (7): assert, { createLoopStore }, { execFile }, queryPostgresJson(), queryPostgresWithStdin(), store, test
+Cohesion: 0.14
+Nodes (14): { execFile }, HISTORICAL_CLOSE_IDS, { INVOICE_RE, generateDeterministicLoopId }, loadAllRows(), queryPostgresWithStdin(), runMigration(), { sqlStr, sqlJsonb }, assert (+6 more)
 
 ### Community 169 - "agy-mission-client.js"
 Cohesion: 0.18
@@ -964,10 +959,6 @@ Nodes (17): normalizeReactionEmoji(), handleAgyMissionRoute(), handleReactionExe
 Cohesion: 0.27
 Nodes (11): buildDecisionTestIsolationSql(), buildPreserveDecisionSql(), getDecisionSourceAliases(), linkOrCreateDecisionWithDeps(), acpClient, createDecision(), holdQuietHoursAndLink(), isTestDecisionRecord() (+3 more)
 
-### Community 174 - "computeDefaultShipmentFollowUp"
-Cohesion: 0.25
-Nodes (7): ALLOWED_ACTIONS, CANONICAL_ACTORS, { computeDefaultShipmentFollowUp }, createWatcherRoutesHandler(), handleWatcherRoute(), { redactSecretsInError: defaultRedactSecrets }, uw
-
 ### Community 175 - "sentinel-scheduler.test.js"
 Cohesion: 0.15
 Nodes (12): assert, { createDb }, createRealDbHarness(), dsl, ERROR_BOUNDARY_PATH, fs, JOBS_PATH, path (+4 more)
@@ -975,10 +966,6 @@ Nodes (12): assert, { createDb }, createRealDbHarness(), dsl, ERROR_BOUNDARY_PAT
 ### Community 176 - "MockCdpWebSocket"
 Cohesion: 0.29
 Nodes (3): listenEphemeral(), MockCdpWebSocket, start()
-
-### Community 177 - "migrate-loop-keys.js"
-Cohesion: 0.25
-Nodes (9): encodeCanonicalLoopId(), generateDeterministicLoopId(), { execFile }, HISTORICAL_CLOSE_IDS, { INVOICE_RE, generateDeterministicLoopId }, loadAllRows(), queryPostgresWithStdin(), runMigration() (+1 more)
 
 ### Community 178 - "sentinel-jobs.js"
 Cohesion: 0.24
@@ -1007,13 +994,13 @@ Nodes (6): generateEmbedding(), insertSemanticMemory(), memoryHygieneStore, sani
 ## Knowledge Gaps
 - **26 isolated node(s):** `PATH`, `PATH`, `PATH`, `PATH`, `HOME` (+21 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1419 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `createHostAdapters()` connect `createHostAdapters` to `server.js`, `fetchPagePrivate`, `ssrf-http-client.js`, `host-adapters.js`, `phase2-remediation.test.js`?**
-  _High betweenness centrality (0.126) - this node is a cross-community bridge._
+  _High betweenness centrality (0.118) - this node is a cross-community bridge._
 - **Are the 7 inferred relationships involving `server` (e.g. with `formatSleepCycleMessage()` and `findDuplicateFieldNote()`) actually correct?**
   _`server` has 7 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `PATH`, `PATH`, `PATH` to the rest of the system?**
@@ -1021,7 +1008,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.019798210546354465 - nodes in this community are weakly interconnected._
 - **Why does `3. Platform Architecture & Refactoring (Epic E5)` connect `correction-learner.js` to `createHostAdapters`?**
-  _High betweenness centrality (0.125) - this node is a cross-community bridge._
+  _High betweenness centrality (0.117) - this node is a cross-community bridge._
 - **Are the 4 inferred relationships involving `redactSecretsInError()` (e.g. with `handleAcpOrSearchRoute()` and `incident-store.js`) actually correct?**
   _`redactSecretsInError()` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **Should `reaction-commands.test.js` be split into smaller, more focused modules?**

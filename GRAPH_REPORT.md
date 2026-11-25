@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `069ad985`
+- Built from commit: `061f18f4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -57,7 +57,7 @@
 - _install_ci_stubs_if_missing
 - google-oauth-client.test.js
 - n8n-sparky/test-n8n-patches.js
-- hook-utils.js
+- browser-mcp.test.js
 - createSentinelJobs
 - workspace-mcp/index.js
 - daemon.py
@@ -109,7 +109,7 @@
 - ref_node_fs
 - TestSparkyWhisperService
 - event-ingest.test.js
-- holdQuietHoursAndLink
+- event-ingest.js
 - whatsapp-ingress.js
 - run
 - run
@@ -135,7 +135,7 @@
 - whatsapp-egress.js
 - incident-store.test.js
 - IwRejectWs
-- generateEmbedding
+- url-guard.js
 - plugin-manager.js
 - Sparky Travel, Conference & Trip Prep Workflow
 - normalizeIsraeliPhone
@@ -155,7 +155,7 @@
 - vertex-search-bridge/package.json
 - TtsDriver
 - family-mcp/package.json
-- browser-mcp.test.js
+- cdp-session.js
 - turn-ctx-client.js
 - server
 - phase35-parity.test.js
@@ -163,7 +163,7 @@
 - cortex-sleep-mcp/package.json
 - server-endpoints.test.js
 - cdp-browser-renderer.js
-- event-ingest.js
+- probe-memory-contradictions.js
 - html-readability.js
 - family-concierge-store.test.js
 - loop-store.js
@@ -175,7 +175,7 @@
 - Sparky-AI — Gemini Tasks Prompts Reference (Copy & Paste)
 - createMetaTokenReader
 - triage-helpers.js
-- url-guard.js
+- hook-utils.js
 - sheets-docs-slides.js
 - createGoogleOAuthClient
 - runtime-tools.js
@@ -188,8 +188,8 @@
 - agy-mission-client.js
 - createAnalyzeDocumentHandler
 - handleWhatsappTtsRoute
-- cdp-session.js
-- probe-memory-contradictions.js
+- TestDaemon
+- holdQuietHoursAndLink
 - computeDefaultShipmentFollowUp
 - sentinel-scheduler.test.js
 - MockCdpWebSocket
@@ -202,10 +202,10 @@
 - IwTimeoutWs
 - HangingOpenWs
 - createHostAdapters
-- TestDaemon
+- generateEmbedding
+- TestEopSkillAndBackupScriptContract
 - SpyAutoWs
 - Cr4InspectWs
-- TestEopSkillAndBackupScriptContract
 
 ## God Nodes (most connected - your core abstractions)
 1. `server` - 140 edges
@@ -409,9 +409,9 @@ Nodes (12): assert, CONFIG_PATH, { createGoogleRestMockDriver }, crypto, DOC_ROU
 Cohesion: 0.11
 Nodes (17): { cleanupOrphanedMessages }, { ensureParams, failedAttemptHandler }, failedHandlerPath, fs, geminiCjsPath, geminiMessages, geminiMessagesPath, { getGeminiAPI } (+9 more)
 
-### Community 41 - "hook-utils.js"
-Cohesion: 0.15
-Nodes (8): fs, http, https, nodeHttpFetch(), path, readline, { redactSecretsInError }, { spawn }
+### Community 41 - "browser-mcp.test.js"
+Cohesion: 0.11
+Nodes (20): RFC-6455, createBrowserMcpHandler(), handleToolCall(), { createCdpSession, redactSecrets }, isEvalMode(), readline, startStdioServer(), TOOLS (+12 more)
 
 ### Community 42 - "createSentinelJobs"
 Cohesion: 0.37
@@ -614,9 +614,9 @@ Nodes (14): _find_route_endpoint(), _invoke_endpoint(), _run_app_startup_and_cal
 Cohesion: 0.15
 Nodes (11): ACP_ROUTES_PATH, assert, { createAcpHookDriver, resolveTalPreToolHookPath }, dsl, EVENT_INGEST_PATH, fs, HEARTBEAT_STORE_PATH, http (+3 more)
 
-### Community 93 - "holdQuietHoursAndLink"
-Cohesion: 0.27
-Nodes (11): buildDecisionTestIsolationSql(), buildPreserveDecisionSql(), getDecisionSourceAliases(), linkOrCreateDecisionWithDeps(), acpClient, createDecision(), holdQuietHoursAndLink(), isTestDecisionRecord() (+3 more)
+### Community 93 - "event-ingest.js"
+Cohesion: 0.13
+Nodes (20): ACTOR_ROUTE_KEY, ALLOWED_ACTOR_SOURCE_SET, ALLOWED_ACTOR_SOURCES, BRIEF_ACTOR_SOURCES, { CALLER_DEFAULT_ROUTES }, { computeSenderAdjustment }, createEventIngestHandler(), ingestBriefEvent() (+12 more)
 
 ### Community 94 - "whatsapp-ingress.js"
 Cohesion: 0.16
@@ -738,9 +738,9 @@ Nodes (10): pg, assert, { execFile, execFileSync }, getTcpPgPool(), isPodmanPost
   createIncidentStore,
 } (+2 more)
 
-### Community 119 - "generateEmbedding"
-Cohesion: 0.40
-Nodes (6): generateEmbedding(), insertSemanticMemory(), memoryHygieneStore, sanitizeContent(), searchSemanticMemories(), searchSemanticMemoriesByVector()
+### Community 119 - "url-guard.js"
+Cohesion: 0.26
+Nodes (16): assertPublicDnsResolution(), BLOCKED_LAN_PORTS, dns, getEffectivePort(), HARD_BLOCKED_HOSTNAMES, isHardBlockedHostname(), isLiteralLanIpv4(), isPrivateOrLocalIp() (+8 more)
 
 ### Community 120 - "plugin-manager.js"
 Cohesion: 0.33
@@ -827,9 +827,9 @@ Nodes (13): dependencies, pg, description, engines, node, main, name, private (+
 Cohesion: 0.33
 Nodes (5): description, main, name, private, version
 
-### Community 139 - "browser-mcp.test.js"
-Cohesion: 0.11
-Nodes (20): RFC-6455, createBrowserMcpHandler(), handleToolCall(), { createCdpSession, redactSecrets }, isEvalMode(), readline, startStdioServer(), TOOLS (+12 more)
+### Community 139 - "cdp-session.js"
+Cohesion: 0.18
+Nodes (15): buildWsUrl(), clampIdleTtl(), CONTENT_AX_ROLES, handleEvent(), handleFetchPaused(), crypto, fs, INTERACTIVE_AX_ROLES (+7 more)
 
 ### Community 140 - "turn-ctx-client.js"
 Cohesion: 0.35
@@ -868,9 +868,9 @@ Nodes (15): crypto, dns, fetchViaJina(), fs, {
   fetchPinnedRawResponse,
 }, decodeHttpBuffer() (+7 more)
 
-### Community 147 - "event-ingest.js"
-Cohesion: 0.13
-Nodes (20): ACTOR_ROUTE_KEY, ALLOWED_ACTOR_SOURCE_SET, ALLOWED_ACTOR_SOURCES, BRIEF_ACTOR_SOURCES, { CALLER_DEFAULT_ROUTES }, { computeSenderAdjustment }, createEventIngestHandler(), ingestBriefEvent() (+12 more)
+### Community 147 - "probe-memory-contradictions.js"
+Cohesion: 0.26
+Nodes (13): DEF-05: Semantic Memory Contradiction Detection & Temporal Decay, createMemoryHygieneStore(), findCandidateNeighbors(), ingestMemoryWithHygiene(), reconcileExistingMemories(), hasFactMutationTokens(), mergeContextNotes(), normalizeTopic() (+5 more)
 
 ### Community 148 - "html-readability.js"
 Cohesion: 0.41
@@ -916,9 +916,9 @@ Nodes (6): createMetaTokenReader(), getMetaAppSecret(), getMetaToken(), getMetaV
 Cohesion: 0.15
 Nodes (17): RFC-2822, assert, test, triageHelpers, DELIVERED_OUTREACH_STATUSES, DTF_HUMAN, DTF_ISRAEL_DATE, EXCLUDED_OUTREACH_SOURCES (+9 more)
 
-### Community 159 - "url-guard.js"
-Cohesion: 0.26
-Nodes (16): assertPublicDnsResolution(), BLOCKED_LAN_PORTS, dns, getEffectivePort(), HARD_BLOCKED_HOSTNAMES, isHardBlockedHostname(), isLiteralLanIpv4(), isPrivateOrLocalIp() (+8 more)
+### Community 159 - "hook-utils.js"
+Cohesion: 0.15
+Nodes (8): fs, http, https, nodeHttpFetch(), path, readline, { redactSecretsInError }, { spawn }
 
 ### Community 160 - "sheets-docs-slides.js"
 Cohesion: 0.33
@@ -960,13 +960,9 @@ Nodes (4): createAnalyzeDocumentHandler(), acquireSlot(), handleAnalyzeDocumentR
 Cohesion: 0.17
 Nodes (17): normalizeReactionEmoji(), handleAgyMissionRoute(), handleReactionExecuteRoute(), handleWhatsappTtsRoute(), parsePersonaFromNote(), parseStrictJsonBody(), resolvePersonaConfig(), sendJsonResponse() (+9 more)
 
-### Community 172 - "cdp-session.js"
-Cohesion: 0.18
-Nodes (15): buildWsUrl(), clampIdleTtl(), CONTENT_AX_ROLES, handleEvent(), handleFetchPaused(), crypto, fs, INTERACTIVE_AX_ROLES (+7 more)
-
-### Community 173 - "probe-memory-contradictions.js"
-Cohesion: 0.26
-Nodes (13): DEF-05: Semantic Memory Contradiction Detection & Temporal Decay, createMemoryHygieneStore(), findCandidateNeighbors(), ingestMemoryWithHygiene(), reconcileExistingMemories(), hasFactMutationTokens(), mergeContextNotes(), normalizeTopic() (+5 more)
+### Community 173 - "holdQuietHoursAndLink"
+Cohesion: 0.27
+Nodes (11): buildDecisionTestIsolationSql(), buildPreserveDecisionSql(), getDecisionSourceAliases(), linkOrCreateDecisionWithDeps(), acpClient, createDecision(), holdQuietHoursAndLink(), isTestDecisionRecord() (+3 more)
 
 ### Community 174 - "computeDefaultShipmentFollowUp"
 Cohesion: 0.25
@@ -1004,6 +1000,10 @@ Nodes (3): IwTimeoutWs, send(), start()
 Cohesion: 0.38
 Nodes (7): DEF-10: Bridge Monolith Decomposition (`server.js`), Native PG Pool & `BRIDGE_URL` Env, createHostAdapters(), checkNfs(), listContainers(), probeServices(), runDatabaseMaintenance(), probeHttpEndpointNative()
 
+### Community 188 - "generateEmbedding"
+Cohesion: 0.40
+Nodes (6): generateEmbedding(), insertSemanticMemory(), memoryHygieneStore, sanitizeContent(), searchSemanticMemories(), searchSemanticMemoriesByVector()
+
 ## Knowledge Gaps
 - **26 isolated node(s):** `PATH`, `PATH`, `PATH`, `PATH`, `HOME` (+21 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1419 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
@@ -1013,7 +1013,7 @@ Nodes (7): DEF-10: Bridge Monolith Decomposition (`server.js`), Native PG Pool &
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `createHostAdapters()` connect `createHostAdapters` to `server.js`, `fetchPagePrivate`, `ssrf-http-client.js`, `host-adapters.js`, `phase2-remediation.test.js`?**
-  _High betweenness centrality (0.118) - this node is a cross-community bridge._
+  _High betweenness centrality (0.126) - this node is a cross-community bridge._
 - **Are the 7 inferred relationships involving `server` (e.g. with `formatSleepCycleMessage()` and `findDuplicateFieldNote()`) actually correct?**
   _`server` has 7 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `PATH`, `PATH`, `PATH` to the rest of the system?**
@@ -1021,7 +1021,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `server.js` be split into smaller, more focused modules?**
   _Cohesion score 0.019798210546354465 - nodes in this community are weakly interconnected._
 - **Why does `3. Platform Architecture & Refactoring (Epic E5)` connect `correction-learner.js` to `createHostAdapters`?**
-  _High betweenness centrality (0.117) - this node is a cross-community bridge._
+  _High betweenness centrality (0.125) - this node is a cross-community bridge._
 - **Are the 4 inferred relationships involving `redactSecretsInError()` (e.g. with `handleAcpOrSearchRoute()` and `incident-store.js`) actually correct?**
   _`redactSecretsInError()` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **Should `reaction-commands.test.js` be split into smaller, more focused modules?**
